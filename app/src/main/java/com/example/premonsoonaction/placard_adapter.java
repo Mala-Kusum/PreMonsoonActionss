@@ -31,15 +31,13 @@ public class placard_adapter extends RecyclerView.Adapter<placard_adapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.text.setText(s[position]);
-                holder.text.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i=new Intent(context,HQ.class);
-                        context.startActivity(i);
-                    }
-                });
+        holder.text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(context,Action.class);
+                context.startActivity(i);
             }
-        }
+        });
     }
     @Override
     public int getItemCount() {
