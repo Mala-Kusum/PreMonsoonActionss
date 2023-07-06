@@ -34,6 +34,7 @@ public class placard_adapter extends RecyclerView.Adapter<placard_adapter.MyView
         holder.text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.RO=holder.text.getText().toString();
                 Intent i=new Intent(context,Action.class);
                 context.startActivity(i);
             }

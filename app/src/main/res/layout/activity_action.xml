@@ -7,15 +7,41 @@
     tools:context=".Action">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#F7FFE5"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/actiontaken"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7DB9B6"
+            android:shadowRadius="5"
+            android:text="Action Taken Reports"
+            android:textColor="#454545" />
+        <Button
+            android:id="@+id/equipments"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7DB9B6"
+            android:shadowRadius="5"
+            android:text="Equipments"
+            android:textColor="#454545" />
+        <Button
+            android:id="@+id/materials"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7DB9B6"
+            android:shadowRadius="5"
+            android:text="Materials"
+            android:textColor="#454545" />
         <Button
             android:id="@+id/login"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:backgroundTint="#7DB9B6"
             android:shadowRadius="5"
-            android:text="Log In"
+            android:text="Rate Running contracts"
             android:textColor="#454545" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PreMonsoonAction"
         tools:targetApi="31">
         <activity
+            android:name=".Add_Equipment"
+            android:exported="false" />
+        <activity
+            android:name=".Equipments"
+            android:exported="false" />
+        <activity
             android:name=".Action"
             android:exported="false" />
         <activity
