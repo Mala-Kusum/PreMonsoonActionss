@@ -14,6 +14,7 @@ public class Add_Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
+        pmu=findViewById(R.id.pmu);
         switch(MainActivity.RO){
             case"Ro-Leh/Srinagar":
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.LehSrinagar, android.R.layout.simple_spinner_item);
@@ -54,13 +55,16 @@ public class Add_Equipment extends AppCompatActivity {
             case"RO-Port Blair":
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.PortBlair, android.R.layout.simple_spinner_item);
                 break;
-            case"RO-SRINAGAR":
+            case"RO-Srinagar":
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.SRINAGAR, android.R.layout.simple_spinner_item);
                 break;
             case"New Delhi":
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.NewDelhi, android.R.layout.simple_spinner_item);
                 break;
+            default:
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Select, android.R.layout.simple_spinner_item);
         }
+
         ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
         pmu.setAdapter(ad);
     }
