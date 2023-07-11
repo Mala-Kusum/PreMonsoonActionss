@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Add_Equipment extends AppCompatActivity {
     Spinner pmu;
-    
+    private FirebaseFirestore db;
+    private CollectionReference noteRef;
     ArrayAdapter<CharSequence> ad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
