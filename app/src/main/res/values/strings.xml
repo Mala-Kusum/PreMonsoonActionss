@@ -1,80 +1,80 @@
 <resources>
     <string name="app_name">Pre Monsoon Action</string>
-<string-array name="SRINAGAR">
-<item>"PMU-SONAMARG"</item>
-<item>"PMU-ANANTNAG"</item>
-</string-array>
-<string-array name="Shillong">
-<item>"PMU-Baghmara"</item>
-<item>"PMU-Mylliem"</item>
-<item>PMU-Tura</item>
-</string-array>
-<string-array name="LADAKH">
-<item>"PMU-KARGIL"</item>
-</string-array>
-<string-array name="Kohima">
-<item>"PMU-Dimapur"</item>
-<item>"PMU-JAKHAMA"</item>
-<item>"PMU-Mokokchung"</item>
-<item>"PMU-Pfutsero"</item>
-</string-array>
-<string-array name="Jammu">
-<item>"PMU-Akhnoor"</item>
-<item>"PMU-Doda"</item>
-<item>"PMU-Kishtwar"</item>
-</string-array>
-<string-array name="Itanagar">
-<item>"PMU-Likabali"</item>
-<item>"PMU-Namsai"</item>
-<item>"PMU-Roing"</item>
-<item>"PMU-Ziro"</item>
-</string-array>
-<string-array name="Imphal">
-<item>"PMU-Churachandpur"</item>
-<item>"PMU-Noney"</item>
-<item>"PMU-Senapati"</item>
-<item>"PMU-Tengnoupal"</item>
-<item>"PMU-Ukhrul"</item>
-</string-array>
-<string-array name="Guwahati">
-<item>"PMU-Bongaigaon"</item>
-<item>"PMU-Dhubri"</item>
-<item>"PMU-Jorhat"</item>
-<item>"PMU-Tezpur"</item>
-<item>"PMU-Silchar"</item>
-</string-array>
-<string-array name="Gangtok">
-<item>"PMU-Gyalshing"</item>
-<item>"PMU-Kalimpong"</item>
-<item>"PMU-Ranipool"</item>
-<item>"PMU-Rhenock"</item>
-</string-array>
-<string-array name="Dehradun">
-<item>"PMU-Chamoli"</item>
-<item>"PMU-Uttarkashi"</item>
-</string-array>
-<string-array name="Aizwal">
-<item>"PMU-Lunglei"</item>
-<item>"PMU-Lwangtlai"</item>
-<item>"PMU-Seling"</item>
-</string-array>
-<string-array name="Agartala">
-<item>"PMU-AMBASA"</item>
-<item>"PMU-Dharmanagar"</item>
-<item>"PMU-Khowai"</item>
-<item>"PMU-Kumarghat"</item>
-<item>"PMU-udaipur"</item>
-</string-array>
-<string-array name="PortBlair">
-<item>"PMU-Mayabunder"</item>
-</string-array>
-<string-array name="LehSrinagar">
-<item>"PMU-Leh"</item>
-</string-array>
-<string-array name="Select">
-<item>"Select"</item>
-</string-array>
-<string-array name="NewDelhi">
-<item>"Test PMU"</item>
-</string-array>
+    <string-array name="SRINAGAR">
+        <item>"PMU-SONAMARG"</item>
+        <item>"PMU-ANANTNAG"</item>
+    </string-array>
+    <string-array name="Shillong">
+        <item>"PMU-Baghmara"</item>
+        <item>"PMU-Mylliem"</item>
+        <item>PMU-Tura</item>
+    </string-array>
+    <string-array name="LADAKH">
+        <item>"PMU-KARGIL"</item>
+    </string-array>
+    <string-array name="Kohima">
+        <item>"PMU-Dimapur"</item>
+        <item>"PMU-JAKHAMA"</item>
+        <item>"PMU-Mokokchung"</item>
+        <item>"PMU-Pfutsero"</item>
+    </string-array>
+    <string-array name="Jammu">
+        <item>"PMU-Akhnoor"</item>
+        <item>"PMU-Doda"</item>
+        <item>"PMU-Kishtwar"</item>
+    </string-array>
+    <string-array name="Itanagar">
+        <item>"PMU-Likabali"</item>
+        <item>"PMU-Namsai"</item>
+        <item>"PMU-Roing"</item>
+        <item>"PMU-Ziro"</item>
+    </string-array>
+    <string-array name="Imphal">
+        <item>"PMU-Churachandpur"</item>
+        <item>"PMU-Noney"</item>
+        <item>"PMU-Senapati"</item>
+        <item>"PMU-Tengnoupal"</item>
+        <item>"PMU-Ukhrul"</item>
+    </string-array>
+    <string-array name="Guwahati">
+        <item>"PMU-Bongaigaon"</item>
+        <item>"PMU-Dhubri"</item>
+        <item>"PMU-Jorhat"</item>
+        <item>"PMU-Tezpur"</item>
+        <item>"PMU-Silchar"</item>
+    </string-array>
+    <string-array name="Gangtok">
+        <item>"PMU-Gyalshing"</item>
+        <item>"PMU-Kalimpong"</item>
+        <item>"PMU-Ranipool"</item>
+        <item>"PMU-Rhenock"</item>
+    </string-array>
+    <string-array name="Dehradun">
+        <item>"PMU-Chamoli"</item>
+        <item>"PMU-Uttarkashi"</item>
+    </string-array>
+    <string-array name="Aizwal">
+        <item>"PMU-Lunglei"</item>
+        <item>"PMU-Lwangtlai"</item>
+        <item>"PMU-Seling"</item>
+    </string-array>
+    <string-array name="Agartala">
+        <item>"PMU-AMBASA"</item>
+        <item>"PMU-Dharmanagar"</item>
+        <item>"PMU-Khowai"</item>
+        <item>"PMU-Kumarghat"</item>
+        <item>"PMU-udaipur"</item>
+    </string-array>
+    <string-array name="PortBlair">
+        <item>"PMU-Mayabunder"</item>
+    </string-array>
+    <string-array name="LehSrinagar">
+        <item>"PMU-Leh"</item>
+    </string-array>
+    <string-array name="Select">
+        <item>"Select"</item>
+    </string-array>
+    <string-array name="NewDelhi">
+        <item>"Test PMU"</item>
+    </string-array>
 </resources>
