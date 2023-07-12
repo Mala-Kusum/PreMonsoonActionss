@@ -72,6 +72,12 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="24×7 central control room is created and maintained at selected location by concerned ROs of all the agencies put together" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Next"
+             />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
