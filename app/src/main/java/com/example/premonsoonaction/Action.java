@@ -21,6 +21,5 @@ public class Action extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 }
