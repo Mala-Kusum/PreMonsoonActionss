@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.directory.R;
-
 public class Action extends AppCompatActivity {
     Button equipment;
     @Override

@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
-import com.example.directory.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -69,7 +67,6 @@ public class Add_Equipment extends AppCompatActivity {
             default:
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Select, android.R.layout.simple_spinner_item);
         }
-
         ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
         pmu.setAdapter(ad);
     }

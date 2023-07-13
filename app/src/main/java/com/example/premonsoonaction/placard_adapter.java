@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.directory.R;
-
 public class placard_adapter extends RecyclerView.Adapter<placard_adapter.MyViewHolder>{
    Context context;
    public static String[] s;
