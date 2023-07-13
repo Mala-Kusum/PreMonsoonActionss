@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.directory.R;
+
 public class addReport extends AppCompatActivity {
 
     @Override
