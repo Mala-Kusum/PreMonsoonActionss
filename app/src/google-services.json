@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "24677360383",
+    "project_id": "premonsoon-ea24e",
+    "storage_bucket": "premonsoon-ea24e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24677360383:android:c42bc808df47192602e2ca",
+        "android_client_info": {
+          "package_name": "com.example.premonsoonaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24677360383-k8rqu64avbfe4cn5a9sn6im0prqgb78s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS006vRTFs1zVGOwRYPxq1PWWGO8Noquw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24677360383-k8rqu64avbfe4cn5a9sn6im0prqgb78s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
