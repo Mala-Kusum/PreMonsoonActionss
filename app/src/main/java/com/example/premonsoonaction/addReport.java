@@ -23,10 +23,11 @@ public class addReport extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 setContentView(R.layout.page2_addreport);
+                addvuner=findViewById(R.id.addvuner);
             }
         });
-        addvuner=findViewById(R.id.addvuner);
         addvuner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
