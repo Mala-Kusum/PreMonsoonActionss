@@ -23,6 +23,5 @@
                 android:text="Add Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall."/>
 
         </LinearLayout>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
