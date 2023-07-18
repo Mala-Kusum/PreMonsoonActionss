@@ -13,29 +13,22 @@ import android.widget.ImageButton;
 
 
 public class addReport extends AppCompatActivity {
-    Button next;
-    ImageButton addvuner;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
+        Button next;
         next=findViewById(R.id.next);
-        Dialog dialog = new Dialog(addReport.this);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i=new Intent(addReport.this,addReport2.class);
+                startActivity(i);
+            }
+        });
 
-                setContentView(R.layout.page2_addreport);
-                addvuner=findViewById(R.id.addvuner);
-            }
-        });
-        addvuner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment newFragment = new adddialog();
-                newFragment.show(getSupportFragmentManager(), "game");
-            }
-        });
     }
 
 }
