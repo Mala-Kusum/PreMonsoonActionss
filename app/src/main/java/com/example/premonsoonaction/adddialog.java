@@ -10,13 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 public class adddialog extends DialogFragment {
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        return super.onCreateDialog(savedInstanceState);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
+        builder.setView(inflater.inflate(R.layout.dialog, null));
+        return builder.create();
     }
-    builder.setView
+
 }

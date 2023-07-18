@@ -1,6 +1,7 @@
 package com.example.premonsoonaction;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -31,10 +32,8 @@ public class addReport extends AppCompatActivity {
         addvuner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setContentView(R.layout.dialog);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.setCancelable(true);
-                dialog.show();
+                DialogFragment newFragment = new adddialog();
+                newFragment.show(getSupportFragmentManager(), "game");
             }
         });
     }

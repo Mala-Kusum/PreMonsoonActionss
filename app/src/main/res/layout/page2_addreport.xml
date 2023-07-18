@@ -12,6 +12,7 @@
             android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/addvuner"
+                android:layout_marginTop="5dp"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginRight="5dp"
