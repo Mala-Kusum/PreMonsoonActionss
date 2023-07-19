@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageButton
+                android:id="@+id/From"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:paddingTop="20dp"
@@ -36,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageButton
+                android:id="@+id/To"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:paddingTop="20dp"
