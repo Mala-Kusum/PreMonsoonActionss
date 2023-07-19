@@ -36,7 +36,7 @@
             android:text="Materials"
             android:textColor="#454545" />
         <Button
-            android:id="@+id/login"
+            android:id="@+id/raterunning"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#7DB9B6"
