@@ -18,6 +18,8 @@ public class Report extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         button=findViewById(R.id.addrepo);
+        from=findViewById(R.id.From);
+        to=findViewById(R.id.To);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
