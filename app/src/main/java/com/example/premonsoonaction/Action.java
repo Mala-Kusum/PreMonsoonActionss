@@ -20,7 +20,6 @@ public class Action extends AppCompatActivity {
         actiontaken=findViewById(R.id.actiontaken);
         material=findViewById(R.id.materials);
         raterunning=findViewById(R.id.raterunning);
-        t=findViewById(R.id.no);
         actiontaken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +32,6 @@ public class Action extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedAction="Equipment";
-                t.setText("No.");
                 Intent i=new Intent(Action.this,Equipments.class);
                 startActivity(i);
             }
@@ -42,7 +40,6 @@ public class Action extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 selectedAction="Material";
-                t.setText("Quantity.");
                 Intent i=new Intent(Action.this,Equipments.class);
                 startActivity(i);
             }
@@ -51,7 +48,6 @@ public class Action extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 selectedAction="Rate running";
-                t.setText("No.");
                 Intent i=new Intent(Action.this,Equipments.class);
                 startActivity(i);
             }

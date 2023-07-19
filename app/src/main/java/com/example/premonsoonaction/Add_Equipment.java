@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -12,11 +14,24 @@ public class Add_Equipment extends AppCompatActivity {
     Spinner pmu;
     private FirebaseFirestore db;
     private CollectionReference noteRef;
+    TextView t;
     ArrayAdapter<CharSequence> ad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
+        t=findViewById(R.id.no);
+        switch(Action.selectedAction){
+            case "Equipment":
+                t.setText("No.");
+                break;
+            case "Material":
+                t.setText("Quantity.");
+                break;
+            case "Rate running":
+                t.setText("No.");
+                break;
+        }
         pmu=findViewById(R.id.pmu);
         switch(MainActivity.RO){
             case"Ro-Leh/Srinagar":
