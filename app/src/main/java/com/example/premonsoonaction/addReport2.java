@@ -39,5 +39,12 @@ public class addReport2 extends AppCompatActivity {
                 newFragment.show(getSupportFragmentManager(), "game");
             }
         });
+        warning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment newFragment = new adddialog2();
+                newFragment.show(getSupportFragmentManager(), "game");
+            }
+        });
     }
 }
