@@ -10,9 +10,16 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall."
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
                 android:orientation="horizontal">
                 <ImageButton
                     android:id="@+id/addvuner"
@@ -25,14 +32,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall."
+                    android:text="Add Identified location."
                     android:textStyle="bold" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No - "
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Identified location."
+                    android:textStyle="bold" />
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Identified landslide prone areas, rock fall prone areas, sinking zones etc."/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
                 android:orientation="horizontal">
+
                 <ImageButton
                     android:id="@+id/addcritical"
                     android:layout_marginTop="5dp"
@@ -44,15 +69,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="Add Identified landslide prone areas, rock fall prone areas, sinking zones etc."/>
+                    android:text="Add Identified location."/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Inspected vulnerable spots along with installation of warning signs"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
                 android:orientation="horizontal">
+
                 <ImageButton
-                    android:id="@+id/addcritical"
+                    android:id="@+id/addinsp"
                     android:layout_marginTop="5dp"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
@@ -62,8 +96,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="Add Identified landslide prone areas, rock fall prone areas, sinking zones etc."/>
+                    android:text="Add Location Inspected"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addwarn"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@android:drawable/ic_input_add"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Add Location of warning signs installed"/>
+
+            </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Submit"/>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@ public class Action extends AppCompatActivity {
         equipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Action.this,Add_Equipment.class);
+                Intent i=new Intent(Action.this,Equipments.class);
                 startActivity(i);
             }
         });
