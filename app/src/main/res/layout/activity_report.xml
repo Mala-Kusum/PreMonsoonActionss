@@ -54,6 +54,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addrepo"
         android:layout_marginBottom="50dp"
         android:layout_marginRight="30dp"
         android:layout_width="wrap_content"

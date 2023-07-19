@@ -18,7 +18,7 @@ public class Action extends AppCompatActivity {
         actiontaken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Action.this,addReport.class);
+                Intent i=new Intent(Action.this,Report.class);
                 startActivity(i);
             }
         });
