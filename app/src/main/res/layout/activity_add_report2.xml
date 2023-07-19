@@ -24,8 +24,8 @@
                 <ImageButton
                     android:id="@+id/addvuner"
                     android:layout_marginTop="5dp"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginRight="5dp"
                     android:src="@android:drawable/ic_input_add"/>
 
@@ -61,8 +61,8 @@
                 <ImageButton
                     android:id="@+id/addcritical"
                     android:layout_marginTop="5dp"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginRight="5dp"
                     android:src="@android:drawable/ic_input_add"/>
                 <TextView
@@ -88,8 +88,8 @@
                 <ImageButton
                     android:id="@+id/addinsp"
                     android:layout_marginTop="5dp"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginRight="5dp"
                     android:src="@android:drawable/ic_input_add"/>
                 <TextView
@@ -108,8 +108,8 @@
 
                 <ImageButton
                     android:id="@+id/addwarn"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginRight="5dp"
                     android:src="@android:drawable/ic_input_add"/>
                 <TextView
