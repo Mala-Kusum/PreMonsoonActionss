@@ -11,13 +11,14 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical">
+
         <EditText
             android:id="@+id/filter2"
-            android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
-            android:maxLines="1"
             android:layout_height="wrap_content"
-            android:hint="Search by anything...."/>
+            android:layout_marginHorizontal="10dp"
+            android:hint="Search by anything...."
+            android:maxLines="1" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/SearchByDesignation"
