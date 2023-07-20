@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
 
@@ -17,6 +19,7 @@ public class Equipments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipments);
         add=findViewById(R.id.add);
+        ArrayList<ModelEquipment> list,filteredList;
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
