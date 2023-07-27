@@ -29,7 +29,7 @@ public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
     private FirebaseFirestore db;
     CollectionReference Ref;
-    Query querya,queryb;
+    Query querya;
     RecyclerView recycler;
     MaterialAdapter adapt;
     ArrayList<ModelEquipment> list,filtered;
@@ -44,7 +44,7 @@ public class Equipments extends AppCompatActivity {
         add=findViewById(R.id.add);
         filter=findViewById(R.id.filter);
         t=findViewById(R.id.No);
-        list = new ArrayList<ModelEquipment>();
+        list = new ArrayList<>();
         adapt=new MaterialAdapter(this,list);
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
@@ -102,6 +102,7 @@ public class Equipments extends AppCompatActivity {
                 }   // data set changed
             }
         });
+        recycler.setAdapter(adapt);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

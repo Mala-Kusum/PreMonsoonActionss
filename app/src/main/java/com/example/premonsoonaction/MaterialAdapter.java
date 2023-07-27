@@ -37,9 +37,9 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MaterialAdapter.MyViewHolder holder, int position) {
         ModelEquipment m=l.get(position);
-        holder.name.setText(m.name);
-        holder.no.setText(m.no);
-        holder.pmu.setText(m.pmu);
+        holder.name.setText(m.getName());
+        holder.no.setText(m.getNo());
+        holder.pmu.setText(m.getPmu());
     }
     @Override
     public int getItemCount() {
