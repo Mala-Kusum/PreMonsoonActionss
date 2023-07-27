@@ -32,8 +32,8 @@ public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) 
 
 @Override
 public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-        holder.text.setText(l.at[position]);
+        ModelEquipment eq = l.get(position);
+        holder.text.setText(eq.getName());
         holder.text.setOnClickListener(new View.OnClickListener() {
 @Override
 public void onClick(View v) {
@@ -45,7 +45,7 @@ public void onClick(View v) {
         }
 @Override
 public int getItemCount() {
-        return s.length;
+        return l.size();
         }
 public class MyViewHolder extends RecyclerView.ViewHolder{
     TextView text;

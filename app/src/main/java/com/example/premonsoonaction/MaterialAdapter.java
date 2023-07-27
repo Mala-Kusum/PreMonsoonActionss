@@ -20,6 +20,10 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         this.context = context;
         this.l=list;
     }
+    public void filterList(ArrayList<ModelEquipment> filterlist) {
+        l = filterlist;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public MaterialAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
