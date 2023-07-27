@@ -74,34 +74,20 @@ public class Equipments extends AppCompatActivity {
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         list.add(dc.getDocument().toObject(ModelEquipment.class));
+                        System.out.println("sssssssssssssssssssssssssssssssss        " );
+                        System.out.println(list);
                     }
                     adapt.notifyDataSetChanged();
                 }
             }
         });
 
-        filter.addTextChangedListener(new TextWatcher() {
+        for(int i=0;i<list.size();i++){
+            Log.e( "onCreathuyge: ",list.get(i).getName() );
+        }
 
-            public void afterTextChanged(Editable s) {}
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            public void onTextChanged(CharSequence query, int start, int before, int count) {
-
-                query = query.toString().toLowerCase();
-
-                filtered = new ArrayList<>();
-
-                for (int i = 0; i < list.size(); i++) {
-                    final String name = list.get(i).getName().toLowerCase();
-                    final String pmu = list.get(i).getPmu().toLowerCase();
-                    if (name.contains(query)||pmu.contains(query)) {
-                        filtered.add(list.get(i));
-                    }
-                    adapt.filterList(filtered);
-                }   // data set changed
-            }
-        });
         recycler.setAdapter(adapt);
         add.setOnClickListener(new View.OnClickListener() {
             @Override

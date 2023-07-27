@@ -1,29 +1,29 @@
 package com.example.premonsoonaction;
 
 public class ModelEquipment {
-    String name,no,pmu;
+    String NAME,NO,PMU;
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.NAME = name;
     }
 
     public String getNo() {
-        return no;
+        return NO;
     }
 
     public void setNo(String no) {
-        this.no = no;
+        this.NO = no;
     }
 
     public String getPmu() {
-        return pmu;
+        return PMU;
     }
 
     public void setPmu(String pmu) {
-        this.pmu = pmu;
+        this.PMU = pmu;
     }
 }
