@@ -19,7 +19,7 @@ public class addReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
-        Button next;
+        /*Button next;
         next=findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +27,7 @@ public class addReport extends AppCompatActivity {
                 Intent i=new Intent(addReport.this,addReport2.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 
 }
