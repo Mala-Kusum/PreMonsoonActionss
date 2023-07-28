@@ -28,7 +28,6 @@ public class addReport extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
 }
