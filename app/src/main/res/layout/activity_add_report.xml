@@ -5,96 +5,243 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addReport">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="vertical">
-        <TextView
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-113dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Whether following actions were ensured (Yes/No)"
-            android:textStyle="bold"/>
-        <CheckBox android:id="@+id/inst1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Cleaning of drains/culverts" />
-        <CheckBox android:id="@+id/inst2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Keeping in stock/on-offer JCBs, Saw cutters for tree cutting, sand bags, traffic cones &amp; Signages, etc., in required quantities at required locations is ensured and the details there of entered in the Google worksheet" />
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/inst3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rate-running contracts in place for emergency works like breach closing, tree removal, landslide clearance, etc., where the stretches are neither under construction nor in DLP is ensured and the details there of entered in the Google worksheet."
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Whether following actions were ensured (Yes/No)"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-        <CheckBox android:id="@+id/inst4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Bailey bridges including their quantities and locations (for hilly areas) are kept ready and the details there of entered in the Google worksheet." />
-        <CheckBox android:id="@+id/inst5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Whether Hume pipes (NP-3, 1 m diameter) in required quantities are kept ready and the details there of entered in the Google worksheet" />
+            <CheckBox
+                android:id="@+id/inst1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cleaning of drains/culverts"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="the Contractors for the above actions in respect of ongoing work stretches and those under DLP/maintenance period in respect of above actions have been instructed and alerted"
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keeping in stock/on-offer JCBs, Saw cutters for tree cutting, sand bags, traffic cones &amp; Signages, etc., in required quantities at required locations is ensured and the details there of entered in the Google worksheet"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mehgdoot app has been downloaded by ROs/all field officers under the concerned ROs"
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rate-running contracts in place for emergency works like breach closing, tree removal, landslide clearance, etc., where the stretches are neither under construction nor in DLP is ensured and the details there of entered in the Google worksheet."
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Local WhatsApp groups are formed by Regional officers covering executing agencies of MoRT&amp;H (Roads wings/NHAI/NHIDCL/BRO), local administration, CWC, etc."
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bailey bridges including their quantities and locations (for hilly areas) are kept ready and the details there of entered in the Google worksheet."
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="the contact details of emergency service providers are kept ready (For example ambulance, hospitals, police authorities, trauma centres, etc.)"
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Whether Hume pipes (NP-3, 1 m diameter) in required quantities are kept ready and the details there of entered in the Google worksheet"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="list of all available resources and arrangements with the concerned ROs and nearby ROs in the region is compiled and kept ready"
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="the Contractors for the above actions in respect of ongoing work stretches and those under DLP/maintenance period in respect of above actions have been instructed and alerted"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:id="@+id/inst11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="24×7 central control room is created and maintained at selected location by concerned ROs of all the agencies put together"
-            android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/inst7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mehgdoot app has been downloaded by ROs/all field officers under the concerned ROs"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_gravity="right"
-            android:text="Next"
-             />
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/inst8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local WhatsApp groups are formed by Regional officers covering executing agencies of MoRT&amp;H (Roads wings/NHAI/NHIDCL/BRO), local administration, CWC, etc."
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/inst9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="the contact details of emergency service providers are kept ready (For example ambulance, hospitals, police authorities, trauma centres, etc.)"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/inst10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="list of all available resources and arrangements with the concerned ROs and nearby ROs in the region is compiled and kept ready"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/inst11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24×7 central control room is created and maintained at selected location by concerned ROs of all the agencies put together"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall."
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addvuner"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@android:drawable/ic_input_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Identified location."
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No - "
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Identified location."
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Identified landslide prone areas, rock fall prone areas, sinking zones etc."
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addcritical"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@android:drawable/ic_input_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Identified location."
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Inspected vulnerable spots along with installation of warning signs"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addinsp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@android:drawable/ic_input_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Location Inspected"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addwarn"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@android:drawable/ic_input_add" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Location of warning signs installed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
