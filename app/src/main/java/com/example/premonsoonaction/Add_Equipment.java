@@ -27,7 +27,6 @@ import java.util.Map;
 
 public class Add_Equipment extends AppCompatActivity {
     Spinner pmu;
-    private FirebaseFirestore db;
     TextView t;
     ArrayAdapter<CharSequence> ad;
     private CollectionReference Ref;
@@ -39,8 +38,8 @@ public class Add_Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
-        t=findViewById(R.id.no);
-        db = FirebaseFirestore.getInstance();
+        t=findViewById(R.id.notext);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         t1=findViewById(R.id.Type);
         t2=findViewById(R.id.no);
         save=findViewById(R.id.save);
@@ -121,7 +120,7 @@ public class Add_Equipment extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 View selectedView = pmu.getSelectedView();
-                if (selectedView != null && selectedView instanceof TextView) {
+                if (selectedView instanceof TextView) {
                     pmu.requestFocus();
                     TextView selectedTextView = (TextView) selectedView;
                     selectedTextView.setError("error"); // any name of the error will do
@@ -159,7 +158,7 @@ public class Add_Equipment extends AppCompatActivity {
                             });
                         }
                         else{
-                            Toast.makeText(Add_Equipment.this, "This "+Action.selectedAction+" for PMU "+loc+"already exists. You may edit that data.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Add_Equipment.this, "This "+Action.selectedAction+" for "+loc+"already exists. You may edit that data.", Toast.LENGTH_SHORT).show();
                         }
                     }
 

@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"/>
         <TextView
+            android:id="@+id/notext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"

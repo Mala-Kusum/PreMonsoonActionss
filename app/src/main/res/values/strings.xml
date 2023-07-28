@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">Pre Monsoon Action</string>
+    <string name="whether_following_actions_were_ensured_yes_no">Whether following actions were ensured (Yes/No)</string>
+    <string name="cleaning_of_drains_culverts">Cleaning of drains/culverts</string>
+    <string name="keeping_in_stock_on_offer_jcbs_saw_cutters_for_tree_cutting_sand_bags_traffic_cones_amp_signages_etc_in_required_quantities_at_required_locations_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet"><![CDATA[Keeping in stock/on-offer JCBs, Saw cutters for tree cutting, sand bags, traffic cones & Signages, etc., in required quantities at required locations is ensured and the details there of entered in the Google worksheet]]></string>
+    <string name="rate_running_contracts_in_place_for_emergency_works_like_breach_closing_tree_removal_landslide_clearance_etc_where_the_stretches_are_neither_under_construction_nor_in_dlp_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet">Rate-running contracts in place for emergency works like breach closing, tree removal, landslide clearance, etc., where the stretches are neither under construction nor in DLP is ensured and the details there of entered in the Google worksheet.</string>
+    <string name="bailey_bridges_including_their_quantities_and_locations_for_hilly_areas_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet">Bailey bridges including their quantities and locations (for hilly areas) are kept ready and the details there of entered in the Google worksheet.</string>
+    <string name="whether_hume_pipes_np_3_1_m_diameter_in_required_quantities_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet">Whether Hume pipes (NP-3, 1 m diameter) in required quantities are kept ready and the details there of entered in the Google worksheet</string>
+    <string name="the_contractors_for_the_above_actions_in_respect_of_ongoing_work_stretches_and_those_under_dlp_maintenance_period_in_respect_of_above_actions_have_been_instructed_and_alerted">the Contractors for the above actions in respect of ongoing work stretches and those under DLP/maintenance period in respect of above actions have been instructed and alerted</string>
+    <string name="mehgdoot_app_has_been_downloaded_by_ros_all_field_officers_under_the_concerned_ros">Mehgdoot app has been downloaded by ROs/all field officers under the concerned ROs</string>
+    <string name="local_whatsapp_groups_are_formed_by_regional_officers_covering_executing_agencies_of_mort_amp_h_roads_wings_nhai_nhidcl_bro_local_administration_cwc_etc"><![CDATA[Local WhatsApp groups are formed by Regional officers covering executing agencies of MoRT&H (Roads wings/NHAI/NHIDCL/BRO), local administration, CWC, etc.]]></string>
+    <string name="the_contact_details_of_emergency_service_providers_are_kept_ready_for_example_ambulance_hospitals_police_authorities_trauma_centres_etc">the contact details of emergency service providers are kept ready (For example ambulance, hospitals, police authorities, trauma centres, etc.)</string>
+    <string name="list_of_all_available_resources_and_arrangements_with_the_concerned_ros_and_nearby_ros_in_the_region_is_compiled_and_kept_ready">list of all available resources and arrangements with the concerned ROs and nearby ROs in the region is compiled and kept ready</string>
+    <string name="_24_7_central_control_room_is_created_and_maintained_at_selected_location_by_concerned_ros_of_all_the_agencies_put_together">24×7 central control room is created and maintained at selected location by concerned ROs of all the agencies put together</string>
+    <string name="identified_vulnerable_construction_locations_likely_to_be_severely_affected_by_floods_and_heavy_rainfall">Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall.</string>
+    <string name="add_as_many_responses_for_every_locations_and_type">add as many responses for every locations and type.</string>
+    <string name="add_identified_location">Add Identified location.</string>
+    <string name="identified_landslide_prone_areas_rock_fall_prone_areas_sinking_zones_etc">Identified landslide prone areas, rock fall prone areas, sinking zones etc.</string>
+    <string name="inspected_vulnerable_spots_along_with_installation_of_warning_signs">Inspected vulnerable spots along with installation of warning signs</string>
+    <string name="add_location_inspected">Add Location Inspected</string>
+    <string name="add_location_of_warning_signs_installed">Add Location of warning signs installed</string>
+    <string name="submit">Submit</string>
     <string-array name="SRINAGAR">
         <item>"PMU-SONAMARG"</item>
         <item>"PMU-ANANTNAG"</item>

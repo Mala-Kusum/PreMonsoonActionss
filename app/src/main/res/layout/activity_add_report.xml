@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,11 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-113dp">
+        tools:layout_editor_absoluteY="-40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="10dp"
             android:orientation="vertical">
@@ -22,7 +21,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Whether following actions were ensured (Yes/No)"
+                android:text="@string/whether_following_actions_were_ensured_yes_no"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -30,91 +29,91 @@
                 android:id="@+id/inst1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cleaning of drains/culverts"
+                android:text="@string/cleaning_of_drains_culverts"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keeping in stock/on-offer JCBs, Saw cutters for tree cutting, sand bags, traffic cones &amp; Signages, etc., in required quantities at required locations is ensured and the details there of entered in the Google worksheet"
+                android:text="@string/keeping_in_stock_on_offer_jcbs_saw_cutters_for_tree_cutting_sand_bags_traffic_cones_amp_signages_etc_in_required_quantities_at_required_locations_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rate-running contracts in place for emergency works like breach closing, tree removal, landslide clearance, etc., where the stretches are neither under construction nor in DLP is ensured and the details there of entered in the Google worksheet."
+                android:text="@string/rate_running_contracts_in_place_for_emergency_works_like_breach_closing_tree_removal_landslide_clearance_etc_where_the_stretches_are_neither_under_construction_nor_in_dlp_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bailey bridges including their quantities and locations (for hilly areas) are kept ready and the details there of entered in the Google worksheet."
+                android:text="@string/bailey_bridges_including_their_quantities_and_locations_for_hilly_areas_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Whether Hume pipes (NP-3, 1 m diameter) in required quantities are kept ready and the details there of entered in the Google worksheet"
+                android:text="@string/whether_hume_pipes_np_3_1_m_diameter_in_required_quantities_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="the Contractors for the above actions in respect of ongoing work stretches and those under DLP/maintenance period in respect of above actions have been instructed and alerted"
+                android:text="@string/the_contractors_for_the_above_actions_in_respect_of_ongoing_work_stretches_and_those_under_dlp_maintenance_period_in_respect_of_above_actions_have_been_instructed_and_alerted"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mehgdoot app has been downloaded by ROs/all field officers under the concerned ROs"
+                android:text="@string/mehgdoot_app_has_been_downloaded_by_ros_all_field_officers_under_the_concerned_ros"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Local WhatsApp groups are formed by Regional officers covering executing agencies of MoRT&amp;H (Roads wings/NHAI/NHIDCL/BRO), local administration, CWC, etc."
+                android:text="@string/local_whatsapp_groups_are_formed_by_regional_officers_covering_executing_agencies_of_mort_amp_h_roads_wings_nhai_nhidcl_bro_local_administration_cwc_etc"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="the contact details of emergency service providers are kept ready (For example ambulance, hospitals, police authorities, trauma centres, etc.)"
+                android:text="@string/the_contact_details_of_emergency_service_providers_are_kept_ready_for_example_ambulance_hospitals_police_authorities_trauma_centres_etc"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="list of all available resources and arrangements with the concerned ROs and nearby ROs in the region is compiled and kept ready"
+                android:text="@string/list_of_all_available_resources_and_arrangements_with_the_concerned_ros_and_nearby_ros_in_the_region_is_compiled_and_kept_ready"
                 android:textStyle="bold" />
 
             <CheckBox
                 android:id="@+id/inst11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="24×7 central control room is created and maintained at selected location by concerned ROs of all the agencies put together"
+                android:text="@string/_24_7_central_control_room_is_created_and_maintained_at_selected_location_by_concerned_ros_of_all_the_agencies_put_together"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Identified vulnerable construction locations likely to be severely affected by floods and heavy rainfall."
+                android:text="@string/identified_vulnerable_construction_locations_likely_to_be_severely_affected_by_floods_and_heavy_rainfall"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
@@ -123,13 +122,14 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type"
                     android:src="@android:drawable/ic_input_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Identified location."
+                    android:text="@string/add_identified_location"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -152,14 +152,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Identified landslide prone areas, rock fall prone areas, sinking zones etc."
+                android:text="@string/identified_landslide_prone_areas_rock_fall_prone_areas_sinking_zones_etc"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
@@ -168,13 +168,14 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:src="@android:drawable/ic_input_add" />
+                    android:layout_marginEnd="5dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Identified location."
+                    android:text="@string/add_identified_location"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -184,14 +185,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Inspected vulnerable spots along with installation of warning signs"
+                android:text="@string/inspected_vulnerable_spots_along_with_installation_of_warning_signs"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
@@ -200,13 +201,14 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:src="@android:drawable/ic_input_add" />
+                    android:layout_marginEnd="5dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Location Inspected"
+                    android:text="@string/add_location_inspected"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -215,7 +217,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
@@ -223,24 +225,26 @@
                     android:id="@+id/addwarn"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_marginRight="5dp"
-                    android:src="@android:drawable/ic_input_add" />
+                    android:layout_marginEnd="5dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Location of warning signs installed"
+                    android:text="@string/add_location_of_warning_signs_installed"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="end"
                 android:layout_marginBottom="20dp"
-                android:text="Submit" />
+                android:text="@string/submit" />
         </LinearLayout>
     </ScrollView>
 
