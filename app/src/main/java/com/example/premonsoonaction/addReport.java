@@ -50,10 +50,10 @@ public class addReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
-        CollectionReference r2,r3;
-        DocumentReference r=Ref.document(MainActivity.RO+date);
+        //CollectionReference r2,r3;
+        /*
         r2=r.collection("Vulnerable");
-        r3=r.collection("critical");
+        r3=r.collection("critical");*/
         addvuner=findViewById(R.id.addvuner);
         addcritical=findViewById(R.id.addcritical);
         inspected=findViewById(R.id.addinsp);
@@ -86,9 +86,10 @@ public class addReport extends AppCompatActivity {
                 Button sb=customDialog.findViewById(R.id.save);
                 l1=new ArrayList<Vulnerable>();
                 EditText e1,e2,e3;
-                e1=findViewById(R.id.typeinput);
-                e2=findViewById(R.id.Location);
-                e3=findViewById(R.id.no);
+                e1=customDialog.findViewById(R.id.typeinput);
+                e2=customDialog.findViewById(R.id.Location);
+                e3=customDialog.findViewById(R.id.no);
+                customDialog.show();
                 sb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -97,6 +98,7 @@ public class addReport extends AppCompatActivity {
                          v1.setNO(Integer.parseInt(e3.getText().toString()));
                          v1.setLOCATION(e2.getText().toString());
                          l1.add(v1);
+                         customDialog.cancel();
                     }
                 });
             }
@@ -126,9 +128,9 @@ public class addReport extends AppCompatActivity {
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
-            CollectionReference rc1=r.collection("Vulnerable");
             @Override
             public void onClick(View view) {
+                batch= db.batch();
                 m1=new ModelReportCheckList();
                 m1.setRO(MainActivity.RO);
                 m1.setINST1(INST1.isChecked());
@@ -142,9 +144,10 @@ public class addReport extends AppCompatActivity {
                 m1.setINST9(INST9.isChecked());
                 m1.setINST10(INST10.isChecked());
                 m1.setINST11(INST11.isChecked());
-                batch.set(r,m1,SetOptions.merge());
+                batch.set(Ref.document(MainActivity.RO+date),m1,SetOptions.merge());
+
                 for(int i=0;i<l1.size();i++){
-                    batch.set(rc1.document(), l1.get(i),SetOptions.merge());
+                    batch.set(Ref.document(MainActivity.RO+date).collection("Vulnerable").document(), l1.get(i),SetOptions.merge());
                 }
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
