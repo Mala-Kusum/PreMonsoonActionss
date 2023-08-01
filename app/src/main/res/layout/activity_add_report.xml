@@ -133,7 +133,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-                <TextView
+               <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="No - "
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:text="Add Identified location."
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" />-->
             </LinearLayout>
 
             <TextView

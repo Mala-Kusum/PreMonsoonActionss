@@ -1,11 +1,13 @@
 package com.example.premonsoonaction;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +15,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,8 +26,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -35,7 +43,8 @@ public class addReport extends AppCompatActivity {
     Date c;
     ModelReportCheckList m1;
     WriteBatch batch;
-    Vulnerable v1,v2;
+    Dialog customDialog;
+    List<Vulnerable> l1;
     Map<String,String> inspec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +77,28 @@ public class addReport extends AppCompatActivity {
         addvuner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new adddialog();
+               /* DialogFragment newFragment = new adddialog();
                 newFragment.setCancelable(true);
-                Button save=(Button) newFragment.findViewById(R.id.save);
-                EditText e=(EditText) newFragment.
-                newFragment.show(getSupportFragmentManager(), "game");
+                newFragment.show(getSupportFragmentManager(), "game");*/
+                customDialog=new Dialog(addReport.this);
+                customDialog.setContentView(R.layout.dialog);
+                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb=customDialog.findViewById(R.id.save);
+                l1=new ArrayList<Vulnerable>();
+                EditText e1,e2,e3;
+                e1=findViewById(R.id.typeinput);
+                e2=findViewById(R.id.Location);
+                e3=findViewById(R.id.no);
+                sb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Vulnerable v1=new Vulnerable();
+                         v1.setTYPE(e1.getText().toString());
+                         v1.setNO(Integer.parseInt(e3.getText().toString()));
+                         v1.setLOCATION(e2.getText().toString());
+                         l1.add(v1);
+                    }
+                });
             }
         });
         addcritical.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +126,7 @@ public class addReport extends AppCompatActivity {
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
+            CollectionReference rc1=r.collection("Vulnerable");
             @Override
             public void onClick(View view) {
                 m1=new ModelReportCheckList();
@@ -116,6 +143,21 @@ public class addReport extends AppCompatActivity {
                 m1.setINST10(INST10.isChecked());
                 m1.setINST11(INST11.isChecked());
                 batch.set(r,m1,SetOptions.merge());
+                for(int i=0;i<l1.size();i++){
+                    batch.set(rc1.document(), l1.get(i),SetOptions.merge());
+                }
+                batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d( "onSuccess: ","batch uploaded");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("onFailure: ",e.toString() );
+                    }
+                });
+                customDialog.cancel();
             }
         });
     }

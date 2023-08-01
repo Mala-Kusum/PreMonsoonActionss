@@ -24,5 +24,5 @@
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SAVE"/>
+        android:text="Save"/>
 </LinearLayout>
