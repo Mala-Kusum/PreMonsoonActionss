@@ -23,8 +23,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.ServerTimestamp;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firestore.v1.DocumentTransform;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -192,6 +194,7 @@ public class addReport extends AppCompatActivity {
                 m1.setINST10(INST10.isChecked());
                 m1.setINST11(INST11.isChecked());
                 batch.set(Ref.document(MainActivity.RO+date),m1,SetOptions.merge());
+                batch.set(Ref.document(MainActivity.RO+date),{"SUBMITDATE", ServerTimestamp},SetOptions.merge());
 
                 for(int i=0;i<l1.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Vulnerable").document(), l1.get(i),SetOptions.merge());
@@ -203,7 +206,7 @@ public class addReport extends AppCompatActivity {
                     batch.set(Ref.document(MainActivity.RO+date).collection("Inspected").document(), l3.get(i),SetOptions.merge());
                 }
                 for(int i=0;i<l4.size();i++){
-                    batch.set(Ref.document(MainActivity.RO+date).collection("Inspected").document(), l4.get(i),SetOptions.merge());
+                    batch.set(Ref.document(MainActivity.RO+date).collection("Warning").document(), l4.get(i),SetOptions.merge());
                 }
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -216,7 +219,7 @@ public class addReport extends AppCompatActivity {
                         Log.e("onFailure: ",e.toString() );
                     }
                 });
-                customDialog.cancel();
+                finish();
             }
         });
     }
