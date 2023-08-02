@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,7 +50,6 @@ public class addReport extends AppCompatActivity {
     Dialog customDialog;
     List<Vulnerable> l1,l2;
     List<Location> l3,l4;
-    Map<String,String> inspec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,6 +180,7 @@ public class addReport extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Pair<String, Timestamp> p=new Pair<>("submitted", Timestamp.now());
                 batch= db.batch();
                 m1=new ModelReportCheckList();
                 m1.setRO(MainActivity.RO);
@@ -194,7 +196,7 @@ public class addReport extends AppCompatActivity {
                 m1.setINST10(INST10.isChecked());
                 m1.setINST11(INST11.isChecked());
                 batch.set(Ref.document(MainActivity.RO+date),m1,SetOptions.merge());
-                batch.set(Ref.document(MainActivity.RO+date),{"SUBMITDATE", ServerTimestamp},SetOptions.merge());
+                batch.set(Ref.document(MainActivity.RO+date),p,SetOptions.merge());
 
                 for(int i=0;i<l1.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Vulnerable").document(), l1.get(i),SetOptions.merge());
