@@ -44,7 +44,8 @@ public class addReport extends AppCompatActivity {
     ModelReportCheckList m1;
     WriteBatch batch;
     Dialog customDialog;
-    List<Vulnerable> l1;
+    List<Vulnerable> l1,l2;
+    List<Location> l3,l4;
     Map<String,String> inspec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,10 @@ public class addReport extends AppCompatActivity {
         INST11=findViewById(R.id.inst11);
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("checklist");
+        l1=new ArrayList<Vulnerable>();
+        l2=new ArrayList<Vulnerable>();
+        l3=new ArrayList<Location>();
+        l4=new ArrayList<Location>();
         c=new Date();
         date=c.toString();
         addvuner.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +89,6 @@ public class addReport extends AppCompatActivity {
                 customDialog.setContentView(R.layout.dialog);
                 customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb=customDialog.findViewById(R.id.save);
-                l1=new ArrayList<Vulnerable>();
                 EditText e1,e2,e3;
                 e1=customDialog.findViewById(R.id.typeinput);
                 e2=customDialog.findViewById(R.id.Location);
@@ -105,26 +109,69 @@ public class addReport extends AppCompatActivity {
         });
         addcritical.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                DialogFragment newFragment = new adddialog();
-                newFragment.setCancelable(true);
-                newFragment.show(getSupportFragmentManager(), "game");
+            public void onClick(View view) {customDialog=new Dialog(addReport.this);
+                customDialog.setContentView(R.layout.dialog);
+                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb=customDialog.findViewById(R.id.save);
+                EditText e1,e2,e3;
+                e1=customDialog.findViewById(R.id.typeinput);
+                e2=customDialog.findViewById(R.id.Location);
+                e3=customDialog.findViewById(R.id.no);
+                customDialog.show();
+                sb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Vulnerable v1=new Vulnerable();
+                        v1.setTYPE(e1.getText().toString());
+                        v1.setNO(Integer.parseInt(e3.getText().toString()));
+                        v1.setLOCATION(e2.getText().toString());
+                        l2.add(v1);
+                        customDialog.cancel();
+                    }
+                });
             }
         });
         inspected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new adddialog2();
+                /*DialogFragment newFragment = new adddialog2();
                 newFragment.setCancelable(true);
-                newFragment.show(getSupportFragmentManager(), "game");
+                newFragment.show(getSupportFragmentManager(), "game");*/
+                customDialog.setContentView(R.layout.dialog2);
+                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb=customDialog.findViewById(R.id.save);
+                EditText e1;
+                e1=customDialog.findViewById(R.id.loc);
+                customDialog.show();
+                sb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Location lo=new Location();
+                        lo.setLOCATION(e1.getText().toString());
+                        l3.add(lo);
+                        customDialog.cancel();
+                    }
+                });
             }
         });
         warning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new adddialog2();
-                newFragment.setCancelable(true);
-                newFragment.show(getSupportFragmentManager(), "game");
+                customDialog.setContentView(R.layout.dialog2);
+                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb=customDialog.findViewById(R.id.save);
+                EditText e1;
+                e1=customDialog.findViewById(R.id.loc);
+                customDialog.show();
+                sb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Location lo=new Location();
+                        lo.setLOCATION(e1.getText().toString());
+                        l4.add(lo);
+                        customDialog.cancel();
+                    }
+                });
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +195,15 @@ public class addReport extends AppCompatActivity {
 
                 for(int i=0;i<l1.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Vulnerable").document(), l1.get(i),SetOptions.merge());
+                }
+                for(int i=0;i<l2.size();i++){
+                    batch.set(Ref.document(MainActivity.RO+date).collection("Critical").document(), l2.get(i),SetOptions.merge());
+                }
+                for(int i=0;i<l3.size();i++){
+                    batch.set(Ref.document(MainActivity.RO+date).collection("Inspected").document(), l3.get(i),SetOptions.merge());
+                }
+                for(int i=0;i<l4.size();i++){
+                    batch.set(Ref.document(MainActivity.RO+date).collection("Inspected").document(), l4.get(i),SetOptions.merge());
                 }
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
