@@ -284,6 +284,7 @@
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Locations inspected :"/>
             <ListView
@@ -295,6 +296,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="Locations inspected :"/>
 
         </LinearLayout>
