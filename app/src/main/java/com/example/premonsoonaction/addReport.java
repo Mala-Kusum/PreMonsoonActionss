@@ -180,7 +180,8 @@ public class addReport extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pair<String, Timestamp> p=new Pair<>("submitted", Timestamp.now());
+                Map<String, Timestamp> p=new HashMap<>();
+                p.put("submitted", Timestamp.now());
                 batch= db.batch();
                 m1=new ModelReportCheckList();
                 m1.setRO(MainActivity.RO);
@@ -214,14 +215,17 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d( "onSuccess: ","batch uploaded");
+                        finish();
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.e("onFailure: ",e.toString() );
+                        finish();
                     }
                 });
-                finish();
+
             }
         });
     }
