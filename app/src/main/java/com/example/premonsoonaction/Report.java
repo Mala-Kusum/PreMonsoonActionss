@@ -2,6 +2,7 @@ package com.example.premonsoonaction;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -24,6 +25,7 @@ public class Report extends AppCompatActivity {
     List<ModelReport> l;
     private FirebaseFirestore db;
     CollectionReference Ref;
+    ReportAdapter ad;
     Query q;
     RecyclerView v;
     @Override
@@ -33,10 +35,15 @@ public class Report extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         Ref = db.collection("checklist");
         l=new ArrayList<>();
+        ad=new ReportAdapter(this, (ArrayList<ModelReport>) l);
+        r=findViewById(R.id.reportList);
         button=findViewById(R.id.addrepo);
         from=findViewById(R.id.From);
         r=findViewById(R.id.reportList);
         to=findViewById(R.id.To);
+        r.setHasFixedSize(true);
+        r.setLayoutManager(new LinearLayoutManager(this));
+        //q=Ref.orderBy("")
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
