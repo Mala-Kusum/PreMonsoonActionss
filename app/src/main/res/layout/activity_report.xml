@@ -7,53 +7,67 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
     tools:context=".Report">
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:orientation="horizontal">
-        <FrameLayout
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/From"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:paddingTop="20dp"
-                android:src="@drawable/calendaricon"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
-            <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:orientation="horizontal">
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="From"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-        </FrameLayout>
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/From"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:paddingTop="20dp"
+                    android:src="@drawable/calendaricon"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="From"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:id="@+id/To"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:paddingTop="20dp"
-                android:src="@drawable/calendaricon"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
-            <TextView
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="To"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
-        </FrameLayout>
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/To"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:paddingTop="20dp"
+                    android:src="@drawable/calendaricon"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="To"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reportList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="vertical"/>
 
     </LinearLayout>
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addrepo"
