@@ -22,16 +22,17 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Report extends AppCompatActivity {
     FloatingActionButton button;
     ImageButton from,to;
     RecyclerView r;
-    List<ModelReport> l;
+    List<Date> l;
     private FirebaseFirestore db;
     CollectionReference Ref;
-    ReportAdapter ad;
+
     Query q;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class Report extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         Ref = db.collection("checklist");
         l=new ArrayList<>();
-        ad=new ReportAdapter(this, (ArrayList<ModelReport>) l);
+        ReportAdapter ad;
+        ad=new ReportAdapter(Report.this, (ArrayList<Date>) l);
         r=findViewById(R.id.reportList);
         button=findViewById(R.id.addrepo);
         from=findViewById(R.id.From);
@@ -58,7 +60,7 @@ public class Report extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        l.add(dc.getDocument().toObject(ModelReport.class));
+                        l.add(dc.getDocument().toObject(ModelReport.class).getDate());
                         System.out.println("sssssssssssssssssssssssssssssssss        " );
                         System.out.println(l);
                     }

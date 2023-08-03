@@ -10,17 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder> {
     Context context;
-    ArrayList<ModelReport> l;
+    ArrayList<Date> l;
 
-    public ReportAdapter(Context context, ArrayList<ModelReport> l) {
+    public ReportAdapter(Context context, ArrayList<Date> l) {
         this.context = context;
         this.l = l;
     }
-    public void filterList(ArrayList<ModelReport> filterlist) {
+    public void filterList(ArrayList<Date> filterlist) {
         l = filterlist;
         notifyDataSetChanged();
     }
@@ -36,8 +37,8 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
-        ModelReport m=l.get(position);
-        holder.date.setText(m.getDate().toString());
+        Date m=l.get(position);
+        holder.date.setText(m.toString());
     }
 
     @Override
