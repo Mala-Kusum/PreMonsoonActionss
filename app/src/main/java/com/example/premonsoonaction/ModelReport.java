@@ -3,13 +3,13 @@ package com.example.premonsoonaction;
 import java.util.Date;
 
 public class ModelReport {
-    Date date;
+    Date submitted;
 
     public Date getDate() {
-        return date;
+        return submitted;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.submitted = date;
     }
 }

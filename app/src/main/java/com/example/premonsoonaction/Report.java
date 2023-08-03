@@ -47,6 +47,7 @@ public class Report extends AppCompatActivity {
         to=findViewById(R.id.To);
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
+        r.setAdapter(ad);
         q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
         q.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -65,7 +66,7 @@ public class Report extends AppCompatActivity {
                 }
             }
         });
-        r.setAdapter(ad);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

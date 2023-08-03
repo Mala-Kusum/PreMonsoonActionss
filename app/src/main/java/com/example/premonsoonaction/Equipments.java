@@ -85,9 +85,6 @@ public class Equipments extends AppCompatActivity {
         for(int i=0;i<list.size();i++){
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }
-
-
-
         recycler.setAdapter(adapt);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
