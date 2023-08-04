@@ -58,13 +58,13 @@ public class Report extends AppCompatActivity {
                     Log.e("Firestore Error", error.getMessage());
                     return;
                 }
-                for (DocumentChange dc : value.getDocumentChanges()) {
+                /*for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         l.add(dc.getDocument().toObject(ModelReport.class).getDate());
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
                     }
                 }
-                ad.notifyDataSetChanged();
+                ad.notifyDataSetChanged();*/
             }
         });
 
