@@ -62,9 +62,10 @@ public class Report extends AppCompatActivity {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         l.add(dc.getDocument().toObject(ModelReport.class).getDate());
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
+                        ad.notifyDataSetChanged();
                     }
-                }
-                ad.notifyDataSetChanged();*/
+                }*/
+
             }
         });
 
