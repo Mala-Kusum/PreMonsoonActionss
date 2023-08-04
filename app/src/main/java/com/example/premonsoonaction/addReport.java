@@ -197,7 +197,7 @@ public class addReport extends AppCompatActivity {
                 m1.setINST10(INST10.isChecked());
                 m1.setINST11(INST11.isChecked());
                 batch.set(Ref.document(MainActivity.RO+date).collection("checklist").document(),m1,SetOptions.merge());
-                batch.set(Ref.document(MainActivity.RO+date).collection("setDate").document(),p,SetOptions.merge());
+                batch.set(Ref.document(MainActivity.RO+date),p,SetOptions.merge());
 
                 for(int i=0;i<l1.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Vulnerable").document(), l1.get(i),SetOptions.merge());
