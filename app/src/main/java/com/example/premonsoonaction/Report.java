@@ -39,7 +39,7 @@ public class Report extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         db=FirebaseFirestore.getInstance();
-        Ref = db.collection("checklist");
+        Ref = db.collection("report");
         l=new ArrayList<>();
         ReportAdapter ad;
         ad=new ReportAdapter(Report.this, (ArrayList<Date>) l);
