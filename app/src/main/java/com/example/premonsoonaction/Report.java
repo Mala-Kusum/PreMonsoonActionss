@@ -62,8 +62,9 @@ public class Report extends AppCompatActivity {
                         System.out.println("sssssssssssssssssssssssssssssssss        " );
                         System.out.println(l);
                     }
-                    ad.notifyDataSetChanged();
+
                 }
+                ad.notifyDataSetChanged();
             }
         });
 
