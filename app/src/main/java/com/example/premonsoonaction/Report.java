@@ -51,7 +51,7 @@ public class Report extends AppCompatActivity {
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
-        q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING).limit(50);
+        q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
         q.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -62,8 +62,14 @@ public class Report extends AppCompatActivity {
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
                         //l.add(dc.getDocument().toObject(ModelReport.class).getDate());
-                        Timestamp t = (Timestamp) dc.getDocument().get("submitted");
-                        l.add(t.toDate());
+                        try{
+                            Timestamp t = (Timestamp) dc.getDocument().get("submitted");
+                            l.add(t.toDate());
+                        }
+                        catch(Exception e){
+                            Log.e("getTimeE", e.toString());
+                        }
+
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
                         ad.notifyDataSetChanged();
                     }

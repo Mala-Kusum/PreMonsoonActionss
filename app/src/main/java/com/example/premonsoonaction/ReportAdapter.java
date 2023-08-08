@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
         Date m=l.get(position);
-        holder.date.setText(m.toString());
+        holder.Date.setText(m.toString());
     }
 
     @Override
@@ -48,11 +48,11 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
         return l.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView date;
+        TextView Date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            date = itemView.findViewById(R.id.Date);
+            Date = itemView.findViewById(R.id.Date);
         }
     }
 }

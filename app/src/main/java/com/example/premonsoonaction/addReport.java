@@ -180,8 +180,8 @@ public class addReport extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, String> p=new HashMap<>();
-                p.put("submitted", Timestamp.now().toString());
+                Map<String, Timestamp> p=new HashMap<>();
+                p.put("submitted", Timestamp.now());
                 batch= db.batch();
                 m1=new ModelReportCheckList();
                 m1.setRO(MainActivity.RO);
