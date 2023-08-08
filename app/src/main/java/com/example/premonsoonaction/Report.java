@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -50,7 +51,7 @@ public class Report extends AppCompatActivity {
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
-        q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
+        q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING).limit(50);
         q.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -58,14 +59,15 @@ public class Report extends AppCompatActivity {
                     Log.e("Firestore Error", error.getMessage());
                     return;
                 }
-                /*for (DocumentChange dc : value.getDocumentChanges()) {
+                for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        l.add(dc.getDocument().toObject(ModelReport.class).getDate());
+                        //l.add(dc.getDocument().toObject(ModelReport.class).getDate());
+                        Timestamp t = (Timestamp) dc.getDocument().get("submitted");
+                        l.add(t.toDate());
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
                         ad.notifyDataSetChanged();
                     }
-                }*/
-
+                }
             }
         });
 

@@ -1,15 +1,17 @@
 package com.example.premonsoonaction;
 
+import com.google.firebase.Timestamp;
+
 import java.util.Date;
 
 public class ModelReport {
-    Date submitted;
+    Timestamp submitted;
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return submitted;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.submitted = date;
     }
 }
