@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -60,11 +61,19 @@ public class Report extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        l.add(dc.getDocument().toObject(ModelReport.class).getDate());
+                        //l.add(dc.getDocument().toObject(ModelReport.class).getDate());
+                        try{
+                            Timestamp t = (Timestamp) dc.getDocument().get("submitted");
+                            l.add(t.toDate());
+                        }
+                        catch(Exception e){
+                            Log.e("getTimeE", e.toString());
+                        }
+
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
+                        ad.notifyDataSetChanged();
                     }
                 }
-                ad.notifyDataSetChanged();
             }
         });
 
