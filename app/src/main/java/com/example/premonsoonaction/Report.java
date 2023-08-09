@@ -61,9 +61,10 @@ public class Report extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        //l.add(dc.getDocument().toObject(ModelReport.class).getDate());
+                        ShowReport.ob = dc.getDocument().toObject(reportGetModel.class);
                         try{
                             Timestamp t = (Timestamp) dc.getDocument().get("submitted");
+                            ShowReport.docid=dc.getDocument().getId();
                             l.add(t.toDate());
                         }
                         catch(Exception e){
