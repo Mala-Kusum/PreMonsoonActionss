@@ -1,9 +1,11 @@
 package com.example.premonsoonaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +43,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
         Date m=l.get(position);
         holder.Date.setText(m.toString());
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context,ShowReport.class);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -49,9 +58,11 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView Date;
+        LinearLayout card;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            card=itemView.findViewById(R.id.cardReport);
             Date = itemView.findViewById(R.id.Date);
         }
     }
