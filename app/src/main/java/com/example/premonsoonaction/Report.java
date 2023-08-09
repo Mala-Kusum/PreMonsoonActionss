@@ -30,7 +30,7 @@ public class Report extends AppCompatActivity {
     FloatingActionButton button;
     ImageButton from,to;
     RecyclerView r;
-    List<Date> l;
+    List<reportGetModel> l;
     private FirebaseFirestore db;
     CollectionReference Ref;
 
@@ -43,7 +43,7 @@ public class Report extends AppCompatActivity {
         Ref = db.collection("checklist");
         l=new ArrayList<>();
         ReportAdapter ad;
-        ad=new ReportAdapter(Report.this, (ArrayList<Date>) l);
+        ad=new ReportAdapter(Report.this, (ArrayList<reportGetModel>) l);
         r=findViewById(R.id.reportList);
         button=findViewById(R.id.addrepo);
         from=findViewById(R.id.From);
@@ -61,11 +61,9 @@ public class Report extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        ShowReport.ob = dc.getDocument().toObject(reportGetModel.class);
+                        reportGetModel ob = dc.getDocument().toObject(reportGetModel.class);
                         try{
-                            Timestamp t = (Timestamp) dc.getDocument().get("submitted");
-                            ShowReport.docid=dc.getDocument().getId();
-                            l.add(t.toDate());
+                            l.add(ob);
                         }
                         catch(Exception e){
                             Log.e("getTimeE", e.toString());

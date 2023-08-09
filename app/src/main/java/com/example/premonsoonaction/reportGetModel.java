@@ -6,7 +6,7 @@ import com.google.firebase.Timestamp;
 public class reportGetModel {
     String ro;
     boolean inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    Timestamp date;
+    Timestamp submitted;
 
     public String getRO() {
         return ro;
@@ -105,10 +105,10 @@ public class reportGetModel {
     }
 
     public Timestamp getDate() {
-        return date;
+        return submitted;
     }
 
     public void setDate(Timestamp date) {
-        this.date = date;
+        this.submitted = date;
     }
 }
