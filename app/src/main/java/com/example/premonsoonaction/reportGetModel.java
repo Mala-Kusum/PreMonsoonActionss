@@ -5,7 +5,7 @@ import com.google.firebase.Timestamp;
 
 public class reportGetModel {
     String ro;
-    Boolean inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
+    boolean inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
     Timestamp date;
 
     public String getRO() {
