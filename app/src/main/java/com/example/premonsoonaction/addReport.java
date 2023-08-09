@@ -224,7 +224,6 @@ public class addReport extends AppCompatActivity {
                         finish();
                     }
                 });
-
             }
         });
     }

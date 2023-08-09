@@ -21,6 +21,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ShowReport extends AppCompatActivity {
     List<Vulnerable> l1,l2;
     List<Location> l3,l4;
     public static reportGetModel ob;
-    Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
+    public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
 
     Query q1,q2,q3,q4;
@@ -44,7 +45,6 @@ public class ShowReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        ob=new reportGetModel();
         c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
@@ -76,95 +76,105 @@ public class ShowReport extends AppCompatActivity {
 
         if(INST1==true){
             inst1.setText("Done");
-            inst1.setTextColor(R.color.green);
+            inst1.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst1.setText("Not Done");
-            inst1.setTextColor(R.color.red);
+            inst1.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST2==true){
             inst2.setText("Done");
-            inst2.setTextColor(R.color.green);
+            inst2.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst2.setText("Not Done");
-            inst2.setTextColor(R.color.red);
+            inst2.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST3==true){
             inst3.setText("Done");
-            inst3.setTextColor(R.color.green);
+            inst3.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst3.setText("Not Done");
-            inst3.setTextColor(R.color.red);
+            inst3.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST4==true){
             inst4.setText("Done");
-            inst4.setTextColor(R.color.green);
+            inst4.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst4.setText("Not Done");
-            inst4.setTextColor(R.color.red);
+            inst4.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST5==true){
             inst5.setText("Done");
-            inst5.setTextColor(R.color.green);
+            inst5.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst5.setText("Not Done");
-            inst5.setTextColor(R.color.red);
+            inst5.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST6==true){
             inst6.setText("Done");
-            inst6.setTextColor(R.color.green);
+            inst6.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst6.setText("Not Done");
-            inst6.setTextColor(R.color.red);
+            inst6.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST7==true){
             inst7.setText("Done");
-            inst7.setTextColor(R.color.green);
+            inst7.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst7.setText("Not Done");
-            inst7.setTextColor(R.color.red);
+            inst7.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST8==true){
             inst8.setText("Done");
-            inst8.setTextColor(R.color.green);
+            inst8.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst8.setText("Not Done");
-            inst8.setTextColor(R.color.red);
+            inst8.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST9==true){
             inst9.setText("Done");
-            inst9.setTextColor(R.color.green);
+            inst9.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst9.setText("Not Done");
-            inst9.setTextColor(R.color.red);
+            inst9.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST10==true){
             inst10.setText("Done");
-            inst10.setTextColor(R.color.green);
+            inst10.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst10.setText("Not Done");
-            inst10.setTextColor(R.color.red);
+            inst10.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         if(INST11==true){
             inst11.setText("Done");
-            inst11.setTextColor(R.color.green);
+            inst11.setTextColor(getResources().getColor(R.color.green,getTheme()));
         }
         else{
             inst11.setText("Not Done");
-            inst11.setTextColor(R.color.red);
+            inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
         l1=new ArrayList<Vulnerable>();
         l2=new ArrayList<Vulnerable>();
         l3=new ArrayList<Location>();
         l4=new ArrayList<Location>();
+        c1.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot doc:task.getResult()){
+
+                    }
+                }
+            }
+        });
     }
 }

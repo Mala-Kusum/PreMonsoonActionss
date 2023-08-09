@@ -19,13 +19,13 @@ import java.util.List;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder> {
     Context context;
-    ArrayList<Date> l;
+    ArrayList<reportGetModel> l;
 
-    public ReportAdapter(Context context, ArrayList<Date> l) {
+    public ReportAdapter(Context context, ArrayList<reportGetModel> l) {
         this.context = context;
         this.l = l;
     }
-    public void filterList(ArrayList<Date> filterlist) {
+    public void filterList(ArrayList<reportGetModel> filterlist) {
         l = filterlist;
         notifyDataSetChanged();
     }
@@ -41,11 +41,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
-        Date m=l.get(position);
+        Date m=l.get(position).getDate().toDate();
+
         holder.Date.setText(m.toString());
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ShowReport.ob=l.get(holder.getAdapterPosition());
                 Intent i = new Intent(context,ShowReport.class);
                 context.startActivity(i);
             }
