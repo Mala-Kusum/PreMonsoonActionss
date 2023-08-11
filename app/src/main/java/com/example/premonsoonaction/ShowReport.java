@@ -78,7 +78,7 @@ public class ShowReport extends AppCompatActivity {
         inst10=findViewById(R.id.inst10);
         inst11=findViewById(R.id.inst11);
 
-        list1=findViewById(R.id.)
+        list1=findViewById(R.id.Vulnerable);
 
         if(INST1==true){
             inst1.setText("Done");
