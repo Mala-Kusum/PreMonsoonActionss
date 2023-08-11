@@ -32,17 +32,17 @@ public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) 
 
 @Override
 public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ModelEquipment eq = l.get(position);
-        holder.text.setText(eq.getName());
-        holder.text.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View v) {
-        MainActivity.RO=holder.text.getText().toString();
-        Intent i=new Intent(context,Action.class);
-        context.startActivity(i);
-        }
+    ModelEquipment eq = l.get(position);
+    holder.text.setText(eq.getName());
+    holder.text.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+            MainActivity.RO=holder.text.getText().toString();
+            Intent i=new Intent(context,Action.class);
+            context.startActivity(i);
+            }
         });
-        }
+}
 @Override
 public int getItemCount() {
         return l.size();

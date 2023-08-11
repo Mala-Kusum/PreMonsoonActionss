@@ -66,6 +66,7 @@ public class Report extends AppCompatActivity {
                             Timestamp t=(Timestamp) dc.getDocument().get("submitted");
                             ob.setDate(t.toDate());
                             System.out.println("date,"+t.toDate());
+                            ob.setDocid(dc.getDocument().getId());
                             ob.setinst1((boolean) dc.getDocument().get("inst1"));
                             ob.setinst2((boolean) dc.getDocument().get("inst2"));
                             ob.setinst3((boolean) dc.getDocument().get("inst3"));

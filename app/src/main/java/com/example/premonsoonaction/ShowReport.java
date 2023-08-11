@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
@@ -30,14 +33,15 @@ import java.util.List;
 
 public class ShowReport extends AppCompatActivity {
 
-    /*public static String docid;
+    public static String docid;
     CollectionReference c1,c2,c3,c4;
     List<Vulnerable> l1,l2;
-    List<Location> l3,l4;*/
+    List<Location> l3,l4;
     public static reportGetModel ob;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-
+    ArrayAdapter<Vulnerable> ad1;
+    ListView list1,list2,list3,list4;
     Query q1,q2,q3,q4;
     @SuppressLint("ResourceAsColor")
     @Override
@@ -45,11 +49,11 @@ public class ShowReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        /*c1 = db.collection("checklist").document(docid).collection("Vulnerable");
+        c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
-        c4 = db.collection("checklist").document(docid).collection("Warning");*/
-
+        c4 = db.collection("checklist").document(docid).collection("Warning");
+        ad1=new ArrayAdapter<Vulnerable>;
         INST1=ob.getinst1();
         INST2=ob.getinst2();
         INST3=ob.getinst3();
@@ -73,6 +77,8 @@ public class ShowReport extends AppCompatActivity {
         inst9=findViewById(R.id.inst9);
         inst10=findViewById(R.id.inst10);
         inst11=findViewById(R.id.inst11);
+
+        list1=findViewById(R.id.)
 
         if(INST1==true){
             inst1.setText("Done");
@@ -162,19 +168,25 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-        /*l1=new ArrayList<Vulnerable>();
+        l1=new ArrayList<Vulnerable>();
         l2=new ArrayList<Vulnerable>();
         l3=new ArrayList<Location>();
         l4=new ArrayList<Location>();
-        c1.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        q1=c1.orderBy("location").orderBy("type");
+        q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot doc:task.getResult()){
-
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                for (DocumentChange dc : value.getDocumentChanges()) {
+                    if (dc.getType() == DocumentChange.Type.ADDED) {
+                        l1.add(dc.getDocument().toObject(Vulnerable.class));
                     }
+                    ad1.notifyDataSetChanged();
                 }
             }
-        });*/
+        });
     }
 }

@@ -49,6 +49,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
             @Override
             public void onClick(View view) {
                 ShowReport.ob=l.get(holder.getAdapterPosition());
+                ShowReport.docid=l.get(holder.getAdapterPosition()).getDocid();
                 Intent i = new Intent(context,ShowReport.class);
                 context.startActivity(i);
             }
