@@ -1,12 +1,17 @@
 package com.example.premonsoonaction;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentId;
+
+import java.util.Date;
 
 
 public class reportGetModel {
+
+   // DocumentId docid;
     String ro;
     boolean inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    Timestamp submitted;
+    Date submitted;
 
     public String getRO() {
         return ro;
@@ -104,11 +109,18 @@ public class reportGetModel {
         this.inst11 = inst11;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return submitted;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.submitted = date;
     }
+    /*public DocumentId getDocid() {
+        return docid;
+    }
+
+    public void setDocid(DocumentId docid) {
+        this.docid = docid;
+    }*/
 }

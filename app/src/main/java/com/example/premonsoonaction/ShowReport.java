@@ -30,10 +30,10 @@ import java.util.List;
 
 public class ShowReport extends AppCompatActivity {
 
-    public static String docid;
+    /*public static String docid;
     CollectionReference c1,c2,c3,c4;
     List<Vulnerable> l1,l2;
-    List<Location> l3,l4;
+    List<Location> l3,l4;*/
     public static reportGetModel ob;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
@@ -45,10 +45,10 @@ public class ShowReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        c1 = db.collection("checklist").document(docid).collection("Vulnerable");
+        /*c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
-        c4 = db.collection("checklist").document(docid).collection("Warning");
+        c4 = db.collection("checklist").document(docid).collection("Warning");*/
 
         INST1=ob.getinst1();
         INST2=ob.getinst2();
@@ -162,7 +162,7 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-        l1=new ArrayList<Vulnerable>();
+        /*l1=new ArrayList<Vulnerable>();
         l2=new ArrayList<Vulnerable>();
         l3=new ArrayList<Location>();
         l4=new ArrayList<Location>();
@@ -175,6 +175,6 @@ public class ShowReport extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
     }
 }

@@ -41,7 +41,8 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
-        Date m=l.get(position).getDate().toDate();
+        //System.out.println("ob "+ ShowReport.ob.getRO()+" "+ShowReport.ob.getinst1()+ " "+ ShowReport.ob.getDate().toString());
+        Date m=l.get(position).getDate();
 
         holder.Date.setText(m.toString());
         holder.card.setOnClickListener(new View.OnClickListener() {
