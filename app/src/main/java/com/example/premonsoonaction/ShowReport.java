@@ -3,6 +3,8 @@ package com.example.premonsoonaction;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -35,13 +37,14 @@ public class ShowReport extends AppCompatActivity {
 
     public static String docid;
     CollectionReference c1,c2,c3,c4;
-    List<Vulnerable> l1,l2;
-    List<Location> l3,l4;
+    ArrayList<Vulnerable> l1,l2;
+    ArrayList<Location> l3,l4;
     public static reportGetModel ob;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    ArrayAdapter<Vulnerable> ad1;
+    vulnerableAdapter ad1;
     ListView list1,list2,list3,list4;
+    RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
     @SuppressLint("ResourceAsColor")
     @Override
@@ -53,7 +56,6 @@ public class ShowReport extends AppCompatActivity {
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
         c4 = db.collection("checklist").document(docid).collection("Warning");
-        ad1=new ArrayAdapter<Vulnerable>;
         INST1=ob.getinst1();
         INST2=ob.getinst2();
         INST3=ob.getinst3();
@@ -78,7 +80,8 @@ public class ShowReport extends AppCompatActivity {
         inst10=findViewById(R.id.inst10);
         inst11=findViewById(R.id.inst11);
 
-        list1=findViewById(R.id.Vulnerable);
+        l1=new ArrayList<Vulnerable>();
+        r1=findViewById(R.id.Vulnerable);
 
         if(INST1==true){
             inst1.setText("Done");
@@ -168,10 +171,12 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-        l1=new ArrayList<Vulnerable>();
-        l2=new ArrayList<Vulnerable>();
-        l3=new ArrayList<Location>();
-        l4=new ArrayList<Location>();
+
+        ad1=new vulnerableAdapter(ShowReport.this,l1);
+        r1.setHasFixedSize(true);
+        System.out.println("xxxxxxxxxxrecyclexxxxxxxx");
+        r1.setLayoutManager(new LinearLayoutManager(this));
+        r1.setAdapter(ad1);
         q1=c1.orderBy("location").orderBy("type");
         q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -182,7 +187,14 @@ public class ShowReport extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        l1.add(dc.getDocument().toObject(Vulnerable.class));
+                        System.out.println("vulnerable doc "+ dc.getDocument().toObject(Vulnerable.class).getLOCATION()+dc.getDocument().toObject(Vulnerable.class).getNO()+dc.getDocument().toObject(Vulnerable.class).getTYPE());
+                        Vulnerable ob=new Vulnerable();
+                        ob.setTYPE(dc.getDocument().getString("type"));
+                        ob.setNO((int) dc.getDocument().get("no"));
+                        ob.setLOCATION(dc.getDocument().get("loc").toString());
+                        System.out.println(ob.getLOCATION()+" "+ob.getTYPE()+" "+ob.getNO());
+                       // l1.add(dc.getDocument().toObject(Vulnerable.class));
+                        l1.add(ob);
                     }
                     ad1.notifyDataSetChanged();
                 }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class vulnerableAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder>{
+public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.MyViewHolder>{
     Context context;
     ArrayList<Vulnerable> l;
     public vulnerableAdapter(Context context, ArrayList<Vulnerable> l) {
@@ -22,7 +22,7 @@ public class vulnerableAdapter extends RecyclerView.Adapter<ReportAdapter.MyView
 
     @NonNull
     @Override
-    public ReportAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public vulnerableAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v= LayoutInflater.from(context).inflate(R.layout.listvulnerable,parent,false);
         vulnerableAdapter.MyViewHolder viewHolder = new  vulnerableAdapter.MyViewHolder(v);
@@ -30,8 +30,11 @@ public class vulnerableAdapter extends RecyclerView.Adapter<ReportAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReportAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull vulnerableAdapter.MyViewHolder holder, int position) {
+        Vulnerable v=l.get(position);
+        holder.type.setText(v.getTYPE());
+        holder.no.setText(v.getNO());
+        holder.loc.setText(v.getLOCATION());
     }
 
     @Override
@@ -39,13 +42,13 @@ public class vulnerableAdapter extends RecyclerView.Adapter<ReportAdapter.MyView
         return 0;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView Date;
-        LinearLayout card;
+        TextView type,no,loc;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            card=itemView.findViewById(R.id.cardReport);
-            Date = itemView.findViewById(R.id.Date);
+            type=itemView.findViewById(R.id.Type);
+            no=itemView.findViewById(R.id.No);
+            loc=itemView.findViewById(R.id.Location);
         }
     }
 }
