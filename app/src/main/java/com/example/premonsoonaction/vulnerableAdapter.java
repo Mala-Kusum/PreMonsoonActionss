@@ -34,8 +34,9 @@ public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.My
     public void onBindViewHolder(@NonNull vulnerableAdapter.MyViewHolder holder, int position) {
         Vulnerable v=l.get(position);
         holder.type.setText(v.getTYPE());
+
+        holder.no.setText(String.valueOf(v.getNO()));
         try {
-            holder.no.setText((int) v.getNO());
             holder.loc.setText(v.getLOCATION());
         }
         catch(Exception e){

@@ -192,12 +192,12 @@ public class ShowReport extends AppCompatActivity {
                         ob.setTYPE(dc.getDocument().getString("type"));
                         try {
                             ob.setNO((long) dc.getDocument().get("no"));
-                            ob.setLOCATION(dc.getDocument().getString("loc"));
+                            ob.setLOCATION(dc.getDocument().getString("location"));
                         }
                         catch(Exception e){
                             System.out.println("error no "+e.toString());
                         }
-                        System.out.println(ob.getLOCATION()+" "+ob.getTYPE()+" "+ob.getNO());
+                        System.out.println("ba " +ob.getLOCATION()+" "+ob.getTYPE()+" "+ob.getNO());
                        // l1.add(dc.getDocument().toObject(Vulnerable.class));
                         l1.add(ob);
                         ad1.notifyDataSetChanged();
