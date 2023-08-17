@@ -42,7 +42,7 @@ public class ShowReport extends AppCompatActivity {
     public static reportGetModel ob;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    vulnerableAdapter ad1;
+    vulnerableAdapter ad1,ad2,ad3,ad4;
     ListView list1,list2,list3,list4;
     RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
@@ -81,7 +81,9 @@ public class ShowReport extends AppCompatActivity {
         inst11=findViewById(R.id.inst11);
 
         l1= new ArrayList<>();
+        l2=new ArrayList<>();
         r1=findViewById(R.id.Vulnerable);
+        r2=findViewById(R.id.Critical);
 
         if(INST1==true){
             inst1.setText("Done");
@@ -173,10 +175,13 @@ public class ShowReport extends AppCompatActivity {
         }
 
         ad1=new vulnerableAdapter(ShowReport.this,l1);
+        ad2=new vulnerableAdapter(ShowReport.this,l2);
         //r1.setHasFixedSize(true);
         System.out.println("xxxxxxxxxxrecyclexxxxxxxx");
         r1.setLayoutManager(new LinearLayoutManager(this));
         r1.setAdapter(ad1);
+        r2.setLayoutManager(new LinearLayoutManager(this));
+        r2.setAdapter(ad1);
         q1=c1.orderBy("location").orderBy("type");
         q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -209,6 +214,26 @@ public class ShowReport extends AppCompatActivity {
                         Log.e("error notify", e.toString());
                     }
 
+                }
+            }
+        });
+        q2=c2.orderBy("location").orderBy("type");
+        q2.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc:value.getDocumentChanges()) {
+                        Vulnerable ob=new Vulnerable();
+                        ob.setTYPE(dc.getDocument().getString("type"));
+                        ob.setNO((long) dc.getDocument().get("no"));
+                        ob.setLOCATION(dc.getDocument().getString("location"));
+                        l2.add(ob);
+                    }
+                    ad2.notifyDataSetChanged();
                 }
             }
         });
