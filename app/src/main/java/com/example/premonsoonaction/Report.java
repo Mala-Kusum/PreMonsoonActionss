@@ -61,14 +61,29 @@ public class Report extends AppCompatActivity {
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
                     if (dc.getType() == DocumentChange.Type.ADDED) {
-                        reportGetModel ob = dc.getDocument().toObject(reportGetModel.class);
+                        reportGetModel ob = new reportGetModel();
                         try{
+                            Timestamp t=(Timestamp) dc.getDocument().get("submitted");
+                            ob.setDate(t.toDate());
+                            System.out.println("date,"+t.toDate());
+                            ob.setDocid(dc.getDocument().getId());
+                            ob.setinst1((boolean) dc.getDocument().get("inst1"));
+                            ob.setinst2((boolean) dc.getDocument().get("inst2"));
+                            ob.setinst3((boolean) dc.getDocument().get("inst3"));
+                            ob.setinst4((boolean) dc.getDocument().get("inst4"));
+                            ob.setinst5((boolean) dc.getDocument().get("inst5"));
+                            ob.setinst6((boolean) dc.getDocument().get("inst6"));
+                            ob.setinst7((boolean) dc.getDocument().get("inst7"));
+                            ob.setinst8((boolean) dc.getDocument().get("inst8"));
+                            ob.setinst9((boolean) dc.getDocument().get("inst9"));
+                            ob.setinst10((boolean) dc.getDocument().get("inst10"));
+                            ob.setinst11((boolean) dc.getDocument().get("inst11"));
+                            ob.setRO(dc.getDocument().get("ro").toString());
                             l.add(ob);
                         }
                         catch(Exception e){
                             Log.e("getTimeE", e.toString());
                         }
-
                         System.out.println("sssssssssssssssssssssssssssssssss        "+l);
                         ad.notifyDataSetChanged();
                     }
