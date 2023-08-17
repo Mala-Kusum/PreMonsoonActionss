@@ -80,7 +80,7 @@ public class ShowReport extends AppCompatActivity {
         inst10=findViewById(R.id.inst10);
         inst11=findViewById(R.id.inst11);
 
-        l1=new ArrayList<Vulnerable>();
+        l1= new ArrayList<>();
         r1=findViewById(R.id.Vulnerable);
 
         if(INST1==true){
@@ -173,7 +173,7 @@ public class ShowReport extends AppCompatActivity {
         }
 
         ad1=new vulnerableAdapter(ShowReport.this,l1);
-        r1.setHasFixedSize(true);
+        //r1.setHasFixedSize(true);
         System.out.println("xxxxxxxxxxrecyclexxxxxxxx");
         r1.setLayoutManager(new LinearLayoutManager(this));
         r1.setAdapter(ad1);
@@ -190,13 +190,25 @@ public class ShowReport extends AppCompatActivity {
                         System.out.println("vulnerable doc "+ dc.getDocument().toObject(Vulnerable.class).getLOCATION()+dc.getDocument().toObject(Vulnerable.class).getNO()+dc.getDocument().toObject(Vulnerable.class).getTYPE());
                         Vulnerable ob=new Vulnerable();
                         ob.setTYPE(dc.getDocument().getString("type"));
-                        ob.setNO((int) dc.getDocument().get("no"));
-                        ob.setLOCATION(dc.getDocument().get("loc").toString());
+                        try {
+                            ob.setNO((long) dc.getDocument().get("no"));
+                            ob.setLOCATION(dc.getDocument().getString("loc"));
+                        }
+                        catch(Exception e){
+                            System.out.println("error no "+e.toString());
+                        }
                         System.out.println(ob.getLOCATION()+" "+ob.getTYPE()+" "+ob.getNO());
                        // l1.add(dc.getDocument().toObject(Vulnerable.class));
                         l1.add(ob);
+                        ad1.notifyDataSetChanged();
                     }
-                    ad1.notifyDataSetChanged();
+                    try {
+                        ad1.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("error notify", e.toString());
+                    }
+
                 }
             }
         });

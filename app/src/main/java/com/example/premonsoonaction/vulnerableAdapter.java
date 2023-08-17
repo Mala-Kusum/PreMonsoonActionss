@@ -1,6 +1,7 @@
 package com.example.premonsoonaction;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +34,18 @@ public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.My
     public void onBindViewHolder(@NonNull vulnerableAdapter.MyViewHolder holder, int position) {
         Vulnerable v=l.get(position);
         holder.type.setText(v.getTYPE());
-        holder.no.setText(v.getNO());
-        holder.loc.setText(v.getLOCATION());
+        try {
+            holder.no.setText((int) v.getNO());
+            holder.loc.setText(v.getLOCATION());
+        }
+        catch(Exception e){
+            Log.e("onBindViewHolder: ",e.toString() );;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return l.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView type,no,loc;
