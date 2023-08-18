@@ -315,6 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Locations inspected :"
+                android:textStyle="bold"
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -326,6 +327,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Locations with warning signs installed :"
                 android:textColor="@color/black" />
 
