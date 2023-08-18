@@ -28,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +41,8 @@ public class ShowReport extends AppCompatActivity {
     ArrayList<Vulnerable> l1,l2;
     ArrayList<Location> l3,l4;
     public static reportGetModel ob;
+    // batch2;
+    Vulnerable ob1,ob2;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
     vulnerableAdapter ad1,ad2,ad3,ad4;
@@ -52,6 +55,8 @@ public class ShowReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Vulnerable ob1=new Vulnerable();
+        Vulnerable ob2=new Vulnerable();
         c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
@@ -181,7 +186,7 @@ public class ShowReport extends AppCompatActivity {
         r1.setLayoutManager(new LinearLayoutManager(this));
         r1.setAdapter(ad1);
         r2.setLayoutManager(new LinearLayoutManager(this));
-        r2.setAdapter(ad1);
+        r2.setAdapter(ad2);
         q1=c1.orderBy("location").orderBy("type");
         q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -190,21 +195,21 @@ public class ShowReport extends AppCompatActivity {
                     Log.e("Firestore Error", error.getMessage());
                     return;
                 }
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
-                        System.out.println("vulnerable doc "+ dc.getDocument().toObject(Vulnerable.class).getLOCATION()+dc.getDocument().toObject(Vulnerable.class).getNO()+dc.getDocument().toObject(Vulnerable.class).getTYPE());
-                        Vulnerable ob=new Vulnerable();
-                        ob.setTYPE(dc.getDocument().getString("type"));
+                for (DocumentChange dc1 : value.getDocumentChanges()) {
+                    if (dc1.getType() == DocumentChange.Type.ADDED) {
+                        System.out.println("vulnerable doc "+ dc1.getDocument().toObject(Vulnerable.class).getLOCATION()+dc1.getDocument().toObject(Vulnerable.class).getNO()+dc1.getDocument().toObject(Vulnerable.class).getTYPE());
+
+                        ob1.setTYPE(dc1.getDocument().getString("type"));
                         try {
-                            ob.setNO((long) dc.getDocument().get("no"));
-                            ob.setLOCATION(dc.getDocument().getString("location"));
+                            ob1.setNO((long) dc1.getDocument().get("no"));
+                            ob1.setLOCATION(dc1.getDocument().getString("location"));
                         }
                         catch(Exception e){
                             System.out.println("error no "+e.toString());
                         }
-                        System.out.println("ba " +ob.getLOCATION()+" "+ob.getTYPE()+" "+ob.getNO());
+                        System.out.println("ba " +ob1.getLOCATION()+" "+ob1.getTYPE()+" "+ob1.getNO());
                        // l1.add(dc.getDocument().toObject(Vulnerable.class));
-                        l1.add(ob);
+                        l1.add(ob1);
                         ad1.notifyDataSetChanged();
                     }
                     try {
@@ -226,12 +231,12 @@ public class ShowReport extends AppCompatActivity {
                     return;
                 }
                 else{
-                    for (DocumentChange dc:value.getDocumentChanges()) {
-                        Vulnerable ob=new Vulnerable();
-                        ob.setTYPE(dc.getDocument().getString("type"));
-                        ob.setNO((long) dc.getDocument().get("no"));
-                        ob.setLOCATION(dc.getDocument().getString("location"));
-                        l2.add(ob);
+                    for (DocumentChange dc2:value.getDocumentChanges()) {
+
+                        ob2.setTYPE(dc2.getDocument().getString("type"));
+                        ob2.setNO((long) dc2.getDocument().get("no"));
+                        ob2.setLOCATION(dc2.getDocument().getString("location"));
+                        l2.add(ob2);
                     }
                     ad2.notifyDataSetChanged();
                 }
