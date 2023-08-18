@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
@@ -29,10 +30,13 @@ import java.util.List;
 public class Report extends AppCompatActivity {
     FloatingActionButton button;
     ImageButton from,to;
+    public static Date f,t;
     RecyclerView r;
-    List<reportGetModel> l;
+    List<reportGetModel> l,filtered;
+
     private FirebaseFirestore db;
     CollectionReference Ref;
+    public static boolean b1,b2;
 
     Query q;
     @Override
@@ -40,8 +44,11 @@ public class Report extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         db=FirebaseFirestore.getInstance();
+        b1=false;
+        b2=false;
         Ref = db.collection("checklist");
         l=new ArrayList<>();
+        filtered=new ArrayList<>();
         ReportAdapter ad;
         ad=new ReportAdapter(Report.this, (ArrayList<reportGetModel>) l);
         r=findViewById(R.id.reportList);
@@ -101,15 +108,53 @@ public class Report extends AppCompatActivity {
         from.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DatePick();
+                DialogFragment newFragment = new DatePick(true);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
+                if(b1&&b2){
+                    for (int i = 0; i < l.size(); i++) {
+
+                        Date date = l.get(i).getDate();
+                        if (date.after(f)&&date.before(t)) {
+                            filtered.add(l.get(i));
+                        }
+                    }
+                    if (filtered.isEmpty()) {
+                        // if no item is added in filtered list we are
+                        Toast.makeText(Report.this, "No Data Found..", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // at last we are passing that filtered
+                        // list to our adapter class.
+                        ad.filterList((ArrayList<reportGetModel>) filtered);
+                    } // data set changed
+                    b1=false;
+                    b2=false;
+                }
             }
         });
         to.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DatePick();
+                DialogFragment newFragment = new DatePick(false);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
+                if(b1&&b2){
+                    for (int i = 0; i < l.size(); i++) {
+
+                        Date date = l.get(i).getDate();
+                        if (date.after(f)&&date.before(t)) {
+                            filtered.add(l.get(i));
+                        }
+                    }
+                    if (filtered.isEmpty()) {
+                        // if no item is added in filtered list we are
+                        Toast.makeText(Report.this, "No Data Found..", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // at last we are passing that filtered
+                        // list to our adapter class.
+                        ad.filterList((ArrayList<reportGetModel>) filtered);
+                    } // data set changed
+                    b1=false;
+                    b2=false;
+                }
             }
         });
     }
