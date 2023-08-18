@@ -10,11 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyViewHolder> {
     Context context;
-    String[] s;
+    ArrayList<String> s;
 
-    public LocationAdapter(Context context, String[] s) {
+    public LocationAdapter(Context context, ArrayList<String> s) {
         this.context = context;
         this.s = s;
     }
@@ -30,12 +32,12 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.text.setText(s[position]);
+        holder.text.setText(s.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return s.length;
+        return s.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

@@ -39,24 +39,27 @@ public class ShowReport extends AppCompatActivity {
     public static String docid;
     CollectionReference c1,c2,c3,c4;
     ArrayList<Vulnerable> l1,l2;
-    ArrayList<Location> l3,l4;
+    ArrayList<String> s3,s4;
     public static reportGetModel ob;
     // batch2;
     Vulnerable ob1,ob2;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    vulnerableAdapter ad1,ad2,ad3,ad4;
-    ListView list1,list2,list3,list4;
+    vulnerableAdapter ad1,ad2;
+    LocationAdapter ad3,ad4;
     RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
+    int i,j;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        Vulnerable ob1=new Vulnerable();
-        Vulnerable ob2=new Vulnerable();
+        i=0;
+        j=0;
+        ob1=new Vulnerable();
+        ob2=new Vulnerable();
         c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
@@ -87,8 +90,13 @@ public class ShowReport extends AppCompatActivity {
 
         l1= new ArrayList<>();
         l2=new ArrayList<>();
+        s3=new ArrayList<>();
+        s4=new ArrayList<>();
+
         r1=findViewById(R.id.Vulnerable);
         r2=findViewById(R.id.Critical);
+        r3=findViewById(R.id.inspected);
+        r4=findViewById(R.id.warning);
 
         if(INST1==true){
             inst1.setText("Done");
@@ -178,15 +186,30 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-
         ad1=new vulnerableAdapter(ShowReport.this,l1);
         ad2=new vulnerableAdapter(ShowReport.this,l2);
+        try{
+            ad3=new LocationAdapter(ShowReport.this,s3);
+            ad4=new LocationAdapter(ShowReport.this,s4);
+        }
+        catch(Exception e){
+            Log.e("adapter ",e.toString());
+        }
         //r1.setHasFixedSize(true);
         System.out.println("xxxxxxxxxxrecyclexxxxxxxx");
         r1.setLayoutManager(new LinearLayoutManager(this));
         r1.setAdapter(ad1);
         r2.setLayoutManager(new LinearLayoutManager(this));
         r2.setAdapter(ad2);
+        r3.setLayoutManager(new LinearLayoutManager(this));
+        r3.setAdapter(ad3);
+        try{
+            r4.setLayoutManager(new LinearLayoutManager(this));
+            r4.setAdapter(ad4);
+        }
+        catch(Exception e){
+            Log.e("r4 recycler ",e.toString());
+        }
         q1=c1.orderBy("location").orderBy("type");
         q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -232,13 +255,52 @@ public class ShowReport extends AppCompatActivity {
                 }
                 else{
                     for (DocumentChange dc2:value.getDocumentChanges()) {
-
                         ob2.setTYPE(dc2.getDocument().getString("type"));
                         ob2.setNO((long) dc2.getDocument().get("no"));
                         ob2.setLOCATION(dc2.getDocument().getString("location"));
                         l2.add(ob2);
                     }
                     ad2.notifyDataSetChanged();
+                }
+            }
+        });
+
+        q3=c3.orderBy("location");
+        q3.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc3:value.getDocumentChanges()) {
+                        s3.add(dc3.getDocument().getString("location"));
+                    }
+                    try{
+                        ad3.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("error notify", e.toString());
+                    }
+
+                }
+            }
+        });
+
+        q4=c4.orderBy("location");
+        q4.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc4:value.getDocumentChanges()) {
+                        s4.add(dc4.getDocument().getString("location"));
+                    }
+                    ad4.notifyDataSetChanged();
                 }
             }
         });
