@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
     private FirebaseFirestore db;
-    CollectionReference Ref;
+    public static CollectionReference Ref;
     Query querya;
     RecyclerView recycler;
     MaterialAdapter adapt;
@@ -72,16 +72,15 @@ public class Equipments extends AppCompatActivity {
                     return;
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
+                    if (dc.getType() == DocumentChange.Type.ADDED || dc.getType() == DocumentChange.Type.MODIFIED || dc.getType()==DocumentChange.Type.REMOVED) {
                         list.add(dc.getDocument().toObject(ModelEquipment.class));
                         System.out.println("sssssssssssssssssssssssssssssssss        " );
                         System.out.println(list);
                     }
-                    adapt.notifyDataSetChanged();
                 }
+                adapt.notifyDataSetChanged();
             }
         });
-
         for(int i=0;i<list.size();i++){
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }

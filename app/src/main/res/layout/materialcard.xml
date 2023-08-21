@@ -12,6 +12,7 @@
     app:cardCornerRadius="20dp"
     tools:ignore="MissingDefaultResource">
     <LinearLayout
+        android:id="@+id/materialcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="5dp"
