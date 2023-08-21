@@ -137,9 +137,9 @@ public class Add_Equipment extends AppCompatActivity {
                 name=t1.getText().toString();
                 n=t2.getText().toString();
                 Map<String,String> m=new HashMap<String,String>();
-                m.put("NAME",name);
-                m.put("NO",n);
-                m.put("PMU",loc);
+                m.put("name",name);
+                m.put("no",n);
+                m.put("pmu",loc);
                 querya = Ref.whereEqualTo("NAME",name).whereEqualTo("PMU",loc);
                 querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>(){
                     @Override

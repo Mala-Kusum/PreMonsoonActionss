@@ -1,5 +1,6 @@
 package com.example.premonsoonaction;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,9 +15,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -63,8 +67,22 @@ public class Equipments extends AppCompatActivity {
                 Ref = db.collection("rate running contracts");
                 break;
         }
-        querya=Ref.orderBy("NAME").orderBy("PMU");
-        querya.addSnapshotListener(new EventListener<QuerySnapshot>() {
+        querya=Ref.orderBy("name").orderBy("pmu");
+        querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for (DocumentSnapshot dc: task.getResult()) {
+                        list.add(dc.toObject(ModelEquipment.class));
+                    }
+                }
+                else{
+                    Log.d("Error: ",task.getException().toString());
+                }
+                adapt.notifyDataSetChanged();
+            }
+        });
+        /*querya.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
@@ -72,7 +90,7 @@ public class Equipments extends AppCompatActivity {
                     return;
                 }
                 for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED || dc.getType() == DocumentChange.Type.MODIFIED || dc.getType()==DocumentChange.Type.REMOVED) {
+                    if (dc.getType() == DocumentChange.Type.ADDED || dc.getType() == DocumentChange.Type.MODIFIED) {
                         list.add(dc.getDocument().toObject(ModelEquipment.class));
                         System.out.println("sssssssssssssssssssssssssssssssss        " );
                         System.out.println(list);
@@ -80,7 +98,7 @@ public class Equipments extends AppCompatActivity {
                 }
                 adapt.notifyDataSetChanged();
             }
-        });
+        });*/
         for(int i=0;i<list.size();i++){
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }
