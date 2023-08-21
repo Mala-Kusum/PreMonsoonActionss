@@ -149,11 +149,13 @@ public class Add_Equipment extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void v) {
                                     Log.d("TAG", "DocumentSnapshot successfully updated!");
+                                    finish();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.w("Error updating details", e.toString());
+                                    finish();
                                 }
                             });
                         }

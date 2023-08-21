@@ -281,7 +281,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Vulnerable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -296,7 +296,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Critical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -315,9 +315,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Locations inspected :"
+                android:textStyle="bold"
                 android:textColor="@color/black" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inspected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -326,10 +327,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="Locations with warning signs installed :"
                 android:textColor="@color/black" />
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

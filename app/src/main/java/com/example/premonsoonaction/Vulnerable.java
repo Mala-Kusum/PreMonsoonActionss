@@ -2,7 +2,7 @@ package com.example.premonsoonaction;
 
 public class Vulnerable {
     String TYPE,LOCATION;
-    int NO;
+    long NO;
 
     public String getTYPE() {
         return TYPE;
@@ -20,11 +20,11 @@ public class Vulnerable {
         this.LOCATION = LOCATION;
     }
 
-    public int getNO() {
+    public long getNO() {
         return NO;
     }
 
-    public void setNO(int NO) {
+    public void setNO(long NO) {
         this.NO = NO;
     }
 }

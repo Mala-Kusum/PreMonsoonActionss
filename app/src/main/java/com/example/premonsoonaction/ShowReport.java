@@ -3,6 +3,8 @@ package com.example.premonsoonaction;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,25 +38,32 @@ public class ShowReport extends AppCompatActivity {
 
     public static String docid;
     CollectionReference c1,c2,c3,c4;
-    List<Vulnerable> l1,l2;
-    List<Location> l3,l4;
+    ArrayList<Vulnerable> l1,l2;
+    ArrayList<String> s3,s4;
     public static reportGetModel ob;
+    // batch2;
+    Vulnerable ob1,ob2;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    ArrayAdapter<Vulnerable> ad1;
-    ListView list1,list2,list3,list4;
+    vulnerableAdapter ad1,ad2;
+    LocationAdapter ad3,ad4;
+    RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
+    int i,j;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_report);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        i=0;
+        j=0;
+        ob1=new Vulnerable();
+        ob2=new Vulnerable();
         c1 = db.collection("checklist").document(docid).collection("Vulnerable");
         c2 = db.collection("checklist").document(docid).collection("Critical");
         c3 = db.collection("checklist").document(docid).collection("Inspected");
         c4 = db.collection("checklist").document(docid).collection("Warning");
-        ad1=new ArrayAdapter<Vulnerable>;
         INST1=ob.getinst1();
         INST2=ob.getinst2();
         INST3=ob.getinst3();
@@ -78,7 +88,15 @@ public class ShowReport extends AppCompatActivity {
         inst10=findViewById(R.id.inst10);
         inst11=findViewById(R.id.inst11);
 
-        list1=findViewById(R.id.Vulnerable);
+        l1= new ArrayList<>();
+        l2=new ArrayList<>();
+        s3=new ArrayList<>();
+        s4=new ArrayList<>();
+
+        r1=findViewById(R.id.Vulnerable);
+        r2=findViewById(R.id.Critical);
+        r3=findViewById(R.id.inspected);
+        r4=findViewById(R.id.warning);
 
         if(INST1==true){
             inst1.setText("Done");
@@ -168,10 +186,30 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-        l1=new ArrayList<Vulnerable>();
-        l2=new ArrayList<Vulnerable>();
-        l3=new ArrayList<Location>();
-        l4=new ArrayList<Location>();
+        ad1=new vulnerableAdapter(ShowReport.this,l1);
+        ad2=new vulnerableAdapter(ShowReport.this,l2);
+        try{
+            ad3=new LocationAdapter(ShowReport.this,s3);
+            ad4=new LocationAdapter(ShowReport.this,s4);
+        }
+        catch(Exception e){
+            Log.e("adapter ",e.toString());
+        }
+        //r1.setHasFixedSize(true);
+        System.out.println("xxxxxxxxxxrecyclexxxxxxxx");
+        r1.setLayoutManager(new LinearLayoutManager(this));
+        r1.setAdapter(ad1);
+        r2.setLayoutManager(new LinearLayoutManager(this));
+        r2.setAdapter(ad2);
+        r3.setLayoutManager(new LinearLayoutManager(this));
+        r3.setAdapter(ad3);
+        try{
+            r4.setLayoutManager(new LinearLayoutManager(this));
+            r4.setAdapter(ad4);
+        }
+        catch(Exception e){
+            Log.e("r4 recycler ",e.toString());
+        }
         q1=c1.orderBy("location").orderBy("type");
         q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -180,11 +218,89 @@ public class ShowReport extends AppCompatActivity {
                     Log.e("Firestore Error", error.getMessage());
                     return;
                 }
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED) {
-                        l1.add(dc.getDocument().toObject(Vulnerable.class));
+                for (DocumentChange dc1 : value.getDocumentChanges()) {
+                    if (dc1.getType() == DocumentChange.Type.ADDED) {
+                        System.out.println("vulnerable doc "+ dc1.getDocument().toObject(Vulnerable.class).getLOCATION()+dc1.getDocument().toObject(Vulnerable.class).getNO()+dc1.getDocument().toObject(Vulnerable.class).getTYPE());
+
+                        ob1.setTYPE(dc1.getDocument().getString("type"));
+                        try {
+                            ob1.setNO((long) dc1.getDocument().get("no"));
+                            ob1.setLOCATION(dc1.getDocument().getString("location"));
+                        }
+                        catch(Exception e){
+                            System.out.println("error no "+e.toString());
+                        }
+                        System.out.println("ba " +ob1.getLOCATION()+" "+ob1.getTYPE()+" "+ob1.getNO());
+                       // l1.add(dc.getDocument().toObject(Vulnerable.class));
+                        l1.add(ob1);
+                        ad1.notifyDataSetChanged();
                     }
-                    ad1.notifyDataSetChanged();
+                    try {
+                        ad1.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("error notify", e.toString());
+                    }
+
+                }
+            }
+        });
+        q2=c2.orderBy("location").orderBy("type");
+        q2.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc2:value.getDocumentChanges()) {
+                        ob2.setTYPE(dc2.getDocument().getString("type"));
+                        ob2.setNO((long) dc2.getDocument().get("no"));
+                        ob2.setLOCATION(dc2.getDocument().getString("location"));
+                        l2.add(ob2);
+                    }
+                    ad2.notifyDataSetChanged();
+                }
+            }
+        });
+
+        q3=c3.orderBy("location");
+        q3.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc3:value.getDocumentChanges()) {
+                        s3.add(dc3.getDocument().getString("location"));
+                    }
+                    try{
+                        ad3.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("error notify", e.toString());
+                    }
+
+                }
+            }
+        });
+
+        q4=c4.orderBy("location");
+        q4.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){
+                    Log.e("Firestore Error", error.getMessage());
+                    return;
+                }
+                else{
+                    for (DocumentChange dc4:value.getDocumentChanges()) {
+                        s4.add(dc4.getDocument().getString("location"));
+                    }
+                    ad4.notifyDataSetChanged();
                 }
             }
         });
