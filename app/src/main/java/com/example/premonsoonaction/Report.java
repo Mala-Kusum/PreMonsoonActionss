@@ -110,7 +110,7 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 DialogFragment newFragment = new DatePick(true);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
-                if(b1&&b2){
+                /*if(b1&&b2){
                     for (int i = 0; i < l.size(); i++) {
 
                         Date date = l.get(i).getDate();
@@ -128,7 +128,7 @@ public class Report extends AppCompatActivity {
                     } // data set changed
                     b1=false;
                     b2=false;
-                }
+                }*/
             }
         });
         to.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +136,7 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 DialogFragment newFragment = new DatePick(false);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
-                if(b1&&b2){
+                /*if(b1&&b2){
                     for (int i = 0; i < l.size(); i++) {
 
                         Date date = l.get(i).getDate();
@@ -154,7 +154,7 @@ public class Report extends AppCompatActivity {
                     } // data set changed
                     b1=false;
                     b2=false;
-                }
+                }*/
             }
         });
     }
