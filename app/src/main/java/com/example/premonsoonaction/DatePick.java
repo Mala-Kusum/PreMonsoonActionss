@@ -43,7 +43,6 @@ public class DatePick extends DialogFragment
             Report.t=c.getTime();
             Report.b2=true;
         }
-
         System.out.println("Date " + (Date) c.getTime());
     }
 }
