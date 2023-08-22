@@ -1,44 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="10dp"
+    android:padding="10dp"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral40"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        android:orientation="vertical">
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit value"/>
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="Edit value: "/>
+            width=100dp-->
         <EditText
             android:id="@+id/amount"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:hint="Edit value: "
             android:layout_height="wrap_content"/>
         <Button
             android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/material_dynamic_neutral30"
+            android:elevation="0dp"
             android:id="@+id/edit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save changes"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="OR"/>
         <Button
             android:layout_marginHorizontal="5dp"
             android:id="@+id/delete"
+            android:elevation="0dp"
+            android:backgroundTint="@color/material_dynamic_neutral30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete this item"/>
-        <Button
+        <!--<Button
             android:layout_marginHorizontal="5dp"
             android:id="@+id/cancel"
+            android:elevation="0dp"
+            android:backgroundTint="@color/material_dynamic_neutral30"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"/>
+            android:text="Cancel"/>-->
     </LinearLayout>
 
 

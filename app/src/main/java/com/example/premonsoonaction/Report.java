@@ -59,6 +59,12 @@ public class Report extends AppCompatActivity {
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
         q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
+        if(MainActivity.HQ){
+            button.setVisibility(View.INVISIBLE);
+        }
+        else{
+            button.setVisibility(View.VISIBLE);
+        }
         q.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

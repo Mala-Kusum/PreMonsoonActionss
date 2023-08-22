@@ -53,9 +53,16 @@ public class Equipments extends AppCompatActivity {
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        if(MainActivity.HQ){
+            add.setVisibility(View.INVISIBLE);
+        }
+        else{
+            add.setVisibility(View.VISIBLE);
+        }
         switch(Action.selectedAction){
             case "Equipment":
                 t.setText("No.");
+
                 Ref = db.collection("equipments");
                 break;
             case "Material":

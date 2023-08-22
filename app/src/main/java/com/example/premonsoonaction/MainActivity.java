@@ -23,6 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class MainActivity extends AppCompatActivity {
     Button login;
     public static String RO;
+    public static boolean HQ=false;
     private FirebaseFirestore db;
     private CollectionReference Ref;
     EditText id,password;
@@ -52,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                                 if (doc.getData().get("TYPE").toString().equals(new String("HQ"))) {
                                     RO="HQ";
+                                    HQ=true;
                                     Intent i=new Intent(MainActivity.this,ROs.class);
                                     startActivity(i);
                                 } else {
                                     RO = doc.getData().get("TYPE").toString();
+                                    HQ=false;
                                     Intent intent = new Intent(MainActivity.this, Action.class);
                                     startActivity(intent);
                                     finish();

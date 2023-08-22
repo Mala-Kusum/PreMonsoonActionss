@@ -54,71 +54,77 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         holder.no.setText(m.getNo());
         holder.pmu.setText(m.getPmu());
         Query q;
-        holder.materialcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dialog customDialog = new Dialog(context);
-                customDialog.setContentView(R.layout.dialog3);
-                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                Button edit=customDialog.findViewById(R.id.edit);
-                Button delete=customDialog.findViewById(R.id.delete);
-                Button cancel=customDialog.findViewById(R.id.cancel);
-                EditText e;
-                e=customDialog.findViewById(R.id.amount);
-                String docid=m.getPmu()+m.getName();
-                customDialog.show();
-                ModelEquipment eq=new ModelEquipment();
-                edit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(e.getText().equals(null)){
-                            Toast.makeText(context, "PLease enter a value", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            eq.setName(m.getName());
-                            eq.setPmu(m.getPmu());
-                            eq.setNo(e.getText().toString());
-                            Equipments.Ref.document(docid).set(eq).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void v) {
-                                    Log.d("TAG", "DocumentSnapshot successfully updated!");
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w("Error updating details",e.toString());
-                                }
-                            });
-                        }
-                        customDialog.cancel();
-                    }
-                });
-                delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Equipments.Ref.document(docid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("TAG", "DocumentSnapshot successfully deleted!");
+        if(MainActivity.HQ){
+            holder.materialcard.setOnClickListener(null);
+        }
+        else{
+            holder.materialcard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Dialog customDialog = new Dialog(context);
+                    customDialog.setContentView(R.layout.dialog3);
+                    customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    Button edit=customDialog.findViewById(R.id.edit);
+                    Button delete=customDialog.findViewById(R.id.delete);
+                    // Button cancel=customDialog.findViewById(R.id.cancel);
+                    EditText e;
+                    e=customDialog.findViewById(R.id.amount);
+                    String docid=m.getPmu()+m.getName();
+                    customDialog.show();
+                    ModelEquipment eq=new ModelEquipment();
+
+                    edit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(e.getText().equals(null)){
+                                Toast.makeText(context, "PLease enter a value", Toast.LENGTH_SHORT).show();
                             }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                             @Override
-                             public void onFailure(@NonNull Exception e) {
-                                 Log.d("TAG", "Error deleting document", e);
-                             }
-                        });
-                        customDialog.cancel();
-                    }
-                });
-                cancel.setOnClickListener(new View.OnClickListener() {
+                            else{
+                                eq.setName(m.getName());
+                                eq.setPmu(m.getPmu());
+                                eq.setNo(e.getText().toString());
+                                Equipments.Ref.document(docid).set(eq).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void v) {
+                                        Log.d("TAG", "DocumentSnapshot successfully updated!");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w("Error updating details",e.toString());
+                                    }
+                                });
+                            }
+                            customDialog.cancel();
+                        }
+                    });
+                    delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Equipments.Ref.document(docid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("TAG", "DocumentSnapshot successfully deleted!");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("TAG", "Error deleting document", e);
+                                        }
+                                    });
+                            customDialog.cancel();
+                        }
+                    });
+                /*cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         customDialog.cancel();
                     }
-                });
-            }
-        });
+                });*/
+                }
+            });
+        }
     }
     @Override
     public int getItemCount() {

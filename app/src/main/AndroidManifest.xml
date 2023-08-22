@@ -20,7 +20,7 @@
             android:name=".Report"
             android:exported="false"
             android:parentActivityName=".Action"
-            android:label="Action Taken Report"/>
+            android:label="Action Taken Reports"/>
         <activity
             android:name=".addReport"
             android:exported="false"

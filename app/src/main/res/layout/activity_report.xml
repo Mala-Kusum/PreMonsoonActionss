@@ -23,9 +23,10 @@
                     android:id="@+id/From"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:paddingTop="20dp"
-                    android:src="@drawable/calendaricon"
-                    android:scaleType="fitCenter"
+                    android:paddingTop="15dp"
+                    android:background="#F7FFE5"
+                    android:src="@drawable/baseline_calendar_month_24"
+                    android:scaleType= "fitCenter"
                     android:adjustViewBounds="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -38,11 +39,13 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
                 <ImageButton
                     android:id="@+id/To"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:background="#F7FFE5"
                     android:paddingTop="20dp"
                     android:src="@drawable/calendaricon"
                     android:scaleType="fitCenter"
