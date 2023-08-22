@@ -43,7 +43,7 @@ public class Add_Equipment extends AppCompatActivity {
         t1=findViewById(R.id.Type);
         t2=findViewById(R.id.no);
         save=findViewById(R.id.save);
-
+        this.setTitle("Add "+Equipments.eqt);
         switch(Action.selectedAction){
             case "Equipment":
                 t.setText("No.");

@@ -15,6 +15,7 @@
         <activity
             android:name=".ShowReport"
             android:exported="false"
+            android:label="Detailed Report"
             android:parentActivityName=".Report"/>
         <activity
             android:name=".Report"
