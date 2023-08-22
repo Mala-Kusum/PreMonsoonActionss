@@ -6,21 +6,22 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/iconmon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/iconmon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PreMonsoonAction"
         tools:targetApi="31">
         <activity
             android:name=".ShowReport"
             android:exported="false"
+            android:label="Detailed Report"
             android:parentActivityName=".Report"/>
         <activity
             android:name=".Report"
             android:exported="false"
             android:parentActivityName=".Action"
-            android:label="Action Taken Report"/>
+            android:label="Action Taken Reports"/>
         <activity
             android:name=".addReport"
             android:exported="false"
@@ -51,5 +52,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

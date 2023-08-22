@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -39,6 +41,7 @@ public class Equipments extends AppCompatActivity {
     ArrayList<ModelEquipment> list,filtered;
     TextView t;
     EditText filter;
+    public static String eqt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +56,29 @@ public class Equipments extends AppCompatActivity {
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        if(MainActivity.HQ){
+            add.setVisibility(View.INVISIBLE);
+        }
+        else{
+            add.setVisibility(View.VISIBLE);
+        }
         switch(Action.selectedAction){
             case "Equipment":
                 t.setText("No.");
+                this.setTitle("Equipments");
+                eqt="Equipment";
                 Ref = db.collection("equipments");
                 break;
             case "Material":
                 t.setText("Quantity.");
+                this.setTitle("Materials");
+                eqt="Material";
                 Ref = db.collection("materials");
                 break;
             case "Rate running":
                 t.setText("No.");
+                this.setTitle("Rate Running Contracts");
+                eqt="Rate Running Contract";
                 Ref = db.collection("rate running contracts");
                 break;
         }

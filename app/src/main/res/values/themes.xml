@@ -10,7 +10,7 @@
         <item name="colorSecondary">#1F6E8C</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">#454545</item>
-        <item name="android:colorBackground">#FFFFFF</item>
+        <item name="android:colorBackground">#F7FFE5</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#673AB7</item>
         <item name="titleTextColor">@color/white</item>
