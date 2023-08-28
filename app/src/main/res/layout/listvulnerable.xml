@@ -10,7 +10,7 @@
         android:layout_weight="@integer/material_motion_duration_medium_2"
         android:id="@+id/Type"
         android:textStyle="bold"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="12345678888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888"/>
@@ -27,7 +27,7 @@
         android:layout_weight="@integer/material_motion_duration_medium_2"
         android:id="@+id/Location"
         android:textStyle="bold"
-        android:textAlignment="center"
+        android:textAlignment="viewEnd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Location"/>
