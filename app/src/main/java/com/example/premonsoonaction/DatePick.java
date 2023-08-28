@@ -38,12 +38,15 @@ public class DatePick extends DialogFragment
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
         Calendar c = Calendar.getInstance();
-        c.set(year,month,day);
+        //c.set(year,month,day);
+
         if(fr){
+            c.set(year,month,day,0,0);
             Report.f=c.getTime();
             Report.b1=true;
         }
         else{
+            c.set(year,month,day,23,59);
             Report.t=c.getTime();
             Report.b2=true;
         }
@@ -58,6 +61,7 @@ public class DatePick extends DialogFragment
             }
             if (Report.filtered.isEmpty()) {
                 // if no item is added in filtered list we are
+                Report.ad.filterList((ArrayList<reportGetModel>) Report.filtered);
                 //Toast.makeText(Report., "No Data Found..", Toast.LENGTH_SHORT).show();
             } else {
                 // at last we are passing that filtered
