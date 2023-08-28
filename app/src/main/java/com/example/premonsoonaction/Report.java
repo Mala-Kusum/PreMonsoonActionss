@@ -32,10 +32,11 @@ public class Report extends AppCompatActivity {
     ImageButton from,to;
     public static Date f,t;
     RecyclerView r;
-    List<reportGetModel> l,filtered;
+    public static List<reportGetModel> l,filtered;
 
     private FirebaseFirestore db;
     CollectionReference Ref;
+    public static ReportAdapter ad;
     public static boolean b1,b2;
 
     Query q;
@@ -49,7 +50,6 @@ public class Report extends AppCompatActivity {
         Ref = db.collection("checklist");
         l=new ArrayList<>();
         filtered=new ArrayList<>();
-        ReportAdapter ad;
         ad=new ReportAdapter(Report.this, (ArrayList<reportGetModel>) l);
         r=findViewById(R.id.reportList);
         button=findViewById(R.id.addrepo);
