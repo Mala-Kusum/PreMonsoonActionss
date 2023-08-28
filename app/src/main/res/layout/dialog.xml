@@ -3,6 +3,7 @@
     android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral40"
     android:orientation="vertical">
     <EditText
         android:id="@+id/typeinput"
@@ -22,6 +23,7 @@
         android:inputType="number"/>
     <Button
         android:id="@+id/save"
+        android:backgroundTint="@color/material_dynamic_neutral30"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"/>
