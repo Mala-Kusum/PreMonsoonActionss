@@ -104,7 +104,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -116,7 +116,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -128,7 +128,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e1.getText().toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -143,7 +143,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -155,7 +155,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -167,7 +167,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e2.getText().toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -182,7 +182,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -194,7 +194,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e1.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -206,7 +206,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e3.getText().toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -245,7 +245,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -257,7 +257,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -269,7 +269,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e1.getText().toString().trim().length()==0){
-                            e1.setError("the feild cannot be empty");
+                            e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -284,7 +284,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -296,7 +296,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -308,7 +308,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e2.getText().toString().trim().length()==0){
-                            e2.setError("the feild cannot be empty");
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -323,7 +323,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -335,7 +335,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if(t.toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e2.getText().toString().isEmpty()||e1.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -347,7 +347,7 @@ public class addReport extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         if(e3.getText().toString().trim().length()==0){
-                            e3.setError("the feild cannot be empty");
+                            e3.setError("the field cannot be empty");
                             sb.setEnabled(false);
                         } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
@@ -380,8 +380,43 @@ public class addReport extends AppCompatActivity {
                 customDialog.setContentView(R.layout.dialog2);
                 customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb=customDialog.findViewById(R.id.save);
+                sb.setEnabled(false);
                 EditText e1;
                 e1=customDialog.findViewById(R.id.loc);
+                e1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if(e1.getText().toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if(t.toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        if(e1.getText().toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+                });
                 customDialog.show();
                 sb.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -402,6 +437,40 @@ public class addReport extends AppCompatActivity {
                 Button sb=customDialog.findViewById(R.id.save);
                 EditText e1;
                 e1=customDialog.findViewById(R.id.loc);
+                e1.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if(e1.getText().toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if(t.toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        if(e1.getText().toString().trim().length()==0){
+                            e1.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        }
+                        else{
+                            sb.setEnabled(true);
+                        }
+                    }
+                });
                 customDialog.show();
                 sb.setOnClickListener(new View.OnClickListener() {
                     @Override

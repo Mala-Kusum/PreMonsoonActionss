@@ -3,6 +3,8 @@ package com.example.premonsoonaction;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +74,48 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                     String docid=m.getPmu()+m.getName();
                     customDialog.show();
                     ModelEquipment eq=new ModelEquipment();
+                    edit.setEnabled(false);
+                    e.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
+                            if(t.toString().trim().length()==0){
+                                e.setError("the field cannot be empty");
+                                edit.setEnabled(false);
+                            }else if ((!t.toString().contains("0"))&&(!t.toString().contains("1"))&&(!t.toString().contains("2"))&&(!t.toString().contains("3"))&&(!t.toString().contains("4"))&&(!t.toString().contains("5"))&&(!t.toString().contains("6"))&&(!t.toString().contains("7"))&&(!t.toString().contains("8"))&&(!t.toString().contains("9"))) {
+                                e.setError("This field must contain at least 1 digit");
+                                edit.setEnabled(false);
+                            }
+                            else{
+                                edit.setEnabled(true);
+                            }
+                        }
+                        @Override
+                        public void onTextChanged(CharSequence t, int i, int i1, int i2) {
+                            if(t.toString().trim().length()==0){
+                                e.setError("the field cannot be empty");
+                                edit.setEnabled(false);
+                            }else if ((!t.toString().contains("0"))&&(!t.toString().contains("1"))&&(!t.toString().contains("2"))&&(!t.toString().contains("3"))&&(!t.toString().contains("4"))&&(!t.toString().contains("5"))&&(!t.toString().contains("6"))&&(!t.toString().contains("7"))&&(!t.toString().contains("8"))&&(!t.toString().contains("9"))) {
+                                e.setError("This field must contain at least 1 digit");
+                                edit.setEnabled(false);
+                            }
+                            else{
+                                edit.setEnabled(true);
+                            }
+                        }
+                        @Override
+                        public void afterTextChanged(Editable editable) {
+                            if(e.getText().toString().trim().length()==0){
+                                e.setError("the field cannot be empty");
+                                edit.setEnabled(false);
+                            }else if ((!e.getText().toString().contains("0"))&&(!e.getText().toString().contains("1"))&&(!e.getText().toString().contains("2"))&&(!e.getText().toString().contains("3"))&&(!e.getText().toString().contains("4"))&&(!e.getText().toString().contains("5"))&&(!e.getText().toString().contains("6"))&&(!e.getText().toString().contains("7"))&&(!e.getText().toString().contains("8"))&&(!e.getText().toString().contains("9"))) {
+                                e.setError("This field must contain at least 1 digit");
+                                edit.setEnabled(false);
+                            }
+                            else{
+                                edit.setEnabled(true);
+                            }
+                        }
+                    });
 
                     edit.setOnClickListener(new View.OnClickListener() {
                         @Override
