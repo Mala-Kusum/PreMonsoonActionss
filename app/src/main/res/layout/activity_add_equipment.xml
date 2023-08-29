@@ -12,38 +12,42 @@
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
         android:orientation="vertical">
-        <TextView
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Type"/>
+            android:text="Type"/>-->
         <EditText
             android:id="@+id/Type"
+            android:hint="Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"/>
-        <TextView
+        <!--<TextView
             android:id="@+id/notext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="No."/>
+            android:text="No."/>-->
         <EditText
             android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="No."
             android:inputType="text"/>
         <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location"
-            android:textStyle="bold"/>
+            android:text="Location: "/>
         <Spinner
             android:id="@+id/pmu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
         <Button
+            android:layout_marginTop="15dp"
             android:id="@+id/save"
             android:textStyle="bold"
             android:layout_width="match_parent"

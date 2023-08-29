@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,23 +40,25 @@ public class Add_Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
-        t=findViewById(R.id.notext);
+       // t=findViewById(R.id.notext);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         t1=findViewById(R.id.Type);
         t2=findViewById(R.id.no);
         save=findViewById(R.id.save);
+        save.setEnabled(false);
         this.setTitle("Add "+Equipments.eqt);
         switch(Action.selectedAction){
             case "Equipment":
-                t.setText("No.");
+                t2.setHint("No.");
                 Ref = db.collection("equipments");
                 break;
             case "Material":
-                t.setText("Quantity.");
+                t2.setHint("Quantity.");
+               // t.setText();
                 Ref = db.collection("materials");
                 break;
             case "Rate running":
-                t.setText("No.");
+                t2.setHint("No.");
                 Ref = db.collection("rate running contracts");
                 break;
         }
@@ -128,6 +132,98 @@ public class Add_Equipment extends AppCompatActivity {
                     selectedTextView.setText("Please select an option"); // actual error message
                     pmu.performClick(); // to open the spinner list if error is found.
                     save.setEnabled(false);
+                }
+            }
+        });
+        t1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int i, int i1, int i2) {
+                if(text.toString().trim().length()==0){
+                    t1.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                }
+                else if (t2.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int i, int i1, int i2) {
+                if(text.toString().trim().length()==0){
+                    t1.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                }
+                else if (t2.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(t1.getText().toString().trim().length()==0){
+                    t1.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                }
+                else if (t2.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+        });
+        t2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int i, int i1, int i2) {
+                if(text.toString().trim().length()==0){
+                    t2.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if ((!text.toString().contains("0"))&&(!text.toString().contains("1"))&&(!text.toString().contains("2"))&&(!text.toString().contains("3"))&&(!text.toString().contains("4"))&&(!text.toString().contains("5"))&&(!text.toString().contains("6"))&&(!text.toString().contains("7"))&&(!text.toString().contains("8"))&&(!text.toString().contains("9"))) {
+                    t2.setError("This field must contain at least 1 digit");
+                    save.setEnabled(false);
+                } else if (t1.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int i, int i1, int i2) {
+                if(text.toString().trim().length()==0){
+                    t2.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if ((!text.toString().contains("0"))&&(!text.toString().contains("1"))&&(!text.toString().contains("2"))&&(!text.toString().contains("3"))&&(!text.toString().contains("4"))&&(!text.toString().contains("5"))&&(!text.toString().contains("6"))&&(!text.toString().contains("7"))&&(!text.toString().contains("8"))&&(!text.toString().contains("9"))) {
+                    t2.setError("This field must contain at least 1 digit");
+                    save.setEnabled(false);
+                } else if (t1.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(t2.getText().toString().trim().length()==0){
+                    t2.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if ((!t2.getText().toString().contains("0"))&&(!t2.getText().toString().contains("1"))&&(!t2.getText().toString().contains("2"))&&(!t2.getText().toString().contains("3"))&&(!t2.getText().toString().contains("4"))&&(!t2.getText().toString().contains("5"))&&(!t2.getText().toString().contains("6"))&&(!t2.getText().toString().contains("7"))&&(!t2.getText().toString().contains("8"))&&(!t2.getText().toString().contains("9"))) {
+                    t2.setError("This field must contain at least 1 digit");
+                    save.setEnabled(false);
+                } else if (t1.getText().toString().trim().length()==0) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
                 }
             }
         });
