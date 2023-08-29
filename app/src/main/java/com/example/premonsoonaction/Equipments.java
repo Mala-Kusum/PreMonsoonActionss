@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -124,6 +125,28 @@ public class Equipments extends AppCompatActivity {
                 Intent i=new Intent(Equipments.this,Add_Equipment.class);
                 startActivity(i);
             }
+        });
+        filter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                s = s.toString().toLowerCase();
+
+                filtered = new ArrayList<>();
+
+                for (int j = 0; j < list.size(); j++) {
+                    final String text1 = list.get(j).getPmu().toLowerCase();
+                    final String text2 = list.get(j).getName().toLowerCase();
+                    if (text1.contains(s) || text2.contains(s)) {
+                        filtered.add(list.get(j));
+                    }
+                    adapt.filterList(filtered);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
         });
     }
 }
