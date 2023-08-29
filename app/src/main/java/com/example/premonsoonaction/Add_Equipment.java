@@ -38,7 +38,7 @@ public class Add_Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
-        t=findViewById(R.id.notext);
+       // t=findViewById(R.id.notext);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         t1=findViewById(R.id.Type);
         t2=findViewById(R.id.no);
@@ -46,15 +46,16 @@ public class Add_Equipment extends AppCompatActivity {
         this.setTitle("Add "+Equipments.eqt);
         switch(Action.selectedAction){
             case "Equipment":
-                t.setText("No.");
+                t2.setHint("No.");
                 Ref = db.collection("equipments");
                 break;
             case "Material":
-                t.setText("Quantity.");
+                t2.setHint("Quantity.");
+               // t.setText();
                 Ref = db.collection("materials");
                 break;
             case "Rate running":
-                t.setText("No.");
+                t2.setHint("No.");
                 Ref = db.collection("rate running contracts");
                 break;
         }
