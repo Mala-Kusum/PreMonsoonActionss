@@ -241,7 +241,7 @@
             <Button
                 android:id="@+id/submit"
                 android:textStyle="bold"
-                android:backgroundTint="#1F6E8C"
+                android:textColor="#1F6E8C"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="end"

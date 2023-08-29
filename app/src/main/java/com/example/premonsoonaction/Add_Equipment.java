@@ -192,6 +192,7 @@ public class Add_Equipment extends AppCompatActivity {
                 }
                 else{
                     save.setEnabled(true);
+                    save.setTextColor(Color.parseColor("#1F6E8C"));
                 }
             }
 
@@ -208,6 +209,7 @@ public class Add_Equipment extends AppCompatActivity {
                 }
                 else{
                     save.setEnabled(true);
+                    save.setTextColor(Color.parseColor("#1F6E8C"));
                 }
             }
 
@@ -224,6 +226,7 @@ public class Add_Equipment extends AppCompatActivity {
                 }
                 else{
                     save.setEnabled(true);
+                    save.setTextColor(Color.parseColor("#1F6E8C"));
                 }
             }
         });
