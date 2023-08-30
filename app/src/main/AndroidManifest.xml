@@ -13,35 +13,38 @@
         android:theme="@style/Theme.PreMonsoonAction"
         tools:targetApi="31">
         <activity
+            android:name=".PMUs"
+            android:exported="false" />
+        <activity
             android:name=".ShowReport"
             android:exported="false"
             android:label="Detailed Report"
-            android:parentActivityName=".Report"/>
+            android:parentActivityName=".Report" />
         <activity
             android:name=".Report"
             android:exported="false"
-            android:parentActivityName=".Action"
-            android:label="Action Taken Reports"/>
+            android:label="Action Taken Reports"
+            android:parentActivityName=".Action" />
         <activity
             android:name=".addReport"
             android:exported="false"
-            android:parentActivityName=".Report"
-            android:label="Add Report"/>
+            android:label="Add Report"
+            android:parentActivityName=".Report" />
         <activity
             android:name=".Add_Equipment"
             android:exported="false"
-            android:parentActivityName=".Equipments"/>
+            android:parentActivityName=".Equipments" />
         <activity
             android:name=".Equipments"
             android:exported="false"
-            android:parentActivityName=".Action"/>
+            android:parentActivityName=".Action" />
         <activity
             android:name=".Action"
             android:exported="false" />
         <activity
             android:name=".ROs"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -52,4 +55,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
