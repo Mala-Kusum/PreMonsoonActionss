@@ -23,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class MainActivity extends AppCompatActivity {
     Button login;
     public static String RO;
-    public static boolean HQ=false;
+    public static boolean HQ=false,ro=false,PMU=false;
     private FirebaseFirestore db;
     private CollectionReference Ref;
     EditText id,password;
@@ -54,11 +54,24 @@ public class MainActivity extends AppCompatActivity {
                                 if (doc.getData().get("TYPE").toString().equals(new String("HQ"))) {
                                     RO="HQ";
                                     HQ=true;
+                                    ro=false;
+                                    PMU=false;
                                     Intent i=new Intent(MainActivity.this,ROs.class);
                                     startActivity(i);
-                                } else {
+                                } else if(doc.getData().get("TYPE").toString().contains("RO")){
                                     RO = doc.getData().get("TYPE").toString();
                                     HQ=false;
+                                    ro=true;
+                                    PMU=false;
+                                    Intent intent = new Intent(MainActivity.this, PMUs.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    RO = doc.getData().get("TYPE").toString();
+                                    HQ=false;
+                                    ro=false;
+                                    PMU=true;
                                     Intent intent = new Intent(MainActivity.this, Action.class);
                                     startActivity(intent);
                                     finish();
