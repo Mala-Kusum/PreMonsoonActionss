@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                     HQ=false;
                                     ro=false;
                                     PMU=true;
-                                    Intent intent = new Intent(MainActivity.this, Action.class);
+                                    Intent intent = new Intent(MainActivity.this, PMUWise.class);
                                     startActivity(intent);
                                     finish();
                                 }
