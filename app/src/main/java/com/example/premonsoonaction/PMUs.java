@@ -14,7 +14,8 @@ public class PMUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pmus);
         grid=findViewById(R.id.grid);
-        placard_adapter ad=new placard_adapter(ROs.this,);
+        String[] s = getResources().getStringArray(R.array.Guwahati);
+        placard_adapter ad=new placard_adapter(PMUs.this,s);
         grid.setAdapter(ad);
     }
 }
