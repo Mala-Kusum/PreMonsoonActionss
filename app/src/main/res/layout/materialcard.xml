@@ -44,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="12345678888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888"/>
-        />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
