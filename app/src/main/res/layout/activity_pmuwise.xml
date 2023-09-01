@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PMUWise">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -21,4 +22,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />-->
+        <!--expanded view-->
+    <LinearLayout
+        android:id="@+id/materialcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="@integer/material_motion_duration_medium_2"
+            android:id="@+id/Name"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12345678888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888"/>
+        <TextView
+            android:layout_weight="@integer/material_motion_duration_long_2"
+            android:id="@+id/No"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12345678888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888"/>
+        />
+        <TextView
+            android:layout_weight="@integer/material_motion_duration_medium_2"
+            android:id="@+id/PMU"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12345678888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888"/>
+        <TextView
+            android:id="@+id/source"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="777777777777777777777777888888888888888855555555555555555555555555555555555"/>
+    </LinearLayout>
 </LinearLayout>
