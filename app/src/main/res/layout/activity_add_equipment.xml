@@ -40,12 +40,17 @@
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location: "/>
+            android:text="PMU: "/>
         <Spinner
             android:id="@+id/pmu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+        <EditText
+            android:id="@+id/Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"/>
         <Button
             android:layout_marginTop="15dp"
             android:id="@+id/save"

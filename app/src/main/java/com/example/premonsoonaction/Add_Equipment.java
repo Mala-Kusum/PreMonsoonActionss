@@ -33,7 +33,7 @@ public class Add_Equipment extends AppCompatActivity {
     ArrayAdapter<CharSequence> ad;
     private CollectionReference Ref;
     EditText t1,t2;
-    String name,n,loc;
+    String name,n,loc,locindet;
     Button save;
     Query querya;
     @Override
