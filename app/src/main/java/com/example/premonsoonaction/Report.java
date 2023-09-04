@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,6 +38,7 @@ public class Report extends AppCompatActivity {
     private FirebaseFirestore db;
     CollectionReference Ref;
     public static ReportAdapter ad;
+    TextView reset;
     public static boolean b1,b2;
 
     Query q;
@@ -50,6 +52,7 @@ public class Report extends AppCompatActivity {
         Ref = db.collection("checklist");
         l=new ArrayList<>();
         filtered=new ArrayList<>();
+        reset=findViewById(R.id.reset);
         ad=new ReportAdapter(Report.this, (ArrayList<reportGetModel>) l);
         r=findViewById(R.id.reportList);
         button=findViewById(R.id.addrepo);
@@ -161,6 +164,14 @@ public class Report extends AppCompatActivity {
                     b1=false;
                     b2=false;
                 }*/
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filtered.clear();
+
+                ad.filterList((ArrayList<reportGetModel>) l);
             }
         });
     }
