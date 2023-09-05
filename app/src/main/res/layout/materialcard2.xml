@@ -12,40 +12,35 @@
     app:cardCornerRadius="20dp"
     tools:ignore="MissingDefaultResource">
     <LinearLayout
+        android:id="@+id/materialcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/materialcard"
+        android:paddingVertical="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="@integer/material_motion_duration_medium_2"
+            android:id="@+id/Name"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="5dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_weight="@integer/material_motion_duration_medium_2"
-                android:id="@+id/Name"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1234567888888888888"/>
-            <TextView
-                android:layout_weight="@integer/material_motion_duration_long_2"
-                android:id="@+id/No"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1234567888"/>
+            android:text="1234567888888888888"/>
+        <TextView
+            android:layout_weight="@integer/material_motion_duration_long_2"
+            android:id="@+id/No"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1234567888"/>
 
-            <ImageView
-                android:id="@+id/drawer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_ff"/>
-
+        <ImageView
+            android:id="@+id/drawer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_ff"/>
     </LinearLayout>
 
 
