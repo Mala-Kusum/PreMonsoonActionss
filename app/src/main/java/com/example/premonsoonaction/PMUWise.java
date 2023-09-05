@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.anthonyfdev.dropdownview.DropDownView;
@@ -15,6 +17,8 @@ import com.anthonyfdev.dropdownview.DropDownView;
 public class PMUWise extends AppCompatActivity {
     DropDownView report;
     TextView action_type;
+    ArrayAdapter<CharSequence> ad;
+    Spinner s;
     TextView rate,equip,mater,actionreport;
     LinearLayout ratel,equipl,materl,reportl;
     CardView ratec,equipc,materc,reportc;
@@ -23,6 +27,11 @@ public class PMUWise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pmuwise);
+        equipc=findViewById(R.id.equipmentcard);
+        s=equipc.findViewById(R.id.inventory);
+        ad=ArrayAdapter.createFromResource(PMUWise.this,R.array.inventory,android.R.layout.simple_spinner_item);
+        s.setAdapter(ad);
+
         ratec=findViewById(R.id.raterunningcard);
         rate= findViewById(R.id.raterunning);
         ratel = findViewById(R.id.raterunninglayout);

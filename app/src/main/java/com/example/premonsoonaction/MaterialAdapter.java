@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>{
     Context context;
     ArrayList<ModelEquipment> l;
+    TextView detail;
 
     public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
         this.context = context;
@@ -56,6 +57,9 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         holder.no.setText(m.getNo());
         holder.pmu.setText(m.getPmu());
         Query q;
+        if(Action.selectedAction.equals("Rate running")){
+            holder.detail.setText(" Detail :  ");
+        }
         if(MainActivity.HQ){
             holder.materialcard.setOnClickListener(null);
         }
@@ -185,13 +189,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         LinearLayout materialcard;
-        TextView name,no,pmu;
+        TextView name,no,pmu,detail;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             materialcard=itemView.findViewById(R.id.materialcard);
             name=itemView.findViewById(R.id.Name);
             no=itemView.findViewById(R.id.No);
             pmu=itemView.findViewById(R.id.PMU);
+            detail=itemView.findViewById(R.id.detail);
         }
     }
 }

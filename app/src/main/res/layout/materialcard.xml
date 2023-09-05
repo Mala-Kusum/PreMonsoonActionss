@@ -50,7 +50,12 @@
                 android:layout_height="wrap_content"
                 android:text="12345678888888888888888888888"/>
             />
-            <TextView
+            <ImageView
+                android:id="@+id/drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_ff"/>
+            <!--<TextView
                 android:layout_weight="@integer/material_motion_duration_medium_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,9 +64,9 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 android:text="33333333333333333333336666"
-                />
+                />-->
         </LinearLayout>
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -71,15 +76,16 @@
                 android:outlineAmbientShadowColor="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ownership :  "
+                android:text=" Ownership :  "
                 />
             <TextView
                 android:id="@+id/detailtext"
                 android:textStyle="bold"
+                android:drawableTop="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="000000000000000000000000000000000000000000"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
     </LinearLayout>
 

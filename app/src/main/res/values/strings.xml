@@ -20,6 +20,10 @@
     <string name="add_location_inspected">Add Location Inspected</string>
     <string name="add_location_of_warning_signs_installed">Add Location of warning signs installed</string>
     <string name="submit">Submit</string>
+    <string-array name="inventory">
+        <item>"Equipments</item>
+        <item>"Material</item>
+    </string-array>
     <string-array name="SRINAGAR">
         <item>"PMU-SONAMARG"</item>
         <item>"PMU-ANANTNAG"</item>
