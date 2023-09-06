@@ -24,6 +24,9 @@
         <item>"Equipments</item>
         <item>"Material</item>
     </string-array>
+    <string-array name="rate_running">
+        <item> Select </item>
+    </string-array>
     <string-array name="Equipments">
         <item>  Select  </item>
         <item>	Asphalt mixers	</item>

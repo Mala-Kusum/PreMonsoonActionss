@@ -51,24 +51,30 @@
 
         </LinearLayout>
         <EditText
+            android:id="@+id/startDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Start Date"
             android:inputType="date"/>
         <EditText
+            android:id="@+id/endDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="End Date"
             android:inputType="date"/>
         <EditText
+            android:id="@+id/contractorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contractor Name"/>
         <EditText
+            android:id="@+id/contractorNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contractor Number"/>
+            android:hint="Contractor Number"
+            android:inputType="phone"/>
         <EditText
+            android:id="@+id/contractorMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contractor mail ID"/>
