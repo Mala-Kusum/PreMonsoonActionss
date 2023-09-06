@@ -512,11 +512,4 @@
 
     </ScrollView>
 
-    <!--<com.anthonyfdev.dropdownview.DropDownView
-        android:id="@+id/report"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />-->
-        <!--expanded view-->
-
 </LinearLayout>
