@@ -196,7 +196,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             name=itemView.findViewById(R.id.Name);
             no=itemView.findViewById(R.id.No);
             pmu=itemView.findViewById(R.id.PMU);
-            detail=itemView.findViewById(R.id.detail);
+            //detail=itemView.findViewById(R.id.detail);
         }
     }
 }

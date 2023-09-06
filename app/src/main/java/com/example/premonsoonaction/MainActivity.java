@@ -22,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
     Button login;
-    public static String RO;
+    public static String RO,pmu;
     public static boolean HQ=false,ro=false,PMU=false;
     private FirebaseFirestore db;
     private CollectionReference Ref;
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("accounts");
+        Intent i=new Intent(MainActivity.this,Add_Equipment.class);
+        startActivity(i);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                     finish();
                                 }
                                 else{
-                                    RO = doc.getData().get("TYPE").toString();
+                                    pmu = doc.getData().get("TYPE").toString();
                                     HQ=false;
                                     ro=false;
                                     PMU=true;

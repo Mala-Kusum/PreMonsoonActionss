@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_neutral60"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:background="@color/material_dynamic_neutral60">
+        <EditText
+            android:id="@+id/ownership"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ownership"/>
+        <EditText
+            android:id="@+id/Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"/>
+        <Button
+            android:id="@+id/save"
+            android:backgroundTint="@color/material_dynamic_neutral30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+    </LinearLayout>
+
+</LinearLayout>

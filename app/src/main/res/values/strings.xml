@@ -24,6 +24,50 @@
         <item>"Equipments</item>
         <item>"Material</item>
     </string-array>
+    <string-array name="Equipments">
+        <item>  Select  </item>
+        <item>	Asphalt mixers	</item>
+        <item>	Asphalt Paver Finisher	</item>
+        <item>	Bitumen drum Decanter	</item>
+        <item>	Bitumen emulsion Sprayer	</item>
+        <item>	Bitumen pressure distributer @ 1750 sqm per hr.	</item>
+        <item>	Bitumen sprayer	</item>
+        <item>	bucket capacity	</item>
+        <item>	Bulldozer	</item>
+        <item>	Compactor	</item>
+        <item>	Compressor	</item>
+        <item>	Concrete Mixer	</item>
+        <item>	Dump truck	</item>
+        <item>	Electronic Control(Minimum 75 TPH Capacity)	</item>
+        <item>	Engine	</item>
+        <item>	Excavator	</item>
+        <item>	Excavator 1.0 cum	</item>
+        <item>	Forklift truck	</item>
+        <item>	Four Bin Feeder	</item>
+        <item>	Front end Loader	</item>
+        <item>	Generator set with Tower Light (63/100/250 KVA)	</item>
+        <item>	Grader	</item>
+        <item>	Heavy Duty Chain Saw	</item>
+        <item>	Highway engineering	</item>
+        <item>	Hot Mix plant with	</item>
+        <item>	Hydraulic Excavator/JCB	</item>
+        <item>	Mobile crane	</item>
+        <item>	Mobile lab	</item>
+        <item>	Motor Grader 	</item>
+        <item>	Paver	</item>
+        <item>	Paver finisher	</item>
+        <item>	Road roller	</item>
+        <item>	Smooth Wheeled Roller	</item>
+        <item>	Tandem Roller	</item>
+        <item>	Telescopic handler	</item>
+        <item>	Tipper/Trucks	</item>
+        <item>	Tire	</item>
+        <item>	Trolley mounted bitumen sprayer	</item>
+        <item>	Vibratory Roller	</item>
+        <item>	Water Tanker	</item>
+        <item>	Wheel loader	</item>
+        <item>	Wheel tractor-scraper	</item>
+    </string-array>
     <string-array name="SRINAGAR">
         <item>"PMU-SONAMARG"</item>
         <item>"PMU-ANANTNAG"</item>

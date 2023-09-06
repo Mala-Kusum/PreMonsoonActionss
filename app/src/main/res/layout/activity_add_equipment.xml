@@ -12,30 +12,24 @@
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
         android:orientation="vertical">
-        <!--<TextView
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Type"/>-->
-        <EditText
+            android:text="Type: "/>
+        <Spinner
             android:id="@+id/Type"
-            android:hint="Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
-        <!--<TextView
-            android:id="@+id/notext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="No."/>-->
+            />
         <EditText
             android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="No."
             android:inputType="text"/>
-        <TextView
+        <!--<TextView
             android:layout_marginTop="10dp"
             android:textSize="20dp"
             android:layout_width="match_parent"
@@ -45,12 +39,29 @@
             android:id="@+id/pmu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <EditText
-            android:id="@+id/location"
-            android:layout_width="match_parent"
+            />-->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Detailed Location"/>
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/addloc"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/add_identified_location" />
+
+        </LinearLayout>
 
         <Button
             android:layout_marginTop="15dp"

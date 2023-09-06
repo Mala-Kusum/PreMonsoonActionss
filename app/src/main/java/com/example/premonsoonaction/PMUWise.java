@@ -32,7 +32,7 @@ public class PMUWise extends AppCompatActivity {
         ad=ArrayAdapter.createFromResource(PMUWise.this,R.array.inventory,android.R.layout.simple_spinner_item);
         s.setAdapter(ad);
 
-        ratec=findViewById(R.id.raterunningcard);
+        /*ratec=findViewById(R.id.raterunningcard);
         rate= findViewById(R.id.raterunning);
         ratel = findViewById(R.id.raterunninglayout);
         ratel.setVisibility(View.GONE);
@@ -47,7 +47,7 @@ public class PMUWise extends AppCompatActivity {
         reportc=findViewById(R.id.reportcard);
         actionreport=findViewById(R.id.report);
         reportl=findViewById(R.id.reportlayout);
-        reportl.setVisibility(View.GONE);
+        reportl.setVisibility(View.GONE);*/
 
         expandedeq=false;
         expandedmat=false;
