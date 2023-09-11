@@ -27,16 +27,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Add_Equipment extends AppCompatActivity {
-    //Spinner pmu;
-    Spinner eq;
+public class Add_Material extends AppCompatActivity {
+    Spinner mat;
     ImageView i;
     ArrayAdapter<CharSequence> ad1;
     private CollectionReference Ref;
-    EditText t2;
+    EditText t;
     String name, n, loc;
     Button save;
     Query querya;
@@ -44,41 +40,27 @@ public class Add_Equipment extends AppCompatActivity {
     String[] locs;
     ModelEquipment me;
     int j;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_equipment);
+        setContentView(R.layout.activity_add_material);
+
         j = 0;
-        // t=findViewById(R.id.notext);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // t1=findViewById(R.id.Type);
-        t2 = findViewById(R.id.no);
+        Ref = db.collection("materials");
+
+        t = findViewById(R.id.no);
         save = findViewById(R.id.save);
         save.setEnabled(false);
         i = findViewById(R.id.addloc);
-        Ref = db.collection("equipments");
-        //this.setTitle("Add " + Action.selectedAction);
-        /*switch (Action.selectedAction) {
-            case "Equipment":
-                t2.setHint("No.");
+        mat = findViewById(R.id.Type);
 
-                break;
-            case "Material":
-                t2.setHint("Quantity.");
-                // t.setText();
-                Ref = db.collection("materials");
-                break;
-            case "Rate running":
-                t2.setHint("No.");
-                Ref = db.collection("rate running contracts");
-                break;
-        }*/
-        eq = findViewById(R.id.Type);
-        ad1 = ArrayAdapter.createFromResource(Add_Equipment.this, R.array.Equipments, android.R.layout.simple_spinner_item);
+        ad1 = ArrayAdapter.createFromResource(com.example.premonsoonaction.Add_Material.this, R.array.Materials, android.R.layout.simple_spinner_item);
         ad1.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        eq.setAdapter(ad1);
-        eq.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mat.setAdapter(ad1);
+
+        mat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 name = (String) adapterView.getItemAtPosition(i);
@@ -87,14 +69,14 @@ public class Add_Equipment extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                View selectedView = eq.getSelectedView();
+                View selectedView = mat.getSelectedView();
                 if (selectedView instanceof TextView) {
-                    eq.requestFocus();
+                    mat.requestFocus();
                     TextView selectedTextView = (TextView) selectedView;
                     selectedTextView.setError("error"); // any name of the error will do
                     selectedTextView.setTextColor(Color.RED); //text color in which you want your error message to be displayed
                     selectedTextView.setText("Please select an option"); // actual error message
-                    eq.performClick(); // to open the spinner list if error is found.
+                    mat.performClick(); // to open the spinner list if error is found.
                     save.setEnabled(false);
                 }
             }
@@ -103,7 +85,7 @@ public class Add_Equipment extends AppCompatActivity {
         i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customDialog = new Dialog(Add_Equipment.this);
+                customDialog = new Dialog(com.example.premonsoonaction.Add_Material.this);
                 customDialog.setContentView(R.layout.dialog);
                 customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb = customDialog.findViewById(R.id.save);
@@ -197,122 +179,7 @@ public class Add_Equipment extends AppCompatActivity {
                 });
             }
         });
-        //pmu=findViewById(R.id.pmu);
-        /*switch(MainActivity.RO){
-            case"Ro-Leh/Srinagar":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.LehSrinagar, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Shillong":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Shillong, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-LADAKH":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.LADAKH, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Kohima":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Kohima, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Jammu":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Jammu, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Itanagar":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Itanagar, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Imphal":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Imphal, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Guwahati":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Guwahati, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Gangtok":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Gangtok, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Dehradun":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Dehradun, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Aizwal":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Aizwal, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Agartala":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Agartala, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Port Blair":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.PortBlair, android.R.layout.simple_spinner_item);
-                break;
-            case"RO-Srinagar":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.SRINAGAR, android.R.layout.simple_spinner_item);
-                break;
-            case"New Delhi":
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.NewDelhi, android.R.layout.simple_spinner_item);
-                break;
-            default:
-                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Select, android.R.layout.simple_spinner_item);
-        }*/
-        //ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        //pmu.setAdapter(ad);
-       /* pmu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                loc=(String) adapterView.getItemAtPosition(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                View selectedView = pmu.getSelectedView();
-                if (selectedView instanceof TextView) {
-                    pmu.requestFocus();
-                    TextView selectedTextView = (TextView) selectedView;
-                    selectedTextView.setError("error"); // any name of the error will do
-                    selectedTextView.setTextColor(Color.RED); //text color in which you want your error message to be displayed
-                    selectedTextView.setText("Please select an option"); // actual error message
-                    pmu.performClick(); // to open the spinner list if error is found.
-                    save.setEnabled(false);
-                }
-            }
-        });*/
-       /* t1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence text, int i, int i1, int i2) {
-                if(text.toString().trim().length()==0){
-                    t1.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                }
-                else if (t2.getText().toString().trim().length()==0) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence text, int i, int i1, int i2) {
-                if(text.toString().trim().length()==0){
-                    t1.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                }
-                else if (t2.getText().toString().trim().length()==0) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(t1.getText().toString().trim().length()==0){
-                    t1.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                }
-                else if (t2.getText().toString().trim().length()==0) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-        });*/
-        t2.addTextChangedListener(new TextWatcher() {
+        t.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                 if(t.toString().trim().isEmpty()){
@@ -335,7 +202,7 @@ public class Add_Equipment extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(t2.getText().toString().trim().isEmpty()){
+                if(t.getText().toString().trim().isEmpty()){
                     save.setEnabled(false);
                 }
                 else{
@@ -346,14 +213,9 @@ public class Add_Equipment extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //name = t1.getText().toString();
-                n = t2.getText().toString();
+                n = t.getText().toString();
                 me.setNo(n);
                 me.setPmu(MainActivity.pmu);
-                /*Map<String, String> m = new HashMap<String, String>();
-                m.put("name", name);
-                m.put("no", n);
-                m.put("pmu", loc);*/
                 me.setLocations(locs);
                 querya = Ref.whereEqualTo("NAME", name).whereEqualTo("PMU", loc);
                 querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -374,7 +236,7 @@ public class Add_Equipment extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            Toast.makeText(Add_Equipment.this, "This " + "Equipment" + " for " + loc + "already exists. You may edit that data.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(com.example.premonsoonaction.Add_Material.this, "This " + "Material" + " for " + loc + "already exists. You may edit that data.", Toast.LENGTH_SHORT).show();
                         }
                     }
 
