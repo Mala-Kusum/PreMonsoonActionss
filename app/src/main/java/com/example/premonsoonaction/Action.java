@@ -20,6 +20,7 @@ public class Action extends AppCompatActivity {
         actiontaken=findViewById(R.id.actiontaken);
         material=findViewById(R.id.materials);
         raterunning=findViewById(R.id.raterunning);
+        selectedAction="Equipment";
         actiontaken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

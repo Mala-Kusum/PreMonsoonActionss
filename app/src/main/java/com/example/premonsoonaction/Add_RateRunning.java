@@ -43,7 +43,7 @@ public class Add_RateRunning extends AppCompatActivity {
                     save.setEnabled(false);
                 }
                 else{
-                    save.setEnabled(true;);
+                    save.setEnabled(true);
                 }
             }
 
@@ -56,7 +56,7 @@ public class Add_RateRunning extends AppCompatActivity {
                     save.setEnabled(false);
                 }
                 else{
-                    save.setEnabled(true;);
+                    save.setEnabled(true);
                 }
             }
 

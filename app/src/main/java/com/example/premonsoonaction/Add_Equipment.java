@@ -57,7 +57,7 @@ public class Add_Equipment extends AppCompatActivity {
         save = findViewById(R.id.save);
         save.setEnabled(false);
         i = findViewById(R.id.addloc);
-        this.setTitle("Add " + Equipments.eqt);
+        //this.setTitle("Add " + Action.selectedAction);
         switch (Action.selectedAction) {
             case "Equipment":
                 t2.setHint("No.");
