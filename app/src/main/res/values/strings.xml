@@ -26,6 +26,10 @@
     </string-array>
     <string-array name="rate_running">
         <item> Select </item>
+        <item> Ordinary Repairs </item>
+        <item> Emergant Repairs </item>
+        <item> Restoration and Repairs </item>
+        <item> Special Repairs </item>
     </string-array>
     <string-array name="Materials">
         <item> Select </item>

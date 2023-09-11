@@ -27,6 +27,7 @@
                 <TextView
                     android:id="@+id/inventory"
                     android:text="Inventory"
+                    android:textStyle="bold"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -43,6 +44,7 @@
                     <TextView
                         android:id="@+id/equipment"
                         android:text="Equipments"
+                        android:textStyle="bold"
                         android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
@@ -70,6 +72,7 @@
                     <TextView
                         android:id="@+id/material"
                         android:text="Materials"
+                        android:textStyle="bold"
                         android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
@@ -111,6 +114,7 @@
                 <TextView
                     android:id="@+id/raterunning"
                     android:text="Rate Running Contracts"
+                    android:textStyle="bold"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -150,6 +154,7 @@
                 <TextView
                     android:id="@+id/actionreports"
                     android:text="Action Taken Reports"
+                    android:textStyle="bold"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
