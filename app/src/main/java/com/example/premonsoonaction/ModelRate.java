@@ -4,8 +4,37 @@ import java.util.Date;
 
 public class ModelRate {
     int no,number;
-    String cname,cemail,name,location;
-    Date start,end;
+    String cname;
+    String cemail;
+    String name;
+    String location;
+    String end;
+    String start;
+
+    public String getPmu() {
+        return pmu;
+    }
+
+    public void setPmu(String pmu) {
+        this.pmu = pmu;
+    }
+
+    String pmu;
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
 
     public int getNo() {
         return no;
@@ -55,19 +84,4 @@ public class ModelRate {
         this.location = location;
     }
 
-    public Date getStart() {
-        return start;
-    }
-
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
 }

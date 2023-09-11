@@ -58,6 +58,7 @@ public class Add_Equipment extends AppCompatActivity {
         save.setEnabled(false);
         i = findViewById(R.id.addloc);
         Ref = db.collection("equipments");
+        loc=MainActivity.pmu;
         //this.setTitle("Add " + Action.selectedAction);
         /*switch (Action.selectedAction) {
             case "Equipment":

@@ -33,13 +33,15 @@ public class Add_Material extends AppCompatActivity {
     ArrayAdapter<CharSequence> ad1;
     private CollectionReference Ref;
     EditText t;
-    String name, n, loc;
+    String name, n;
     Button save;
     Query querya;
     Dialog customDialog;
     String[] locs;
     ModelEquipment me;
     int j;
+    private String loc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class Add_Material extends AppCompatActivity {
         save.setEnabled(false);
         i = findViewById(R.id.addloc);
         mat = findViewById(R.id.Type);
+        loc=MainActivity.pmu;
 
         ad1 = ArrayAdapter.createFromResource(com.example.premonsoonaction.Add_Material.this, R.array.Materials, android.R.layout.simple_spinner_item);
         ad1.setDropDownViewResource(android.R.layout.simple_spinner_item);

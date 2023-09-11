@@ -29,6 +29,71 @@
     </string-array>
     <string-array name="Materials">
         <item> Select </item>
+        <item>	AAC	</item>
+        <item>	AAC Concrete Blocks	</item>
+        <item>	Adhesives	</item>
+        <item>	Adjustable Props	</item>
+        <item>	Admixtures	</item>
+        <item>	Anti Corrosive Paints	</item>
+        <item>	Ceramic Tiles	</item>
+        <item>	Clay Bricks	</item>
+        <item>	Composite Bricks	</item>
+        <item>	Concrete Blocks	</item>
+        <item>	Construction Chemicals	</item>
+        <item>	CRMB-55	</item>
+        <item>	CRMB-60	</item>
+        <item>	Cuplocks	</item>
+        <item>	Emulsions- RS/SS	</item>
+        <item>	Enamels	</item>
+        <item>	Epoxy Coatings	</item>
+        <item>	Floor Hardeners	</item>
+        <item>	Fly Ash	</item>
+        <item>	Fly-Ash Bricks	</item>
+        <item>	Glass Tiles	</item>
+        <item>	Glazed Tiles	</item>
+        <item>	Gloss Paints	</item>
+        <item>	Grouts	</item>
+        <item>	Hollow Bricks	</item>
+        <item>	Ledgers	</item>
+        <item>	Manhole Covers	</item>
+        <item>	Matte Paints	</item>
+        <item>	Morrum	</item>
+        <item>	MS	</item>
+        <item>	MS Pipes	</item>
+        <item>	OPC	</item>
+        <item>	Pipes	</item>
+        <item>	Pipes	</item>
+        <item>	Pipes	</item>
+        <item>	Plumbing Items	</item>
+        <item>	Plywoods	</item>
+        <item>	Polymer Modified Bitumen	</item>
+        <item>	PPC	</item>
+        <item>	Precast Concrete	</item>
+        <item>	PSC	</item>
+        <item>	Ready Mix	</item>
+        <item>	Ready-Mix Concrete	</item>
+        <item>	Refractory Bricks	</item>
+        <item>	Reinforcement Steel	</item>
+        <item>	Road Marking	</item>
+        <item>	Sand	</item>
+        <item>	Sanitarywares	</item>
+        <item>	Scaffolding Items	</item>
+        <item>	Sealants	</item>
+        <item>	Shredded Waste Plastic	</item>
+        <item>	Silica	</item>
+        <item>	Softwood/Hardwood	</item>
+        <item>	Special Concrete	</item>
+        <item>	SRPC	</item>
+        <item>	Stainless Steel	</item>
+        <item>	Stone	</item>
+        <item>	Structural Steel	</item>
+        <item>	Unglazed Tiles	</item>
+        <item>	VG-10	</item>
+        <item>	VG-30	</item>
+        <item>	VG-40	</item>
+        <item>	Vitrified Tiles	</item>
+        <item>	Wash Basins	</item>
+        <item>	Waterproofing Coatings	</item>
     </string-array>
     <string-array name="Equipments">
         <item>  Select  </item>

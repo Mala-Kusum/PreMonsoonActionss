@@ -1,11 +1,13 @@
 package com.example.premonsoonaction;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,14 +16,25 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
+import java.util.Date;
+
 public class Add_RateRunning extends AppCompatActivity {
 
     EditText no,start,end,cname,cnumber,cmail,location;
     Spinner rate;
     ArrayAdapter ad;
     Button save;
-    private String name;
+    private String name,loc;
     ModelRate rat;
+    CollectionReference Ref;
+
+    Query q;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +48,9 @@ public class Add_RateRunning extends AppCompatActivity {
         cmail=findViewById(R.id.contractorMail);
         rate=findViewById(R.id.Type);
         location = findViewById(R.id.addloc);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Ref = db.collection("rate running contracts");
+        loc=MainActivity.pmu;
 
         rat = new ModelRate();
 
@@ -307,6 +323,39 @@ public class Add_RateRunning extends AppCompatActivity {
                 else{
                     save.setEnabled(true);
                 }
+            }
+        });
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rat.setName(name.trim());
+                rat.setNo(Integer.parseInt(no.getText().toString().trim()));
+                rat.setStart(start.getText().toString().trim());
+                rat.setEnd(end.getText().toString().trim());
+                rat.setCname(cname.getText().toString().trim());
+                rat.setNumber(Integer.parseInt(cnumber.getText().toString().trim()));
+                rat.setLocation(location.getText().toString().trim());
+                rat.setPmu(MainActivity.pmu);
+                if(cmail.getText().toString().trim().isEmpty()){
+                    rat.setCemail(" ");
+                }
+                else{
+                    rat.setCemail(cmail.getText().toString().trim());
+                }
+                Ref.document(loc + name).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("TAG", "DocumentSnapshot successfully updated!");
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Error updating details", e.toString());
+                        finish();
+                    }
+                });
             }
         });
     }
