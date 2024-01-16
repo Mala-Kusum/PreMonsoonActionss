@@ -35,7 +35,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     public ReportAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v= LayoutInflater.from(context).inflate(R.layout.reportcard,parent,false);
-        ReportAdapter.MyViewHolder viewHolder = new ReportAdapter.MyViewHolder(v);
+        ReportAdapter.MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
     }
 

@@ -38,12 +38,10 @@ public class MainActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("accounts");
-        Intent i=new Intent(MainActivity.this,Add_Equipment.class);
-        startActivity(i);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = id.getText().toString();
+               /* email = id.getText().toString();
                 pswd = password.getText().toString();
                 query = Ref.whereEqualTo("EMAIL", email).whereEqualTo("PASSWORD", pswd);
                 query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -87,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("mainActivity ", "inquery");
                         //Log.e("tage", e.toString());
                     }
-                });
+                });*/
+                Intent i=new Intent(MainActivity.this,ROs.class);
+                startActivity(i);
             }
         });
     }

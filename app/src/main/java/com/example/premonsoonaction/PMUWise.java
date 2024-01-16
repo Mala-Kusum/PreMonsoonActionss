@@ -27,7 +27,7 @@ public class PMUWise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pmuwise);
-        equipc=findViewById(R.id.equipmentcard);
+        /*equipc=findViewById(R.id.equipmentcard);*/
         s=equipc.findViewById(R.id.inventory);
         ad=ArrayAdapter.createFromResource(PMUWise.this,R.array.inventory,android.R.layout.simple_spinner_item);
         s.setAdapter(ad);

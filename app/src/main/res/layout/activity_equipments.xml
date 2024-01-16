@@ -9,7 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
         <EditText
@@ -19,47 +22,51 @@
             android:layout_marginHorizontal="10dp"
             android:hint="Search by anything...."
             android:maxLines="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:layout_weight="@integer/material_motion_duration_medium_2"
                 android:id="@+id/Name"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Type"/>
-            <TextView
-                android:layout_weight="@integer/material_motion_duration_long_2"
-                android:id="@+id/No"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="No."/>
-            />
-            <TextView
                 android:layout_weight="@integer/material_motion_duration_medium_2"
-                android:id="@+id/PMU"
-                android:textStyle="bold"
                 android:gravity="center"
+                android:text="Type"
                 android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/No"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Location"/>
+                android:layout_weight="@integer/material_motion_duration_long_2"
+                android:gravity="center"
+                android:text="No."
+                android:textAlignment="center"
+                android:textStyle="bold" />
+            />
+
+            <TextView
+                android:id="@+id/PMU"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="@integer/material_motion_duration_medium_2"
+                android:gravity="center"
+                android:text="Location"
+                android:textAlignment="center"
+                android:textStyle="bold" />
             />
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/SearchByDesignation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:scrollbars="vertical"
-            />
+            android:scrollbars="vertical" />
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"

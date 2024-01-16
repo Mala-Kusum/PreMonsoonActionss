@@ -20,6 +20,12 @@
     <string name="add_location_inspected">Add Location Inspected</string>
     <string name="add_location_of_warning_signs_installed">Add Location of warning signs installed</string>
     <string name="submit">Submit</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="contractor_name">Contractor Name</string>
+    <string name="contractor_number">Contractor Number</string>
+    <string name="contractor_mail_id">Contractor mail ID</string>
+    <string name="save">save</string>
     <string-array name="inventory">
         <item>"Equipments</item>
         <item>"Material</item>

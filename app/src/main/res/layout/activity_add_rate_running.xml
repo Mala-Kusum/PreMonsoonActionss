@@ -6,34 +6,39 @@
     android:backgroundTint="#E3F4F4"
     android:layout_marginHorizontal="20dp"
     tools:context=".Add_Equipment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="64dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="69dp">
+
         <TextView
-            android:layout_marginTop="10dp"
-            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type: "/>
+            android:layout_marginTop="10dp"
+            android:text="Type: "
+            android:textSize="20dp" />
+
         <Spinner
             android:id="@+id/Type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="No."
-            android:inputType="text"/>
+            android:inputType="text" />
+
         <EditText
             android:id="@+id/addloc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Location"
-            android:inputType="text"/>
+            android:inputType="text" />
         <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,38 +65,42 @@
             android:id="@+id/startDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Start Date"
-            android:inputType="date"/>
+            android:hint="@string/start_date"
+            android:inputType="date" />
+
         <EditText
             android:id="@+id/endDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="End Date"
-            android:inputType="date"/>
+            android:hint="@string/end_date"
+            android:inputType="date" />
+
         <EditText
             android:id="@+id/contractorName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contractor Name"/>
+            android:hint="@string/contractor_name" />
+
         <EditText
             android:id="@+id/contractorNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contractor Number"
-            android:inputType="phone"/>
+            android:hint="@string/contractor_number"
+            android:inputType="phone" />
+
         <EditText
             android:id="@+id/contractorMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contractor mail ID"/>
+            android:hint="@string/contractor_mail_id" />
 
         <Button
-            android:layout_marginTop="15dp"
             android:id="@+id/save"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="save"/>
+            android:layout_marginTop="15dp"
+            android:text="@string/save"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

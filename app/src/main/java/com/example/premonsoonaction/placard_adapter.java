@@ -34,14 +34,16 @@ public class placard_adapter extends RecyclerView.Adapter<placard_adapter.MyView
             @Override
             public void onClick(View v) {
                 MainActivity.RO=holder.text.getText().toString();
-                if(MainActivity.PMU){
+                /*if(MainActivity.PMU){
                     Intent i=new Intent(context, PMUWise.class);
                     context.startActivity(i);
                 }
                 else{
                     Intent i=new Intent(context, Action.class);
                     context.startActivity(i);
-                }
+                }*/
+                Intent i=new Intent(context, Action.class);
+                context.startActivity(i);
             }
         });
     }
