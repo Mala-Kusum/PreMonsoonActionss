@@ -26,6 +26,9 @@
     <string name="contractor_number">Contractor Number</string>
     <string name="contractor_mail_id">Contractor mail ID</string>
     <string name="save">save</string>
+    <string name="equipments">Equipments</string>
+    <string name="no">No.</string>
+    <string name="pmu">PMU</string>
     <string-array name="inventory">
         <item>"Equipments</item>
         <item>"Material</item>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +57,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
         holder.pmu.setText(m.getPmu());
-        Query q;
+        Query q ;
         if(Action.selectedAction.equals("Rate running")){
             holder.detail.setText(" Detail :  ");
         }
@@ -64,18 +65,19 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             holder.materialcard.setOnClickListener(null);
         }
         else{
-            holder.materialcard.setOnClickListener(new View.OnClickListener() {
+            holder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Dialog customDialog = new Dialog(context);
-                    customDialog.setContentView(R.layout.dialog3);
+                    //customDialog.setContentView(R.layout.dialog3);
+                    customDialog.setContentView(R.layout.dialog5);
                     customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                     Button edit=customDialog.findViewById(R.id.edit);
                     Button delete=customDialog.findViewById(R.id.delete);
                     // Button cancel=customDialog.findViewById(R.id.cancel);
                     EditText e;
                     e=customDialog.findViewById(R.id.amount);
-                    String docid=m.getPmu()+m.getName();
+                    String docid = m.getPmu()+m.getName();
                     customDialog.show();
                     ModelEquipment eq=new ModelEquipment();
                     edit.setEnabled(false);
@@ -190,12 +192,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder{
         LinearLayout materialcard;
         TextView name,no,pmu,detail;
+        ImageView imageButton;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             materialcard=itemView.findViewById(R.id.materialcard);
             name=itemView.findViewById(R.id.Name);
             no=itemView.findViewById(R.id.No);
             pmu=itemView.findViewById(R.id.PMU);
+            imageButton=itemView.findViewById(R.id.drawer);
             //detail=itemView.findViewById(R.id.detail);
         }
     }
