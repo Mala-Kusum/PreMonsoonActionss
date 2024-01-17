@@ -37,9 +37,10 @@ public class Equipments extends AppCompatActivity {
     private FirebaseFirestore db;
     public static CollectionReference Ref;
     Query querya;
-    RecyclerView recycler;
+    RecyclerView recycler,recyclerPMUwise;
     MaterialAdapter adapt;
-    ArrayList<ModelEquipment> list,filtered;
+    EqPMUWiseAdapter ad;
+    public static ArrayList<ModelEquipment> list,filtered;
     TextView t;
     EditText filter;
     public static String eqt;
@@ -57,6 +58,8 @@ public class Equipments extends AppCompatActivity {
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        //recyler for PMUwise split currently only displays list as in equipment list, it has to be changed while working on backend.
+
         if(MainActivity.HQ){
             add.setVisibility(View.INVISIBLE);
         }
