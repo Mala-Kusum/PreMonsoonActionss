@@ -1,17 +1,13 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,19 +15,17 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.premonsoonaction.Models.Location;
+import com.example.premonsoonaction.Models.ModelReportCheckList;
+import com.example.premonsoonaction.R;
+import com.example.premonsoonaction.Models.Vulnerable;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.ServerTimestamp;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.WriteBatch;
-import com.google.firestore.v1.DocumentTransform;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,13 +16,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.premonsoonaction.Models.ModelRate;
+import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-
-import java.util.Date;
 
 public class Add_RateRunning extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class Add_RateRunning extends AppCompatActivity {
         location = findViewById(R.id.addloc);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
-        loc=MainActivity.pmu;
+        loc= MainActivity.pmu;
 
         rat = new ModelRate();
 

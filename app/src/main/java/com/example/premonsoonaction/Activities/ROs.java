@@ -1,9 +1,12 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.premonsoonaction.AdapterClasses.placard_adapter;
+import com.example.premonsoonaction.R;
 
 public class ROs extends AppCompatActivity {
     RecyclerView grid;

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="#E3F4F4"
     android:layout_marginHorizontal="20dp"
-    tools:context=".Add_Equipment">
+    tools:context=".Activities.Add_Equipment">
 
     <LinearLayout
         android:layout_width="match_parent"

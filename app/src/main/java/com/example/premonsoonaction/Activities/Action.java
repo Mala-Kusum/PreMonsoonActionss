@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.premonsoonaction.R;
 
 public class Action extends AppCompatActivity {
     Button equipment,actiontaken,material,raterunning;
@@ -25,7 +27,7 @@ public class Action extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedAction="Report";
-                Intent i=new Intent(Action.this,Report.class);
+                Intent i=new Intent(Action.this, Report.class);
                 startActivity(i);
             }
         });
@@ -33,7 +35,7 @@ public class Action extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedAction="Equipment";
-                Intent i=new Intent(Action.this,Equipments.class);
+                Intent i=new Intent(Action.this, Equipments.class);
                 startActivity(i);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.premonsoonaction.Activities.Action;
+import com.example.premonsoonaction.Activities.MainActivity;
+import com.example.premonsoonaction.R;
+
 public class placard_adapter extends RecyclerView.Adapter<placard_adapter.MyViewHolder>{
    Context context;
    public static String[] s;

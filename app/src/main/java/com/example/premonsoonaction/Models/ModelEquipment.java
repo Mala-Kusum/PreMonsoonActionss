@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Models;
 
 public class ModelEquipment {
     String name,no,pmu;

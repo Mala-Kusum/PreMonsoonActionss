@@ -1,11 +1,9 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -13,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.anthonyfdev.dropdownview.DropDownView;
+import com.example.premonsoonaction.R;
 
 public class PMUWise extends AppCompatActivity {
     DropDownView report;

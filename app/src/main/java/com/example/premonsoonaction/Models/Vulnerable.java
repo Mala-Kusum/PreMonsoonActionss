@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Models;
 
 public class Vulnerable {
     String TYPE,LOCATION;

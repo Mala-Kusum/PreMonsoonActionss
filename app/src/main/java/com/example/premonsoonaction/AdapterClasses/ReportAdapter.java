@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.premonsoonaction.R;
+import com.example.premonsoonaction.Activities.ShowReport;
+import com.example.premonsoonaction.Models.reportGetModel;
+
 import java.util.ArrayList;
 
 import java.util.Date;
-import java.util.List;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder> {
     Context context;

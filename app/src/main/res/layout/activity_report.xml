@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
-    tools:context=".Report">
+    tools:context=".Activities.Report">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

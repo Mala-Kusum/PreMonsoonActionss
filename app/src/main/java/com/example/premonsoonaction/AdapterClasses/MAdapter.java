@@ -1,8 +1,7 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.premonsoonaction.Activities.Action;
+import com.example.premonsoonaction.Activities.MainActivity;
+import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
 
@@ -38,7 +42,7 @@ public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
     @Override
     public void onClick(View v) {
             MainActivity.RO=holder.text.getText().toString();
-            Intent i=new Intent(context,Action.class);
+            Intent i=new Intent(context, Action.class);
             context.startActivity(i);
             }
         });

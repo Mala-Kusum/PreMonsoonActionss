@@ -1,8 +1,10 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.premonsoonaction.R;
 
 public class PMUwiseEqp extends AppCompatActivity {
 

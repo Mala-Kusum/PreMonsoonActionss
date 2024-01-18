@@ -1,4 +1,4 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.Activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.premonsoonaction.AdapterClasses.ReportAdapter;
+import com.example.premonsoonaction.DatePick;
+import com.example.premonsoonaction.Models.reportGetModel;
+import com.example.premonsoonaction.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
@@ -111,7 +114,7 @@ public class Report extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Report.this,addReport.class);
+                Intent i=new Intent(Report.this, addReport.class);
                 startActivity(i);
             }
         });

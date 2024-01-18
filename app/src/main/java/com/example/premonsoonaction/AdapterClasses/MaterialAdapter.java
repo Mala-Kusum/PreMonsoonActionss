@@ -1,44 +1,50 @@
-package com.example.premonsoonaction;
+package com.example.premonsoonaction.AdapterClasses;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.premonsoonaction.Activities.Action;
+import com.example.premonsoonaction.Activities.MainActivity;
+import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>{
     Context context;
-    ArrayList<ModelEquipment> l;
     TextView detail;
+    RecyclerView recyclerPMUwise;
+    private FirebaseFirestore db;
+    public static CollectionReference Ref;
+    Query querya;
+    ArrayList<ModelEquipment> list;
+    EqPMUWiseAdapter ad;
 
     public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
         this.context = context;
-        this.l=list;
+        this.list=list;
     }
     public void filterList(ArrayList<ModelEquipment> filterlist) {
-        l = filterlist;
+        list = filterlist;
         notifyDataSetChanged();
     }
     @NonNull
@@ -53,7 +59,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MaterialAdapter.MyViewHolder holder, int position) {
-        ModelEquipment m=l.get(position);
+        ModelEquipment m=list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
         holder.pmu.setText(m.getPmu());
@@ -72,14 +78,36 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                     //customDialog.setContentView(R.layout.dialog3);
                     customDialog.setContentView(R.layout.dialog5);
                     customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    Button edit=customDialog.findViewById(R.id.edit);
+                    ad=new EqPMUWiseAdapter(customDialog.getContext(),list);
+                    recyclerPMUwise = customDialog.findViewById(R.id.eqList);
+                    recyclerPMUwise.setHasFixedSize(true);
+                    recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
+                    db = FirebaseFirestore.getInstance();
+                    Ref = db.collection("rate running contracts");
+                    querya=Ref.orderBy("name").orderBy("pmu");
+                    querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for (DocumentSnapshot dc: task.getResult()) {
+                                    list.add(dc.toObject(ModelEquipment.class));
+                                }
+                            }
+                            else{
+                                Log.d("Error: ",task.getException().toString());
+                            }
+                            ad.notifyDataSetChanged();
+                        }
+                    });
+                    recyclerPMUwise.setAdapter(ad);
+                    /*Button edit=customDialog.findViewById(R.id.edit);
                     Button delete=customDialog.findViewById(R.id.delete);
                     // Button cancel=customDialog.findViewById(R.id.cancel);
                     EditText e;
                     e=customDialog.findViewById(R.id.amount);
-                    String docid = m.getPmu()+m.getName();
+                    String docid = m.getPmu()+m.getName();*/
                     customDialog.show();
-                    ModelEquipment eq=new ModelEquipment();
+                   /* ModelEquipment eq=new ModelEquipment();
                     edit.setEnabled(false);
                     e.addTextChangedListener(new TextWatcher() {
                         @Override
@@ -166,7 +194,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                             customDialog.cancel();
                         }
                     });
-                /*cancel.setOnClickListener(new View.OnClickListener() {
+                cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         customDialog.cancel();
@@ -178,7 +206,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
     }
     @Override
     public int getItemCount() {
-        return l.size();
+        return list.size();
     }
 
     public Context getContext() {
