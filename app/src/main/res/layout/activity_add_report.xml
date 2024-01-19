@@ -6,11 +6,12 @@
     android:layout_marginVertical="10dp"
     android:layout_marginHorizontal="15dp"
     tools:context=".Activities.addReport">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-40dp">
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="-116dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,80 +34,141 @@
                 android:layout_marginVertical="8dp"
                 android:text="@string/cleaning_of_drains_culverts"
                 android:textStyle="bold" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/black"/>
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/keeping_in_stock_on_offer_jcbs_saw_cutters_for_tree_cutting_sand_bags_traffic_cones_amp_signages_etc_in_required_quantities_at_required_locations_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/rate_running_contracts_in_place_for_emergency_works_like_breach_closing_tree_removal_landslide_clearance_etc_where_the_stretches_are_neither_under_construction_nor_in_dlp_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/bailey_bridges_including_their_quantities_and_locations_for_hilly_areas_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/whether_hume_pipes_np_3_1_m_diameter_in_required_quantities_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/the_contractors_for_the_above_actions_in_respect_of_ongoing_work_stretches_and_those_under_dlp_maintenance_period_in_respect_of_above_actions_have_been_instructed_and_alerted"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/mehgdoot_app_has_been_downloaded_by_ros_all_field_officers_under_the_concerned_ros"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/local_whatsapp_groups_are_formed_by_regional_officers_covering_executing_agencies_of_mort_amp_h_roads_wings_nhai_nhidcl_bro_local_administration_cwc_etc"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/the_contact_details_of_emergency_service_providers_are_kept_ready_for_example_ambulance_hospitals_police_authorities_trauma_centres_etc"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/list_of_all_available_resources_and_arrangements_with_the_concerned_ros_and_nearby_ros_in_the_region_is_compiled_and_kept_ready"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <CheckBox
                 android:id="@+id/inst11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
                 android:text="@string/_24_7_central_control_room_is_created_and_maintained_at_selected_location_by_concerned_ros_of_all_the_agencies_put_together"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -139,7 +202,8 @@
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-               <!-- <TextView
+
+                <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="No - "
@@ -154,6 +218,11 @@
                     android:textStyle="bold" />-->
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,6 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -175,8 +245,8 @@
                     android:layout_height="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type"
+                    android:src="@android:drawable/ic_input_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -186,6 +256,11 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -200,6 +275,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -208,8 +284,8 @@
                     android:layout_height="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type"
+                    android:src="@android:drawable/ic_input_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -225,6 +301,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -232,8 +309,8 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginEnd="5dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type" />
+                    android:contentDescription="@string/add_as_many_responses_for_every_locations_and_type"
+                    android:src="@android:drawable/ic_input_add" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -244,15 +321,20 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#969696" />
+
             <Button
                 android:id="@+id/submit"
-                android:textStyle="bold"
-                android:textColor="#1F6E8C"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="end"
                 android:layout_marginBottom="20dp"
-                android:text="@string/submit" />
+                android:text="@string/submit"
+                android:textColor="#1F6E8C"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
