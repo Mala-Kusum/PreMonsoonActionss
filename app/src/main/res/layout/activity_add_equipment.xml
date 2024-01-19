@@ -11,56 +11,105 @@
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
         android:orientation="vertical">
-        <AutoCompleteTextView
-            android:id="@+id/Type"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:hint="Type"
-            />
-        <EditText
-            android:id="@+id/no"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Type"/>
+            <AutoCompleteTextView
+                android:id="@+id/Type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:focusableInTouchMode="true"
+                />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="No."
-            android:inputType="number"/>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="No."/>
+            <EditText
+                android:id="@+id/no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PMU: "/>
-        <Spinner
-            android:id="@+id/pmu"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="PMU: "/>
+            <Spinner
+                android:id="@+id/pmu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-        <EditText
-            android:id="@+id/site"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Location"
-            />
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Location"/>
+            <EditText
+                android:id="@+id/site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint=""
+                />
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@color/black"
             />
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <CheckBox
-                android:layout_marginTop="10dp"
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:paddingLeft="50dp"
+                android:textColor="#3F51B5"
                 android:text="Is Contractual?"/>
         </LinearLayout>
 
