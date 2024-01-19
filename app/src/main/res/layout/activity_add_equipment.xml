@@ -18,6 +18,7 @@
             android:padding="5dp"
             android:paddingHorizontal="10dp"
             android:layout_marginVertical="10dp"
+            android:elevation="10dp"
             android:background="@drawable/border">
             <TextView
                 android:layout_width="match_parent"
@@ -42,6 +43,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:layout_marginVertical="10dp"
+            android:elevation="10dp"
             android:background="@drawable/border">
             <TextView
                 android:layout_width="match_parent"
@@ -65,6 +67,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:layout_marginVertical="10dp"
+            android:elevation="10dp"
             android:background="@drawable/border">
             <!--<TextView
                 android:layout_width="match_parent"
@@ -76,7 +79,7 @@
             <Spinner
                 android:id="@+id/pmu"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:paddingHorizontal="10dp"
                 android:background="@null"
                 />
@@ -88,6 +91,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:layout_marginVertical="10dp"
+            android:elevation="10dp"
             android:background="@drawable/border">
             <TextView
                 android:layout_width="match_parent"
@@ -116,6 +120,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="10dp"
             android:orientation="horizontal">
             <CheckBox
                 android:layout_width="20dp"
@@ -141,7 +146,9 @@
             android:id="@+id/save"
             android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:textColor="#3F51B5"
+            android:elevation="20dp"
             android:text="save"/>
 
     </LinearLayout>
