@@ -53,8 +53,7 @@ public class addReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
         //CollectionReference r2,r3;
-        /*
-        r2=r.collection("Vulnerable");
+        /*r2=r.collection("Vulnerable");
         r3=r.collection("critical");*/
         addvuner=findViewById(R.id.addvuner);
         addcritical=findViewById(R.id.addcritical);
@@ -390,6 +389,7 @@ public class addReport extends AppCompatActivity {
         warning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                customDialog=new Dialog(addReport.this);
                 customDialog.setContentView(R.layout.dialog2);
                 Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb=customDialog.findViewById(R.id.save);
