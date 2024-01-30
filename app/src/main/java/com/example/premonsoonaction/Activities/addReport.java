@@ -189,49 +189,49 @@ public class addReport extends AppCompatActivity {
         });
         addcritical.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {customDialog=new Dialog(addReport.this);
+            public void onClick(View view) {
+                customDialog = new Dialog(addReport.this);
                 customDialog.setContentView(R.layout.dialog);
-                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                Button sb=customDialog.findViewById(R.id.save);
+                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb = customDialog.findViewById(R.id.save);
                 sb.setEnabled(false);
-                EditText e1,e2,e3;
-                e1=customDialog.findViewById(R.id.typeinput);
-                e2=customDialog.findViewById(R.id.Location);
-                e3=customDialog.findViewById(R.id.no);
+                EditText e1, e2, e3;
+                e1 = customDialog.findViewById(R.id.typeinput);
+                e2 = customDialog.findViewById(R.id.Location);
+                //e3=customDialog.findViewById(R.id.no);
                 e1.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
+                        if (t.toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
+                        } else if (e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
+
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
+                        if (t.toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
+                        } else if (e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
+
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if(e1.getText().toString().trim().length()==0){
+                        if (e1.getText().toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
+                        } else if (e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
@@ -240,76 +240,36 @@ public class addReport extends AppCompatActivity {
                 e2.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
+                        if (t.toString().trim().length() == 0) {
                             e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
+                        } else if (e1.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
-                    @Override
-                    public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
-                            e2.setError("the field cannot be empty");
-                            sb.setEnabled(false);
-                        } else if (e2.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
-                            sb.setEnabled(false);
-                        }
-                        else {
-                            sb.setEnabled(true);
-                        }
-                    }
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        if(e2.getText().toString().trim().length()==0){
-                            e2.setError("the field cannot be empty");
-                            sb.setEnabled(false);
-                        } else if (e1.getText().toString().isEmpty()||e3.getText().toString().isEmpty()) {
-                            sb.setEnabled(false);
-                        }
-                        else {
-                            sb.setEnabled(true);
-                        }
-                    }
-                });
 
-                e3.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
-                            e3.setError("the field cannot be empty");
-                            sb.setEnabled(false);
-                        } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
-                            sb.setEnabled(false);
-                        }
-                        else {
-                            sb.setEnabled(true);
-                        }
-                    }
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
-                            e3.setError("the field cannot be empty");
+                        if (t.toString().trim().length() == 0) {
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e2.getText().toString().isEmpty()||e1.getText().toString().isEmpty()) {
+                        } else if (e2.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
+
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if(e3.getText().toString().trim().length()==0){
-                            e3.setError("the field cannot be empty");
+                        if (e2.getText().toString().trim().length() == 0) {
+                            e2.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        } else if (e1.getText().toString().isEmpty()||e2.getText().toString().isEmpty()) {
+                        } else if (e1.getText().toString().isEmpty()) {
                             sb.setEnabled(false);
-                        }
-                        else {
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
@@ -320,22 +280,21 @@ public class addReport extends AppCompatActivity {
                     public void onClick(View view) {
                         Vulnerable v1=new Vulnerable();
                         v1.setTYPE(e1.getText().toString());
-                        v1.setNO(Integer.parseInt(e3.getText().toString()));
+                        //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
-                        l2.add(v1);
+                        l1.add(v1);
                         customDialog.cancel();
                     }
                 });
             }
         });
+
         inspected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*DialogFragment newFragment = new adddialog2();
-                newFragment.setCancelable(true);
-                newFragment.show(getSupportFragmentManager(), "game");*/
+                customDialog=new Dialog(addReport.this);
                 customDialog.setContentView(R.layout.dialog2);
-                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb=customDialog.findViewById(R.id.save);
                 sb.setEnabled(false);
                 EditText e1;
@@ -393,6 +352,7 @@ public class addReport extends AppCompatActivity {
                 customDialog.setContentView(R.layout.dialog2);
                 Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button sb=customDialog.findViewById(R.id.save);
+                sb.setEnabled(false);
                 EditText e1;
                 e1=customDialog.findViewById(R.id.loc);
                 e1.addTextChangedListener(new TextWatcher() {

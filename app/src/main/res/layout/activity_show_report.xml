@@ -9,8 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="118dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-344dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -315,8 +315,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Locations inspected :"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/inspected"
@@ -324,12 +324,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:divider="@color/black" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:text="Locations with warning signs installed :"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/warning"
