@@ -4,24 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.Vulnerable;
 import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddLocAdapter extends RecyclerView.Adapter<AddLocAdapter.MyViewHolder> {
     Context context;
     ArrayList<Vulnerable> list;
-    RecyclerView recyclerView;
 
     public AddLocAdapter(Context context, ArrayList<Vulnerable> list) {
         this.context = context;
