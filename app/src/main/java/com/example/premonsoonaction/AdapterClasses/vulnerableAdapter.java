@@ -27,7 +27,7 @@ public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.My
     @Override
     public vulnerableAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from(context).inflate(R.layout.listvulnerable,parent,false);
+        v= LayoutInflater.from(context).inflate(R.layout.locationcard,parent,false);
         vulnerableAdapter.MyViewHolder viewHolder = new  vulnerableAdapter.MyViewHolder(v);
         return viewHolder;
     }
@@ -36,7 +36,6 @@ public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.My
     public void onBindViewHolder(@NonNull vulnerableAdapter.MyViewHolder holder, int position) {
         Vulnerable v=l.get(position);
         holder.type.setText(v.getTYPE());
-        holder.no.setText(String.valueOf(v.getNO()));
         try {
             holder.loc.setText(v.getLOCATION());
         }
@@ -50,13 +49,12 @@ public class vulnerableAdapter extends RecyclerView.Adapter<vulnerableAdapter.My
         return l.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView type,no,loc;
+        TextView type,loc;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            type=itemView.findViewById(R.id.Type);
-            no=itemView.findViewById(R.id.No);
-            loc=itemView.findViewById(R.id.Location);
+            type=itemView.findViewById(R.id.type);
+            loc=itemView.findViewById(R.id.location);
         }
     }
 }

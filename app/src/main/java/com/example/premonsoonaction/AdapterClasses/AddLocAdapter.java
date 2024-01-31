@@ -1,6 +1,7 @@
 package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,17 @@ public class AddLocAdapter extends RecyclerView.Adapter<AddLocAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull AddLocAdapter.MyViewHolder holder, int position) {
              Vulnerable ob = list.get(position);
-             holder.type.setText(ob.getTYPE().trim());
-             holder.loc.setText(ob.getLOCATION().trim());
+             if(ob!=null){
+                 if(ob.getTYPE()!=null){
+                     Log.e("inside getType()", ob.getTYPE());
+                     holder.type.setText(ob.getTYPE().trim());
+                 }
+                 if(ob.getLOCATION()!=null){
+                     Log.e("inside getLocation()", ob.getLOCATION());
+                     holder.loc.setText(ob.getLOCATION().trim());
+                 }
+             }
+        Log.e("object ","000000000000  "+ob+" "+ob.getTYPE()+" "+ob.getLOCATION()+" 000000000000000000\n");
     }
 
     @Override
