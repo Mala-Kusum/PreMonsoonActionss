@@ -1,6 +1,7 @@
 package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +27,18 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from(context).inflate(R.layout.listlocation,parent,false);
+        v= LayoutInflater.from(context).inflate(R.layout.locationcard,parent,false);
         MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.text.setText(s.get(position));
+        if(s.get(position)!=null){
+            Log.e("inside Location Adapter", s.get(position));
+            holder.text.setText(s.get(position));
+        }
+
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.premonsoonaction.AdapterClasses.AddLocAdapter;
 import com.example.premonsoonaction.AdapterClasses.LocationAdapter;
 import com.example.premonsoonaction.AdapterClasses.vulnerableAdapter;
 import com.example.premonsoonaction.Models.Vulnerable;
@@ -30,14 +31,15 @@ public class ShowReport extends AppCompatActivity {
     public static String docid;
     CollectionReference c1,c2,c3,c4;
     ArrayList<Vulnerable> l1,l2;
-    ArrayList<String> s3,s4;
+    ArrayList<Vulnerable> s3;
+    ArrayList<String> s4;
     public static reportGetModel ob;
     // batch2;
     Vulnerable ob1,ob2;
     public static Boolean INST1,INST2,INST3,INST4,INST5,INST6,INST7,INST8,INST9,INST10,INST11;
     TextView inst1,inst2,inst3,inst4,inst5,inst6,inst7,inst8,inst9,inst10,inst11;
-    vulnerableAdapter ad1,ad2;
-    LocationAdapter ad3,ad4;
+    AddLocAdapter ad1,ad2,ad3;
+    LocationAdapter ad4;
     RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
     int i,j;
@@ -177,10 +179,10 @@ public class ShowReport extends AppCompatActivity {
             inst11.setText("Not Done");
             inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
         }
-        ad1=new vulnerableAdapter(ShowReport.this,l1);
-        ad2=new vulnerableAdapter(ShowReport.this,l2);
+        ad1=new AddLocAdapter(ShowReport.this,l1);
+        ad2=new AddLocAdapter(ShowReport.this,l2);
         try{
-            ad3=new LocationAdapter(ShowReport.this,s3);
+            ad3=new AddLocAdapter(ShowReport.this,s3);
             ad4=new LocationAdapter(ShowReport.this,s4);
         }
         catch(Exception e){
@@ -211,17 +213,16 @@ public class ShowReport extends AppCompatActivity {
                 }
                 for (DocumentChange dc1 : value.getDocumentChanges()) {
                     if (dc1.getType() == DocumentChange.Type.ADDED) {
-                        System.out.println("vulnerable doc "+ dc1.getDocument().toObject(Vulnerable.class).getLOCATION()+dc1.getDocument().toObject(Vulnerable.class).getNO()+dc1.getDocument().toObject(Vulnerable.class).getTYPE());
+                        //System.out.println("vulnerable doc "+ dc1.getDocument().toObject(Vulnerable.class).getLOCATION()+dc1.getDocument().toObject(Vulnerable.class).getNO()+dc1.getDocument().toObject(Vulnerable.class).getTYPE());
 
                         ob1.setTYPE(dc1.getDocument().getString("type"));
                         try {
-                            ob1.setNO((long) dc1.getDocument().get("no"));
                             ob1.setLOCATION(dc1.getDocument().getString("location"));
                         }
                         catch(Exception e){
                             System.out.println("error no "+e.toString());
                         }
-                        System.out.println("ba " +ob1.getLOCATION()+" "+ob1.getTYPE()+" "+ob1.getNO());
+                        //System.out.println("ba " +ob1.getLOCATION()+" "+ob1.getTYPE()+" "+ob1.getNO());
                        // l1.add(dc.getDocument().toObject(Vulnerable.class));
                         l1.add(ob1);
                         ad1.notifyDataSetChanged();
@@ -242,12 +243,10 @@ public class ShowReport extends AppCompatActivity {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){
                     Log.e("Firestore Error", error.getMessage());
-                    return;
                 }
                 else{
                     for (DocumentChange dc2:value.getDocumentChanges()) {
                         ob2.setTYPE(dc2.getDocument().getString("type"));
-                        ob2.setNO((long) dc2.getDocument().get("no"));
                         ob2.setLOCATION(dc2.getDocument().getString("location"));
                         l2.add(ob2);
                     }
@@ -266,7 +265,9 @@ public class ShowReport extends AppCompatActivity {
                 }
                 else{
                     for (DocumentChange dc3:value.getDocumentChanges()) {
-                        s3.add(dc3.getDocument().getString("location"));
+                        Vulnerable v = new Vulnerable();
+                        v = dc3.getDocument().toObject(Vulnerable.class);
+                        s3.add(v);
                     }
                     try{
                         ad3.notifyDataSetChanged();
@@ -285,7 +286,6 @@ public class ShowReport extends AppCompatActivity {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){
                     Log.e("Firestore Error", error.getMessage());
-                    return;
                 }
                 else{
                     for (DocumentChange dc4:value.getDocumentChanges()) {
