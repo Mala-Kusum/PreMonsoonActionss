@@ -35,8 +35,13 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         if(s.get(position)!=null){
-            Log.e("inside Location Adapter", s.get(position));
-            holder.text.setText(s.get(position));
+            try{
+                //Log.e("inside Location Adapter", s.get(position));
+                holder.text.setText((CharSequence) s.get(position));
+            }
+            catch(Exception e){
+                Log.e("inside location adapter error",e.toString() + "String: "+ s.get(position));
+            }
         }
 
     }
