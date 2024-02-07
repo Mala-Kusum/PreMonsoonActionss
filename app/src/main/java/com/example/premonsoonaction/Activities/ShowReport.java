@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -93,91 +94,91 @@ public class ShowReport extends AppCompatActivity {
 
         if(INST1==true){
             inst1.setText("Done");
-            inst1.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst1.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst1.setText("Not Done");
-            inst1.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst1.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST2==true){
             inst2.setText("Done");
-            inst2.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst2.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst2.setText("Not Done");
-            inst2.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst2.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST3==true){
             inst3.setText("Done");
-            inst3.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst3.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst3.setText("Not Done");
-            inst3.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst3.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST4==true){
             inst4.setText("Done");
-            inst4.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst4.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst4.setText("Not Done");
-            inst4.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst4.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST5==true){
             inst5.setText("Done");
-            inst5.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst5.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst5.setText("Not Done");
-            inst5.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst5.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST6==true){
             inst6.setText("Done");
-            inst6.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst6.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst6.setText("Not Done");
-            inst6.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst6.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST7==true){
             inst7.setText("Done");
-            inst7.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst7.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst7.setText("Not Done");
-            inst7.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst7.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST8==true){
             inst8.setText("Done");
-            inst8.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst8.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst8.setText("Not Done");
-            inst8.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst8.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST9==true){
             inst9.setText("Done");
-            inst9.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst9.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst9.setText("Not Done");
-            inst9.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst9.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST10==true){
             inst10.setText("Done");
-            inst10.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst10.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst10.setText("Not Done");
-            inst10.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst10.setBackground(getDrawable(R.drawable.not_done));
         }
         if(INST11==true){
             inst11.setText("Done");
-            inst11.setTextColor(getResources().getColor(R.color.green,getTheme()));
+            inst11.setBackground(getDrawable(R.drawable.done));
         }
         else{
             inst11.setText("Not Done");
-            inst11.setTextColor(getResources().getColor(R.color.red,getTheme()));
+            inst11.setBackground(getDrawable(R.drawable.not_done));
         }
         ad1=new AddLocAdapter(ShowReport.this,l1);
         ad2=new AddLocAdapter(ShowReport.this,l2);

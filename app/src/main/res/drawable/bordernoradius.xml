@@ -3,10 +3,6 @@
     <corners
         />
     <stroke
-        android:width="3dp"
-        android:color="@color/material_dynamic_neutral30" />
-    <!--<gradient
-        android:centerColor="#E3F4F4"
-        android:endColor="#F7FFE5"
-        android:startColor="#F7FFE5"/>-->
+        android:width="2dp"
+        android:color="@color/black" />
 </shape>
