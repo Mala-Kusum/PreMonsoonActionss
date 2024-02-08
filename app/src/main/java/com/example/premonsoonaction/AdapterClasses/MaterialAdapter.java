@@ -31,7 +31,6 @@ import java.util.ArrayList;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>{
     Context context;
-    TextView detail;
     RecyclerView recyclerPMUwise;
     private FirebaseFirestore db;
     public static CollectionReference Ref;
@@ -62,7 +61,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         ModelEquipment m=list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
-        holder.pmu.setText(m.getPmu());
+        //holder.pmu.setText(m.getPmu());
         Query q ;
         if(Action.selectedAction.equals("Rate running")){
             holder.detail.setText(" Detail :  ");
@@ -226,7 +225,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             materialcard=itemView.findViewById(R.id.materialcard);
             name=itemView.findViewById(R.id.Name);
             no=itemView.findViewById(R.id.No);
-            pmu=itemView.findViewById(R.id.PMU);
+            //pmu=itemView.findViewById(R.id.PMU);
             imageButton=itemView.findViewById(R.id.drawer);
         }
     }
