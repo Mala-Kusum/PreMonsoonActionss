@@ -8,14 +8,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F7FFE5"
+        android:background="#FFF7F1"
         android:gravity="center"
         android:orientation="vertical">
         <Button
             android:id="@+id/actiontaken"
             android:layout_width="250dp"
             android:layout_height="80dp"
-            android:backgroundTint="#7DB9B6"
+            android:backgroundTint="#B4D4FF"
             android:textStyle="bold"
             android:text="Action Taken Reports"
             android:textColor="#454545" />
@@ -23,16 +23,16 @@
             android:id="@+id/equipments"
             android:layout_width="250dp"
             android:layout_height="80dp"
-            android:backgroundTint="#7DB9B6"
+            android:backgroundTint="#B4D4FF"
             android:shadowRadius="5"
-            android:text="Equipments"
+            android:text="Equipment"
             android:textStyle="bold"
             android:textColor="#454545" />
         <Button
             android:id="@+id/materials"
             android:layout_width="250dp"
             android:layout_height="80dp"
-            android:backgroundTint="#7DB9B6"
+            android:backgroundTint="#B4D4FF"
             android:shadowRadius="5"
             android:textStyle="bold"
             android:text="Materials"
@@ -41,7 +41,7 @@
             android:id="@+id/raterunning"
             android:layout_width="250dp"
             android:layout_height="80dp"
-            android:backgroundTint="#7DB9B6"
+            android:backgroundTint="#B4D4FF"
             android:shadowRadius="5"
             android:textStyle="bold"
             android:text="Rate Running contracts"

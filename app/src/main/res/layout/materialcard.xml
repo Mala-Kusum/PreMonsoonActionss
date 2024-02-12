@@ -11,56 +11,65 @@
     android:paddingVertical="10dp"
     app:cardCornerRadius="10dp"
     tools:ignore="MissingDefaultResource">
-
     <LinearLayout
-        android:id="@+id/materialcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="5dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_weight="1"
-                android:id="@+id/Name"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1234567888888888888"/>
-            <TextView
-                android:layout_weight="4"
-                android:id="@+id/No"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1"/>
-        </LinearLayout>
-
-
-        <!--<TextView
-            android:layout_weight="@integer/material_motion_duration_medium_2"
-            android:id="@+id/PMU"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:id="@+id/materialcard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12345678888888888888888888888"/>-->
-        <ImageView
-            android:id="@+id/drawer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_ff"/>
+            android:paddingVertical="5dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/Name"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1234567888888888888"/>
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/No"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1"/>
+            </LinearLayout>
+            <!--<TextView
+                android:layout_weight="@integer/material_motion_duration_medium_2"
+                android:id="@+id/PMU"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12345678888888888888888888888"/>-->
+            <ImageView
+                android:id="@+id/drawer"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_ff"/>
 
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:padding="0dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_arrow_drop_down_24"/>
     </LinearLayout>
+
 
 </androidx.cardview.widget.CardView>
