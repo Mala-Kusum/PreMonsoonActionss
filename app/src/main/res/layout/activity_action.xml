@@ -4,10 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF7F1"
     tools:context=".Activities.Action">
     <LinearLayout
+        android:id="@+id/options"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/roDetail"
         android:background="#FFF7F1"
         android:gravity="center"
         android:orientation="vertical">
@@ -46,5 +50,38 @@
             android:textStyle="bold"
             android:text="Rate Running contracts"
             android:textColor="#454545" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/roDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@+id/options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="EDP: ABC"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Contact Number: 999999999"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Email: abc@nhidcl.com"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

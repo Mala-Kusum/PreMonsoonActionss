@@ -30,7 +30,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:paddingTop="15dp"
-                    android:background="#F7FFE5"
+                    android:background="#FFF7F1"
                     android:src="@drawable/baseline_calendar_month_24"
                     android:scaleType= "fitCenter"
                     android:adjustViewBounds="true"/>
@@ -51,7 +51,7 @@
                     android:id="@+id/To"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="#F7FFE5"
+                    android:background="#FFF7F1"
                     android:paddingTop="15dp"
                     android:src="@drawable/baseline_calendar_month_24"
                     android:scaleType="fitCenter"

@@ -57,7 +57,12 @@ public class Add_Equipment extends AppCompatActivity {
         save = findViewById(R.id.save);
 
         //set eq type
-        ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+        if(Equipments.eqt.equals("Equipments")){
+            ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+        }
+        else{
+            ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Materials, android.R.layout.select_dialog_singlechoice);
+        }
         eq.setThreshold(1);
         eq.setAdapter(ad1);
         eq.setOnClickListener(new View.OnClickListener() {

@@ -79,7 +79,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                     customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                     ad=new EqPMUWiseAdapter(customDialog.getContext(),list);
                     recyclerPMUwise = customDialog.findViewById(R.id.eqList);
-                    recyclerPMUwise.setHasFixedSize(true);
+                    //recyclerPMUwise.setHasFixedSize(true);
                     recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
                     db = FirebaseFirestore.getInstance();
                     Ref = db.collection("rate running contracts");
