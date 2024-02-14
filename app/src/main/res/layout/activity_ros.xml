@@ -127,10 +127,10 @@
         android:textStyle="bold"
         android:layout_marginHorizontal="10dp"
         android:text="Regional Offices:"/>
-    <ScrollView
+    <!--<ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content">-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grid"
             android:layout_width="match_parent"
@@ -140,6 +140,6 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
             android:numColumns="2" />
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>

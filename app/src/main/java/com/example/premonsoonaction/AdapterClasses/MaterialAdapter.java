@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.premonsoonaction.Activities.Action;
 import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Struct;
 import java.util.ArrayList;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>{
@@ -70,18 +72,32 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             holder.materialcard.setOnClickListener(null);
         }
         else{
-            holder.imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Dialog customDialog = new Dialog(context);
-                    //customDialog.setContentView(R.layout.dialog3);
-                    customDialog.setContentView(R.layout.dialog5);
-                    customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    ad=new EqPMUWiseAdapter(customDialog.getContext(),list);
-                    recyclerPMUwise = customDialog.findViewById(R.id.eqList);
-                    //recyclerPMUwise.setHasFixedSize(true);
-                    recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
-                    db = FirebaseFirestore.getInstance();
+            try {
+                holder.imageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(holder.r.getVisibility()==View.GONE){
+                            holder.r.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            holder.r.setVisibility(View.GONE);
+                        }
+                        /*Dialog customDialog = new Dialog(context);
+                        customDialog.setContentView(R.layout.dialog5);
+                        customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);*/
+                        ArrayList<PmuNo> l = new ArrayList<>();
+                        PmuNo m1 = new PmuNo("PMU-Bongaigaon",1);
+                        l.add(m1);
+                        PmuNo m2 = new PmuNo("PMU-Dhubri",2);
+                        l.add(m2);
+                        PmuNo m3 = new PmuNo("PMU-Diphu",1);
+                        l.add(m3);
+                        ad=new EqPMUWiseAdapter(context,l);
+                        //recyclerPMUwise = customDialog.findViewById(R.id.eqList);
+                        //recyclerPMUwise.setHasFixedSize(true);
+                       // recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
+                        holder.r.setLayoutManager(new LinearLayoutManager(context));
+                    /*db = FirebaseFirestore.getInstance();
                     Ref = db.collection("rate running contracts");
                     querya=Ref.orderBy("name").orderBy("pmu");
                     querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -97,110 +113,23 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                             }
                             ad.notifyDataSetChanged();
                         }
-                    });
-                    recyclerPMUwise.setAdapter(ad);
+                    });*/
+                        //recyclerPMUwise.setAdapter(ad);
+                        holder.r.setAdapter(ad);
                     /*Button edit=customDialog.findViewById(R.id.edit);
                     Button delete=customDialog.findViewById(R.id.delete);
                     // Button cancel=customDialog.findViewById(R.id.cancel);
                     EditText e;
                     e=customDialog.findViewById(R.id.amount);
                     String docid = m.getPmu()+m.getName();*/
-                    customDialog.show();
-                   /* ModelEquipment eq=new ModelEquipment();
-                    edit.setEnabled(false);
-                    e.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                            if(t.toString().trim().length()==0){
-                                e.setError("the field cannot be empty");
-                                edit.setEnabled(false);
-                            }else if ((!t.toString().contains("0"))&&(!t.toString().contains("1"))&&(!t.toString().contains("2"))&&(!t.toString().contains("3"))&&(!t.toString().contains("4"))&&(!t.toString().contains("5"))&&(!t.toString().contains("6"))&&(!t.toString().contains("7"))&&(!t.toString().contains("8"))&&(!t.toString().contains("9"))) {
-                                e.setError("This field must contain at least 1 digit");
-                                edit.setEnabled(false);
-                            }
-                            else{
-                                edit.setEnabled(true);
-                            }
-                        }
-                        @Override
-                        public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                            if(t.toString().trim().length()==0){
-                                e.setError("the field cannot be empty");
-                                edit.setEnabled(false);
-                            }else if ((!t.toString().contains("0"))&&(!t.toString().contains("1"))&&(!t.toString().contains("2"))&&(!t.toString().contains("3"))&&(!t.toString().contains("4"))&&(!t.toString().contains("5"))&&(!t.toString().contains("6"))&&(!t.toString().contains("7"))&&(!t.toString().contains("8"))&&(!t.toString().contains("9"))) {
-                                e.setError("This field must contain at least 1 digit");
-                                edit.setEnabled(false);
-                            }
-                            else{
-                                edit.setEnabled(true);
-                            }
-                        }
-                        @Override
-                        public void afterTextChanged(Editable editable) {
-                            if(e.getText().toString().trim().length()==0){
-                                e.setError("the field cannot be empty");
-                                edit.setEnabled(false);
-                            }else if ((!e.getText().toString().contains("0"))&&(!e.getText().toString().contains("1"))&&(!e.getText().toString().contains("2"))&&(!e.getText().toString().contains("3"))&&(!e.getText().toString().contains("4"))&&(!e.getText().toString().contains("5"))&&(!e.getText().toString().contains("6"))&&(!e.getText().toString().contains("7"))&&(!e.getText().toString().contains("8"))&&(!e.getText().toString().contains("9"))) {
-                                e.setError("This field must contain at least 1 digit");
-                                edit.setEnabled(false);
-                            }
-                            else{
-                                edit.setEnabled(true);
-                            }
-                        }
-                    });
 
-                    edit.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if(e.getText().equals(null)){
-                                Toast.makeText(context, "PLease enter a value", Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                eq.setName(m.getName());
-                                eq.setPmu(m.getPmu());
-                                eq.setNo(e.getText().toString());
-                                Equipments.Ref.document(docid).set(eq).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void v) {
-                                        Log.d("TAG", "DocumentSnapshot successfully updated!");
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("Error updating details",e.toString());
-                                    }
-                                });
-                            }
-                            customDialog.cancel();
-                        }
-                    });
-                    delete.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Equipments.Ref.document(docid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d("TAG", "DocumentSnapshot successfully deleted!");
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("TAG", "Error deleting document", e);
-                                        }
-                                    });
-                            customDialog.cancel();
-                        }
-                    });
-                cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        customDialog.cancel();
+                        //customDialog.show();
                     }
-                });*/
-                }
-            });
+                });
+            }
+            catch (Exception e){
+                Log.e("onBindViewHolder: ", e.toString());
+            }
         }
     }
     @Override
@@ -220,6 +149,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         LinearLayout materialcard;
         TextView name,no,pmu,detail;
         ImageView imageButton;
+        RecyclerView r;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             materialcard=itemView.findViewById(R.id.materialcard);
@@ -227,6 +157,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             no=itemView.findViewById(R.id.No);
             //pmu=itemView.findViewById(R.id.PMU);
             imageButton=itemView.findViewById(R.id.drawer);
+            r=itemView.findViewById(R.id.pmuwise);
         }
     }
 }

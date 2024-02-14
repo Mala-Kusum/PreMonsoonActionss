@@ -1,6 +1,7 @@
 package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
 
 public class EqPMUWiseAdapter extends RecyclerView.Adapter<EqPMUWiseAdapter.MyViewHolder> {
     Context context;
-    ArrayList<ModelEquipment> l;
+    ArrayList<PmuNo> l;
     TextView detail;
-    public EqPMUWiseAdapter(Context context, ArrayList<ModelEquipment> list) {
+    public EqPMUWiseAdapter(Context context, ArrayList<PmuNo> list) {
         this.context = context;
         this.l=list;
     }
@@ -35,9 +37,14 @@ public class EqPMUWiseAdapter extends RecyclerView.Adapter<EqPMUWiseAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ModelEquipment m=l.get(position);
-        holder.no.setText(m.getNo());
-        holder.pmu.setText(m.getPmu());
+        PmuNo m=l.get(position);
+        try {
+            holder.no.setText((CharSequence) Integer.toString(m.getNO()));
+            holder.pmu.setText((CharSequence) m.getPMU());
+        }
+        catch(Exception e){
+            Log.e("onBindViewHolder: ",e.toString() );
+        }
     }
 
     @Override
