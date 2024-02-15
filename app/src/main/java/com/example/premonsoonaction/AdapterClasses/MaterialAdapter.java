@@ -47,79 +47,65 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
     private PmuNoAdapter pmuAdapter;
     private List<PmuNo> pmuList;
 
-    public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
-        this.context = context;
-        this.list=list;
-    }
+
     public void filterList(ArrayList<ModelEquipment> filterlist) {
         list = filterlist;
         notifyDataSetChanged();
     }
+    public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
+        this.context = context;
+        this.list = list;
+    }
+
     @NonNull
     @Override
     public MaterialAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v;
-        v= LayoutInflater.from(context).inflate(R.layout.materialcard,parent,false);
-        MaterialAdapter.MyViewHolder viewHolder = new MaterialAdapter.MyViewHolder(v);
-        return viewHolder;
+        View v = LayoutInflater.from(context).inflate(R.layout.materialcard, parent, false);
+        return new MaterialAdapter.MyViewHolder(v);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull MaterialAdapter.MyViewHolder holder, int position) {
-        ModelEquipment m=list.get(position);
+        ModelEquipment m = list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
-        ArrayList<PmuNo> l;
-        l= new ArrayList<>();
-        PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
-        l.add(pmu1);
-        PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
-        l.add(pmu2);
-        PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
-        l.add(pmu3);
-        PmuNoAdapter ad;
-        ad=new PmuNoAdapter(l);
-        holder.r.setAdapter(ad);
-        /*if(Action.selectedAction.equals("Rate running")){
-            holder.detail.setText(" Detail :  ");
-        }
-        if(MainActivity.HQ){
-            holder.materialcard.setOnClickListener(null);
-        }*/
-        //else{
-            try {
-                holder.imageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        holder.r.setLayoutManager(new LinearLayoutManager(context));
-                        holder.r.setAdapter(ad);
-                        if(holder.r.getVisibility()==View.GONE){
-                            holder.r.setVisibility(View.VISIBLE);
-                            holder.materialcard.setElevation(0);
-                        }
-                        else{
-                            holder.r.setVisibility(View.GONE);
-                            holder.materialcard.setElevation(5);
-                        }
 
+        ArrayList<PmuNo> pmuList = new ArrayList<>();
+        PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
+        pmuList.add(pmu1);
+        PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
+        pmuList.add(pmu2);
+        PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
+        pmuList.add(pmu3);
+
+        // Use a separate instance of PmuNoAdapter for each item
+        PmuNoAdapter ad = new PmuNoAdapter(pmuList);
+        holder.r.setAdapter(ad);
+
+        try {
+            holder.imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    holder.r.setLayoutManager(new LinearLayoutManager(context));
+                    holder.r.setAdapter(ad);
+                    if (holder.r.getVisibility() == View.GONE) {
+                        holder.r.setVisibility(View.VISIBLE);
+                        holder.materialcard.setElevation(0);
+                    } else {
+                        holder.r.setVisibility(View.GONE);
+                        holder.materialcard.setElevation(5);
                     }
-                });
-            }
-            catch (Exception e){
-                Log.e("onBindViewHolder: ", e.toString());
-            }
+                }
+            });
+        } catch (Exception e) {
+            Log.e("onBindViewHolder: ", e.toString());
         }
-   // }
+    }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
-
-    public Context getContext() {
-        return context;
-    }
-
     public void setContext(Context context) {
         this.context = context;
     }
