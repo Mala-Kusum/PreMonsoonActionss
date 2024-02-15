@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class EqPMUWiseAdapter extends RecyclerView.Adapter<EqPMUWiseAdapter.MyViewHolder> {
     Context context;
     ArrayList<PmuNo> l;
-    TextView detail;
     public EqPMUWiseAdapter(Context context, ArrayList<PmuNo> list) {
         this.context = context;
         this.l=list;
@@ -55,7 +54,6 @@ public class EqPMUWiseAdapter extends RecyclerView.Adapter<EqPMUWiseAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder{
         LinearLayout materialcard;
         TextView no,pmu;
-        ImageView imageButton;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             materialcard=itemView.findViewById(R.id.eqpmuwisecard);

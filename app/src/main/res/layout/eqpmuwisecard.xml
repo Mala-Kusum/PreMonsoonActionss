@@ -2,17 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/eqpmuwisecard"
     android:layout_width="match_parent"
+    android:layout_margin="3dp"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <View
-                android:layout_width="2dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
             <TextView
@@ -22,11 +27,10 @@
                 android:layout_weight="400"
                 android:text="@string/pmu"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                android:padding="2dp"
+                android:padding="1dp"
                 android:textStyle="bold"/>
             <View
-                android:layout_width="2dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
             <TextView
@@ -36,17 +40,16 @@
                 android:layout_weight="100"
                 android:text="@string/no"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                android:padding="2dp"
+                android:padding="1dp"
                 android:textStyle="bold"/>
             <View
-                android:layout_width="2dp"
+                android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:background="@color/black"/>
     </LinearLayout>
 </LinearLayout>

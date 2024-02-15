@@ -39,6 +39,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
     Query querya;
     ArrayList<ModelEquipment> list;
     EqPMUWiseAdapter ad;
+    ArrayList<PmuNo> l;
 
     public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
         this.context = context;
@@ -65,38 +66,47 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         holder.no.setText(m.getNo());
         //holder.pmu.setText(m.getPmu());
         Query q ;
-        if(Action.selectedAction.equals("Rate running")){
+        /*if(Action.selectedAction.equals("Rate running")){
             holder.detail.setText(" Detail :  ");
         }
         if(MainActivity.HQ){
             holder.materialcard.setOnClickListener(null);
-        }
-        else{
+        }*/
+        //else{
             try {
                 holder.imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                         l= new ArrayList<>();
+                        ad=new EqPMUWiseAdapter(context,l);
+                        holder.r.setLayoutManager(new LinearLayoutManager(context));
+                        holder.r.setAdapter(ad);
                         if(holder.r.getVisibility()==View.GONE){
                             holder.r.setVisibility(View.VISIBLE);
+                            holder.materialcard.setElevation(0);
                         }
                         else{
                             holder.r.setVisibility(View.GONE);
+                            holder.materialcard.setElevation(5);
                         }
                         /*Dialog customDialog = new Dialog(context);
                         customDialog.setContentView(R.layout.dialog5);
                         customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);*/
-                        ArrayList<PmuNo> l = new ArrayList<>();
+
                         PmuNo m1 = new PmuNo("PMU-Bongaigaon",1);
                         l.add(m1);
+                        ad.notifyDataSetChanged();
                         PmuNo m2 = new PmuNo("PMU-Dhubri",2);
                         l.add(m2);
+                        ad.notifyDataSetChanged();
                         PmuNo m3 = new PmuNo("PMU-Diphu",1);
                         l.add(m3);
-                        ad=new EqPMUWiseAdapter(context,l);
+                        ad.notifyDataSetChanged();
+
                         //recyclerPMUwise = customDialog.findViewById(R.id.eqList);
                         //recyclerPMUwise.setHasFixedSize(true);
                        // recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
-                        holder.r.setLayoutManager(new LinearLayoutManager(context));
+
                     /*db = FirebaseFirestore.getInstance();
                     Ref = db.collection("rate running contracts");
                     querya=Ref.orderBy("name").orderBy("pmu");
@@ -115,7 +125,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                         }
                     });*/
                         //recyclerPMUwise.setAdapter(ad);
-                        holder.r.setAdapter(ad);
+
                     /*Button edit=customDialog.findViewById(R.id.edit);
                     Button delete=customDialog.findViewById(R.id.delete);
                     // Button cancel=customDialog.findViewById(R.id.cancel);
@@ -131,7 +141,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                 Log.e("onBindViewHolder: ", e.toString());
             }
         }
-    }
+   // }
     @Override
     public int getItemCount() {
         return list.size();
