@@ -14,6 +14,7 @@ import com.example.premonsoonaction.Activities.Action;
 import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
+import com.example.premonsoonaction.Models.PmuNoAdapter;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,16 +31,21 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Struct;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>{
     Context context;
-    RecyclerView recyclerPMUwise;
     private FirebaseFirestore db;
     public static CollectionReference Ref;
     Query querya;
     ArrayList<ModelEquipment> list;
-    EqPMUWiseAdapter ad;
-    ArrayList<PmuNo> l;
+
+
+    public static CollectionReference r2;
+    Query queryb;
+    private RecyclerView recyclerView;
+    private PmuNoAdapter pmuAdapter;
+    private List<PmuNo> pmuList;
 
     public MaterialAdapter(Context context, ArrayList<ModelEquipment> list) {
         this.context = context;
@@ -64,8 +70,17 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         ModelEquipment m=list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
-        //holder.pmu.setText(m.getPmu());
-        Query q ;
+        ArrayList<PmuNo> l;
+        l= new ArrayList<>();
+        PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
+        l.add(pmu1);
+        PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
+        l.add(pmu2);
+        PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
+        l.add(pmu3);
+        PmuNoAdapter ad;
+        ad=new PmuNoAdapter(l);
+        holder.r.setAdapter(ad);
         /*if(Action.selectedAction.equals("Rate running")){
             holder.detail.setText(" Detail :  ");
         }
@@ -77,8 +92,6 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                 holder.imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                         l= new ArrayList<>();
-                        ad=new EqPMUWiseAdapter(context,l);
                         holder.r.setLayoutManager(new LinearLayoutManager(context));
                         holder.r.setAdapter(ad);
                         if(holder.r.getVisibility()==View.GONE){
@@ -89,51 +102,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
                             holder.r.setVisibility(View.GONE);
                             holder.materialcard.setElevation(5);
                         }
-                        /*Dialog customDialog = new Dialog(context);
-                        customDialog.setContentView(R.layout.dialog5);
-                        customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);*/
 
-                        PmuNo m1 = new PmuNo("PMU-Bongaigaon",1);
-                        l.add(m1);
-                        ad.notifyDataSetChanged();
-                        PmuNo m2 = new PmuNo("PMU-Dhubri",2);
-                        l.add(m2);
-                        ad.notifyDataSetChanged();
-                        PmuNo m3 = new PmuNo("PMU-Diphu",1);
-                        l.add(m3);
-                        ad.notifyDataSetChanged();
-
-                        //recyclerPMUwise = customDialog.findViewById(R.id.eqList);
-                        //recyclerPMUwise.setHasFixedSize(true);
-                       // recyclerPMUwise.setLayoutManager(new LinearLayoutManager(customDialog.getContext()));
-
-                    /*db = FirebaseFirestore.getInstance();
-                    Ref = db.collection("rate running contracts");
-                    querya=Ref.orderBy("name").orderBy("pmu");
-                    querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()){
-                                for (DocumentSnapshot dc: task.getResult()) {
-                                    list.add(dc.toObject(ModelEquipment.class));
-                                }
-                            }
-                            else{
-                                Log.d("Error: ",task.getException().toString());
-                            }
-                            ad.notifyDataSetChanged();
-                        }
-                    });*/
-                        //recyclerPMUwise.setAdapter(ad);
-
-                    /*Button edit=customDialog.findViewById(R.id.edit);
-                    Button delete=customDialog.findViewById(R.id.delete);
-                    // Button cancel=customDialog.findViewById(R.id.cancel);
-                    EditText e;
-                    e=customDialog.findViewById(R.id.amount);
-                    String docid = m.getPmu()+m.getName();*/
-
-                        //customDialog.show();
                     }
                 });
             }
@@ -168,6 +137,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
             //pmu=itemView.findViewById(R.id.PMU);
             imageButton=itemView.findViewById(R.id.drawer);
             r=itemView.findViewById(R.id.pmuwise);
+            r.setLayoutManager(new LinearLayoutManager(itemView.getContext(), RecyclerView.HORIZONTAL, false));
         }
     }
 }
