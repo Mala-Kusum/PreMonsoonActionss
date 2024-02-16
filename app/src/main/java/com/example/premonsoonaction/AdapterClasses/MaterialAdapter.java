@@ -1,6 +1,5 @@
 package com.example.premonsoonaction.AdapterClasses;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,16 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.premonsoonaction.Activities.Action;
-import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
-import com.example.premonsoonaction.Models.PmuNoAdapter;
 import com.example.premonsoonaction.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
@@ -27,9 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +60,6 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         ModelEquipment m = list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
-
         ArrayList<PmuNo> pmuList = new ArrayList<>();
         PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
         pmuList.add(pmu1);

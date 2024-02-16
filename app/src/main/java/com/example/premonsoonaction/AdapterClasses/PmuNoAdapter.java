@@ -1,8 +1,7 @@
-package com.example.premonsoonaction.Models;
+package com.example.premonsoonaction.AdapterClasses;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.premonsoonaction.Activities.Add_Material;
+import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHolder> {
@@ -41,10 +42,22 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
         holder.datal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RecyclerView r;
                 Dialog customDialog;
                 customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog5);
                 customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                r = customDialog.findViewById(R.id.List);
+                r.setLayoutManager(new LinearLayoutManager(context));
+                ArrayList<PmuNo> pmuList = new ArrayList<>();
+                PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
+                pmuList.add(pmu1);
+                PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
+                pmuList.add(pmu2);
+                PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
+                pmuList.add(pmu3);
+                LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList);
+                r.setAdapter(ad);
                 customDialog.show();
             }
         });
