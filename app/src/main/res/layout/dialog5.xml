@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,9 +24,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="400"
-                android:text="@string/pmu"
+                android:text="@string/location"
                 android:textAlignment="center"
-                android:textSize="20sp"
                 android:padding="2dp"
                 android:textStyle="bold"/>
             <View
@@ -40,7 +38,6 @@
                 android:layout_weight="100"
                 android:text="@string/no"
                 android:textAlignment="center"
-                android:textSize="20sp"
                 android:padding="2dp"
                 android:textStyle="bold"/>
             <View
@@ -55,6 +52,7 @@
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eqList"
+        android:layout_marginVertical="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

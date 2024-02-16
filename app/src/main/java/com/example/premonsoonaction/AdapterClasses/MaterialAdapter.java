@@ -79,7 +79,7 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         pmuList.add(pmu3);
 
         // Use a separate instance of PmuNoAdapter for each item
-        PmuNoAdapter ad = new PmuNoAdapter(pmuList);
+        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList);
         holder.r.setAdapter(ad);
 
         try {

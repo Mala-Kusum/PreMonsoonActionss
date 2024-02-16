@@ -83,9 +83,9 @@ public class Equipments extends AppCompatActivity {
                 Ref = db.collection("rate running contracts");
                 break;
         }
-        r2=db.collection("pmuno");
+        //r2=db.collection("pmuno");
         querya=Ref.orderBy("name").orderBy("pmu");
-        queryb=r2.orderBy("pmu");
+        //queryb=r2.orderBy("pmu");
         querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

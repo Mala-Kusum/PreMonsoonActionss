@@ -1,22 +1,29 @@
 package com.example.premonsoonaction.Models;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.premonsoonaction.Activities.Add_Material;
 import com.example.premonsoonaction.R;
 
 import java.util.List;
 
 public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHolder> {
 
+    private Context context;
     private List<PmuNo> pmuList;
 
-    public PmuNoAdapter(List<PmuNo> pmuList) {
+    public PmuNoAdapter(Context context,List<PmuNo> pmuList) {
+        this.context = context;
         this.pmuList = pmuList;
     }
 
@@ -31,6 +38,16 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
     public void onBindViewHolder(@NonNull PmuNoViewHolder holder, int position) {
         PmuNo pmu = pmuList.get(position);
         holder.bind(pmu);
+        holder.datal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog customDialog;
+                customDialog = new Dialog(context);
+                customDialog.setContentView(R.layout.dialog5);
+                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                customDialog.show();
+            }
+        });
     }
 
     @Override
@@ -42,16 +59,17 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
 
         private TextView pmuTextView;
         private TextView noTextView;
-
+        private LinearLayout datal;
         public PmuNoViewHolder(@NonNull View itemView) {
             super(itemView);
+            datal = itemView.findViewById(R.id.datalayout);
             pmuTextView = itemView.findViewById(R.id.pmu);
             noTextView = itemView.findViewById(R.id.no);
         }
 
         public void bind(PmuNo pmu) {
-            pmuTextView.setText("PMU: " + pmu.getPMU());
-            noTextView.setText("NO: " + pmu.getNO());
+            pmuTextView.setText(pmu.getPMU());
+            noTextView.setText(Integer.toString(pmu.getNO()));
         }
     }
 }
