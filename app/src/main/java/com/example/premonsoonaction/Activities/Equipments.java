@@ -32,8 +32,8 @@ import java.util.ArrayList;
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
     private FirebaseFirestore db;
-    public static CollectionReference Ref;
-    Query querya;
+    public static CollectionReference Ref,r2;
+    Query querya,queryb;
     RecyclerView recycler,recyclerPMUwise;
     MaterialAdapter adapt;
     EqPMUWiseAdapter ad;
@@ -83,7 +83,9 @@ public class Equipments extends AppCompatActivity {
                 Ref = db.collection("rate running contracts");
                 break;
         }
+        //r2=db.collection("pmuno");
         querya=Ref.orderBy("name").orderBy("pmu");
+        //queryb=r2.orderBy("pmu");
         querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -98,23 +100,7 @@ public class Equipments extends AppCompatActivity {
                 adapt.notifyDataSetChanged();
             }
         });
-        /*querya.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    Log.e("Firestore Error", error.getMessage());
-                    return;
-                }
-                for (DocumentChange dc : value.getDocumentChanges()) {
-                    if (dc.getType() == DocumentChange.Type.ADDED || dc.getType() == DocumentChange.Type.MODIFIED) {
-                        list.add(dc.getDocument().toObject(ModelEquipment.class));
-                        System.out.println("sssssssssssssssssssssssssssssssss        " );
-                        System.out.println(list);
-                    }
-                }
-                adapt.notifyDataSetChanged();
-            }
-        });*/
+
         for(int i=0;i<list.size();i++){
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }

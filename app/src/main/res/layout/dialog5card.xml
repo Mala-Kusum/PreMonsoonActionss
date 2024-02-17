@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/eqpmuwisecard"
     android:layout_width="match_parent"
-    android:layout_margin="3dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:background="@color/black"/>
         <LinearLayout
-            android:id="@+id/datalayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <View
-                android:layout_width="1dp"
+                android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
             <TextView
-                android:id="@+id/pmu"
+                android:id="@+id/location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="400"
-                android:text="@string/pmu"
+                android:text="@string/location"
                 android:textAlignment="center"
-                android:padding="1dp"
+                android:padding="2dp"
                 android:textStyle="bold"/>
             <View
-                android:layout_width="1dp"
+                android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
             <TextView
@@ -41,16 +40,30 @@
                 android:layout_weight="100"
                 android:text="@string/no"
                 android:textAlignment="center"
-                android:padding="1dp"
+                android:padding="2dp"
                 android:textStyle="bold"/>
             <View
-                android:layout_width="1dp"
+                android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:background="@color/black"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:background="@color/black"/>
     </LinearLayout>
+    <View
+        android:id="@+id/minus"
+        android:layout_width="15dp"
+        android:layout_height="4dp"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center"
+        android:background="@color/red"/>
+    <ImageButton
+        android:id="@+id/plus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="5dp"
+        android:src="@android:drawable/ic_input_add"/>
 </LinearLayout>
