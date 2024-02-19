@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Location"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No."
+        android:textSize="16sp"/>
+
+    <!-- Add, Subtract, and Mark as Insufficient Icons -->
+    <ImageView
+        android:id="@+id/plus"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_marginStart="16dp"
+        android:contentDescription="Add"/>
+    <View
+        android:id="@+id/minus"
+        android:layout_width="20dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
+        android:layout_height="4dp"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:background="@color/red"/>
+
+    <!--<ImageView
+        android:id="@+id/subtractIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_subtract"
+        android:layout_marginStart="8dp"
+        android:contentDescription="Subtract"/>-->
+
+    <ImageView
+        android:id="@+id/insufficientIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/baseline_error_24"
+        android:layout_marginStart="8dp"
+        android:contentDescription="Mark as Insufficient"/>
+</LinearLayout>

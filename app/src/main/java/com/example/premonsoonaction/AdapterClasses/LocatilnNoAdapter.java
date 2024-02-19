@@ -30,7 +30,7 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     @NonNull
     @Override
     public PmuNoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dialog5card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerlyout, parent, false);
         return new PmuNoViewHolder(view);
     }
 
