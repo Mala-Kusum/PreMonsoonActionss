@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/eqpmuwisecard"
     android:layout_width="match_parent"
     android:layout_margin="3dp"
+    android:orientation="horizontal"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
         <View
             android:layout_width="match_parent"
@@ -53,4 +56,11 @@
             android:layout_height="1dp"
             android:background="@color/black"/>
     </LinearLayout>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_error_24"
+        app:tint="#A0A0A0" />
 </LinearLayout>
