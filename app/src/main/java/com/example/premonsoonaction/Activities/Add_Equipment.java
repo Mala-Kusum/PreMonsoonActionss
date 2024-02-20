@@ -50,6 +50,17 @@ public class Add_Equipment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
         //Declarations
+        switch(Action.selectedAction){
+            case "Equipment":
+                this.setTitle("Add Equipments");
+                break;
+            case "Material":
+                this.setTitle("Add Materials");
+                break;
+            case "Rate running":
+                this.setTitle("Add Rate Running Contracts");
+                break;
+        }
         eq = (AutoCompleteTextView)findViewById(R.id.Type);
         no = findViewById(R.id.no);
         site = findViewById(R.id.site);
@@ -57,7 +68,7 @@ public class Add_Equipment extends AppCompatActivity {
         save = findViewById(R.id.save);
 
         //set eq type
-        if(Equipments.eqt.equals("Equipments")){
+        if(Equipments.eqt.equals("Equipment")){
             ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
         }
         else{

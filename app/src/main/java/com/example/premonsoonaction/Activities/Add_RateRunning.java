@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,7 +31,7 @@ import com.google.firebase.firestore.Query;
 
 public class Add_RateRunning extends AppCompatActivity {
 
-    EditText no,start,end,cname,cnumber,cmail,location;
+    EditText no,start,end,cname,cnumber,cmail,location,pmis;
     AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
@@ -118,44 +119,11 @@ public class Add_RateRunning extends AppCompatActivity {
             }
         });
 
-        end.addTextChangedListener(new TextWatcher() {
+        end.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                if(t.toString().trim().isEmpty()){
-                    end.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                if(t.toString().trim().isEmpty()){
-                    end.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(end.getText().toString().trim().isEmpty()){
-                    end.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePick2(end);
+                newFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
 
@@ -165,7 +133,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -178,7 +146,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -191,7 +159,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(cname.getText().toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -206,7 +174,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -219,7 +187,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -232,7 +200,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(cnumber.getText().toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (location.toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -246,7 +214,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (cnumber.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -259,7 +227,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (cnumber.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -272,7 +240,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(location.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (cnumber.getText().toString().trim().isEmpty()||start.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -282,9 +250,9 @@ public class Add_RateRunning extends AppCompatActivity {
         });
 
         save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rat.setName(name.trim());
+                                    @Override
+                                    public void onClick(View view) {
+                /*rat.setName(name.trim());
                 rat.setNo(Integer.parseInt(no.getText().toString().trim()));
                 rat.setStart(start.getText().toString().trim());
                 rat.setEnd(end.getText().toString().trim());
@@ -312,6 +280,12 @@ public class Add_RateRunning extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
+                                        Intent i = new Intent(Add_RateRunning.this, Equipments.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                }
+            );
     }
 }

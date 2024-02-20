@@ -68,11 +68,11 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 r = customDialog.findViewById(R.id.List);
                 r.setLayoutManager(new LinearLayoutManager(context));
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
-                PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
+                PmuNo pmu1 = new PmuNo("Location1", 1);
                 pmuList.add(pmu1);
-                PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
+                PmuNo pmu2 = new PmuNo("Location2", 2);
                 pmuList.add(pmu2);
-                PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
+                PmuNo pmu3 = new PmuNo("Location3", 1);
                 pmuList.add(pmu3);
                 LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList);
                 r.setAdapter(ad);
