@@ -108,7 +108,13 @@ public class Equipments extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(Equipments.this, Add_Equipment.class);
+                Intent i;
+                if(eqt.equals("Rate Running Contract")){
+                    i=new Intent(Equipments.this, Add_RateRunning.class);
+                }
+                else{
+                    i=new Intent(Equipments.this, Add_Equipment.class);
+                }
                 startActivity(i);
             }
         });

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.Query;
 public class Add_RateRunning extends AppCompatActivity {
 
     EditText no,start,end,cname,cnumber,cmail,location;
-    Spinner rate;
+    AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
     private String name,loc;
@@ -40,13 +41,12 @@ public class Add_RateRunning extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rate_running);
-        no=findViewById(R.id.no);
         start=findViewById(R.id.startDate);
         end=findViewById(R.id.endDate);
         cname=findViewById(R.id.contractorName);
         cnumber=findViewById(R.id.contractorNumber);
         cmail=findViewById(R.id.contractorMail);
-        rate=findViewById(R.id.Type);
+        rate=(AutoCompleteTextView)findViewById(R.id.Type);
         location = findViewById(R.id.addloc);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
@@ -54,35 +54,19 @@ public class Add_RateRunning extends AppCompatActivity {
 
         rat = new ModelRate();
 
-        ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.Equipments, android.R.layout.simple_spinner_item);
-        ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+        rate.setThreshold(1);
         rate.setAdapter(ad);
-
-        rate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        rate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                name = (String) adapterView.getItemAtPosition(i);
-                rat.setName(name);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                View selectedView = rate.getSelectedView();
-                if (selectedView instanceof TextView) {
-                    rate.requestFocus();
-                    TextView selectedTextView = (TextView) selectedView;
-                    selectedTextView.setError("error"); // any name of the error will do
-                    selectedTextView.setTextColor(Color.RED); //text color in which you want your error message to be displayed
-                    selectedTextView.setText("Please select an option"); // actual error message
-                    rate.performClick(); // to open the spinner list if error is found.
-                    save.setEnabled(false);
-                }
+            public void onClick(View v) {
+                rate.showDropDown();
             }
         });
 
         save=findViewById(R.id.save);
         save.setEnabled(false);
-        no.addTextChangedListener(new TextWatcher() {
+        /*no.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                 if(t.toString().trim().isEmpty()){
@@ -121,7 +105,7 @@ public class Add_RateRunning extends AppCompatActivity {
                     save.setEnabled(true);
                 }
             }
-        });
+        });*/
         start.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {

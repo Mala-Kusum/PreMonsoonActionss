@@ -1,80 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
-
-    <GridLayout
-        android:id="@+id/columnTitlesLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp">
-
-        <TextView
-            android:layout_columnSpan="2"
-            android:layout_gravity="center_horizontal"
-            android:text="Location"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:text="No."
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_columnSpan="2"
-            android:layout_gravity="center_horizontal"
-            android:text="Actions"
-            android:textSize="16sp"/>
-
-    </GridLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/columnTitlesLayout"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_above="@+id/buttonLayout"/>
-
-    <!-- Buttons Layout -->
-    <LinearLayout
-        android:id="@+id/buttonLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Save"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cancel"
-            android:layout_marginStart="8dp"/>
-    </LinearLayout>
-
-</RelativeLayout>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="10dp"
     android:orientation="vertical">
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -124,7 +54,7 @@
             android:layout_height="2dp"
             android:layout_marginEnd="78dp"
             android:background="@color/black"/>
-    </LinearLayout>
+    </LinearLayout>-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/List"
         android:layout_margin="5dp"
@@ -135,12 +65,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/Save"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save"/>
         <Button
+            android:id="@+id/cancel"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:layout_width="match_parent"

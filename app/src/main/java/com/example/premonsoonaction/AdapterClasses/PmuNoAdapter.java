@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,6 +48,23 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog5);
                 customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button saveButton = customDialog.findViewById(R.id.Save);
+                Button cancelButton = customDialog.findViewById(R.id.cancel);
+                saveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Handle save button click
+                        customDialog.dismiss();  // Close the dialog if needed
+                    }
+                });
+
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Handle cancel button click
+                        customDialog.dismiss();  // Close the dialog if needed
+                    }
+                });
                 r = customDialog.findViewById(R.id.List);
                 r.setLayoutManager(new LinearLayoutManager(context));
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
