@@ -22,4 +22,7 @@
     <style name="Button.color2" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">#DC5F00</item>
     </style>
+    <style name="Backround.color1" parent="ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">#FFE4C9</item>
+    </style>
 </resources>

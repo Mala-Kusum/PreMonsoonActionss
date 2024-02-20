@@ -2,6 +2,7 @@ package com.example.premonsoonaction.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.premonsoonaction.DatePick2;
 import com.example.premonsoonaction.Models.ModelRate;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,6 +44,7 @@ public class Add_RateRunning extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rate_running);
+        this.getSupportActionBar().hide();
         start=findViewById(R.id.startDate);
         end=findViewById(R.id.endDate);
         cname=findViewById(R.id.contractorName);
@@ -106,44 +110,11 @@ public class Add_RateRunning extends AppCompatActivity {
                 }
             }
         });*/
-        start.addTextChangedListener(new TextWatcher() {
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                if(t.toString().trim().isEmpty()){
-                    start.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                if(t.toString().trim().isEmpty()){
-                    start.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(start.getText().toString().trim().isEmpty()){
-                    start.setError("This field cannot be empty");
-                    save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||no.getText().toString().trim().isEmpty()||end.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
-                    save.setEnabled(false);
-                }
-                else{
-                    save.setEnabled(true);
-                }
+            public void onClick(View v) {
+                DialogFragment newFragment = new DatePick2(start);
+                newFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
 
