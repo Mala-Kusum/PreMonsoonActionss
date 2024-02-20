@@ -31,7 +31,7 @@ import com.google.firebase.firestore.Query;
 
 public class Add_RateRunning extends AppCompatActivity {
 
-    EditText no,start,end,cname,cnumber,cmail,location,pmis;
+    EditText start,end,cname,cnumber,cmail,location,pmis;
     AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
@@ -59,7 +59,7 @@ public class Add_RateRunning extends AppCompatActivity {
 
         rat = new ModelRate();
 
-        ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+        ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.rate_running, android.R.layout.select_dialog_singlechoice);
         rate.setThreshold(1);
         rate.setAdapter(ad);
         rate.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,6 @@ public class Add_RateRunning extends AppCompatActivity {
                 rate.showDropDown();
             }
         });
-
         save=findViewById(R.id.save);
         save.setEnabled(false);
         /*no.addTextChangedListener(new TextWatcher() {
