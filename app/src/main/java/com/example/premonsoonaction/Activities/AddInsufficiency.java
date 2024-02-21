@@ -120,6 +120,5 @@ public class AddInsufficiency extends AppCompatActivity {
         catch (Exception e){
             Log.e("PMUList: ", e.toString() );
         }
-
     }
 }
