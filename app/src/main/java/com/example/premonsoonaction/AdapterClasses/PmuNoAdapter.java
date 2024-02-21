@@ -2,10 +2,12 @@ package com.example.premonsoonaction.AdapterClasses;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,11 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.premonsoonaction.Activities.AddInsufficiency;
+import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHolder> {
 
@@ -39,6 +44,14 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
     @Override
     public void onBindViewHolder(@NonNull PmuNoViewHolder holder, int position) {
         PmuNo pmu = pmuList.get(position);
+        holder.insuf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.pmu=pmu.getPMU();
+                Intent i = new Intent(context, AddInsufficiency.class);
+                context.startActivity(i);
+            }
+        });
         holder.bind(pmu);
         holder.datal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +60,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 Dialog customDialog;
                 customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog5);
-                customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Button saveButton = customDialog.findViewById(R.id.Save);
                 Button cancelButton = customDialog.findViewById(R.id.cancel);
                 saveButton.setOnClickListener(new View.OnClickListener() {
@@ -91,16 +104,18 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
         private TextView pmuTextView;
         private TextView noTextView;
         private LinearLayout datal;
+        private ImageView insuf;
         public PmuNoViewHolder(@NonNull View itemView) {
             super(itemView);
             datal = itemView.findViewById(R.id.datalayout);
             pmuTextView = itemView.findViewById(R.id.pmu);
             noTextView = itemView.findViewById(R.id.no);
+            insuf = itemView.findViewById(R.id.insufpmu);
         }
 
         public void bind(PmuNo pmu) {
             pmuTextView.setText(pmu.getPMU());
-            noTextView.setText(Integer.toString(pmu.getNO()));
+            noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
         }
     }
 }

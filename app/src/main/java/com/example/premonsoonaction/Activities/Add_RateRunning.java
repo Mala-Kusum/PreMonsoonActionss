@@ -56,9 +56,7 @@ public class Add_RateRunning extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
-
         rat = new ModelRate();
-
         ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.rate_running, android.R.layout.select_dialog_singlechoice);
         rate.setThreshold(1);
         rate.setAdapter(ad);

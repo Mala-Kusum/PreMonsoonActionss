@@ -69,6 +69,7 @@
         android:layout_marginHorizontal="5dp"
         android:src="@android:drawable/ic_input_add"/>
     <ImageView
+        android:id="@+id/insufloc"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"

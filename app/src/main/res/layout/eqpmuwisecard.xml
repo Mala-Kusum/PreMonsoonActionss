@@ -57,6 +57,7 @@
             android:background="@color/black"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/insufpmu"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"

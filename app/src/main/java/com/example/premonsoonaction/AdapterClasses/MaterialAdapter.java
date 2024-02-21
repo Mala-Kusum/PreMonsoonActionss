@@ -1,6 +1,7 @@
 package com.example.premonsoonaction.AdapterClasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.premonsoonaction.Activities.AddInsufficiency;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
@@ -60,6 +62,13 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         ModelEquipment m = list.get(position);
         holder.name.setText(m.getName());
         holder.no.setText(m.getNo());
+        holder.insuf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, AddInsufficiency.class);
+                context.startActivity(i);
+            }
+        });
         ArrayList<PmuNo> pmuList = new ArrayList<>();
         PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
         pmuList.add(pmu1);
@@ -70,7 +79,6 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
 
         // Use a separate instance of PmuNoAdapter for each item
         PmuNoAdapter ad = new PmuNoAdapter(context,pmuList);
-        holder.r.setAdapter(ad);
 
         try {
             holder.imageButton.setOnClickListener(new View.OnClickListener() {
@@ -102,15 +110,16 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         LinearLayout materialcard;
-        TextView name,no,pmu,detail;
+        TextView name,no;
         ImageView imageButton;
+        ImageView insuf;
         RecyclerView r;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             materialcard=itemView.findViewById(R.id.materialcard);
             name=itemView.findViewById(R.id.Name);
             no=itemView.findViewById(R.id.No);
-            //pmu=itemView.findViewById(R.id.PMU);
+            insuf=itemView.findViewById(R.id.insuf);
             imageButton=itemView.findViewById(R.id.drawer);
             r=itemView.findViewById(R.id.pmuwise);
             r.setLayoutManager(new LinearLayoutManager(itemView.getContext(), RecyclerView.HORIZONTAL, false));

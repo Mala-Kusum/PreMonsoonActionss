@@ -14,11 +14,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.premonsoonaction.AdapterClasses.EqPMUWiseAdapter;
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter;
 import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.Models.ModelEquipment;
-import com.example.premonsoonaction.Models.ModelRate;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,7 +38,6 @@ public class Equipments extends AppCompatActivity {
     RecyclerView recycler,recyclerPMUwise;
     MaterialAdapter adapt;
     RateAdapter adr;
-    EqPMUWiseAdapter ad;
     public static ArrayList<ModelEquipment> list,filtered;
     public static ArrayList<RateModel> lr;
     TextView t;

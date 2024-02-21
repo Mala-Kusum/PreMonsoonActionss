@@ -6,10 +6,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginHorizontal="10dp"
         app:cardElevation="5dp"
         android:layout_marginVertical="5dp"
@@ -54,20 +53,11 @@
                         android:layout_height="wrap_content"
                         android:text="1"/>
                 </LinearLayout>
-                <!--<TextView
-                    android:layout_weight="@integer/material_motion_duration_medium_2"
-                    android:id="@+id/PMU"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="12345678888888888888888888888"/>-->
                 <ImageView
                     android:id="@+id/drawer"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
                     android:src="@drawable/baseline_keyboard_arrow_right_24"/>
 
             </LinearLayout>
@@ -82,9 +72,10 @@
 
     </androidx.cardview.widget.CardView>
     <ImageView
+        android:id="@+id/insuf"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_gravity="center"
         android:src="@drawable/baseline_error_24"
         app:tint="#A0A0A0" />

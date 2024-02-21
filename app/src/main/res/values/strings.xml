@@ -34,6 +34,23 @@
     <string name="equipment">Equipment:</string>
     <string name="ro">RO:</string>
     <string name="quantity">Quantity:</string>
+    <string-array name="ROs">
+        <item> "New Delhi" </item>
+        <item> "Ro-Leh/Srinagar" </item>
+        <item> "RO-Port Blair" </item>
+        <item> "RO-Agartala" </item>
+        <item> "RO-Aizwal" </item>
+        <item> "RO-Dehradun" </item>
+        <item> "RO-Gangtok" </item>
+        <item> "RO-Guwahati" </item>
+        <item> "RO-Imphal" </item>
+        <item> "RO-Itanagar" </item>
+        <item> "RO-Jammu" </item>
+        <item> "RO-Kohima" </item>
+        <item> "RO-LADAKH" </item>
+        <item> "RO-Shillong" </item>
+        <item> "RO-SRINAGAR" </item>
+    </string-array>
     <string-array name="inventory">
         <item>"Equipments</item>
         <item>"Material</item>

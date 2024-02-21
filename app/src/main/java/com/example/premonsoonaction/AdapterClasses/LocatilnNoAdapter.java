@@ -1,20 +1,18 @@
 package com.example.premonsoonaction.AdapterClasses;
-
-import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.premonsoonaction.Activities.AddInsufficiency;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.PmuNoViewHolder> {
@@ -36,8 +34,21 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
 
     @Override
     public void onBindViewHolder(@NonNull PmuNoViewHolder holder, int position) {
-        PmuNo pmu = pmuList.get(position);
-        holder.bind(pmu);
+        try{
+            PmuNo pmu = pmuList.get(position);
+            holder.insuf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, AddInsufficiency.class);
+                    context.startActivity(i);
+                }
+            });
+            holder.bind(pmu);
+        }
+        catch(Exception e){
+            Log.e("onBindViewHolderloc: ",e.toString()+"\n"+ holder.insuf);
+
+        }
     }
 
     @Override
@@ -46,18 +57,24 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     }
 
     public static class PmuNoViewHolder extends RecyclerView.ViewHolder {
-
         private TextView pmuTextView;
         private TextView noTextView;
+        ImageView insuf;
         public PmuNoViewHolder(@NonNull View itemView) {
             super(itemView);
+            try{
+                insuf  = itemView.findViewById(R.id.insufficientIcon);
+            }
+            catch(Exception e){
+                Log.e("PmuNoViewHolderloc: ", e.toString());
+            }
+
             pmuTextView = itemView.findViewById(R.id.location);
             noTextView = itemView.findViewById(R.id.no);
         }
-
         public void bind(PmuNo pmu) {
             pmuTextView.setText(pmu.getPMU());
-            noTextView.setText(Integer.toString(pmu.getNO()));
+            noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
         }
     }
 }

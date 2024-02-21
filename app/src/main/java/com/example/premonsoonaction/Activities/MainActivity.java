@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         id=findViewById(R.id.id);
         password=findViewById(R.id.pswd);
         login=findViewById(R.id.login);
+        pmu="";
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("accounts");
         login.setOnClickListener(new View.OnClickListener() {
