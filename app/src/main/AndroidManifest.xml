@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PreMonsoonAction"
         tools:targetApi="31">
         <activity
+            android:name=".AddInsufficiency"
+            android:exported="false" />
+        <activity
             android:name=".Activities.PMUwiseEqp"
             android:exported="false" />
         <activity

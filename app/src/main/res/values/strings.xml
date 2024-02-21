@@ -28,9 +28,12 @@
     <string name="save">save</string>
     <string name="equipments">Equipments</string>
     <string name="no">No.</string>
-    <string name="pmu">PMU</string>
+    <string name="pmu">PMU: </string>
     <string name="type">Type:</string>
-    <string name="location">Location</string>
+    <string name="location">Location: </string>
+    <string name="equipment">Equipment:</string>
+    <string name="ro">RO:</string>
+    <string name="quantity">Quantity:</string>
     <string-array name="inventory">
         <item>"Equipments</item>
         <item>"Material</item>
