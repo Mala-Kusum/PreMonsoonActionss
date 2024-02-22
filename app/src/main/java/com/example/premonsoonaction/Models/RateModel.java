@@ -1,18 +1,20 @@
 package com.example.premonsoonaction.Models;
 
+import java.util.Date;
+
 public class RateModel {
     private String ro;
     private String type;
     private String pmis;
     private String address;
-    private String start;
-    private String end;
+    private Date start;
+    private Date end;
     private String email;
     private String mobile;
     private String name;
     private String details;
 
-    public RateModel(String type, String pmis, String address, String start, String end, String email, String mobile, String name, String details) {
+    public RateModel(String type, String pmis, String address, Date start, Date end, String email, String mobile, String name, String details) {
         this.type = type;
         this.pmis = pmis;
         this.address = address;
@@ -53,19 +55,19 @@ public class RateModel {
         this.address = address;
     }
 
-    public String getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 

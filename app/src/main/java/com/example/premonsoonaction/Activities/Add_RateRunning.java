@@ -25,6 +25,7 @@ import com.example.premonsoonaction.Models.ModelRate;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -40,6 +41,7 @@ public class Add_RateRunning extends AppCompatActivity {
     private String name,loc;
     ModelRate rat;
     CollectionReference Ref;
+    Timestamp start,end;
 
     Query q;
 
