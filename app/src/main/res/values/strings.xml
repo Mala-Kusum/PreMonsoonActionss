@@ -251,4 +251,5 @@
     <string-array name="NewDelhi">
         <item>"Test PMU"</item>
     </string-array>
+    <string name="title_activity_geo_map">GeoMap</string>
 </resources>
