@@ -9,18 +9,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.premonsoonaction.R;
 
 public class AddInsufficiency extends AppCompatActivity {
 
- AutoCompleteTextView ro,pmu;
- ArrayAdapter ad,ad2;
+ AutoCompleteTextView ro,pmu,eq;
+ EditText loc;
+ ArrayAdapter ad,ad2,eqa;
+ TextView t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_insufficiency);
-        ro = findViewById(R.id.ro);
+        ro =(AutoCompleteTextView) findViewById(R.id.ro);
+        pmu = (AutoCompleteTextView) findViewById(R.id.pmu);
+        loc = findViewById(R.id.loc);
+        eq = (AutoCompleteTextView) findViewById(R.id.Type);
+        t = findViewById(R.id.eq);
         ro.setText(MainActivity.RO);
         ad = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.ROs, android.R.layout.select_dialog_singlechoice);
         ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.ROs, android.R.layout.select_dialog_singlechoice);
@@ -104,7 +111,7 @@ public class AddInsufficiency extends AppCompatActivity {
                 ro.showDropDown();
             }
         });
-        pmu = findViewById(R.id.pmu);
+
         pmu.setText(MainActivity.pmu);
         pmu.setThreshold(1);
         pmu.setAdapter(ad2);
@@ -120,5 +127,26 @@ public class AddInsufficiency extends AppCompatActivity {
         catch (Exception e){
             Log.e("PMUList: ", e.toString() );
         }
+        loc.setText(MainActivity.location);
+        switch(Action.selectedAction){
+            case "Equipment":
+                eqa = ArrayAdapter.createFromResource(AddInsufficiency.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+                break;
+            case "Material":
+                t.setText("Material");
+                eqa = ArrayAdapter.createFromResource(AddInsufficiency.this,R.array.Materials, android.R.layout.select_dialog_singlechoice);
+                break;
+        }
+        eq.setThreshold(1);
+        eq.setAdapter(eqa);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MainActivity.pmu="";
+        pmu.setText("");
+        MainActivity.location="";
+        loc.setText("");
     }
 }

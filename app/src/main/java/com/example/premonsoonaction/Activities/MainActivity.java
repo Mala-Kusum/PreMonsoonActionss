@@ -15,7 +15,7 @@ import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
     Button login;
-    public static String RO,pmu;
+    public static String RO,pmu,location;
     public static boolean HQ=false,ro=false,PMU=false;
     private FirebaseFirestore db;
     private CollectionReference Ref;

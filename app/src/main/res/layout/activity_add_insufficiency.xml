@@ -52,6 +52,7 @@
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/border"
                 android:focusableInTouchMode="false"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:paddingHorizontal="10dp" />
             <TextView
@@ -68,6 +69,7 @@
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/border"
                 android:focusableInTouchMode="false"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:paddingHorizontal="10dp" />
             <TextView
@@ -84,10 +86,11 @@
                 android:layout_marginVertical="8dp"
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:background="@drawable/border"
                 android:inputType="text" />
             <TextView
+                android:id="@+id/eq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -98,6 +101,7 @@
                 android:id="@+id/Type"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textSize="20sp"
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/border"
                 android:focusableInTouchMode="true"
@@ -117,7 +121,7 @@
                 android:paddingHorizontal="10dp"
                 android:layout_marginVertical="8dp"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:background="@drawable/border" />
         </LinearLayout>
     </ScrollView>

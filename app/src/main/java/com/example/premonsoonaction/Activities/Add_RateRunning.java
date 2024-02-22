@@ -277,12 +277,15 @@ public class Add_RateRunning extends AppCompatActivity {
                     }
                 });
             }
-        });*/
-                                        Intent i = new Intent(Add_RateRunning.this, Equipments.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                }
-            );
+        });*/try{
+                Intent i = new Intent(Add_RateRunning.this, Equipments.class);
+                startActivity(i);
+                finish();
+             }
+             catch(Exception e){
+                 Log.e("intentError",e.toString());
+             }
+            }
+        });
     }
 }

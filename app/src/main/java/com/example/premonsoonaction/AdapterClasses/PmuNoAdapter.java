@@ -56,6 +56,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
         holder.datal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity.pmu=pmu.getPMU();
                 RecyclerView r;
                 Dialog customDialog;
                 customDialog = new Dialog(context);
