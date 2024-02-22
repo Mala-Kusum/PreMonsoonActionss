@@ -65,7 +65,7 @@ public class Report extends AppCompatActivity {
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
         //q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
-        q=Ref.orderBy("submitted", Query.Direction.DESCENDING);
+        q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
         if(MainActivity.HQ){
             button.setVisibility(View.INVISIBLE);
         }
