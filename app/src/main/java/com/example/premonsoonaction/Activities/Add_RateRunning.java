@@ -31,9 +31,9 @@ import com.google.firebase.firestore.Query;
 
 import java.util.Date;
 
-public class Add_RateRunning extendeds AppCompatActivity {
+public class Add_RateRunning extends AppCompatActivity {
 
-    EditText cname,cnumber,cmail,location,pmis,starteded,endeded,detail;
+    EditText cname,cnumber,cmail,location,pmis,started,ended,detail;
     AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
@@ -54,8 +54,8 @@ public class Add_RateRunning extendeds AppCompatActivity {
         rate=(AutoCompleteTextView)findViewById(R.id.Type);
         location = findViewById(R.id.addloc);
         pmis = findViewById(R.id.pmis);
-        starteded =findViewById(R.id.startedDate);
-        endeded = findViewById(R.id.endedDate);
+        starteded =findViewById(R.id.startDate);
+        endeded = findViewById(R.id.endDate);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
