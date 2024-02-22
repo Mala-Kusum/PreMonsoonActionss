@@ -54,8 +54,8 @@ public class Add_RateRunning extends AppCompatActivity {
         rate=(AutoCompleteTextView)findViewById(R.id.Type);
         location = findViewById(R.id.addloc);
         pmis = findViewById(R.id.pmis);
-        starteded =findViewById(R.id.startDate);
-        endeded = findViewById(R.id.endDate);
+        started =findViewById(R.id.startDate);
+        ended = findViewById(R.id.endDate);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
@@ -111,7 +111,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 }
             }
         });*/
-        starteded.setOnClickListener(new View.OnClickListener() {
+        started.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePick2(started);
@@ -119,7 +119,7 @@ public class Add_RateRunning extends AppCompatActivity {
             }
         });
 
-        endeded.setOnClickListener(new View.OnClickListener() {
+        ended.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new DatePick2(ended);
