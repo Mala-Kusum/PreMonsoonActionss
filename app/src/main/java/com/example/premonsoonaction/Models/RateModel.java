@@ -1,6 +1,7 @@
 package com.example.premonsoonaction.Models;
 
 public class RateModel {
+    private String ro;
     private String type;
     private String pmis;
     private String address;
@@ -24,6 +25,9 @@ public class RateModel {
     }
 
     // Getters and setters for each field
+    public String getRo() { return ro; }
+
+    public void setRo(String ro) { this.ro = ro; }
 
     public String getType() {
         return type;
