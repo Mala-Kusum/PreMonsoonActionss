@@ -74,6 +74,7 @@ public class Add_RateRunning extends AppCompatActivity {
         started =findViewById(R.id.startDate);
         ended = findViewById(R.id.endDate);
         save=findViewById(R.id.save);
+        rat = new RateModel();
         save.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
@@ -268,7 +269,6 @@ public class Add_RateRunning extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-                rat = new RateModel();
                 rat.setName(cname.getText().toString().trim());
                 rat.setStart(getDateFromString(started.getText().toString()));
                 rat.setEnd(getDateFromString(ended.getText().toString().trim()));
