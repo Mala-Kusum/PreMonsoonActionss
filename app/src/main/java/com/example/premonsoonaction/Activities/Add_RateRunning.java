@@ -87,8 +87,6 @@ public class Add_RateRunning extends AppCompatActivity {
                 rate.showDropDown();
             }
         });
-
-
         /*no.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
@@ -270,6 +268,7 @@ public class Add_RateRunning extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+                rat = new RateModel();
                 rat.setName(cname.getText().toString().trim());
                 rat.setStart(getDateFromString(started.getText().toString()));
                 rat.setEnd(getDateFromString(ended.getText().toString().trim()));
@@ -277,10 +276,20 @@ public class Add_RateRunning extends AppCompatActivity {
                 rat.setAddress(location.getText().toString().trim());
                 rat.setPmis(Integer.parseInt(pmis.getText().toString().trim()));
                 if(cmail.getText().toString().trim().isEmpty()){
-                    rat.setEmail(" ");
+                    try{
+                        rat.setEmail("");
+                    }
+                    catch(Exception e){
+                        Log.e("adding email: ",e.toString());
+                    }
                 }
                 else{
-                    rat.setEmail(cmail.getText().toString().trim());
+                    try{
+                        rat.setEmail(cmail.getText().toString().trim());
+                    }
+                    catch(Exception e){
+                        Log.e("adding email: ",e.toString());
+                    }
                 }
                if(detail.getText().toString().trim().isEmpty()){
                    rat.setDetails(" ");
@@ -311,7 +320,5 @@ public class Add_RateRunning extends AppCompatActivity {
                }
             }
         });
-
-
-            }
-        }
+    }
+}

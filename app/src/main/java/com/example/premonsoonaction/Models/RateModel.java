@@ -26,6 +26,9 @@ public class RateModel {
         this.details = details;
     }
 
+    public RateModel() {
+    }
+
     // Getters and setters for each field
     public String getRo() { return ro; }
 
