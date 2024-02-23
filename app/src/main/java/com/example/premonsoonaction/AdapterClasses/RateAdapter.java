@@ -36,10 +36,10 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
         RateModel rateModel = rateModelList.get(position);
 
         holder.typeTextView.setText(rateModel.getType());
-        holder.pmisTextView.setText(rateModel.getPmis());
+        holder.pmisTextView.setText(Integer.toString(rateModel.getPmis()));
         holder.addressTextView.setText(rateModel.getAddress());
-        holder.startTextView.setText(rateModel.getStart());
-        holder.endTextView.setText(rateModel.getEnd());
+        holder.startTextView.setText(rateModel.getStart().toString());
+        holder.endTextView.setText(rateModel.getEnd().toString());
         holder.emailTextView.setText(rateModel.getEmail());
         holder.mobileTextView.setText(rateModel.getMobile());
         holder.nameTextView.setText(rateModel.getName());
@@ -64,7 +64,6 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             typeTextView = itemView.findViewById(R.id.type);
             pmisTextView = itemView.findViewById(R.id.pmis);
             addressTextView = itemView.findViewById(R.id.address);

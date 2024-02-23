@@ -5,7 +5,7 @@ import java.util.Date;
 public class RateModel {
     private String ro;
     private String type;
-    private String pmis;
+    private int pmis;
     private String address;
     private Date start;
     private Date end;
@@ -14,7 +14,7 @@ public class RateModel {
     private String name;
     private String details;
 
-    public RateModel(String type, String pmis, String address, Date start, Date end, String email, String mobile, String name, String details) {
+    public RateModel(String type, int pmis, String address, Date start, Date end, String email, String mobile, String name, String details) {
         this.type = type;
         this.pmis = pmis;
         this.address = address;
@@ -39,11 +39,11 @@ public class RateModel {
         this.type = type;
     }
 
-    public String getPmis() {
+    public int getPmis() {
         return pmis;
     }
 
-    public void setPmis(String pmis) {
+    public void setPmis(int pmis) {
         this.pmis = pmis;
     }
 

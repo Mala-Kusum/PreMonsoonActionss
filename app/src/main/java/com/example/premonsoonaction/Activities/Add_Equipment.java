@@ -61,6 +61,7 @@ public class Add_Equipment extends AppCompatActivity {
                 this.setTitle("Add Rate Running Contracts");
                 break;
         }
+
         eq = (AutoCompleteTextView)findViewById(R.id.Type);
         no = findViewById(R.id.no);
         site = findViewById(R.id.site);

@@ -29,12 +29,14 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
     private FirebaseFirestore db;
-    public static CollectionReference Ref,r2;
-    Query querya,queryb;
+    public static CollectionReference Ref;
+    Query querya;
     RecyclerView recycler,recyclerPMUwise;
     MaterialAdapter adapt;
     RateAdapter adr;
@@ -43,6 +45,7 @@ public class Equipments extends AppCompatActivity {
     TextView t;
     EditText filter;
     public static String eqt;
+    Date s,e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +57,15 @@ public class Equipments extends AppCompatActivity {
         t=findViewById(R.id.No);
         list = new ArrayList<>();
         lr = new ArrayList<>();
-        lr.add(new RateModel("Type1", "PMIS1", "Address1", "Start1", "End1", "email1@example.com", "123456789", "Name1", "Details1"));
-        lr.add(new RateModel("Type2", "PMIS2", "Address2", "Start2", "End2", "email2@example.com", "223456789", "Name2", "Details2"));
-        lr.add(new RateModel("Type3", "PMIS3", "Address3", "Start3", "End3", "email3@example.com", "323456789", "Name3", "Details3"));
+        Calendar c1 = Calendar.getInstance();
+        c1.set(1998,7,28);
+        s = c1.getTime();
+        Calendar c2 = Calendar.getInstance();
+        c2.set(1998,7,28);
+        e = c2.getTime();
+        lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
+        lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
+        lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));
         adapt=new MaterialAdapter(this,list);
         adr=new RateAdapter(this,lr);
         recycler = findViewById(R.id.SearchByDesignation);
@@ -112,7 +121,12 @@ public class Equipments extends AppCompatActivity {
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }
         if(eqt.equals("Rate Running Contract")){
-            recycler.setAdapter(adr);
+            try{
+                recycler.setAdapter(adr);
+            }
+           catch(Exception e){
+               Log.e("set adr: ",e.toString());
+           }
         }
         else{
             recycler.setAdapter(adapt);

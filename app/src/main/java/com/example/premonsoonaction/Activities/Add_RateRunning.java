@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.premonsoonaction.DatePick2;
 import com.example.premonsoonaction.Models.ModelRate;
+import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,6 +31,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Add_RateRunning extends AppCompatActivity {
@@ -39,12 +43,23 @@ public class Add_RateRunning extends AppCompatActivity {
     ArrayAdapter ad;
     Button save;
     private String name,loc;
-    ModelRate rat;
+    RateModel rat;
     CollectionReference Ref;
     Timestamp start,end;
 
     Query q;
+    Date s,e;
+    static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    public Date getDateFromString(String datetoSaved){
 
+        try {
+            Date date = format.parse(datetoSaved);
+            return date ;
+        } catch (ParseException e){
+            return null ;
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +73,11 @@ public class Add_RateRunning extends AppCompatActivity {
         pmis = findViewById(R.id.pmis);
         started =findViewById(R.id.startDate);
         ended = findViewById(R.id.endDate);
+        save=findViewById(R.id.save);
+        save.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
-        rat = new ModelRate();
         ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.rate_running, android.R.layout.select_dialog_singlechoice);
         rate.setThreshold(1);
         rate.setAdapter(ad);
@@ -71,8 +87,8 @@ public class Add_RateRunning extends AppCompatActivity {
                 rate.showDropDown();
             }
         });
-        save=findViewById(R.id.save);
-        save.setEnabled(false);
+
+
         /*no.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
@@ -252,23 +268,27 @@ public class Add_RateRunning extends AppCompatActivity {
         });
 
         save.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                /*rat.setName(name.trim());
-                rat.setNo(Integer.parseInt(no.getText().toString().trim()));
-                rat.setstarted(started.getText().toString().trim());
-                rat.setended(ended.getText().toString().trim());
-                rat.setCname(cname.getText().toString().trim());
-                rat.setNumber(Integer.parseInt(cnumber.getText().toString().trim()));
-                rat.setLocation(location.getText().toString().trim());
-                rat.setPmu(MainActivity.pmu);
+           @Override
+           public void onClick(View view) {
+                rat.setName(cname.getText().toString().trim());
+                rat.setStart(getDateFromString(started.getText().toString()));
+                rat.setEnd(getDateFromString(ended.getText().toString().trim()));
+                rat.setMobile(cnumber.getText().toString().trim());
+                rat.setAddress(location.getText().toString().trim());
+                rat.setPmis(Integer.parseInt(pmis.getText().toString().trim()));
                 if(cmail.getText().toString().trim().isEmpty()){
-                    rat.setCemail(" ");
+                    rat.setEmail(" ");
                 }
                 else{
-                    rat.setCemail(cmail.getText().toString().trim());
+                    rat.setEmail(cmail.getText().toString().trim());
                 }
-                Ref.document(loc + name).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
+               if(detail.getText().toString().trim().isEmpty()){
+                   rat.setDetails(" ");
+               }
+               else{
+                   rat.setDetails(detail.getText().toString().trim());
+               }
+                Ref.document(pmis.toString()).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("TAG", "DocumentSnapshot successfully updated!");
@@ -281,16 +301,17 @@ public class Add_RateRunning extends AppCompatActivity {
                         finish();
                     }
                 });
-            }
-        });*/try{
-                Intent i = new Intent(Add_RateRunning.this, Equipments.class);
-                startActivity(i);
-                finish();
-             }
-             catch(Exception e){
-                 Log.e("intentError",e.toString());
-             }
+               try{
+                   Intent i = new Intent(Add_RateRunning.this, Equipments.class);
+                   startActivity(i);
+                   finish();
+               }
+               catch(Exception e){
+                   Log.e("intentError",e.toString());
+               }
             }
         });
-    }
-}
+
+
+            }
+        }
