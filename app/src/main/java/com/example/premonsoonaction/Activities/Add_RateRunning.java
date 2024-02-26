@@ -74,6 +74,7 @@ public class Add_RateRunning extends AppCompatActivity {
         started =findViewById(R.id.startDate);
         ended = findViewById(R.id.endDate);
         save=findViewById(R.id.save);
+        detail=findViewById(R.id.essentialdetails);
         rat = new RateModel();
         save.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -272,9 +273,11 @@ public class Add_RateRunning extends AppCompatActivity {
                 rat.setName(cname.getText().toString().trim());
                 rat.setStart(getDateFromString(started.getText().toString()));
                 rat.setEnd(getDateFromString(ended.getText().toString().trim()));
+                Log.d( "start & end : ",getDateFromString(started.getText().toString())+" "+getDateFromString(ended.getText().toString().trim()));
                 rat.setMobile(cnumber.getText().toString().trim());
                 rat.setAddress(location.getText().toString().trim());
                 rat.setPmis(Integer.parseInt(pmis.getText().toString().trim()));
+                rat.setType(rate.getText().toString().trim());
                 if(cmail.getText().toString().trim().isEmpty()){
                     try{
                         rat.setEmail("");
@@ -297,20 +300,20 @@ public class Add_RateRunning extends AppCompatActivity {
                else{
                    rat.setDetails(detail.getText().toString().trim());
                }
-                Ref.document(pmis.toString()).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
+               try{
+                Ref.document(pmis.getText().toString().trim()).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("TAG", "DocumentSnapshot successfully updated!");
-                        finish();
+                        //finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("Error updating details", e.toString());
-                        finish();
+                        //finish();
                     }
                 });
-               try{
                    Intent i = new Intent(Add_RateRunning.this, Equipments.class);
                    startActivity(i);
                    finish();
