@@ -62,9 +62,10 @@ public class Equipments extends AppCompatActivity {
         s = c1.getTime();
         Calendar c2 = Calendar.getInstance();
         c2.set(1998,7,28);
-        lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
+        e = c2.getTime();
+        /*lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
         lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
-        lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));
+        lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));*/
         adapt=new MaterialAdapter(this,list);
         adr=new RateAdapter(this,lr);
         recycler = findViewById(R.id.SearchByDesignation);
@@ -73,7 +74,7 @@ public class Equipments extends AppCompatActivity {
         /*for(int i=0;i<list.size();i++){
             Log.e( "onCreathuyge: ",list.get(i).getName() );
         }*/
-        if(Action.selectedAction.equals("Rate Running Contract")){
+        if(Action.selectedAction.equals("Rate running")){
             try{
                 recycler.setAdapter(adr);
             }
@@ -85,7 +86,6 @@ public class Equipments extends AppCompatActivity {
             recycler.setAdapter(adapt);
         }
         //recyler for PMUwise split currently only displays list as in equipment list, it has to be changed while working on backend.
-
         if(MainActivity.HQ){
             add.setVisibility(View.INVISIBLE);
         }
@@ -108,7 +108,7 @@ public class Equipments extends AppCompatActivity {
                 querya=Ref.orderBy("name").orderBy("pmu");
                 break;
             case "Rate running":
-                t.setText("No.");
+                //t.setText("No.");
                 this.setTitle("Rate Running Contracts");
                 eqt="Rate Running Contract";
                 Ref = db.collection("rate running contracts");
@@ -124,7 +124,9 @@ public class Equipments extends AppCompatActivity {
                     if(task.isSuccessful()){
                         for (DocumentSnapshot dc: task.getResult()) {
                             try {
-                                lr.add(dc.toObject(RateModel.class));
+                                RateModel ob = dc.toObject(RateModel.class);
+                                lr.add(ob);
+                                Log.d("RateModel obj: ",ob.getPmis()+" "+ob.getAddress()+" "+ob.getStart()+" "+ob.getEnd()+" "+ob.getType()+" "+ob.getName()+" "+ob.getMobile()+" "+ob.getEmail()+" "+ob.getDetails()+" "+ob.getRo()+"\n");
                             }
                             catch(Exception e){
                                 Log.e("onComplete rate running: ",e.toString());
@@ -132,7 +134,7 @@ public class Equipments extends AppCompatActivity {
                         }
                     }
                     else{
-                        Log.d("Error: ",task.getException().toString());
+                        Log.d("Error rate: ",task.getException().toString());
                     }
                     try {
                         adr.notifyDataSetChanged();
@@ -153,7 +155,7 @@ public class Equipments extends AppCompatActivity {
                         }
                     }
                     else{
-                        Log.d("Error: ",task.getException().toString());
+                        Log.d("Error eq: ",task.getException().toString());
                     }
                     adapt.notifyDataSetChanged();
                 }
