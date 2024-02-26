@@ -49,7 +49,7 @@ public class Add_RateRunning extends AppCompatActivity {
 
     Query q;
     Date s,e;
-    static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
     public Date getDateFromString(String datetoSaved){
 
         try {
@@ -278,6 +278,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 rat.setAddress(location.getText().toString().trim());
                 rat.setPmis(Integer.parseInt(pmis.getText().toString().trim()));
                 rat.setType(rate.getText().toString().trim());
+                rat.setRo(MainActivity.RO);
                 if(cmail.getText().toString().trim().isEmpty()){
                     try{
                         rat.setEmail("");
