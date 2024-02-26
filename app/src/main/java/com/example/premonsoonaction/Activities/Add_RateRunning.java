@@ -37,7 +37,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Add_RateRunning extends AppCompatActivity {
-
     EditText cname,cnumber,cmail,location,pmis,started,ended,detail;
     AutoCompleteTextView rate;
     ArrayAdapter ad;
@@ -46,7 +45,6 @@ public class Add_RateRunning extends AppCompatActivity {
     RateModel rat;
     CollectionReference Ref;
     Timestamp start,end;
-
     Query q;
     Date s,e;
     static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
@@ -58,7 +56,6 @@ public class Add_RateRunning extends AppCompatActivity {
         } catch (ParseException e){
             return null ;
         }
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

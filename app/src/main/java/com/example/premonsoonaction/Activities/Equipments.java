@@ -62,7 +62,6 @@ public class Equipments extends AppCompatActivity {
         s = c1.getTime();
         Calendar c2 = Calendar.getInstance();
         c2.set(1998,7,28);
-        e = c2.getTime();
         lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
         lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
         lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));
@@ -71,6 +70,20 @@ public class Equipments extends AppCompatActivity {
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
+        /*for(int i=0;i<list.size();i++){
+            Log.e( "onCreathuyge: ",list.get(i).getName() );
+        }*/
+        if(Action.selectedAction.equals("Rate Running Contract")){
+            try{
+                recycler.setAdapter(adr);
+            }
+            catch(Exception e){
+                Log.e("set adr: ",e.toString());
+            }
+        }
+        else{
+            recycler.setAdapter(adapt);
+        }
         //recyler for PMUwise split currently only displays list as in equipment list, it has to be changed while working on backend.
 
         if(MainActivity.HQ){
@@ -85,52 +98,68 @@ public class Equipments extends AppCompatActivity {
                 this.setTitle("Equipments");
                 eqt="Equipment";
                 Ref = db.collection("equipments");
+                querya=Ref.orderBy("name").orderBy("pmu");
                 break;
             case "Material":
                 t.setText("Quantity.");
                 this.setTitle("Materials");
                 eqt="Material";
                 Ref = db.collection("materials");
+                querya=Ref.orderBy("name").orderBy("pmu");
                 break;
             case "Rate running":
                 t.setText("No.");
                 this.setTitle("Rate Running Contracts");
                 eqt="Rate Running Contract";
                 Ref = db.collection("rate running contracts");
+                querya=Ref.whereEqualTo("ro",MainActivity.RO);
                 break;
         }
         //r2=db.collection("pmuno");
-        querya=Ref.orderBy("name").orderBy("pmu");
         //queryb=r2.orderBy("pmu");
-        querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for (DocumentSnapshot dc: task.getResult()) {
-                        list.add(dc.toObject(ModelEquipment.class));
+        if(eqt.equals("Rate Running Contract")){
+            querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for (DocumentSnapshot dc: task.getResult()) {
+                            try {
+                                lr.add(dc.toObject(RateModel.class));
+                            }
+                            catch(Exception e){
+                                Log.e("onComplete rate running: ",e.toString());
+                            }
+                        }
+                    }
+                    else{
+                        Log.d("Error: ",task.getException().toString());
+                    }
+                    try {
+                        adr.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("onComplete rate running: ",e.toString());
                     }
                 }
-                else{
-                    Log.d("Error: ",task.getException().toString());
-                }
-                adapt.notifyDataSetChanged();
-            }
-        });
-
-        for(int i=0;i<list.size();i++){
-            Log.e( "onCreathuyge: ",list.get(i).getName() );
-        }
-        if(eqt.equals("Rate Running Contract")){
-            try{
-                recycler.setAdapter(adr);
-            }
-           catch(Exception e){
-               Log.e("set adr: ",e.toString());
-           }
+            });
         }
         else{
-            recycler.setAdapter(adapt);
+            querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for (DocumentSnapshot dc: task.getResult()) {
+                            list.add(dc.toObject(ModelEquipment.class));
+                        }
+                    }
+                    else{
+                        Log.d("Error: ",task.getException().toString());
+                    }
+                    adapt.notifyDataSetChanged();
+                }
+            });
         }
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,7 +171,6 @@ public class Equipments extends AppCompatActivity {
                     i=new Intent(Equipments.this, Add_Equipment.class);
                 }
                 startActivity(i);
-
             }
         });
         filter.addTextChangedListener(new TextWatcher() {
