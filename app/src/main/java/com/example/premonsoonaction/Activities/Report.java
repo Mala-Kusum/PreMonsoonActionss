@@ -64,7 +64,6 @@ public class Report extends AppCompatActivity {
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
-        //q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
         q=Ref.whereEqualTo("ro",MainActivity.RO).orderBy("submitted", Query.Direction.DESCENDING);
         if(MainActivity.HQ){
             button.setVisibility(View.INVISIBLE);
@@ -123,25 +122,6 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 DialogFragment newFragment = new DatePick(true);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
-                /*if(b1&&b2){
-                    for (int i = 0; i < l.size(); i++) {
-
-                        Date date = l.get(i).getDate();
-                        if (date.after(f)&&date.before(t)) {
-                            filtered.add(l.get(i));
-                        }
-                    }
-                    if (filtered.isEmpty()) {
-                        // if no item is added in filtered list we are
-                        Toast.makeText(Report.this, "No Data Found..", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // at last we are passing that filtered
-                        // list to our adapter class.
-                        ad.filterList((ArrayList<reportGetModel>) filtered);
-                    } // data set changed
-                    b1=false;
-                    b2=false;
-                }*/
             }
         });
         to.setOnClickListener(new View.OnClickListener() {
@@ -149,25 +129,6 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 DialogFragment newFragment = new DatePick(false);
                 newFragment.show(getSupportFragmentManager(), "datePicker");
-                /*if(b1&&b2){
-                    for (int i = 0; i < l.size(); i++) {
-
-                        Date date = l.get(i).getDate();
-                        if (date.after(f)&&date.before(t)) {
-                            filtered.add(l.get(i));
-                        }
-                    }
-                    if (filtered.isEmpty()) {
-                        // if no item is added in filtered list we are
-                        Toast.makeText(Report.this, "No Data Found..", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // at last we are passing that filtered
-                        // list to our adapter class.
-                        ad.filterList((ArrayList<reportGetModel>) filtered);
-                    } // data set changed
-                    b1=false;
-                    b2=false;
-                }*/
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
