@@ -36,8 +36,8 @@ public class Add_Equipment extends AppCompatActivity {
     EditText no,site;
     AutoCompleteTextView eq;
     private FirebaseFirestore db;
-    Spinner pmu;
-    ArrayAdapter<CharSequence> ad1,ad;
+    AutoCompleteTextView pmu;
+    ArrayAdapter ad1,ad;
     private CollectionReference Ref;
     String name, n, loc;
     Button save;
@@ -49,11 +49,17 @@ public class Add_Equipment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_equipment);
+        db = FirebaseFirestore.getInstance();
         //Declarations
         switch(Action.selectedAction){
             case "Equipment":
                 this.setTitle("Add Equipments");
-                Ref = db.collection("equipments");
+                try{
+                    Ref = db.collection("equipments");
+                }
+                catch(Exception e){
+                    Log.e( "Setting eq collection reference: ",e.toString());
+                }
                 break;
             case "Material":
                 this.setTitle("Add Materials");
@@ -63,7 +69,7 @@ public class Add_Equipment extends AppCompatActivity {
         eq = (AutoCompleteTextView)findViewById(R.id.Type);
         no = findViewById(R.id.no);
         site = findViewById(R.id.site);
-        pmu = findViewById(R.id.pmu);
+        pmu = (AutoCompleteTextView) findViewById(R.id.pmu);
         save = findViewById(R.id.save);
 
         //set eq type
@@ -81,12 +87,65 @@ public class Add_Equipment extends AppCompatActivity {
                 eq.showDropDown();
             }
         });
-
+        
         //set PMU
-        ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Guwahati, android.R.layout.simple_spinner_item);
-        ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        switch(MainActivity.RO){
+            case"Ro-Leh/Srinagar":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.LehSrinagar, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Shillong":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Shillong, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-LADAKH":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.LADAKH, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Kohima":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Kohima, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Jammu":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Jammu, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Itanagar":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Itanagar, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Imphal":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Imphal, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Guwahati":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Guwahati, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Gangtok":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Gangtok, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Dehradun":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Dehradun, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Aizwal":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Aizwal, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Agartala":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Agartala, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-Port Blair":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.PortBlair, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"RO-SRINAGAR":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.SRINAGAR, android.R.layout.select_dialog_singlechoice);
+                break;
+            case"New Delhi":
+                ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.NewDelhi, android.R.layout.select_dialog_singlechoice);
+                break;
+        }
+        //ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Guwahati, android.R.layout.select_dialog_singlechoice);
+        eq.setThreshold(1);
         pmu.setAdapter(ad);
-        pmu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        pmu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pmu.showDropDown();
+            }
+        });
+        /*pmu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 loc=(String) adapterView.getItemAtPosition(i);
@@ -105,7 +164,7 @@ public class Add_Equipment extends AppCompatActivity {
                     save.setEnabled(false);
                 }
             }
-        });
+        });*/
 
         //set save
         save.setOnClickListener(new View.OnClickListener() {

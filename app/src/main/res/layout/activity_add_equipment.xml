@@ -72,18 +72,20 @@
             android:layout_marginVertical="10dp"
             android:elevation="5dp"
             android:background="@drawable/border">
-            <!--<TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingHorizontal="10dp"
+                android:text="PMU"/>
+            <AutoCompleteTextView
+                android:id="@+id/pmu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:text="PMU: "/>-->
-            <Spinner
-                android:id="@+id/pmu"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:paddingHorizontal="10dp"
+                android:focusableInTouchMode="false"
                 android:background="@null"
                 />
         </LinearLayout>
