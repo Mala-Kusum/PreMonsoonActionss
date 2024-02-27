@@ -48,9 +48,7 @@ public class Add_Material extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_material);
-
         j = 0;
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("materials");
 

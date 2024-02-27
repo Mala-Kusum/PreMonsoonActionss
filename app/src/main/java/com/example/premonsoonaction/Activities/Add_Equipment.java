@@ -35,13 +35,13 @@ public class Add_Equipment extends AppCompatActivity {
     //Spinner pmu;
     EditText no,site;
     AutoCompleteTextView eq;
+    private FirebaseFirestore db;
     Spinner pmu;
     ArrayAdapter<CharSequence> ad1,ad;
     private CollectionReference Ref;
     String name, n, loc;
     Button save;
     Query querya;
-    String[] pmus;
     ModelEquipment me;
     int j;
 
@@ -53,15 +53,13 @@ public class Add_Equipment extends AppCompatActivity {
         switch(Action.selectedAction){
             case "Equipment":
                 this.setTitle("Add Equipments");
+                Ref = db.collection("equipments");
                 break;
             case "Material":
                 this.setTitle("Add Materials");
-                break;
-            case "Rate running":
-                this.setTitle("Add Rate Running Contracts");
+                Ref = db.collection("materials");
                 break;
         }
-
         eq = (AutoCompleteTextView)findViewById(R.id.Type);
         no = findViewById(R.id.no);
         site = findViewById(R.id.site);
