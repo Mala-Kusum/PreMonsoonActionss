@@ -1,17 +1,22 @@
 package com.example.premonsoonaction.Models;
 
 public class ModelEquipment {
-    String name,no,pmu;
-    String [] locations;
-
-    public String[] getLocations() {
-        return locations;
+    String name;
+    String pmu;
+    String ro;
+    int no;
+    int insuf;
+    String location;
+    Unit insufUnit;
+    Unit unit;
+    Boolean isInsuf;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLocations(String[] locations) {
-        this.locations = locations;
+    public void setLocation(String locations) {
+        this.location = locations;
     }
-
 
     public String getName() {
         return name;
@@ -21,11 +26,11 @@ public class ModelEquipment {
         this.name = name;
     }
 
-    public String getNo() {
+    public int getNo() {
         return no;
     }
 
-    public void setNo(String no) {
+    public void setNo(int no) {
         this.no = no;
     }
 
@@ -35,5 +40,35 @@ public class ModelEquipment {
 
     public void setPmu(String pmu) {
         this.pmu = pmu;
+    }
+    public int getInsuf() {
+        return insuf;
+    }
+    public void setInsuf(int insuf) {
+        this.insuf = insuf;
+    }
+    public String getRo() {
+        return ro;
+    }
+    public void setRo(String ro) {
+        this.ro = ro;
+    }
+    public Unit getUnit() {
+        return unit;
+    }
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+    public Unit getInsufUnit() {
+        return insufUnit;
+    }
+    public void setInsufUnit(Unit insufUnit) {
+        this.insufUnit = insufUnit;
+    }
+    public void setIsInsuf(Boolean insuf) {
+        isInsuf = insuf;
+    }
+    public Boolean getIsInsuf(Boolean insuf) {
+        return isInsuf;
     }
 }

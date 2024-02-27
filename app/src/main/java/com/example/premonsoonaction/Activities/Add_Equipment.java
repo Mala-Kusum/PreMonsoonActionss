@@ -23,12 +23,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.Models.Unit;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class Add_Equipment extends AppCompatActivity {
@@ -41,7 +43,7 @@ public class Add_Equipment extends AppCompatActivity {
     private CollectionReference Ref;
     String name, n, loc;
     Button save;
-    Query querya;
+    Query querya,queryb;
     ModelEquipment me;
     int j;
 
@@ -145,31 +147,69 @@ public class Add_Equipment extends AppCompatActivity {
                 pmu.showDropDown();
             }
         });
-        /*pmu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                loc=(String) adapterView.getItemAtPosition(i);
-                save.setEnabled(true);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                View selectedView = pmu.getSelectedView();
-                if (selectedView instanceof TextView) {
-                    pmu.requestFocus();
-                    TextView selectedTextView = (TextView) selectedView;
-                    selectedTextView.setError("error"); // any name of the error will do
-                    selectedTextView.setTextColor(Color.RED); //text color in which you want your error message to be displayed
-                    selectedTextView.setText("Please select an option"); // actual error message
-                    pmu.performClick(); // to open the spinner list if error is found.
-                    save.setEnabled(false);
-                }
-            }
-        });*/
 
         //set save
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ModelEquipment ob = new ModelEquipment();
+                ob.setName(eq.getText().toString().trim());
+                ob.setPmu(pmu.getText().toString().trim());
+                ob.setRo(MainActivity.RO);
+                ob.setLocation(site.getText().toString().trim());
+                ob.setInsuf(0);
+                ob.setNo(Integer.parseInt(no.getText().toString().trim()));
+                ob.setInsufUnit(Unit.Kg);
+                ob.setIsInsuf(false);
+                //querya = Ref.whereEqualTo("location", ob.getLocation()).whereEqualTo("name", ob.getName());
+                querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.isEmpty()) {
+                            Ref.document(ob.getLocation()+" "+ob.getName()).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d("TAG", "DocumentSnapshot successfully updated!");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("Error updating details", e.toString());
+                                }
+                            });
+                        }
+                        else {
+                            for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                                int x,y;
+                                Unit z;
+                                x=(Integer) doc.getData().get("no");
+                                y=(Integer) doc.getData().get("insuf");
+                                z=(Unit) doc.getData().get("insufUnit");
+                                ob.setNo(ob.getNo()+x);
+                                ob.setInsuf(y);
+                                ob.setIsInsuf(ob.getNo()<ob.getInsuf()?true:false);
+                                ob.setInsufUnit(z);
+                            }
+                            Ref.document(ob.getLocation()+" "+ob.getName()).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d("TAG", "DocumentSnapshot successfully updated!");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("Error updating details", e.toString());
+                                }
+                            });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener()                                                               {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("mainActivity ", "inquery");
+                        //Log.e("tage", e.toString());
+                    }
+                });
                 Intent i = new Intent(Add_Equipment.this, Equipments.class);
                 startActivity(i);
                 finish();

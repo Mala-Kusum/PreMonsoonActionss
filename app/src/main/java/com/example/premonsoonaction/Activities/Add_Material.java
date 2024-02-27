@@ -217,9 +217,9 @@ public class Add_Material extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 n = t.getText().toString();
-                me.setNo(n);
+                //me.setNo(n);
                 me.setPmu(MainActivity.pmu);
-                me.setLocations(locs);
+                //me.setLocations(locs);
                 querya = Ref.whereEqualTo("NAME", name).whereEqualTo("PMU", loc);
                 querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
