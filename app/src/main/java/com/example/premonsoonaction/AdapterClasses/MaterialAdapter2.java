@@ -46,7 +46,7 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         PmuNo m = eqList.get(position);
         holder.name.setText(m.getPMU());
         try{
-            holder.no.setText(m.getNO());
+            holder.no.setText(Integer.toString(m.getNO()));
         }
         catch(Exception e){
             Log.e("onBindViewHolder no: ", e.toString());
