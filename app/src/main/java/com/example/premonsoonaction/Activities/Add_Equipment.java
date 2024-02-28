@@ -45,6 +45,7 @@ public class Add_Equipment extends AppCompatActivity {
     Button save;
     Query querya,queryb;
     ModelEquipment me;
+    Unit du;
     int j;
 
     @Override
@@ -62,10 +63,12 @@ public class Add_Equipment extends AppCompatActivity {
                 catch(Exception e){
                     Log.e( "Setting eq collection reference: ",e.toString());
                 }
+                du=Unit.units;
                 break;
             case "Material":
                 this.setTitle("Add Materials");
                 Ref = db.collection("materials");
+                du=Unit.Kg;
                 break;
         }
         eq = (AutoCompleteTextView)findViewById(R.id.Type);
@@ -159,9 +162,11 @@ public class Add_Equipment extends AppCompatActivity {
                 ob.setLocation(site.getText().toString().trim());
                 ob.setInsuf(0);
                 ob.setNo(Integer.parseInt(no.getText().toString().trim()));
-                ob.setInsufUnit(Unit.Kg);
+                ob.setUnit(du);
+                ob.setInsufUnit(du);
                 ob.setIsInsuf(false);
-                //querya = Ref.whereEqualTo("location", ob.getLocation()).whereEqualTo("name", ob.getName());
+                Log.d( "isInsuf: ",ob.getIsInsuf().toString());
+                querya = Ref.whereEqualTo("location", ob.getLocation()).whereEqualTo("name", ob.getName());
                 querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

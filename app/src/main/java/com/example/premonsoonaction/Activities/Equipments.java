@@ -117,7 +117,7 @@ public class Equipments extends AppCompatActivity {
         }
         //r2=db.collection("pmuno");
         //queryb=r2.orderBy("pmu");
-        if(eqt.equals("Rate Running Contract")){
+  /*      if(eqt.equals("Rate Running Contract")){
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -160,7 +160,7 @@ public class Equipments extends AppCompatActivity {
                     adapt.notifyDataSetChanged();
                 }
             });
-        }
+        }*/
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -68,7 +68,7 @@ public class ModelEquipment {
     public void setIsInsuf(Boolean insuf) {
         isInsuf = insuf;
     }
-    public Boolean getIsInsuf(Boolean insuf) {
+    public Boolean getIsInsuf() {
         return isInsuf;
     }
 }
