@@ -187,13 +187,20 @@ public class Add_Equipment extends AppCompatActivity {
                             for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                                 int x,y;
                                 Unit z;
-                                x=(Integer) doc.getData().get("no");
-                                y=(Integer) doc.getData().get("insuf");
-                                z=(Unit) doc.getData().get("insufUnit");
-                                ob.setNo(ob.getNo()+x);
-                                ob.setInsuf(y);
-                                ob.setIsInsuf(ob.getNo()<ob.getInsuf()?true:false);
-                                ob.setInsufUnit(z);
+                                ModelEquipment ob2;
+                                try{
+                                    ob2 = doc.toObject(ModelEquipment.class);
+                                    x=ob2.getNo();
+                                    y=(Integer) ob2.getInsuf();
+                                    z=(Unit) ob2.getInsufUnit();
+                                    ob.setNo(ob.getNo()+x);
+                                    ob.setInsuf(y);
+                                    ob.setIsInsuf(ob.getNo()<ob.getInsuf()?true:false);
+                                    ob.setInsufUnit(z);
+                                }
+                                catch(Exception e){
+                                    Log.e("get no,insuf,unit: ", e.toString());
+                                }
                             }
                             Ref.document(ob.getLocation()+" "+ob.getName()).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
