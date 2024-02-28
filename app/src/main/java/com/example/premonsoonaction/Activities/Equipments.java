@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter;
 import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.Models.ModelEquipment;
+import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +33,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
@@ -40,13 +45,15 @@ public class Equipments extends AppCompatActivity {
     RecyclerView recycler,recyclerPMUwise;
     MaterialAdapter adapt;
     RateAdapter adr;
-    public static ArrayList<ModelEquipment> list,filtered;
+    public static ArrayList<ModelEquipment> list;
     public static ArrayList<RateModel> lr;
     TextView t;
     EditText filter;
     public static String eqt;
     Date s,e;
-
+    Map<String,Integer> eqwithcount;
+    Map<Pair<String,String>, Integer> pmuwithcount;
+    List<PmuNo> eqlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,7 @@ public class Equipments extends AppCompatActivity {
         t=findViewById(R.id.No);
         list = new ArrayList<>();
         lr = new ArrayList<>();
+        eqlist = new ArrayList<>();
         /*Calendar c1 = Calendar.getInstance();
         c1.set(1998,7,28);
         s = c1.getTime();
@@ -98,14 +106,14 @@ public class Equipments extends AppCompatActivity {
                 this.setTitle("Equipments");
                 eqt="Equipment";
                 Ref = db.collection("equipments");
-                querya=Ref.orderBy("name").orderBy("pmu");
+                querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("name").orderBy("pmu");
                 break;
             case "Material":
                 t.setText("Quantity.");
                 this.setTitle("Materials");
                 eqt="Material";
                 Ref = db.collection("materials");
-                querya=Ref.orderBy("name").orderBy("pmu");
+                querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("name").orderBy("pmu");
                 break;
             case "Rate running":
                 //t.setText("No.");
@@ -117,7 +125,7 @@ public class Equipments extends AppCompatActivity {
         }
         //r2=db.collection("pmuno");
         //queryb=r2.orderBy("pmu");
-  /*      if(eqt.equals("Rate Running Contract")){
+        if(eqt.equals("Rate Running Contract")){
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -146,12 +154,28 @@ public class Equipments extends AppCompatActivity {
             });
         }
         else{
+            eqwithcount = new HashMap<>();
+            pmuwithcount = new HashMap<>();
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if(task.isSuccessful()){
                         for (DocumentSnapshot dc: task.getResult()) {
-                            list.add(dc.toObject(ModelEquipment.class));
+                            ModelEquipment ob = dc.toObject(ModelEquipment.class);
+                            if(eqwithcount.containsKey(ob.getName())){
+                                eqwithcount.put(ob.getName(),eqwithcount.get(ob.getName())+ob.getNo());
+                            }
+                            else{
+                                eqwithcount.put(ob.getName(),ob.getNo());
+                            }
+                            Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
+                            if(pmuwithcount.containsKey(p)){
+                                pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                            }
+                            else{
+                                pmuwithcount.put(p,ob.getNo());
+                            }
+                            list.add(ob);
                         }
                     }
                     else{
@@ -160,8 +184,11 @@ public class Equipments extends AppCompatActivity {
                     adapt.notifyDataSetChanged();
                 }
             });
-        }*/
-
+            for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
+                PmuNo ob = new PmuNo(me.getKey(),me.getValue());
+                eqlist.add(ob);
+            }
+        }
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,7 +202,7 @@ public class Equipments extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        filter.addTextChangedListener(new TextWatcher() {
+        /*filter.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
@@ -196,6 +223,6 @@ public class Equipments extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable editable) {}
-        });
+        });*/
     }
 }
