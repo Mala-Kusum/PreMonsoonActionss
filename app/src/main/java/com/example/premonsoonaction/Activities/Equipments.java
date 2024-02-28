@@ -57,13 +57,13 @@ public class Equipments extends AppCompatActivity {
         t=findViewById(R.id.No);
         list = new ArrayList<>();
         lr = new ArrayList<>();
-        Calendar c1 = Calendar.getInstance();
+        /*Calendar c1 = Calendar.getInstance();
         c1.set(1998,7,28);
         s = c1.getTime();
         Calendar c2 = Calendar.getInstance();
         c2.set(1998,7,28);
         e = c2.getTime();
-        /*lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
+        lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
         lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
         lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));*/
         adapt=new MaterialAdapter(this,list);
