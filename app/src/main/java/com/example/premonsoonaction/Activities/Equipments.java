@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter;
+import com.example.premonsoonaction.AdapterClasses.MaterialAdapter2;
 import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
@@ -43,7 +44,7 @@ public class Equipments extends AppCompatActivity {
     public static CollectionReference Ref;
     Query querya;
     RecyclerView recycler,recyclerPMUwise;
-    MaterialAdapter adapt;
+    MaterialAdapter2 adapt;
     RateAdapter adr;
     public static ArrayList<ModelEquipment> list;
     public static ArrayList<RateModel> lr;
@@ -74,7 +75,7 @@ public class Equipments extends AppCompatActivity {
         lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
         lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
         lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));*/
-        adapt=new MaterialAdapter(this,list);
+        adapt=new MaterialAdapter2(this,eqlist);
         adr=new RateAdapter(this,lr);
         recycler = findViewById(R.id.SearchByDesignation);
         recycler.setHasFixedSize(true);
@@ -106,14 +107,24 @@ public class Equipments extends AppCompatActivity {
                 this.setTitle("Equipments");
                 eqt="Equipment";
                 Ref = db.collection("equipments");
-                querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("name").orderBy("pmu");
+                try{
+                    querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
+                }
+                catch(Exception e){
+                    Log.e("eqQuery: ",e.toString());
+                }
                 break;
             case "Material":
                 t.setText("Quantity.");
                 this.setTitle("Materials");
                 eqt="Material";
                 Ref = db.collection("materials");
-                querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("name").orderBy("pmu");
+                try{
+                    querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
+                }
+                catch(Exception e){
+                    Log.e("eqQuery: ",e.toString());
+                }
                 break;
             case "Rate running":
                 //t.setText("No.");
@@ -175,19 +186,25 @@ public class Equipments extends AppCompatActivity {
                             else{
                                 pmuwithcount.put(p,ob.getNo());
                             }
-                            list.add(ob);
+                            try{
+                                list.add(ob);
+                            }
+                            catch(Exception e){
+                                Log.e( "list.add error: ",e.toString());
+                            }
+                        }
+                        for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
+                            PmuNo ob = new PmuNo(me.getKey(),me.getValue());
+                            eqlist.add(ob);
+                            adapt.notifyDataSetChanged();
                         }
                     }
                     else{
                         Log.d("Error eq: ",task.getException().toString());
                     }
-                    adapt.notifyDataSetChanged();
                 }
             });
-            for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
-                PmuNo ob = new PmuNo(me.getKey(),me.getValue());
-                eqlist.add(ob);
-            }
+
         }
         add.setOnClickListener(new View.OnClickListener() {
             @Override
