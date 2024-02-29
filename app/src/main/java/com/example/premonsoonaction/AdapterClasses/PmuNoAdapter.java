@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.premonsoonaction.Activities.AddInsufficiency;
+import com.example.premonsoonaction.Activities.Equipments;
 import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
@@ -28,10 +29,12 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
 
     private Context context;
     private List<PmuNo> pmuList;
+    String eq;
 
-    public PmuNoAdapter(Context context,List<PmuNo> pmuList) {
+    public PmuNoAdapter(Context context,List<PmuNo> pmuList,String eq) {
         this.context = context;
         this.pmuList = pmuList;
+        this.eq = eq;
     }
 
     @NonNull
@@ -82,6 +85,16 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 r = customDialog.findViewById(R.id.List);
                 r.setLayoutManager(new LinearLayoutManager(context));
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
+                for(int i=0;i<Equipments.list.size();i++){
+                    if(Equipments.list.get(i).getName().equals(eq)&&Equipments.list.get(i).getPmu().equals(pmu.getPMU())){
+                        PmuNo ob = new PmuNo(Equipments.list.get(i).getLocation(),Equipments.list.get(i).getNo());
+                        pmuList.add(ob);
+                    }
+                }
+                LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList);
+                r.setAdapter(ad);
+                customDialog.show();
+                /*ArrayList<PmuNo> pmuList = new ArrayList<>();
                 PmuNo pmu1 = new PmuNo("Location1", 1);
                 pmuList.add(pmu1);
                 PmuNo pmu2 = new PmuNo("Location2", 2);
@@ -90,7 +103,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 pmuList.add(pmu3);
                 LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList);
                 r.setAdapter(ad);
-                customDialog.show();
+                customDialog.show();*/
             }
         });
     }

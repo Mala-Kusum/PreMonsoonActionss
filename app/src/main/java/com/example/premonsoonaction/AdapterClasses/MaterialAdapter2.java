@@ -3,6 +3,7 @@ package com.example.premonsoonaction.AdapterClasses;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +16,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.premonsoonaction.Activities.AddInsufficiency;
+import com.example.premonsoonaction.Activities.Equipments;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyViewHolder>{
     Context context;
-    public List<PmuNo> eqList;
-    private RecyclerView recyclerView;
-    private PmuNoAdapter pmuAdapter;
-    private List<PmuNo> pmuList;
-
+    public List<PmuNo> eqList,pmuList;
+   // Map<Pair<String,String>, Integer> pmuwithcount;
     public MaterialAdapter2(Context context, List<PmuNo> eqList) {
         this.context = context;
         this.eqList = eqList;
@@ -44,6 +44,7 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PmuNo m = eqList.get(position);
+        String eq = m.getPMU();
         holder.name.setText(m.getPMU());
         try{
             holder.no.setText(Integer.toString(m.getNO()));
@@ -59,15 +60,27 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
             }
         });
         ArrayList<PmuNo> pmuList = new ArrayList<>();
+        for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
+           if(me.getKey().first.equals(m.getPMU())){
+               PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
+               Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+               try{
+                   pmuList.add(ob);
+               }
+               catch(Exception e){
+                   Log.e("pmulist add error: ", e.toString());
+               }
+           }
+        }
+       /* ArrayList<PmuNo> pmuList = new ArrayList<>();
         PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
         pmuList.add(pmu1);
         PmuNo pmu2 = new PmuNo("PMU-Dhubri", 2);
         pmuList.add(pmu2);
         PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
-        pmuList.add(pmu3);
-
+        pmuList.add(pmu3);*/
         // Use a separate instance of PmuNoAdapter for each item
-        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList);
+        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList,eq);
 
         try {
             holder.imageButton.setOnClickListener(new View.OnClickListener() {

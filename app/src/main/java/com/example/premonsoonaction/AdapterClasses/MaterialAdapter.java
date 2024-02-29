@@ -78,14 +78,14 @@ public class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyView
         pmuList.add(pmu3);
 
         // Use a separate instance of PmuNoAdapter for each item
-        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList);
+        //PmuNoAdapter ad = new PmuNoAdapter(context,pmuList);
 
         try {
             holder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     holder.r.setLayoutManager(new LinearLayoutManager(context));
-                    holder.r.setAdapter(ad);
+                    //holder.r.setAdapter(ad);
                     if (holder.r.getVisibility() == View.GONE) {
                         holder.r.setVisibility(View.VISIBLE);
                         holder.materialcard.setElevation(0);

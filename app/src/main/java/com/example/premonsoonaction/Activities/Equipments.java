@@ -53,8 +53,8 @@ public class Equipments extends AppCompatActivity {
     public static String eqt;
     Date s,e;
     Map<String,Integer> eqwithcount;
-    Map<Pair<String,String>, Integer> pmuwithcount;
-    List<PmuNo> eqlist;
+    public static Map<Pair<String,String>, Integer> pmuwithcount;
+    List<PmuNo> eqlist,pmuList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +66,7 @@ public class Equipments extends AppCompatActivity {
         list = new ArrayList<>();
         lr = new ArrayList<>();
         eqlist = new ArrayList<>();
+        pmuList = new ArrayList<>();
         /*Calendar c1 = Calendar.getInstance();
         c1.set(1998,7,28);
         s = c1.getTime();
@@ -108,7 +109,7 @@ public class Equipments extends AppCompatActivity {
                 eqt="Equipment";
                 Ref = db.collection("equipments");
                 try{
-                    querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
+                    querya=Ref.whereEqualTo("ro",MainActivity.RO).whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
                 }
                 catch(Exception e){
                     Log.e("eqQuery: ",e.toString());
@@ -120,7 +121,7 @@ public class Equipments extends AppCompatActivity {
                 eqt="Material";
                 Ref = db.collection("materials");
                 try{
-                    querya=Ref.whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
+                    querya=Ref.whereEqualTo("ro",MainActivity.RO).whereNotEqualTo("location","malahehehe").orderBy("location").orderBy("name").orderBy("pmu");
                 }
                 catch(Exception e){
                     Log.e("eqQuery: ",e.toString());
@@ -182,9 +183,11 @@ public class Equipments extends AppCompatActivity {
                             Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
                             if(pmuwithcount.containsKey(p)){
                                 pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                                adapt.notifyDataSetChanged();
                             }
                             else{
                                 pmuwithcount.put(p,ob.getNo());
+                                adapt.notifyDataSetChanged();
                             }
                             try{
                                 list.add(ob);
@@ -198,6 +201,12 @@ public class Equipments extends AppCompatActivity {
                             eqlist.add(ob);
                             adapt.notifyDataSetChanged();
                         }
+                        Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
+                        /*for(Map.Entry<Pair<String,String>, Integer> me : pmuwithcount.entrySet()){
+                            PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
+                            Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.getValue()));
+                            adapt.notifyDataSetChanged();
+                        }*/
                     }
                     else{
                         Log.d("Error eq: ",task.getException().toString());
