@@ -20,8 +20,9 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
 
     private Context context;
     private List<PmuNo> pmuList;
+    String eq;
 
-    public LocatilnNoAdapter(Context context, List<PmuNo> pmuList) {
+    public LocatilnNoAdapter(Context context, List<PmuNo> pmuList,String eq) {
         this.context = context;
         this.pmuList = pmuList;
     }

@@ -91,7 +91,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                         pmuList.add(ob);
                     }
                 }
-                LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList);
+                LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList,eq);
                 r.setAdapter(ad);
                 customDialog.show();
                 /*ArrayList<PmuNo> pmuList = new ArrayList<>();
