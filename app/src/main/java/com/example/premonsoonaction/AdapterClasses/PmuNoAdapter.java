@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.premonsoonaction.Activities.AddInsufficiency;
 import com.example.premonsoonaction.Activities.Equipments;
 import com.example.premonsoonaction.Activities.MainActivity;
+import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 
@@ -29,6 +30,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
 
     private Context context;
     private List<PmuNo> pmuList;
+    public static List<ModelEquipment> l;
     String eq;
 
     public PmuNoAdapter(Context context,List<PmuNo> pmuList,String eq) {
@@ -74,7 +76,6 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                         customDialog.dismiss();  // Close the dialog if needed
                     }
                 });
-
                 cancelButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -85,9 +86,11 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 r = customDialog.findViewById(R.id.List);
                 r.setLayoutManager(new LinearLayoutManager(context));
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
+                l = new ArrayList<>();
                 for(int i=0;i<Equipments.list.size();i++){
                     if(Equipments.list.get(i).getName().equals(eq)&&Equipments.list.get(i).getPmu().equals(pmu.getPMU())){
                         PmuNo ob = new PmuNo(Equipments.list.get(i).getLocation(),Equipments.list.get(i).getNo());
+                        l.add(Equipments.list.get(i));
                         pmuList.add(ob);
                     }
                 }

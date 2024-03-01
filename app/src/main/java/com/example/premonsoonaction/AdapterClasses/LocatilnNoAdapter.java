@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,7 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     public LocatilnNoAdapter(Context context, List<PmuNo> pmuList,String eq) {
         this.context = context;
         this.pmuList = pmuList;
+        this.eq = eq;
     }
 
     @NonNull
@@ -38,6 +40,31 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     public void onBindViewHolder(@NonNull PmuNoViewHolder holder, int position) {
         try{
             PmuNo pmu = pmuList.get(position);
+            holder.minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(pmu.getNO()>0){
+                        pmu.setNO(pmu.getNO()-1);
+                        try{
+                            holder.noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
+                            PmuNoAdapter.l
+                        }
+                        catch (Exception e){
+                            Log.e("onClick minus: ",e.toString());
+                        }
+                    }
+                    else{
+                        Toast.makeText(context, "item cannot be reduced further", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            holder.plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    pmu.setNO(pmu.getNO()+1);
+                    holder.noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
+                }
+            });
             holder.insuf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -50,7 +77,6 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
         }
         catch(Exception e){
             Log.e("onBindViewHolderloc: ",e.toString()+"\n"+ holder.insuf);
-
         }
     }
 
@@ -62,6 +88,8 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     public static class PmuNoViewHolder extends RecyclerView.ViewHolder {
         private TextView pmuTextView;
         private TextView noTextView;
+        private View minus;
+        private ImageView plus;
         ImageView insuf;
         public PmuNoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,9 +99,10 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
             catch(Exception e){
                 Log.e("PmuNoViewHolderloc: ", e.toString());
             }
-
             pmuTextView = itemView.findViewById(R.id.location);
             noTextView = itemView.findViewById(R.id.no);
+            minus = itemView.findViewById(R.id.minus);
+            plus = itemView.findViewById(R.id.plus);
         }
         public void bind(PmuNo pmu) {
             pmuTextView.setText(pmu.getPMU());
