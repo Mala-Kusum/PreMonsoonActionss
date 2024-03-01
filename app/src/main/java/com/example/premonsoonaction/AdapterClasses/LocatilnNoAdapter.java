@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.premonsoonaction.Activities.AddInsufficiency;
 import com.example.premonsoonaction.Activities.MainActivity;
+import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
 import java.util.List;
@@ -39,15 +40,14 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
     @Override
     public void onBindViewHolder(@NonNull PmuNoViewHolder holder, int position) {
         try{
-            PmuNo pmu = pmuList.get(position);
+            ModelEquipment pmu = PmuNoAdapter.l.get(holder.getBindingAdapterPosition());
             holder.minus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(pmu.getNO()>0){
-                        pmu.setNO(pmu.getNO()-1);
+                    if(pmu.getNo()>0){
+                        PmuNoAdapter.l.get(holder.getBindingAdapterPosition()).setNo(PmuNoAdapter.l.get(holder.getBindingAdapterPosition()).getNo()-1);
                         try{
-                            holder.noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
-                            PmuNoAdapter.l
+                            holder.noTextView.setText((CharSequence) Integer.toString(PmuNoAdapter.l.get(holder.getBindingAdapterPosition()).getNo()));
                         }
                         catch (Exception e){
                             Log.e("onClick minus: ",e.toString());
@@ -61,14 +61,14 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
             holder.plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    pmu.setNO(pmu.getNO()+1);
-                    holder.noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
+                    PmuNoAdapter.l.get(holder.getBindingAdapterPosition()).setNo(pmu.getNo()+1);
+                    holder.noTextView.setText((CharSequence) Integer.toString(pmu.getNo()));
                 }
             });
             holder.insuf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MainActivity.location=pmu.getPMU();
+                    MainActivity.location=pmu.getLocation();
                     Intent i = new Intent(context, AddInsufficiency.class);
                     context.startActivity(i);
                 }
@@ -104,9 +104,9 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
             minus = itemView.findViewById(R.id.minus);
             plus = itemView.findViewById(R.id.plus);
         }
-        public void bind(PmuNo pmu) {
-            pmuTextView.setText(pmu.getPMU());
-            noTextView.setText((CharSequence) Integer.toString(pmu.getNO()));
+        public void bind(ModelEquipment pmu) {
+            pmuTextView.setText(pmu.getLocation());
+            noTextView.setText((CharSequence) Integer.toString(pmu.getNo()));
         }
     }
 }

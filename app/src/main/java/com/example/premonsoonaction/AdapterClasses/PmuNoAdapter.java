@@ -3,6 +3,7 @@ package com.example.premonsoonaction.AdapterClasses;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +37,7 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
     private Context context;
     private List<PmuNo> pmuList;
     public static List<ModelEquipment> l;
+    private FirebaseFirestore db;
     String eq;
 
     public PmuNoAdapter(Context context,List<PmuNo> pmuList,String eq) {
@@ -73,6 +80,19 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                     @Override
                     public void onClick(View v) {
                         // Handle save button click
+                        db = FirebaseFirestore.getInstance();
+                        WriteBatch batch = db.batch();
+                        for(int i=0;i<l.size();i++){
+                            DocumentReference dr  = Equipments.Ref.document(l.get(i).getLocation()+" "+l.get(i).getName());
+                            batch.set(dr, l.get(i));
+                        }
+                        batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // ...
+                                Log.d("onComplete: ", "Batch successfully commited");
+                            }
+                        });
                         customDialog.dismiss();  // Close the dialog if needed
                     }
                 });
