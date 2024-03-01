@@ -55,6 +55,7 @@ public class Equipments extends AppCompatActivity {
     Map<String,Integer> eqwithcount;
     public static Map<Pair<String,String>, Integer> pmuwithcount;
     List<PmuNo> eqlist,pmuList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -250,5 +251,87 @@ public class Equipments extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {}
         });*/
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(eqt.equals("Rate Running Contract")){
+            querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for (DocumentSnapshot dc: task.getResult()) {
+                            try {
+                                RateModel ob = dc.toObject(RateModel.class);
+                                lr.add(ob);
+                                Log.d("RateModel obj: ",ob.getPmis()+" "+ob.getAddress()+" "+ob.getStart()+" "+ob.getEnd()+" "+ob.getType()+" "+ob.getName()+" "+ob.getMobile()+" "+ob.getEmail()+" "+ob.getDetails()+" "+ob.getRo()+"\n");
+                            }
+                            catch(Exception e){
+                                Log.e("onComplete rate running: ",e.toString());
+                            }
+                        }
+                    }
+                    else{
+                        Log.d("Error rate: ",task.getException().toString());
+                    }
+                    try {
+                        adr.notifyDataSetChanged();
+                    }
+                    catch(Exception e){
+                        Log.e("onComplete rate running: ",e.toString());
+                    }
+                }
+            });
+        }
+        else{
+            eqwithcount = new HashMap<>();
+            pmuwithcount = new HashMap<>();
+            querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for (DocumentSnapshot dc: task.getResult()) {
+                            ModelEquipment ob = dc.toObject(ModelEquipment.class);
+                            if(eqwithcount.containsKey(ob.getName())){
+                                eqwithcount.put(ob.getName(),eqwithcount.get(ob.getName())+ob.getNo());
+                            }
+                            else{
+                                eqwithcount.put(ob.getName(),ob.getNo());
+                            }
+                            Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
+                            if(pmuwithcount.containsKey(p)){
+                                pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                                adapt.notifyDataSetChanged();
+                            }
+                            else{
+                                pmuwithcount.put(p,ob.getNo());
+                                adapt.notifyDataSetChanged();
+                            }
+                            try{
+                                list.add(ob);
+                            }
+                            catch(Exception e){
+                                Log.e( "list.add error: ",e.toString());
+                            }
+                        }
+                        for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
+                            PmuNo ob = new PmuNo(me.getKey(),me.getValue());
+                            eqlist.add(ob);
+                            adapt.notifyDataSetChanged();
+                        }
+                        Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
+                        /*for(Map.Entry<Pair<String,String>, Integer> me : pmuwithcount.entrySet()){
+                            PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
+                            Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.getValue()));
+                            adapt.notifyDataSetChanged();
+                        }*/
+                    }
+                    else{
+                        Log.d("Error eq: ",task.getException().toString());
+                    }
+                }
+            });
+
+        }
     }
 }
