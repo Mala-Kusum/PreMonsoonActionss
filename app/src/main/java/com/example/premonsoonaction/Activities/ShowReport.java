@@ -27,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ShowReport extends AppCompatActivity {
+public class  ShowReport extends AppCompatActivity {
 
     public static String docid;
     CollectionReference c1,c2,c3,c4;
@@ -234,7 +234,6 @@ public class ShowReport extends AppCompatActivity {
                     catch(Exception e){
                         Log.e("error notify", e.toString());
                     }
-
                 }
             }
         });

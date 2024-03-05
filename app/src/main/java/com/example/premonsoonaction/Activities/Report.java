@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.premonsoonaction.AdapterClasses.ReportAdapter;
 import com.example.premonsoonaction.DatePick;
+import com.example.premonsoonaction.Models.Vulnerable;
 import com.example.premonsoonaction.Models.reportGetModel;
 import com.example.premonsoonaction.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -52,6 +53,9 @@ public class Report extends AppCompatActivity {
     public static List<reportGetModel> l,filtered;
 
     private FirebaseFirestore db;
+    CollectionReference c1,c2,c3,c4;
+    Query q1,q2,q3;
+    ArrayList<ArrayList<Vulnerable>> l1,l2,l3;
     CollectionReference Ref;
     public static ReportAdapter ad;
     TextView reset;
@@ -75,6 +79,9 @@ public class Report extends AppCompatActivity {
         from=findViewById(R.id.From);
         to=findViewById(R.id.To);
         export=findViewById(R.id.export);
+        l1=new ArrayList<>();
+        l2=new ArrayList<>();
+        l3=new ArrayList<>();
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
@@ -113,6 +120,78 @@ public class Report extends AppCompatActivity {
                             ob.setinst10((boolean) dc.getDocument().get("inst10"));
                             ob.setinst11((boolean) dc.getDocument().get("inst11"));
                             ob.setRO(dc.getDocument().get("ro").toString());
+                            /*c1 = db.collection("checklist").document(ob.getDocid()).collection("Vulnerable");
+                            c2 = db.collection("checklist").document(ob.getDocid()).collection("Critical");
+                            c3 = db.collection("checklist").document(ob.getDocid()).collection("Inspected");
+                            ArrayList<Vulnerable> s1,s2,s3;
+                            s1 = new ArrayList<>();
+                            s2 = new ArrayList<>();
+                            s3 = new ArrayList<>();
+                            q1=c1.orderBy("location").orderBy("type");
+                            q2=c2.orderBy("location").orderBy("type");
+                            q3=c3.orderBy("location");
+                            q1.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if (error != null) {
+                                        Log.e("Firestore Error", error.getMessage());
+                                        l1.add(s1);
+                                        return;
+                                    }
+                                    for (DocumentChange dc1 : value.getDocumentChanges()) {
+                                        if (dc1.getType() == DocumentChange.Type.ADDED) {
+                                            //System.out.println("vulnerable doc "+ dc1.getDocument().toObject(Vulnerable.class).getLOCATION()+dc1.getDocument().toObject(Vulnerable.class).getNO()+dc1.getDocument().toObject(Vulnerable.class).getTYPE());
+                                            Vulnerable ob1 = new Vulnerable();
+                                            ob1.setTYPE(dc1.getDocument().getString("type"));
+                                            try {
+                                                ob1.setLOCATION(dc1.getDocument().getString("location"));
+                                            }
+                                            catch(Exception e){
+                                                System.out.println("error no "+e.toString());
+                                            }
+                                            //System.out.println("ba " +ob1.getLOCATION()+" "+ob1.getTYPE()+" "+ob1.getNO());
+                                            // l1.add(dc.getDocument().toObject(Vulnerable.class));
+                                            s1.add(ob1);
+                                        }
+                                    }
+                                    l1.add(s1);
+                                }
+                            });
+                            q2.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if(error!=null){
+                                        Log.e("Firestore Error", error.getMessage());
+                                    }
+                                    else{
+                                        for (DocumentChange dc2:value.getDocumentChanges()) {
+                                            Vulnerable ob2 = new Vulnerable();
+                                            ob2.setTYPE(dc2.getDocument().getString("type"));
+                                            ob2.setLOCATION(dc2.getDocument().getString("location"));
+                                            s2.add(ob2);
+                                        }
+                                    }
+                                    l2.add(s2);
+                                }
+                            });
+                            q3.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if(error!=null){
+                                        Log.e("Firestore Error", error.getMessage());
+                                        l3.add(s3);
+                                        return;
+                                    }
+                                    else{
+                                        for (DocumentChange dc3:value.getDocumentChanges()) {
+                                            Vulnerable v = new Vulnerable();
+                                            v = dc3.getDocument().toObject(Vulnerable.class);
+                                            s3.add(v);
+                                        }
+                                        l3.add(s3);
+                                    }
+                                }
+                            });*/
                             l.add(ob);
                         }
                         catch(Exception e){
@@ -124,6 +203,11 @@ public class Report extends AppCompatActivity {
                 }
             }
         });
+        /*for(int i=0;i<l1.size();i++){
+            for(int j=0;j<l1.get(i).size();j++){
+                Log.d( "All Vulnerable l1 "+i+": ","type: "+l1.get(i).get(j).getTYPE()+" location: "+l1.get(i).get(j).getLOCATION()+", ");
+            }
+        }*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
