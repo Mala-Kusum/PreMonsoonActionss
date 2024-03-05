@@ -252,7 +252,7 @@ public class Equipments extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {}
         });*/
     }
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         if(eqt.equals("Rate Running Contract")){
@@ -320,11 +320,11 @@ public class Equipments extends AppCompatActivity {
                             adapt.notifyDataSetChanged();
                         }
                         Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
-                        /*for(Map.Entry<Pair<String,String>, Integer> me : pmuwithcount.entrySet()){
+                        *//*for(Map.Entry<Pair<String,String>, Integer> me : pmuwithcount.entrySet()){
                             PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
                             Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.getValue()));
                             adapt.notifyDataSetChanged();
-                        }*/
+                        }*//*
                     }
                     else{
                         Log.d("Error eq: ",task.getException().toString());
@@ -333,5 +333,5 @@ public class Equipments extends AppCompatActivity {
             });
 
         }
-    }
+    }*/
 }

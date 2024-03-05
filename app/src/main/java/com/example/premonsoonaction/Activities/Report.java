@@ -41,6 +41,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Report extends AppCompatActivity {
     FloatingActionButton button;
@@ -157,61 +158,63 @@ public class Report extends AppCompatActivity {
             public void onClick(View view) {
                 HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
                 HSSFSheet hssfSheet = hssfWorkbook.createSheet("MySheet");
-                HSSFRow hssfRow = hssfSheet.createRow(0);
+                HSSFRow hssfRow0 = hssfSheet.createRow(0);
                 int j=0;
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
-                HSSFCell hssfCell2 = hssfRow.createCell(j++);
-                hssfCell2.setCellValue("Timestamp");
-                HSSFCell hssfCell3 = hssfRow.createCell(j++);
-                hssfCell3.setCellValue(R.string.cleaning_of_drains_culverts);
-                HSSFCell hssfCell4 = hssfRow.createCell(j++);
-                hssfCell4.setCellValue(R.string.keeping_in_stock_on_offer_jcbs_saw_cutters_for_tree_cutting_sand_bags_traffic_cones_amp_signages_etc_in_required_quantities_at_required_locations_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet);
-                HSSFCell hssfCell5 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue(R.string.rate_running_contracts_in_place_for_emergency_works_like_breach_closing_tree_removal_landslide_clearance_etc_where_the_stretches_are_neither_under_construction_nor_in_dlp_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet);
-                HSSFCell hssfCell6 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue(R.string.bailey_bridges_including_their_quantities_and_locations_for_hilly_areas_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet);
-                HSSFCell hssfCell7 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue(R.string.whether_hume_pipes_np_3_1_m_diameter_in_required_quantities_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet);
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
-                HSSFCell hssfCell1 = hssfRow.createCell(j++);
-                hssfCell1.setCellValue("RO");
+                HSSFCell cell1 = hssfRow0.createCell(j++);
+                cell1.setCellValue("RO");
+                HSSFCell cell2 = hssfRow0.createCell(j++);
+                cell2.setCellValue("Timestamp");
+                HSSFCell cell3 = hssfRow0.createCell(j++);
+                cell3.setCellValue(getString(R.string.cleaning_of_drains_culverts));
+                HSSFCell cell4 = hssfRow0.createCell(j++);
+                cell4.setCellValue(getString(R.string.keeping_in_stock_on_offer_jcbs_saw_cutters_for_tree_cutting_sand_bags_traffic_cones_amp_signages_etc_in_required_quantities_at_required_locations_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet));
+                HSSFCell cell5 = hssfRow0.createCell(j++);
+                cell5.setCellValue(getString(R.string.rate_running_contracts_in_place_for_emergency_works_like_breach_closing_tree_removal_landslide_clearance_etc_where_the_stretches_are_neither_under_construction_nor_in_dlp_is_ensured_and_the_details_there_of_entered_in_the_google_worksheet));
+                HSSFCell cell6 = hssfRow0.createCell(j++);
+                cell6.setCellValue(getString(R.string.bailey_bridges_including_their_quantities_and_locations_for_hilly_areas_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet));
+                HSSFCell cell7 = hssfRow0.createCell(j++);
+                cell7.setCellValue(getString(R.string.whether_hume_pipes_np_3_1_m_diameter_in_required_quantities_are_kept_ready_and_the_details_there_of_entered_in_the_google_worksheet));
+                HSSFCell cell8 = hssfRow0.createCell(j++);
+                cell8.setCellValue(getString(R.string.the_contractors_for_the_above_actions_in_respect_of_ongoing_work_stretches_and_those_under_dlp_maintenance_period_in_respect_of_above_actions_have_been_instructed_and_alerted));
+                HSSFCell cell9 = hssfRow0.createCell(j++);
+                cell9.setCellValue(getString(R.string.mehgdoot_app_has_been_downloaded_by_ros_all_field_officers_under_the_concerned_ros));
+                HSSFCell cell10 = hssfRow0.createCell(j++);
+                cell10.setCellValue(getString(R.string.local_whatsapp_groups_are_formed_by_regional_officers_covering_executing_agencies_of_mort_amp_h_roads_wings_nhai_nhidcl_bro_local_administration_cwc_etc));
+                HSSFCell cell11 = hssfRow0.createCell(j++);
+                cell11.setCellValue(getString(R.string.the_contact_details_of_emergency_service_providers_are_kept_ready_for_example_ambulance_hospitals_police_authorities_trauma_centres_etc));
+                HSSFCell cell12 = hssfRow0.createCell(j++);
+                cell12.setCellValue(getString(R.string.list_of_all_available_resources_and_arrangements_with_the_concerned_ros_and_nearby_ros_in_the_region_is_compiled_and_kept_ready));
+                HSSFCell cell13 = hssfRow0.createCell(j++);
+                cell13.setCellValue(getString(R.string._24_7_central_control_room_is_created_and_maintained_at_selected_location_by_concerned_ros_of_all_the_agencies_put_together));
                 for (int i = 1; i<=l.size(); i++){
                     HSSFRow hssfRow = hssfSheet.createRow(i);
-                    int j=0;
-                    HSSFCell hssfCell = hssfRow.createCell(j++);
+                    int k=0;
+                    HSSFCell hssfCell = hssfRow.createCell(k++);
                     hssfCell.setCellValue(l.get(i-1).getRO().toString());
-                    HSSFCell hssfCell2 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell2 = hssfRow.createCell(k++);
                     hssfCell2.setCellValue(l.get(i-1).getDate().toString());
-                    HSSFCell hssfCell3 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell3 = hssfRow.createCell(k++);
                     hssfCell3.setCellValue(l.get(i-1).getinst1()?"Done":"Not Done");
-                    HSSFCell hssfCell4 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell4 = hssfRow.createCell(k++);
                     hssfCell4.setCellValue(l.get(i-1).getinst2()?"Done":"Not Done");
-                    HSSFCell hssfCell5 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell5 = hssfRow.createCell(k++);
                     hssfCell5.setCellValue(l.get(i-1).getinst3()?"Done":"Not Done");
-                    HSSFCell hssfCell6 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell6 = hssfRow.createCell(k++);
                     hssfCell6.setCellValue(l.get(i-1).getinst4()?"Done":"Not Done");
-                    HSSFCell hssfCell7 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell7 = hssfRow.createCell(k++);
                     hssfCell7.setCellValue(l.get(i-1).getinst5()?"Done":"Not Done");
-                    HSSFCell hssfCell8 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell8 = hssfRow.createCell(k++);
                     hssfCell8.setCellValue(l.get(i-1).getinst6()?"Done":"Not Done");
-                    HSSFCell hssfCell9 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell9 = hssfRow.createCell(k++);
                     hssfCell9.setCellValue(l.get(i-1).getinst7()?"Done":"Not Done");
-                    HSSFCell hssfCell10 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell10 = hssfRow.createCell(k++);
                     hssfCell10.setCellValue(l.get(i-1).getinst8()?"Done":"Not Done");
-                    HSSFCell hssfCell11 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell11 = hssfRow.createCell(k++);
                     hssfCell11.setCellValue(l.get(i-1).getinst9()?"Done":"Not Done");
-                    HSSFCell hssfCell12 = hssfRow.createCell(j++);
+                    HSSFCell hssfCell12 = hssfRow.createCell(k++);
                     hssfCell12.setCellValue(l.get(i-1).getinst10()?"Done":"Not Done");
-                    HSSFCell hssfCell13 = hssfRow.createCell(j++);
-                    hssfCell12.setCellValue(l.get(i-1).getinst11()?"Done":"Not Done");
+                    HSSFCell hssfCell13 = hssfRow.createCell(k++);
+                    hssfCell13.setCellValue(l.get(i-1).getinst11()?"Done":"Not Done");
                 }
                 saveWorkBook(hssfWorkbook);
             }
@@ -225,7 +228,8 @@ public class Report extends AppCompatActivity {
 
         File fileOutput = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            fileOutput = new File(storageVolume.getDirectory().getPath() +"/Download/ActionTakenReport.xls");
+            //Objects.requireNonNull(storageVolume.getDirectory()).ge
+            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download","ActionTakenReports.xls");
         }
 
         try {
