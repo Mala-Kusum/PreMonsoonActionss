@@ -158,13 +158,35 @@ public class Report extends AppCompatActivity {
                 HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
                 HSSFSheet hssfSheet = hssfWorkbook.createSheet("MySheet");
                 //HSSFRow hssfRow = hssfSheet.createRow(0);
-
                 for (int i = 0; i<l.size(); i++){
-                    HSSFRow hssfRow = hssfSheet.createRow(0);
-                    HSSFCell hssfCell = hssfRow.createCell(i);
+                    HSSFRow hssfRow = hssfSheet.createRow(i);
+                    int j=0;
+                    HSSFCell hssfCell = hssfRow.createCell(j++);
                     hssfCell.setCellValue(l.get(i).getRO().toString());
-                    HSSFCell hssfCell2 = hssfRow.createCell(i);
+                    HSSFCell hssfCell2 = hssfRow.createCell(j++);
                     hssfCell2.setCellValue(l.get(i).getDate().toString());
+                    HSSFCell hssfCell3 = hssfRow.createCell(j++);
+                    hssfCell3.setCellValue(l.get(i).getinst1()?"Done":"Not Done");
+                    HSSFCell hssfCell4 = hssfRow.createCell(j++);
+                    hssfCell4.setCellValue(l.get(i).getinst2()?"Done":"Not Done");
+                    HSSFCell hssfCell5 = hssfRow.createCell(j++);
+                    hssfCell5.setCellValue(l.get(i).getinst3()?"Done":"Not Done");
+                    HSSFCell hssfCell6 = hssfRow.createCell(j++);
+                    hssfCell6.setCellValue(l.get(i).getinst4()?"Done":"Not Done");
+                    HSSFCell hssfCell7 = hssfRow.createCell(j++);
+                    hssfCell7.setCellValue(l.get(i).getinst5()?"Done":"Not Done");
+                    HSSFCell hssfCell8 = hssfRow.createCell(j++);
+                    hssfCell8.setCellValue(l.get(i).getinst6()?"Done":"Not Done");
+                    HSSFCell hssfCell9 = hssfRow.createCell(j++);
+                    hssfCell9.setCellValue(l.get(i).getinst7()?"Done":"Not Done");
+                    HSSFCell hssfCell10 = hssfRow.createCell(j++);
+                    hssfCell10.setCellValue(l.get(i).getinst8()?"Done":"Not Done");
+                    HSSFCell hssfCell11 = hssfRow.createCell(j++);
+                    hssfCell11.setCellValue(l.get(i).getinst9()?"Done":"Not Done");
+                    HSSFCell hssfCell12 = hssfRow.createCell(j++);
+                    hssfCell12.setCellValue(l.get(i).getinst10()?"Done":"Not Done");
+                    HSSFCell hssfCell13 = hssfRow.createCell(j++);
+                    hssfCell12.setCellValue(l.get(i).getinst11()?"Done":"Not Done");
                 }
                 saveWorkBook(hssfWorkbook);
             }
