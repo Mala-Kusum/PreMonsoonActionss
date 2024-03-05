@@ -60,7 +60,6 @@ public class Report extends AppCompatActivity {
     public static ReportAdapter ad;
     TextView reset;
     public static boolean b1,b2;
-
     Query q;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

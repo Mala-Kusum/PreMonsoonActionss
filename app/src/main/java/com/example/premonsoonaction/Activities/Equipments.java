@@ -7,13 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter;
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter2;
@@ -31,16 +35,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Equipments extends AppCompatActivity {
     FloatingActionButton add;
     private FirebaseFirestore db;
+    Button export;
     public static CollectionReference Ref;
     Query querya;
     RecyclerView recycler,recyclerPMUwise;
@@ -68,6 +81,7 @@ public class Equipments extends AppCompatActivity {
         lr = new ArrayList<>();
         eqlist = new ArrayList<>();
         pmuList = new ArrayList<>();
+        export=findViewById(R.id.export);
         /*Calendar c1 = Calendar.getInstance();
         c1.set(1998,7,28);
         s = c1.getTime();
@@ -214,6 +228,70 @@ public class Equipments extends AppCompatActivity {
                     }
                 }
             });
+            export.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+                    HSSFSheet hssfSheet = hssfWorkbook.createSheet("MySheet");
+                    HSSFRow hssfRow0 = hssfSheet.createRow(0);
+                    int j=0;
+                    HSSFCell cell1 = hssfRow0.createCell(j++);
+                    cell1.setCellValue("RO");
+                    HSSFCell cell3 = hssfRow0.createCell(j++);
+                    cell3.setCellValue(getString(R.string.type));
+                    HSSFCell cell4 = hssfRow0.createCell(j++);
+                    cell4.setCellValue(getString(R.string.no));
+                    HSSFCell cell5 = hssfRow0.createCell(j++);
+                    cell5.setCellValue(getString(R.string.ro));
+                    HSSFCell cell6 = hssfRow0.createCell(j++);
+                    cell6.setCellValue(getString(R.string.pmu));
+                    HSSFCell cell7 = hssfRow0.createCell(j++);
+                    cell7.setCellValue(getString(R.string.location));
+                    HSSFCell cell8 = hssfRow0.createCell(j++);
+                    cell8.setCellValue("Unit");
+                    HSSFCell cell9 = hssfRow0.createCell(j++);
+                    cell9.setCellValue("Is Item insufficient");
+                    HSSFCell cell10 = hssfRow0.createCell(j++);
+                    cell10.setCellValue("Required amount");
+                    HSSFCell cell11 = hssfRow0.createCell(j++);
+                    cell11.setCellValue("Required amount unit");
+                    for (int i = 1; i<=list.size(); i++){
+                        HSSFRow hssfRow = hssfSheet.createRow(i);
+                        int k=0;
+                        HSSFCell hssfCell = hssfRow.createCell(k++);
+                        hssfCell.setCellValue(MainActivity.RO);
+                        HSSFCell hssfCell2 = hssfRow.createCell(k++);
+                        hssfCell2.setCellValue(list.get(i-1).getName().toString());
+                        HSSFCell hssfCell3 = hssfRow.createCell(k++);
+                        hssfCell3.setCellValue(list.get(i-1).getNo());
+                        HSSFCell hssfCell4 = hssfRow.createCell(k++);
+                        hssfCell4.setCellValue(list.get(i-1).getRo());
+                        HSSFCell hssfCell5 = hssfRow.createCell(k++);
+                        hssfCell5.setCellValue(list.get(i-1).getPmu());
+                        HSSFCell hssfCell6 = hssfRow.createCell(k++);
+                        hssfCell6.setCellValue(list.get(i-1).getLocation());
+                        HSSFCell hssfCell7 = hssfRow.createCell(k++);
+                        if(list.get(i-1).getUnit()==null){
+                            hssfCell7.setCellValue("");
+                        }
+                        else{
+                            hssfCell7.setCellValue(list.get(i-1).getUnit().toString());
+                        }
+                        HSSFCell hssfCell8 = hssfRow.createCell(k++);
+                        if(list.get(i-1).getIsInsuf()==null){
+                            hssfCell8.setCellValue("");
+                        }
+                        else{
+                            hssfCell8.setCellValue(list.get(i-1).getIsInsuf());
+                        }
+                        HSSFCell hssfCell9 = hssfRow.createCell(k++);
+                        hssfCell9.setCellValue(list.get(i-1).getInsuf());
+                        HSSFCell hssfCell10 = hssfRow.createCell(k++);
+                        hssfCell10.setCellValue(list.get(i-1).getInsufUnit().toString());
+                    }
+                    saveWorkBook(hssfWorkbook);
+                }
+            });
 
         }
         add.setOnClickListener(new View.OnClickListener() {
@@ -229,6 +307,31 @@ public class Equipments extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+    }
+    private void saveWorkBook(HSSFWorkbook hssfWorkbook){
+        StorageManager storageManager = (StorageManager) getSystemService(STORAGE_SERVICE);
+
+
+        StorageVolume storageVolume = storageManager.getStorageVolumes().get(0); // internal storage
+
+        File fileOutput = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            //Objects.requireNonNull(storageVolume.getDirectory()).ge
+            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download","Equipments.xls");
+        }
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(fileOutput);
+            hssfWorkbook.write(fileOutputStream);
+            fileOutputStream.close();
+            hssfWorkbook.close();
+            Toast.makeText(this, "File Created Successfully", Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+            Toast.makeText(this, "File Creation Failed", Toast.LENGTH_LONG).show();
+            throw new RuntimeException(e);
+        }
         /*filter.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
