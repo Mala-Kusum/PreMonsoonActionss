@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.premonsoonaction.AdapterClasses.ReportAdapter;
 import com.example.premonsoonaction.DatePick;
@@ -27,12 +31,20 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Report extends AppCompatActivity {
     FloatingActionButton button;
+    Button export;
     ImageButton from,to;
     public static Date f,t;
     RecyclerView r;
@@ -61,6 +73,7 @@ public class Report extends AppCompatActivity {
         button=findViewById(R.id.addrepo);
         from=findViewById(R.id.From);
         to=findViewById(R.id.To);
+        export=findViewById(R.id.export);
         r.setHasFixedSize(true);
         r.setLayoutManager(new LinearLayoutManager(this));
         r.setAdapter(ad);
@@ -139,5 +152,45 @@ public class Report extends AppCompatActivity {
                 ad.filterList((ArrayList<reportGetModel>) l);
             }
         });
+        export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+                HSSFSheet hssfSheet = hssfWorkbook.createSheet("MySheet");
+                //HSSFRow hssfRow = hssfSheet.createRow(0);
+
+                for (int i = 0; i<l.size(); i++){
+                    HSSFRow hssfRow = hssfSheet.createRow(0);
+                    HSSFCell hssfCell = hssfRow.createCell(i);
+                    hssfCell.setCellValue(l.get(i).getRO().toString());
+                    HSSFCell hssfCell2 = hssfRow.createCell(i);
+                    hssfCell2.setCellValue(l.get(i).getDate().toString());
+                }
+                saveWorkBook(hssfWorkbook);
+            }
+        });
+    }
+    private void saveWorkBook(HSSFWorkbook hssfWorkbook){
+        StorageManager storageManager = (StorageManager) getSystemService(STORAGE_SERVICE);
+
+
+        StorageVolume storageVolume = storageManager.getStorageVolumes().get(0); // internal storage
+
+        File fileOutput = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            fileOutput = new File(storageVolume.getDirectory().getPath() +"/Download/ActionTakenReport.xls");
+        }
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(fileOutput);
+            hssfWorkbook.write(fileOutputStream);
+            fileOutputStream.close();
+            hssfWorkbook.close();
+            Toast.makeText(this, "File Created Successfully", Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+            Toast.makeText(this, "File Creation Failed", Toast.LENGTH_LONG).show();
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -85,10 +85,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:scrollbars="vertical"/>
+        <Button
+            android:id="@+id/export"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Download all reports"/>
 
     </LinearLayout>
-
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addrepo"
