@@ -179,6 +179,81 @@ public class Equipments extends AppCompatActivity {
                     }
                 }
             });
+            export.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+                    HSSFSheet hssfSheet = hssfWorkbook.createSheet("MySheet");
+                    HSSFRow hssfRow0 = hssfSheet.createRow(0);
+                    int j=0;
+                    HSSFCell cell1 = hssfRow0.createCell(j++);
+                    cell1.setCellValue("RO");
+                    HSSFCell cell3 = hssfRow0.createCell(j++);
+                    cell3.setCellValue(getString(R.string.type));
+                    HSSFCell cell4 = hssfRow0.createCell(j++);
+                    cell4.setCellValue(getString(R.string.pmis_id));
+                    HSSFCell cell5 = hssfRow0.createCell(j++);
+                    cell5.setCellValue(getString(R.string.location));
+                    HSSFCell cell6 = hssfRow0.createCell(j++);
+                    cell6.setCellValue(getString(R.string.start_date));
+                    HSSFCell cell7 = hssfRow0.createCell(j++);
+                    cell7.setCellValue(getString(R.string.end_date));
+                    HSSFCell cell8 = hssfRow0.createCell(j++);
+                    cell8.setCellValue(getString(R.string.contractor_name));
+                    HSSFCell cell9 = hssfRow0.createCell(j++);
+                    cell9.setCellValue(getString(R.string.contractor_mail_id));
+                    HSSFCell cell10 = hssfRow0.createCell(j++);
+                    cell10.setCellValue(getString(R.string.contractor_number));
+                    HSSFCell cell11 = hssfRow0.createCell(j++);
+                    cell11.setCellValue(getString(R.string.essential_details));
+                    for (int i = 1; i<=lr.size(); i++){
+                        HSSFRow hssfRow = hssfSheet.createRow(i);
+                        int k=0;
+                        HSSFCell hssfCell = hssfRow.createCell(k++);
+                        hssfCell.setCellValue(MainActivity.RO);
+                        HSSFCell hssfCell2 = hssfRow.createCell(k++);
+                        hssfCell2.setCellValue(lr.get(i-1).getType().toString());
+                        HSSFCell hssfCell3 = hssfRow.createCell(k++);
+                        hssfCell3.setCellValue(lr.get(i-1).getPmis());
+                        HSSFCell hssfCell4 = hssfRow.createCell(k++);
+                        hssfCell4.setCellValue(lr.get(i-1).getAddress());
+                        HSSFCell hssfCell5 = hssfRow.createCell(k++);
+                        if(lr.get(i-1).getName()==null){
+                            hssfCell5.setCellValue("");
+                        }
+                        else{
+                            hssfCell5.setCellValue(lr.get(i-1).getStart().toString());
+                        }
+                        HSSFCell hssfCell6 = hssfRow.createCell(k++);
+                        if(lr.get(i-1).getName()==null){
+                            hssfCell6.setCellValue("");
+                        }
+                        else{
+                            hssfCell6.setCellValue(lr.get(i-1).getEnd().toString());
+                        }
+                        HSSFCell hssfCell7 = hssfRow.createCell(k++);
+                        if(lr.get(i-1).getName()==null){
+                            hssfCell7.setCellValue("");
+                        }
+                        else{
+                            hssfCell7.setCellValue(lr.get(i-1).getName().toString());
+                        }
+                        HSSFCell hssfCell8 = hssfRow.createCell(k++);
+                        if(lr.get(i-1).getEmail()==null){
+                            hssfCell8.setCellValue("");
+                        }
+                        else{
+                            hssfCell8.setCellValue(lr.get(i-1).getEmail());
+                        }
+                        HSSFCell hssfCell9 = hssfRow.createCell(k++);
+                        hssfCell9.setCellValue(lr.get(i-1).getMobile());
+                        HSSFCell hssfCell10 = hssfRow.createCell(k++);
+                        hssfCell10.setCellValue(lr.get(i-1).getDetails());
+                    }
+                    saveWorkBook(hssfWorkbook);
+                }
+            });
+
         }
         else{
             eqwithcount = new HashMap<>();
@@ -318,7 +393,7 @@ public class Equipments extends AppCompatActivity {
         File fileOutput = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             //Objects.requireNonNull(storageVolume.getDirectory()).ge
-            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download","Equipments.xls");
+            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download/",eqt+String.valueOf(System.currentTimeMillis())+".xls");
         }
 
         try {

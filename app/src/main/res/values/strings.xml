@@ -251,4 +251,6 @@
         <item>"Test PMU"</item>
     </string-array>
     <string name="title_activity_geo_map">GeoMap</string>
+    <string name="pmis_id">PMIS ID:</string>
+    <string name="essential_details">Essential Details:</string>
 </resources>

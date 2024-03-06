@@ -312,7 +312,7 @@ public class Report extends AppCompatActivity {
         File fileOutput = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             //Objects.requireNonNull(storageVolume.getDirectory()).ge
-            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download","ActionTakenReports.xls");
+            fileOutput = new File(Objects.requireNonNull(storageVolume.getDirectory()).getPath() +"/Download","ActionTakenReports"+String.valueOf(System.currentTimeMillis())+".xls");
         }
 
         try {
