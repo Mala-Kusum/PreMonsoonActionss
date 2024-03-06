@@ -172,7 +172,6 @@ public class addReport extends AppCompatActivity {
                     }
                 });
 
-
                 customDialog.show();
                 sb.setOnClickListener(new View.OnClickListener() {
                     @Override

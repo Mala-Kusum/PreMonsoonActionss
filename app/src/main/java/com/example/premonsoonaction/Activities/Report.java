@@ -202,6 +202,7 @@ public class Report extends AppCompatActivity {
                 }
             }
         });
+
         /*for(int i=0;i<l1.size();i++){
             for(int j=0;j<l1.get(i).size();j++){
                 Log.d( "All Vulnerable l1 "+i+": ","type: "+l1.get(i).get(j).getTYPE()+" location: "+l1.get(i).get(j).getLOCATION()+", ");
