@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/scroller"
-        android:text="Add Insufficiency"
+        android:text="Add item requirement"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
