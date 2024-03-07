@@ -64,9 +64,9 @@ public class Equipments extends AppCompatActivity {
     TextView t;
     EditText filter;
     public static String eqt;
-    Date s,e;
     Map<String,Integer> eqwithcount;
     public static Map<Pair<String,String>, Integer> pmuwithcount;
+    public static String eq;
     List<PmuNo> eqlist,pmuList;
 
     @Override

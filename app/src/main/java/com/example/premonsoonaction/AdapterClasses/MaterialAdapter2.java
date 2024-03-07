@@ -45,6 +45,7 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PmuNo m = eqList.get(position);
         String eq = m.getPMU();
+        Equipments.eq=eq;
         holder.name.setText(m.getPMU());
         try{
             holder.no.setText(Integer.toString(m.getNO()));

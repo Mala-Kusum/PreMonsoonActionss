@@ -31,6 +31,7 @@ public class AddInsufficiency extends AppCompatActivity {
         ro.setText(MainActivity.RO);
         ad = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.ROs, android.R.layout.select_dialog_singlechoice);
         ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.ROs, android.R.layout.select_dialog_singlechoice);
+        eq.setText(Equipments.eq);
         ro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
