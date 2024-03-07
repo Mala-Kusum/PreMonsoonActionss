@@ -41,12 +41,9 @@ public class Add_Equipment extends AppCompatActivity {
     AutoCompleteTextView pmu;
     ArrayAdapter ad1,ad;
     private CollectionReference Ref;
-    String name, n, loc;
     Button save;
-    Query querya,queryb;
-    ModelEquipment me;
+    Query querya;
     Unit du;
-    int j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.premonsoonaction.Activities.AddInsufficiency;
+import com.example.premonsoonaction.Activities.Equipments;
 import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
@@ -68,6 +69,7 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
             holder.insuf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Equipments.eq=eq;
                     MainActivity.location=pmu.getLocation();
                     Intent i = new Intent(context, AddInsufficiency.class);
                     context.startActivity(i);

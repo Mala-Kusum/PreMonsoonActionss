@@ -34,6 +34,12 @@
     <string name="equipment">Equipment:</string>
     <string name="ro">RO:</string>
     <string name="quantity">Quantity:</string>
+    <string-array name="Units">
+        <item> "Kg" </item>
+        <item> "L" </item>
+        <item> "Units" </item>
+        <item> "Ton" </item>
+    </string-array>
     <string-array name="ROs">
         <item> "New Delhi" </item>
         <item> "Ro-Leh/Srinagar" </item>
@@ -253,4 +259,5 @@
     <string name="title_activity_geo_map">GeoMap</string>
     <string name="pmis_id">PMIS ID:</string>
     <string name="essential_details">Essential Details:</string>
+    <string name="unit">Unit:</string>
 </resources>
