@@ -3,6 +3,7 @@ package com.example.premonsoonaction.Models;
 public class Insuf {
     int required;
     Unit uni;
+    InsufType type;
     String item;
     String ro;
     String pmu;
@@ -19,7 +20,6 @@ public class Insuf {
         this.pmu = pmu;
         this.loc = loc;
     }
-
     public int getRequired() {
         return required;
     }
@@ -56,12 +56,17 @@ public class Insuf {
     public void setPmu(String pmu) {
         this.pmu = pmu;
     }
-
     public String getLoc() {
         return loc;
     }
 
     public void setLoc(String loc) {
         this.loc = loc;
+    }
+    public InsufType getType() {
+        return type;
+    }
+    public void setType(InsufType type) {
+        this.type = type;
     }
 }

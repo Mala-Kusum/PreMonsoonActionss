@@ -145,14 +145,14 @@ public class Equipments extends AppCompatActivity {
             case "Rate running":
                 //t.setText("No.");
                 this.setTitle("Rate Running Contracts");
-                eqt="Rate Running Contract";
+                eqt="RateRunning";
                 Ref = db.collection("rate running contracts");
                 querya=Ref.whereEqualTo("ro",MainActivity.RO);
                 break;
         }
         //r2=db.collection("pmuno");
         //queryb=r2.orderBy("pmu");
-        if(eqt.equals("Rate Running Contract")){
+        if(eqt.equals("RateRunning")){
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -373,7 +373,7 @@ public class Equipments extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i;
-                if(eqt.equals("Rate Running Contract")){
+                if(eqt.equals("RateRunning")){
                     i=new Intent(Equipments.this, Add_RateRunning.class);
                 }
                 else{

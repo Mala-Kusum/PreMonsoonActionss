@@ -37,8 +37,8 @@
     <string-array name="Units">
         <item> "Kg" </item>
         <item> "L" </item>
-        <item> "Units" </item>
-        <item> "Ton" </item>
+        <item> "units" </item>
+        <item> "ton" </item>
     </string-array>
     <string-array name="ROs">
         <item> "New Delhi" </item>

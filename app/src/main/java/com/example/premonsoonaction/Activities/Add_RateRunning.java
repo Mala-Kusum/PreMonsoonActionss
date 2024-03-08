@@ -44,9 +44,6 @@ public class Add_RateRunning extends AppCompatActivity {
     private String name,loc;
     RateModel rat;
     CollectionReference Ref;
-    Timestamp start,end;
-    Query q;
-    Date s,e;
     static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
     public Date getDateFromString(String datetoSaved){
 

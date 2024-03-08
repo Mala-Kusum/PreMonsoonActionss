@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.premonsoonaction.Models.Insuf;
+import com.example.premonsoonaction.Models.InsufType;
 import com.example.premonsoonaction.Models.Unit;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -282,6 +283,7 @@ public class AddInsufficiency extends AppCompatActivity {
                 }
                 ob.setUni(Unit.valueOf(unit.getText().toString().trim()));
                 ob.setRequired(Integer.parseInt(quant.getText().toString().trim()));
+                ob.setType(InsufType.valueOf(Equipments.eqt));
                 Ref.document(String.valueOf(System.currentTimeMillis())).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
