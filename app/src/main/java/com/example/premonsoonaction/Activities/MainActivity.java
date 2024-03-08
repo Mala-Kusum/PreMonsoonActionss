@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.premonsoonaction.R;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.WriteBatch;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Button login;
@@ -20,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private CollectionReference Ref;
     EditText id,password;
+    String[] eqs,mats,contrs;
     Query query;
     String email,pswd;
     @Override
@@ -32,6 +39,20 @@ public class MainActivity extends AppCompatActivity {
         pmu="";
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("accounts");
+       /* WriteBatch batch = db.batch();
+        eqs = getResources().getStringArray(R.array.rate_running);
+        try{
+            for(int i=0;i<eqs.length;i++){
+                DocumentReference ref = db.collection("rateTypes").document(eqs[i]);
+                Map<String,String> m = new HashMap<>();
+                m.put("type",eqs[i]);
+                batch.set(ref,m);
+            }
+            batch.commit();
+        }
+        catch(Exception e){
+            Log.e("add data: ",e.toString());
+        }*/
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         //Log.e("tage", e.toString());
                     }
                 });*/
+
                 Intent i=new Intent(MainActivity.this, ROs.class);
                 startActivity(i);
             }
