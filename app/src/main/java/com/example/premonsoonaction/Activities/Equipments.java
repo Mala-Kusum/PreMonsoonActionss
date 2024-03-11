@@ -15,6 +15,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -61,14 +63,14 @@ public class Equipments extends AppCompatActivity {
     RateAdapter adr;
     public static ArrayList<ModelEquipment> list;
     public static ArrayList<RateModel> lr;
-    TextView t;
+    TextView t,itemwise,pmuwise;
     EditText filter;
     public static String eqt;
     Map<String,Integer> eqwithcount;
     public static Map<Pair<String,String>, Integer> pmuwithcount;
     public static String eq;
     List<PmuNo> eqlist,pmuList;
-
+    SwitchMaterial sw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,9 @@ public class Equipments extends AppCompatActivity {
         add=findViewById(R.id.add);
         filter=findViewById(R.id.filter);
         t=findViewById(R.id.No);
+        sw = findViewById(R.id.toggle);
+        itemwise=findViewById(R.id.itemview);
+        pmuwise=findViewById(R.id.pmuview);
         list = new ArrayList<>();
         lr = new ArrayList<>();
         eqlist = new ArrayList<>();
@@ -256,6 +261,21 @@ public class Equipments extends AppCompatActivity {
 
         }
         else{
+            sw.setVisibility(View.VISIBLE);
+            itemwise.setVisibility(View.VISIBLE);
+            sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if(b){
+                        pmuwise.setVisibility(View.VISIBLE);
+                        itemwise.setVisibility(View.GONE);
+                    }
+                    else{
+                        itemwise.setVisibility(View.VISIBLE);
+                        pmuwise.setVisibility(View.GONE);
+                    }
+                }
+            });
             eqwithcount = new HashMap<>();
             pmuwithcount = new HashMap<>();
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

@@ -28,6 +28,7 @@ import com.example.premonsoonaction.Models.Unit;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -56,6 +57,7 @@ public class Add_Equipment extends AppCompatActivity {
     String typeCollection;
     Unit du;
     int i=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,7 @@ public class Add_Equipment extends AppCompatActivity {
         pmu = (AutoCompleteTextView) findViewById(R.id.pmu);
         save = findViewById(R.id.save);
         unit = (AutoCompleteTextView)findViewById(R.id.unit);
+
         //set eq type
         try{
             m = new HashMap<>();
