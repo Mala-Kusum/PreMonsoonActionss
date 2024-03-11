@@ -214,8 +214,8 @@ public class Add_Equipment extends AppCompatActivity {
                 ob.setLocation(site.getText().toString().trim());
                 ob.setInsuf(0);
                 ob.setNo(Integer.parseInt(no.getText().toString().trim()));
-                ob.setUnit(du);
-                ob.setInsufUnit(du);
+                ob.setUnit(Unit.valueOf(unit.getText().toString().trim()));
+                ob.setInsufUnit(Unit.valueOf(unit.getText().toString().trim()));
                 ob.setIsInsuf(false);
                 Log.d( "isInsuf: ",ob.getIsInsuf().toString());
                 if(!m.containsKey(eq.getText().toString().trim())){

@@ -87,6 +87,7 @@
                 android:background="@null"
                 android:paddingHorizontal="10dp"
                 android:focusableInTouchMode="false"
+                android:text="units"
                 android:inputType="number"/>
         </LinearLayout>
         <LinearLayout
