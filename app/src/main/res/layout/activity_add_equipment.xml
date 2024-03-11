@@ -30,7 +30,7 @@
                 android:paddingHorizontal="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Type"/>
+                android:text="@string/type"/>
             <AutoCompleteTextView
                 android:id="@+id/Type"
                 android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                 android:textStyle="bold"
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
-                android:text="No."/>
+                android:text="@string/quantity"/>
             <EditText
                 android:id="@+id/no"
                 android:layout_width="match_parent"
@@ -77,9 +77,34 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/black"
+                android:text="@string/unit"/>
+            <AutoCompleteTextView
+                android:id="@+id/unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingHorizontal="10dp"
+                android:focusableInTouchMode="false"
+                android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:elevation="5dp"
+            android:background="@drawable/border">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:paddingHorizontal="10dp"
-                android:text="PMU"/>
+                android:text="@string/pmu"/>
             <AutoCompleteTextView
                 android:id="@+id/pmu"
                 android:layout_width="match_parent"
@@ -105,7 +130,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:paddingHorizontal="10dp"
-                android:text="Location"/>
+                android:text="@string/location"/>
             <EditText
                 android:id="@+id/site"
                 android:layout_width="match_parent"

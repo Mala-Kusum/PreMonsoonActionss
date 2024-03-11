@@ -43,10 +43,10 @@ import java.util.Objects;
 public class Add_Equipment extends AppCompatActivity {
     //Spinner pmu;
     EditText no,site;
-    AutoCompleteTextView eq;
+    AutoCompleteTextView eq,unit;
     private FirebaseFirestore db;
     AutoCompleteTextView pmu;
-    ArrayAdapter ad;
+    ArrayAdapter ad,unia;
     Map<String,Boolean> m;
     ArrayAdapter<String> ad1;
     private CollectionReference Ref;
@@ -87,7 +87,7 @@ public class Add_Equipment extends AppCompatActivity {
         site = findViewById(R.id.site);
         pmu = (AutoCompleteTextView) findViewById(R.id.pmu);
         save = findViewById(R.id.save);
-
+        unit = (AutoCompleteTextView)findViewById(R.id.unit);
         //set eq type
         try{
             m = new HashMap<>();
@@ -131,7 +131,21 @@ public class Add_Equipment extends AppCompatActivity {
                 }
             }
         });
-        
+        //set unit
+        unia = ArrayAdapter.createFromResource(Add_Equipment.this, R.array.Units, android.R.layout.select_dialog_singlechoice);
+        unit.setThreshold(1);
+        unit.setAdapter(unia);
+        try{
+            unit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    unit.showDropDown();
+                }
+            });
+        }
+        catch (Exception e){
+            Log.e("PMUList: ", e.toString() );
+        }
         //set PMU
         switch(MainActivity.RO){
             case"Ro-Leh/Srinagar":
