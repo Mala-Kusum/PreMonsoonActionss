@@ -35,7 +35,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Add_Equipment extends AppCompatActivity {
@@ -45,11 +47,13 @@ public class Add_Equipment extends AppCompatActivity {
     private FirebaseFirestore db;
     AutoCompleteTextView pmu;
     ArrayAdapter ad;
+    Map<String,Boolean> m;
     ArrayAdapter<String> ad1;
     private CollectionReference Ref;
     Button save;
     Query querya;
     List<String> eqtypes;
+    String typeCollection;
     Unit du;
     int i=0;
 
@@ -68,11 +72,13 @@ public class Add_Equipment extends AppCompatActivity {
                 catch(Exception e){
                     Log.e( "Setting eq collection reference: ",e.toString());
                 }
+                typeCollection="equipmentTypes";
                 du=Unit.units;
                 break;
             case "Material":
                 this.setTitle("Add Materials");
                 Ref = db.collection("materials");
+                typeCollection="materialTypes";
                 du=Unit.Kg;
                 break;
         }
@@ -83,36 +89,38 @@ public class Add_Equipment extends AppCompatActivity {
         save = findViewById(R.id.save);
 
         //set eq type
-
-        if(Equipments.eqt.equals("Equipment")){
-
-            try{
-                eqtypes=new ArrayList<>();
-                db.collection("equipmentTypes").orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                            eqtypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
-                            ad1.notifyDataSetChanged();
-                        }
+        try{
+            m = new HashMap<>();
+            eqtypes=new ArrayList<>();
+            db.collection(typeCollection).orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        m.put(Objects.requireNonNull(doc.getData().get("type")).toString().trim(),true);
+                        eqtypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
+                        ad1.notifyDataSetChanged();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("onFailure eqtypes: ", e.toString());
-                    }
-                });
-            }
-            catch(Exception e){
-                Log.e("get eqtypes: ",e.toString());
-            }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("onFailure eqtypes: ", e.toString());
+                }
+            });
+        }
+        catch(Exception e){
+            Log.e("get eqtypes: ",e.toString());
+        }
 
-            try{
-                ad1=new ArrayAdapter<String>(Add_Equipment.this,android.R.layout.select_dialog_singlechoice,eqtypes);
-            }
-            catch(Exception e){
-                Log.e("ad1: ",e.toString());
-            }
+        try{
+            ad1=new ArrayAdapter<String>(Add_Equipment.this,android.R.layout.select_dialog_singlechoice,eqtypes);
+        }
+        catch(Exception e){
+            Log.e("ad1: ",e.toString());
+        }
+        /*if(Equipments.eqt.equals("Equipment")){
+
+
             //ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
         }
         else{
@@ -143,7 +151,7 @@ public class Add_Equipment extends AppCompatActivity {
             catch(Exception e){
                 Log.e("ad1: ",e.toString());
             }
-        }
+        }*/
         eq.setThreshold(1);
         eq.setAdapter(ad1);
         eq.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +239,21 @@ public class Add_Equipment extends AppCompatActivity {
                 ob.setInsufUnit(du);
                 ob.setIsInsuf(false);
                 Log.d( "isInsuf: ",ob.getIsInsuf().toString());
+                if(!m.containsKey(eq.getText().toString().trim())){
+                    Map<String,String> m1 = new HashMap<>();
+                    m1.put("type",eq.getText().toString().trim());
+                    db.collection(typeCollection).document(eq.getText().toString().trim()).set(m1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.e( "onSuccess rate type: ", "added successfully");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e( "onFailure rate type: ", e.toString());
+                        }
+                    });
+                }
                 querya = Ref.whereEqualTo("location", ob.getLocation()).whereEqualTo("name", ob.getName());
                 querya.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

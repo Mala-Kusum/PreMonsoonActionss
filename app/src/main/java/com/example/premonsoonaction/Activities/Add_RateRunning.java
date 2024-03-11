@@ -38,7 +38,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Add_RateRunning extends AppCompatActivity {
@@ -49,7 +51,8 @@ public class Add_RateRunning extends AppCompatActivity {
     private String name,loc;
     RateModel rat;
     CollectionReference Ref;
-    Map<String,Boolean> ratetypes;
+    List<String> ratetypes;
+    Map<String,Boolean> m;
     static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
     public Date getDateFromString(String datetoSaved){
 
@@ -81,6 +84,7 @@ public class Add_RateRunning extends AppCompatActivity {
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
         try{
+            m = new HashMap<>();
             ratetypes=new ArrayList<>();
             ad=new ArrayAdapter<String>(Add_RateRunning.this,android.R.layout.select_dialog_singlechoice,ratetypes);
         }
@@ -94,6 +98,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        m.put(Objects.requireNonNull(doc.getData().get("type")).toString().trim(),true);
                         ratetypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
                         ad.notifyDataSetChanged();
                     }
@@ -306,6 +311,21 @@ public class Add_RateRunning extends AppCompatActivity {
                 rat.setPmis(Integer.parseInt(pmis.getText().toString().trim()));
                 rat.setType(rate.getText().toString().trim());
                 rat.setRo(MainActivity.RO);
+                if(!m.containsKey(rate.getText().toString().trim())){
+                    Map<String,String> m1 = new HashMap<>();
+                    m1.put("type",rate.getText().toString().trim());
+                    db.collection("rateTypes").document(rate.getText().toString().trim()).set(m1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.e( "onSuccess rate type: ", "added successfully");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e( "onFailure rate type: ", e.toString());
+                        }
+                    });
+                }
                 if(cmail.getText().toString().trim().isEmpty()){
                     try{
                         rat.setEmail("");
