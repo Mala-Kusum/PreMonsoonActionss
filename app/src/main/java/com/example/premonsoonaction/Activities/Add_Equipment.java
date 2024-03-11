@@ -118,40 +118,6 @@ public class Add_Equipment extends AppCompatActivity {
         catch(Exception e){
             Log.e("ad1: ",e.toString());
         }
-        /*if(Equipments.eqt.equals("Equipment")){
-
-
-            //ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
-        }
-        else{
-            try{
-                eqtypes=new ArrayList<>();
-                db.collection("materialTypes").orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                            eqtypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
-                            ad1.notifyDataSetChanged();
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("onFailure eqtypes: ", e.toString());
-                    }
-                });
-            }
-            catch(Exception e){
-                Log.e("get eqtypes: ",e.toString());
-            }
-
-            try{
-                ad1=new ArrayAdapter<String>(Add_Equipment.this,android.R.layout.select_dialog_singlechoice,eqtypes);
-            }
-            catch(Exception e){
-                Log.e("ad1: ",e.toString());
-            }
-        }*/
         eq.setThreshold(1);
         eq.setAdapter(ad1);
         eq.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +180,6 @@ public class Add_Equipment extends AppCompatActivity {
                 ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.NewDelhi, android.R.layout.select_dialog_singlechoice);
                 break;
         }
-        //ad=ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Guwahati, android.R.layout.select_dialog_singlechoice);
         eq.setThreshold(1);
         pmu.setAdapter(ad);
         pmu.setOnClickListener(new View.OnClickListener() {
@@ -311,6 +276,7 @@ public class Add_Equipment extends AppCompatActivity {
                     }
                 });
                 Intent i = new Intent(Add_Equipment.this, Equipments.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }

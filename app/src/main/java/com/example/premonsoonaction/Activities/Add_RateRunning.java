@@ -363,6 +363,7 @@ public class Add_RateRunning extends AppCompatActivity {
                     }
                 });
                    Intent i = new Intent(Add_RateRunning.this, Equipments.class);
+                   i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                    startActivity(i);
                    finish();
                }
