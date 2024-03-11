@@ -34,17 +34,24 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class Add_Equipment extends AppCompatActivity {
     //Spinner pmu;
     EditText no,site;
     AutoCompleteTextView eq;
     private FirebaseFirestore db;
     AutoCompleteTextView pmu;
-    ArrayAdapter ad1,ad;
+    ArrayAdapter ad;
+    ArrayAdapter<String> ad1;
     private CollectionReference Ref;
     Button save;
     Query querya;
+    List<String> eqtypes;
     Unit du;
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +83,78 @@ public class Add_Equipment extends AppCompatActivity {
         save = findViewById(R.id.save);
 
         //set eq type
+
         if(Equipments.eqt.equals("Equipment")){
-            ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
+
+            try{
+                eqtypes=new ArrayList<>();
+                db.collection("equipmentTypes").orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                            eqtypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
+                            ad1.notifyDataSetChanged();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("onFailure eqtypes: ", e.toString());
+                    }
+                });
+            }
+            catch(Exception e){
+                Log.e("get eqtypes: ",e.toString());
+            }
+
+            try{
+                ad1=new ArrayAdapter<String>(Add_Equipment.this,android.R.layout.select_dialog_singlechoice,eqtypes);
+            }
+            catch(Exception e){
+                Log.e("ad1: ",e.toString());
+            }
+            //ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Equipments, android.R.layout.select_dialog_singlechoice);
         }
         else{
-            ad1 = ArrayAdapter.createFromResource(Add_Equipment.this,R.array.Materials, android.R.layout.select_dialog_singlechoice);
+            try{
+                eqtypes=new ArrayList<>();
+                db.collection("materialTypes").orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                            eqtypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
+                            ad1.notifyDataSetChanged();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("onFailure eqtypes: ", e.toString());
+                    }
+                });
+            }
+            catch(Exception e){
+                Log.e("get eqtypes: ",e.toString());
+            }
+
+            try{
+                ad1=new ArrayAdapter<String>(Add_Equipment.this,android.R.layout.select_dialog_singlechoice,eqtypes);
+            }
+            catch(Exception e){
+                Log.e("ad1: ",e.toString());
+            }
         }
         eq.setThreshold(1);
         eq.setAdapter(ad1);
         eq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eq.showDropDown();
+                try{
+                    eq.showDropDown();
+                }
+                catch(Exception e){
+                    Log.e("show dropdown: ",e.toString() );
+                }
             }
         });
         

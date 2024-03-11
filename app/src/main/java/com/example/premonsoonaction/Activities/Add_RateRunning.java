@@ -30,11 +30,16 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 public class Add_RateRunning extends AppCompatActivity {
     EditText cname,cnumber,cmail,location,pmis,started,ended,detail;
@@ -44,6 +49,7 @@ public class Add_RateRunning extends AppCompatActivity {
     private String name,loc;
     RateModel rat;
     CollectionReference Ref;
+    Map<String,Boolean> ratetypes;
     static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
     public Date getDateFromString(String datetoSaved){
 
@@ -74,9 +80,36 @@ public class Add_RateRunning extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Ref = db.collection("rate running contracts");
         loc= MainActivity.pmu;
-        ad = ArrayAdapter.createFromResource(Add_RateRunning.this, R.array.rate_running, android.R.layout.select_dialog_singlechoice);
+        try{
+            ratetypes=new ArrayList<>();
+            ad=new ArrayAdapter<String>(Add_RateRunning.this,android.R.layout.select_dialog_singlechoice,ratetypes);
+        }
+        catch(Exception e){
+            Log.e("ad: ",e.toString());
+        }
         rate.setThreshold(1);
         rate.setAdapter(ad);
+        try{
+            db.collection("rateTypes").orderBy("type").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        ratetypes.add(Objects.requireNonNull(doc.getData().get("type")).toString().trim());
+                        ad.notifyDataSetChanged();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("onFailure ratetypes: ", e.toString());
+                }
+            });
+        }
+        catch(Exception e){
+            Log.e("get ratetypes: ",e.toString());
+        }
+
+
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
