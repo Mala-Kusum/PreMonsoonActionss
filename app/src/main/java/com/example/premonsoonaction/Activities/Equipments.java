@@ -71,6 +71,7 @@ public class Equipments extends AppCompatActivity {
     public static String eq;
     List<PmuNo> eqlist,pmuList;
     SwitchMaterial sw;
+    public static boolean switchValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,7 @@ public class Equipments extends AppCompatActivity {
         eqlist = new ArrayList<>();
         pmuList = new ArrayList<>();
         export=findViewById(R.id.export);
+        switchValue=false;
         /*Calendar c1 = Calendar.getInstance();
         c1.set(1998,7,28);
         s = c1.getTime();
@@ -274,6 +276,7 @@ public class Equipments extends AppCompatActivity {
                         itemwise.setVisibility(View.VISIBLE);
                         pmuwise.setVisibility(View.GONE);
                     }
+                    switchValue = b;
                 }
             });
             eqwithcount = new HashMap<>();
@@ -282,41 +285,71 @@ public class Equipments extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if(task.isSuccessful()){
-                        for (DocumentSnapshot dc: task.getResult()) {
-                            ModelEquipment ob = dc.toObject(ModelEquipment.class);
-                            if(eqwithcount.containsKey(ob.getName())){
-                                eqwithcount.put(ob.getName(),eqwithcount.get(ob.getName())+ob.getNo());
+                        if(switchValue){
+                            for (DocumentSnapshot dc: task.getResult()) {
+                                ModelEquipment ob = dc.toObject(ModelEquipment.class);
+                                if(eqwithcount.containsKey(ob.getName())){
+                                    eqwithcount.put(ob.getName(),eqwithcount.get(ob.getName())+ob.getNo());
+                                }
+                                else{
+                                    eqwithcount.put(ob.getName(),ob.getNo());
+                                }
+                                Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
+                                if(pmuwithcount.containsKey(p)){
+                                    pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                                    adapt.notifyDataSetChanged();
+                                }
+                                else{
+                                    pmuwithcount.put(p,ob.getNo());
+                                    adapt.notifyDataSetChanged();
+                                }
+                                try{
+                                    list.add(ob);
+                                }
+                                catch(Exception e){
+                                    Log.e( "list.add error: ",e.toString());
+                                }
                             }
-                            else{
-                                eqwithcount.put(ob.getName(),ob.getNo());
-                            }
-                            Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
-                            if(pmuwithcount.containsKey(p)){
-                                pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                            for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
+                                PmuNo ob = new PmuNo(me.getKey(),me.getValue());
+                                eqlist.add(ob);
                                 adapt.notifyDataSetChanged();
                             }
-                            else{
-                                pmuwithcount.put(p,ob.getNo());
+                            Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
+                        }
+                        else{
+                            for (DocumentSnapshot dc: task.getResult()) {
+                                ModelEquipment ob = dc.toObject(ModelEquipment.class);
+                                if(eqwithcount.containsKey(ob.getName())){
+                                    eqwithcount.put(ob.getName(),eqwithcount.get(ob.getName())+ob.getNo());
+                                }
+                                else{
+                                    eqwithcount.put(ob.getName(),ob.getNo());
+                                }
+                                Pair<String,String> p=new Pair<>(ob.getName(),ob.getPmu());
+                                if(pmuwithcount.containsKey(p)){
+                                    pmuwithcount.put(p,eqwithcount.get(p)+ob.getNo());
+                                    adapt.notifyDataSetChanged();
+                                }
+                                else{
+                                    pmuwithcount.put(p,ob.getNo());
+                                    adapt.notifyDataSetChanged();
+                                }
+                                try{
+                                    list.add(ob);
+                                }
+                                catch(Exception e){
+                                    Log.e( "list.add error: ",e.toString());
+                                }
+                            }
+                            for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
+                                PmuNo ob = new PmuNo(me.getKey(),me.getValue());
+                                eqlist.add(ob);
                                 adapt.notifyDataSetChanged();
                             }
-                            try{
-                                list.add(ob);
-                            }
-                            catch(Exception e){
-                                Log.e( "list.add error: ",e.toString());
-                            }
+                            Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
                         }
-                        for(Map.Entry<String, Integer> me : eqwithcount.entrySet()){
-                            PmuNo ob = new PmuNo(me.getKey(),me.getValue());
-                            eqlist.add(ob);
-                            adapt.notifyDataSetChanged();
-                        }
-                        Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.size()));
-                        /*for(Map.Entry<Pair<String,String>, Integer> me : pmuwithcount.entrySet()){
-                            PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
-                            Log.d("pmuwithcount size: ",Integer.toString(pmuwithcount.getValue()));
-                            adapt.notifyDataSetChanged();
-                        }*/
+
                     }
                     else{
                         Log.d("Error eq: ",task.getException().toString());
