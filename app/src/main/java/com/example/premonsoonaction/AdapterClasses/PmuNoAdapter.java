@@ -108,13 +108,19 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 r.setLayoutManager(new LinearLayoutManager(context));
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
                 l = new ArrayList<>();
-                for(int i=0;i<Equipments.list.size();i++){
-                    if(Equipments.list.get(i).getName().equals(eq)&&Equipments.list.get(i).getPmu().equals(pmu.getPMU())){
-                        PmuNo ob = new PmuNo(Equipments.list.get(i).getLocation(),Equipments.list.get(i).getNo());
-                        l.add(Equipments.list.get(i));
-                        pmuList.add(ob);
+                if(Equipments.switchValue){
+
+                }
+                else{
+                    for(int i=0;i<Equipments.list.size();i++){
+                        if(Equipments.list.get(i).getName().equals(eq)&&Equipments.list.get(i).getPmu().equals(pmu.getPMU())){
+                            PmuNo ob = new PmuNo(Equipments.list.get(i).getLocation(),Equipments.list.get(i).getNo());
+                            l.add(Equipments.list.get(i));
+                            pmuList.add(ob);
+                        }
                     }
                 }
+
                 LocatilnNoAdapter ad = new LocatilnNoAdapter(context,pmuList,eq);
                 r.setAdapter(ad);
                 customDialog.show();

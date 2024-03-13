@@ -64,13 +64,25 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         ArrayList<PmuNo> pmuList = new ArrayList<>();
         for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
            if(me.getKey().first.equals(m.getPMU())){
-               PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
-               Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
-               try{
-                   pmuList.add(ob);
+               if(Equipments.switchValue){
+                   PmuNo ob = new PmuNo(me.getKey().first,me.getValue());
+                   Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+                   try{
+                       pmuList.add(ob);
+                   }
+                   catch(Exception e){
+                       Log.e("pmulist add error: ", e.toString());
+                   }
                }
-               catch(Exception e){
-                   Log.e("pmulist add error: ", e.toString());
+               else{
+                   PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
+                   Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+                   try{
+                       pmuList.add(ob);
+                   }
+                   catch(Exception e){
+                       Log.e("pmulist add error: ", e.toString());
+                   }
                }
            }
         }
