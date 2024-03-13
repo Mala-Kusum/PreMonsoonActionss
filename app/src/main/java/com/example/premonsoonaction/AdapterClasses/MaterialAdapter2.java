@@ -61,12 +61,12 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
                 context.startActivity(i);
             }
         });
-        ArrayList<PmuNo> pmuList = new ArrayList<>();
+        pmuList = new ArrayList<>();
         for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
            if(me.getKey().first.equals(m.getPMU())){
                if(Equipments.switchValue){
                    PmuNo ob = new PmuNo(me.getKey().first,me.getValue());
-                   Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+                   Log.d( "ob value  eq: ",ob+" "+ob.getPMU()+" "+ob.getNO());
                    try{
                        pmuList.add(ob);
                    }
