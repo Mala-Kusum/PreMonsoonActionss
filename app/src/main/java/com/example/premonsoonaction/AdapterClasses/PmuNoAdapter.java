@@ -109,7 +109,13 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
                 ArrayList<PmuNo> pmuList = new ArrayList<>();
                 l = new ArrayList<>();
                 if(Equipments.switchValue){
-
+                    for(int i=0;i<Equipments.list.size();i++){
+                        if(Equipments.list.get(i).getPmu().equals(eq)&&Equipments.list.get(i).getName().equals(pmu.getPMU())){
+                            PmuNo ob = new PmuNo(Equipments.list.get(i).getLocation(),Equipments.list.get(i).getNo());
+                            l.add(Equipments.list.get(i));
+                            pmuList.add(ob);
+                        }
+                    }
                 }
                 else{
                     for(int i=0;i<Equipments.list.size();i++){

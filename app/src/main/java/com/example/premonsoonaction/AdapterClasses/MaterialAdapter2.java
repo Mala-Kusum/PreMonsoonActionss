@@ -28,7 +28,6 @@ import java.util.Map;
 public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyViewHolder>{
     Context context;
     public List<PmuNo> eqList,pmuList;
-   // Map<Pair<String,String>, Integer> pmuwithcount;
     public MaterialAdapter2(Context context, List<PmuNo> eqList) {
         this.context = context;
         this.eqList = eqList;
@@ -63,28 +62,32 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         });
         pmuList = new ArrayList<>();
         for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
-           if(me.getKey().first.equals(m.getPMU())){
-               if(Equipments.switchValue){
-                   PmuNo ob = new PmuNo(me.getKey().first,me.getValue());
-                   Log.d( "ob value  eq: ",ob+" "+ob.getPMU()+" "+ob.getNO());
-                   try{
-                       pmuList.add(ob);
-                   }
-                   catch(Exception e){
-                       Log.e("pmulist add error: ", e.toString());
-                   }
-               }
-               else{
-                   PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
-                   Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
-                   try{
-                       pmuList.add(ob);
-                   }
-                   catch(Exception e){
-                       Log.e("pmulist add error: ", e.toString());
-                   }
-               }
-           }
+
+            if(Equipments.switchValue){
+                if(me.getKey().second.equals(m.getPMU())){
+                    PmuNo ob = new PmuNo(me.getKey().first,me.getValue());
+                    Log.d( "ob value  eq: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+                    try{
+                        pmuList.add(ob);
+                    }
+                    catch(Exception e){
+                        Log.e("pmulist add error: ", e.toString());
+                    }
+                }
+            }
+            else{
+                if(me.getKey().first.equals(m.getPMU())){
+                    PmuNo ob = new PmuNo(me.getKey().second,me.getValue());
+                    Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
+                    try{
+                        pmuList.add(ob);
+                    }
+                    catch(Exception e){
+                        Log.e("pmulist add error: ", e.toString());
+                    }
+                }
+            }
+
         }
        /* ArrayList<PmuNo> pmuList = new ArrayList<>();
         PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
