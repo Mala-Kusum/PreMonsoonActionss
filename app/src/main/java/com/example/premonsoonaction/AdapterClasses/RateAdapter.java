@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.premonsoonaction.Activities.Add_RateRunning;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
@@ -39,12 +40,11 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RateModel rateModel = rateModelList.get(position);
-
         holder.typeTextView.setText(rateModel.getType());
         holder.pmisTextView.setText(Integer.toString(rateModel.getPmis()));
         holder.addressTextView.setText(rateModel.getAddress());
-        holder.startTextView.setText(rateModel.getStart().toString());
-        holder.endTextView.setText(rateModel.getEnd().toString());
+        holder.startTextView.setText(Add_RateRunning.DATE_FORMAT.format(rateModel.getStart()));
+        holder.endTextView.setText(Add_RateRunning.DATE_FORMAT.format(rateModel.getEnd()));
         holder.emailTextView.setText(rateModel.getEmail());
         holder.mobileTextView.setText(rateModel.getMobile());
         holder.nameTextView.setText(rateModel.getName());

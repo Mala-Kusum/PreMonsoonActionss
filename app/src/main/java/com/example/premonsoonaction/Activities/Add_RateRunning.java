@@ -5,37 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.premonsoonaction.DatePick2;
-import com.example.premonsoonaction.Models.ModelRate;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -53,11 +44,10 @@ public class Add_RateRunning extends AppCompatActivity {
     CollectionReference Ref;
     List<String> ratetypes;
     Map<String,Boolean> m;
-    static final SimpleDateFormat format = new SimpleDateFormat("dd - MM - yyyy");
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     public Date getDateFromString(String datetoSaved){
-
         try {
-            Date date = format.parse(datetoSaved);
+            Date date = DATE_FORMAT.parse(datetoSaved);
             return date ;
         } catch (ParseException e){
             return null ;

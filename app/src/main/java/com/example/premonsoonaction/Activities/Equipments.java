@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.premonsoonaction.AdapterClasses.MaterialAdapter;
 import com.example.premonsoonaction.AdapterClasses.MaterialAdapter2;
 import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.Models.ModelEquipment;
@@ -45,8 +44,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,8 +97,14 @@ public class Equipments extends AppCompatActivity {
                 if(eqt.equals("RateRunning")){
                     ArrayList<RateModel> filtered = new ArrayList<>();
                     for (int j = 0; j < lr.size(); j++) {
-                        if (lr.get(j).getType().contains(s) || Integer.toString(lr.get(j).getPmis()).contains(s) || lr.get(j).getAddress().contains(s) || lr.get(j).getStart().toString().contains(s) || lr.get(j).getEnd().toString().contains(s) || lr.get(j).getName().contains(s) || lr.get(j).getMobile().contains(s) || lr.get(j).getEmail().contains(s) || lr.get(j).getDetails().contains(s)) {
-                            filtered.add(lr.get(j));
+                        try{
+                            if (lr.get(j).getType().contains(s) || Integer.toString(lr.get(j).getPmis()).contains(s) || lr.get(j).getAddress().contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()).contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getEnd()).contains(s) || lr.get(j).getName().contains(s) || lr.get(j).getMobile().contains(s) || lr.get(j).getEmail().contains(s) || lr.get(j).getDetails().contains(s)) {
+                                Log.d( "Type + start +: ",lr.get(j).getType()+" "+Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()));
+                                filtered.add(lr.get(j));
+                            }
+                        }
+                        catch(Exception e){
+                            Log.e("filter error: ",e.toString() );
                         }
                         adr.filterList(filtered);
                     }
