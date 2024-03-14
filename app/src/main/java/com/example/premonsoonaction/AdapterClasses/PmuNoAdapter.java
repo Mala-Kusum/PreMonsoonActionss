@@ -59,8 +59,14 @@ public class PmuNoAdapter extends RecyclerView.Adapter<PmuNoAdapter.PmuNoViewHol
         holder.insuf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Equipments.eq=eq;
-                MainActivity.pmu=pmu.getPMU();
+                if(Equipments.switchValue){
+                    MainActivity.pmu=eq;
+                    Equipments.eq=pmu.getPMU();
+                }
+                else{
+                    Equipments.eq=eq;
+                    MainActivity.pmu=pmu.getPMU();
+                }
                 Intent i = new Intent(context, AddInsufficiency.class);
                 context.startActivity(i);
             }

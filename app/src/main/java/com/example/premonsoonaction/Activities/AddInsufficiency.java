@@ -226,7 +226,6 @@ public class AddInsufficiency extends AppCompatActivity {
         catch(Exception e){
             Log.e("ad2.setdropdown: ",e.toString());
         }
-
         try{
             pmu.setOnClickListener(new View.OnClickListener() {
                 @Override

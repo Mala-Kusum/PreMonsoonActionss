@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.premonsoonaction.Activities.AddInsufficiency;
 import com.example.premonsoonaction.Activities.Equipments;
+import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
 import com.example.premonsoonaction.R;
@@ -55,7 +56,13 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         holder.insuf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Equipments.eq=eq;
+                if(Equipments.switchValue){
+                    MainActivity.pmu=eq;
+                }
+                else{
+                    Equipments.eq=eq;
+                }
+
                 Intent i = new Intent(context, AddInsufficiency.class);
                 context.startActivity(i);
             }

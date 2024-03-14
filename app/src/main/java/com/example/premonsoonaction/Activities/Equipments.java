@@ -274,6 +274,7 @@ public class Equipments extends AppCompatActivity {
                         pmuwise.setVisibility(View.VISIBLE);
                         itemwise.setVisibility(View.GONE);
                         recycler.setAdapter(pmuwiseadapt);
+                        eq="";
                     }
                     else{
                         itemwise.setVisibility(View.VISIBLE);

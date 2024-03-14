@@ -69,8 +69,14 @@ public class LocatilnNoAdapter extends RecyclerView.Adapter<LocatilnNoAdapter.Pm
             holder.insuf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Equipments.eq=eq;
-                    MainActivity.location=pmu.getLocation();
+                    if(Equipments.switchValue){
+                        MainActivity.pmu=eq;
+                        MainActivity.location=pmu.getLocation();
+                    }
+                    else{
+                        Equipments.eq=eq;
+                        MainActivity.location=pmu.getLocation();
+                    }
                     Intent i = new Intent(context, AddInsufficiency.class);
                     context.startActivity(i);
                 }
