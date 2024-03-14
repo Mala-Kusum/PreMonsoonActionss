@@ -9,21 +9,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
 
-    private final List<RateModel> rateModelList;
+    private List<RateModel> rateModelList;
     private final LayoutInflater inflater;
 
     public RateAdapter(Context context, List<RateModel> rateModelList) {
         this.rateModelList = rateModelList;
         this.inflater = LayoutInflater.from(context);
     }
-
+    public void filterList(ArrayList<RateModel> filterlist) {
+        rateModelList = filterlist;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
