@@ -98,8 +98,8 @@ public class Equipments extends AppCompatActivity {
                     ArrayList<RateModel> filtered = new ArrayList<>();
                     for (int j = 0; j < lr.size(); j++) {
                         try{
-                            if (lr.get(j).getType().contains(s) || Integer.toString(lr.get(j).getPmis()).contains(s) || lr.get(j).getAddress().contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()).contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getEnd()).contains(s) || lr.get(j).getName().contains(s) || lr.get(j).getMobile().contains(s) || lr.get(j).getEmail().contains(s) || lr.get(j).getDetails().contains(s)) {
-                                Log.d( "Type + start +: ",lr.get(j).getType()+" "+Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()));
+                            Log.d( "Type + start +: ",s+" "+j+" "+lr.get(j).getType()+" "+lr.get(j).getType().contains(s));
+                            if (lr.get(j).getType().toLowerCase().contains(s) || Integer.toString(lr.get(j).getPmis()).contains(s) || lr.get(j).getAddress().toLowerCase().contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()).contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getEnd()).contains(s) || lr.get(j).getName().toLowerCase().contains(s) || lr.get(j).getMobile().toLowerCase().contains(s) || lr.get(j).getEmail().contains(s) || lr.get(j).getDetails().toLowerCase().contains(s)) {
                                 filtered.add(lr.get(j));
                             }
                         }
