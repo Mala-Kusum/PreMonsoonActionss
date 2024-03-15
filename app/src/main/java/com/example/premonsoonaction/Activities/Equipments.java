@@ -55,7 +55,7 @@ public class Equipments extends AppCompatActivity {
     Button export;
     public static CollectionReference Ref;
     Query querya;
-    RecyclerView recycler,recyclerPMUwise;
+    RecyclerView recycler;
     MaterialAdapter2 adapt,pmuwiseadapt;
     RateAdapter adr;
     public static ArrayList<ModelEquipment> list;
@@ -66,7 +66,7 @@ public class Equipments extends AppCompatActivity {
     Map<String,Integer> eqwithcount,pmuwisecount;
     public static Map<Pair<String,String>, Integer> pmuwithcount;
     public static String eq;
-    List<PmuNo> eqlist,pmuList,pmuwiseList;
+    List<PmuNo> eqlist,pmuwiseList;
     SwitchMaterial sw;
     public static boolean switchValue;
     @Override
@@ -83,7 +83,6 @@ public class Equipments extends AppCompatActivity {
         list = new ArrayList<>();
         lr = new ArrayList<>();
         eqlist = new ArrayList<>();
-        pmuList = new ArrayList<>();
         pmuwiseList = new ArrayList<>();
         export=findViewById(R.id.export);
         switchValue=false;
@@ -94,35 +93,50 @@ public class Equipments extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int i, int i1, int i2) {
                 s = s.toString().toLowerCase();
-                if(eqt.equals("RateRunning")){
+                if (eqt.equals("RateRunning")) {
                     ArrayList<RateModel> filtered = new ArrayList<>();
                     for (int j = 0; j < lr.size(); j++) {
-                        try{
-                            Log.d( "Type + start +: ",s+" "+j+" "+lr.get(j).getType()+" "+lr.get(j).getType().contains(s));
+                        try {
+                            Log.d("Type + start +: ", s + " " + j + " " + lr.get(j).getType() + " " + lr.get(j).getType().contains(s));
                             if (lr.get(j).getType().toLowerCase().contains(s) || Integer.toString(lr.get(j).getPmis()).contains(s) || lr.get(j).getAddress().toLowerCase().contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getStart()).contains(s) || Add_RateRunning.DATE_FORMAT.format(lr.get(j).getEnd()).contains(s) || lr.get(j).getName().toLowerCase().contains(s) || lr.get(j).getMobile().toLowerCase().contains(s) || lr.get(j).getEmail().contains(s) || lr.get(j).getDetails().toLowerCase().contains(s)) {
                                 filtered.add(lr.get(j));
                             }
-                        }
-                        catch(Exception e){
-                            Log.e("filter error: ",e.toString() );
+                        } catch (Exception e) {
+                            Log.e("filter error: ", e.toString());
                         }
                         adr.filterList(filtered);
                     }
+                } else {
+                    ArrayList<PmuNo> filtered = new ArrayList<>();
+                    if (switchValue) {
+                        for (int j = 0; j < pmuwiseList.size(); j++) {
+                            try {
+                                if (pmuwiseList.get(j).getPMU().toLowerCase().contains(s)) {
+                                    filtered.add(pmuwiseList.get(j));
+                                }
+                            } catch (Exception e) {
+                                Log.e("filter error: ", e.toString());
+                            }
+                            pmuwiseadapt.filterList(filtered);
+                        }
+                    }
+                    else{
+                        for (int j = 0; j < eqlist.size(); j++) {
+                            try {
+                                if (eqlist.get(j).getPMU().toLowerCase().contains(s)) {
+                                    filtered.add(eqlist.get(j));
+                                }
+                            } catch (Exception e) {
+                                Log.e("filter error: ", e.toString());
+                            }
+                            adapt.filterList(filtered);
+                        }
+                    }
                 }
-
             }
             @Override
             public void afterTextChanged(Editable editable) {}
         });
-        /*Calendar c1 = Calendar.getInstance();
-        c1.set(1998,7,28);
-        s = c1.getTime();
-        Calendar c2 = Calendar.getInstance();
-        c2.set(1998,7,28);
-        e = c2.getTime();
-        lr.add(new RateModel("Type1", 123456, "Address1",s,e, "email1@example.com", "123456789", "Name1", "Details1"));
-        lr.add(new RateModel("Type2", 789101, "Address2",s,e, "email2@example.com", "223456789", "Name2", "Details2"));
-        lr.add(new RateModel("Type3", 112131, "Address3",s,e, "email3@example.com", "323456789", "Name3", "Details3"));*/
         adapt=new MaterialAdapter2(this,eqlist);
         pmuwiseadapt=new MaterialAdapter2(this,pmuwiseList);
         adr=new RateAdapter(this,lr);
@@ -183,8 +197,6 @@ public class Equipments extends AppCompatActivity {
                 querya=Ref.whereEqualTo("ro",MainActivity.RO);
                 break;
         }
-        //r2=db.collection("pmuno");
-        //queryb=r2.orderBy("pmu");
         if(eqt.equals("RateRunning")){
             querya.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override

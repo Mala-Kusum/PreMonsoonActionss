@@ -20,6 +20,7 @@ import com.example.premonsoonaction.Activities.Equipments;
 import com.example.premonsoonaction.Activities.MainActivity;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.PmuNo;
+import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
 
 import java.util.ArrayList;
@@ -33,7 +34,10 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         this.context = context;
         this.eqList = eqList;
     }
-
+    public void filterList(ArrayList<PmuNo> filterlist) {
+        eqList = filterlist;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,8 +49,10 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PmuNo m = eqList.get(position);
         String eq = m.getPMU();
-
+        pmuList = new ArrayList<>();
+        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList,eq);
         holder.name.setText(m.getPMU());
+        holder.r.setVisibility(View.GONE);
         try{
             holder.no.setText(Integer.toString(m.getNO()));
         }
@@ -62,20 +68,19 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
                 else{
                     Equipments.eq=eq;
                 }
-
                 Intent i = new Intent(context, AddInsufficiency.class);
                 context.startActivity(i);
             }
         });
-        pmuList = new ArrayList<>();
-        for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
 
+        for(Map.Entry<Pair<String,String>, Integer> me : Equipments.pmuwithcount.entrySet()){
             if(Equipments.switchValue){
                 if(me.getKey().second.equals(m.getPMU())){
                     PmuNo ob = new PmuNo(me.getKey().first,me.getValue());
                     Log.d( "ob value  eq: ",ob+" "+ob.getPMU()+" "+ob.getNO());
                     try{
                         pmuList.add(ob);
+                        ad.notifyDataSetChanged();
                     }
                     catch(Exception e){
                         Log.e("pmulist add error: ", e.toString());
@@ -88,13 +93,13 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
                     Log.d( "ob value: ",ob+" "+ob.getPMU()+" "+ob.getNO());
                     try{
                         pmuList.add(ob);
+                        ad.notifyDataSetChanged();
                     }
                     catch(Exception e){
                         Log.e("pmulist add error: ", e.toString());
                     }
                 }
             }
-
         }
        /* ArrayList<PmuNo> pmuList = new ArrayList<>();
         PmuNo pmu1 = new PmuNo("PMU-Bongaigaon", 1);
@@ -104,7 +109,7 @@ public class MaterialAdapter2 extends RecyclerView.Adapter<MaterialAdapter2.MyVi
         PmuNo pmu3 = new PmuNo("PMU-Diphu", 1);
         pmuList.add(pmu3);*/
         // Use a separate instance of PmuNoAdapter for each item
-        PmuNoAdapter ad = new PmuNoAdapter(context,pmuList,eq);
+
 
         try {
             holder.imageButton.setOnClickListener(new View.OnClickListener() {
