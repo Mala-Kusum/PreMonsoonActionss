@@ -51,7 +51,6 @@ public class AddInsufficiency extends AppCompatActivity {
         //ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.ROs, android.R.layout.select_dialog_singlechoice);
         unia = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Units, android.R.layout.select_dialog_singlechoice);
         eq.setText(Equipments.eq);
-
         ro.setThreshold(1);
         ro.setAdapter(ad);
         try{
@@ -65,10 +64,77 @@ public class AddInsufficiency extends AppCompatActivity {
         catch(Exception e){
             Log.e("ro onclick: ", e.toString());
         }
+        switch(ro.getText().toString()) {
+            case "Ro-Leh/Srinagar":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.LehSrinagar, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Shillong":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Shillong, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-LADAKH":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.LADAKH, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Kohima":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Kohima, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Jammu":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Jammu, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Itanagar":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Itanagar, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Imphal":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Imphal, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Guwahati":
+                try {
+                    ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Guwahati, android.R.layout.select_dialog_singlechoice);
+
+                } catch (Exception e) {
+                    Log.e("onItemClick ad set: ", e.toString());
+                }
+                break;
+            case "RO-Gangtok":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Gangtok, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Dehradun":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Dehradun, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Aizwal":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Aizwal, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Agartala":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Agartala, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-Port Blair":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.PortBlair, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "RO-SRINAGAR":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.SRINAGAR, android.R.layout.select_dialog_singlechoice);
+
+                break;
+            case "New Delhi":
+                ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.NewDelhi, android.R.layout.select_dialog_singlechoice);
+
+                break;
+        }
         ro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String s = (String) adapterView.getItemAtPosition(i);
+                String s = ((TextView) view).getText().toString();
+                pmu.setText("");
                 try{
                     Log.e("TAG",s);
                 }
@@ -107,7 +173,7 @@ public class AddInsufficiency extends AppCompatActivity {
                     case "RO-Guwahati":
                         try{
                             ad2 = ArrayAdapter.createFromResource(AddInsufficiency.this, R.array.Guwahati, android.R.layout.select_dialog_singlechoice);
-                            pmu.setAdapter(ad2);
+
                         }
                         catch(Exception e){
                             Log.e("onItemClick ad set: ",e.toString() );
@@ -142,6 +208,7 @@ public class AddInsufficiency extends AppCompatActivity {
 
                         break;
                 }
+                //pmu.setAdapter(ad2);
             }
         });
         /*ro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -230,6 +297,7 @@ public class AddInsufficiency extends AppCompatActivity {
             pmu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    pmu.setAdapter(ad2);
                     pmu.showDropDown();
                 }
             });
