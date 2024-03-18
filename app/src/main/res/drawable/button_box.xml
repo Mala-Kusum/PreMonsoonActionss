@@ -5,9 +5,9 @@
         />
     <stroke
         android:width="2dp"
-        android:color="#7DB9B6" />
+        android:color="#C4DCE0" />
     <gradient
-        android:centerColor="#7DB9B6"
-        android:endColor="#7DB9B6"
-        android:startColor="#7DB9B6" />
+        android:centerColor="#C4DCE0"
+        android:endColor="#C4DCE0"
+        android:startColor="#C4DCE0" />
 </shape>

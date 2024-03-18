@@ -35,8 +35,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Add_RateRunning extends AppCompatActivity {
-    EditText cname,cnumber,cmail,location,pmis,started,ended,detail;
-    AutoCompleteTextView rate;
+    public EditText cname,cnumber,cmail,location,pmis,started,ended,detail;
+    public AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
     private String name,loc;
