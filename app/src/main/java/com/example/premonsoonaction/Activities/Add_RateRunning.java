@@ -14,7 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
+import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.DatePick2;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
@@ -39,6 +41,7 @@ public class Add_RateRunning extends AppCompatActivity {
     public AutoCompleteTextView rate;
     ArrayAdapter ad;
     Button save;
+    ImageButton delete;
     private String name,loc;
     RateModel rat;
     CollectionReference Ref;
@@ -68,6 +71,12 @@ public class Add_RateRunning extends AppCompatActivity {
         ended = findViewById(R.id.endDate);
         save=findViewById(R.id.save);
         detail=findViewById(R.id.essentialdetails);
+        try{
+            delete=findViewById(R.id.delete);
+        }
+        catch(Exception e){
+            Log.e("delete instantiation ",e.toString());
+        }
         rat = new RateModel();
         save.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -104,8 +113,17 @@ public class Add_RateRunning extends AppCompatActivity {
             Log.e("get ratetypes: ",e.toString());
         }
         //set values to be editted
-        if(this.getParent().equals(Equipments.class)){
-
+        if(Equipments.edit){
+            delete.setVisibility(View.VISIBLE);
+            cname.setText(RateAdapter.ViewHolder.nameTextView.getText());
+            cnumber.setText(RateAdapter.ViewHolder.mobileTextView.getText());
+            cmail.setText(RateAdapter.ViewHolder.emailTextView.getText());
+            rate.setText(RateAdapter.ViewHolder.typeTextView.getText());
+            location.setText(RateAdapter.ViewHolder.addressTextView.getText());
+            pmis.setText(RateAdapter.ViewHolder.pmisTextView.getText());
+            started.setText(RateAdapter.ViewHolder.startTextView.getText());
+            ended.setText(RateAdapter.ViewHolder.endTextView.getText());
+            detail.setText(RateAdapter.ViewHolder.detailsTextView.getText());
             /*save.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){

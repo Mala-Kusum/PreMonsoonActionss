@@ -75,15 +75,15 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView typeTextView;
-        TextView pmisTextView;
-        TextView addressTextView;
-        TextView startTextView;
-        TextView endTextView;
-        TextView emailTextView;
-        TextView mobileTextView;
-        TextView nameTextView;
-        TextView detailsTextView;
+        public static TextView typeTextView;
+        public static TextView pmisTextView;
+        public static TextView addressTextView;
+        public static TextView startTextView;
+        public static TextView endTextView;
+        public static TextView emailTextView;
+        public static TextView mobileTextView;
+        public static TextView nameTextView;
+        public static TextView detailsTextView;
         LinearLayout card;
 
         public ViewHolder(@NonNull View itemView) {
