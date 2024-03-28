@@ -103,7 +103,50 @@ public class Add_RateRunning extends AppCompatActivity {
         catch(Exception e){
             Log.e("get ratetypes: ",e.toString());
         }
+        //set values to be editted
+        if(this.getParent().equals(Equipments.class)){
 
+            /*save.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    nam=name.getText().toString();
+                    desi=des.getText().toString();
+                    depar=dep.getText().toString();
+                    addr=add.getText().toString();
+                    emai=email.getText().toString();
+                    tele=tel.getText().toString();
+                    mobi=mob.getText().toString();
+                    sta=st.getText().toString();
+
+                    m.put(Name,nam);
+                    m.put(Email,MainActivity.EMAIL);
+                    m.put(Designation,desi);
+                    m.put(Department,depar);
+                    m.put(Address,addr);
+                    m.put(Mobile,mobi);
+                    m.put(Landline,tele);
+                    m.put(State,sta);
+                    m.put(Type,ty);
+                    Log.e("tag",DocID);
+
+                    noteRef.document(DocID).set(m).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void v) {
+                            Log.d("TAG", "DocumentSnapshot successfully updated!");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("Error updating profile details",e.toString());
+                        }
+                    });
+                    Intent intent=new Intent(admin_profile_edit.this,MainActivity.parent);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            });*/
+        }
 
         rate.setOnClickListener(new View.OnClickListener() {
             @Override

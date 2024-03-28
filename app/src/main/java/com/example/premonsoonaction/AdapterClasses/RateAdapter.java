@@ -1,15 +1,22 @@
 package com.example.premonsoonaction.AdapterClasses;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.premonsoonaction.Activities.Add_RateRunning;
+import com.example.premonsoonaction.Activities.Equipments;
+import com.example.premonsoonaction.DatePick2;
 import com.example.premonsoonaction.Models.ModelEquipment;
 import com.example.premonsoonaction.Models.RateModel;
 import com.example.premonsoonaction.R;
@@ -21,10 +28,12 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
 
     private List<RateModel> rateModelList;
     private final LayoutInflater inflater;
+    private Context context;
 
     public RateAdapter(Context context, List<RateModel> rateModelList) {
         this.rateModelList = rateModelList;
         this.inflater = LayoutInflater.from(context);
+        this.context=context;
     }
     public void filterList(ArrayList<RateModel> filterlist) {
         rateModelList = filterlist;
@@ -49,6 +58,15 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
         holder.mobileTextView.setText(rateModel.getMobile());
         holder.nameTextView.setText(rateModel.getName());
         holder.detailsTextView.setText(rateModel.getDetails());
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Equipments.edit = true;
+                Intent i = new Intent(context, Add_RateRunning.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -66,9 +84,11 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.ViewHolder> {
         TextView mobileTextView;
         TextView nameTextView;
         TextView detailsTextView;
+        LinearLayout card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            card = itemView.findViewById(R.id.card);
             typeTextView = itemView.findViewById(R.id.type);
             pmisTextView = itemView.findViewById(R.id.pmis);
             addressTextView = itemView.findViewById(R.id.address);

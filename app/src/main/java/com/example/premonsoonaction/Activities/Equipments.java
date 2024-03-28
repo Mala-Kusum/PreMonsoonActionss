@@ -69,6 +69,7 @@ public class Equipments extends AppCompatActivity {
     List<PmuNo> eqlist,pmuwiseList;
     SwitchMaterial sw;
     public static boolean switchValue;
+    public static Boolean edit = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
