@@ -26,6 +26,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -114,6 +115,7 @@ public class Add_RateRunning extends AppCompatActivity {
         }
         //set values to be editted
         if(Equipments.edit){
+            save.setEnabled(true);
             delete.setVisibility(View.VISIBLE);
             cname.setText(RateAdapter.ViewHolder.nameTextView.getText());
             cnumber.setText(RateAdapter.ViewHolder.mobileTextView.getText());
@@ -124,46 +126,6 @@ public class Add_RateRunning extends AppCompatActivity {
             started.setText(RateAdapter.ViewHolder.startTextView.getText());
             ended.setText(RateAdapter.ViewHolder.endTextView.getText());
             detail.setText(RateAdapter.ViewHolder.detailsTextView.getText());
-            /*save.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    nam=name.getText().toString();
-                    desi=des.getText().toString();
-                    depar=dep.getText().toString();
-                    addr=add.getText().toString();
-                    emai=email.getText().toString();
-                    tele=tel.getText().toString();
-                    mobi=mob.getText().toString();
-                    sta=st.getText().toString();
-
-                    m.put(Name,nam);
-                    m.put(Email,MainActivity.EMAIL);
-                    m.put(Designation,desi);
-                    m.put(Department,depar);
-                    m.put(Address,addr);
-                    m.put(Mobile,mobi);
-                    m.put(Landline,tele);
-                    m.put(State,sta);
-                    m.put(Type,ty);
-                    Log.e("tag",DocID);
-
-                    noteRef.document(DocID).set(m).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void v) {
-                            Log.d("TAG", "DocumentSnapshot successfully updated!");
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("Error updating profile details",e.toString());
-                        }
-                    });
-                    Intent intent=new Intent(admin_profile_edit.this,MainActivity.parent);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
-                }
-            });*/
         }
 
         rate.setOnClickListener(new View.OnClickListener() {
@@ -227,14 +189,53 @@ public class Add_RateRunning extends AppCompatActivity {
                 newFragment.show(getSupportFragmentManager(), "datePicker");
             }
         });
+        pmis.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
+                if(t.toString().trim().isEmpty()){
+                    pmis.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
 
+            @Override
+            public void onTextChanged(CharSequence t, int i, int i1, int i2) {
+                if(t.toString().trim().isEmpty()){
+                    pmis.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(pmis.getText().toString().trim().isEmpty()){
+                    cname.setError("This field cannot be empty");
+                    save.setEnabled(false);
+                } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                    save.setEnabled(false);
+                }
+                else{
+                    save.setEnabled(true);
+                }
+            }
+        });
         cname.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                 if(t.toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -247,7 +248,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -260,7 +261,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(cname.getText().toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -275,7 +276,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -288,7 +289,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -301,7 +302,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(cnumber.getText().toString().trim().isEmpty()){
                     cnumber.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -315,7 +316,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -328,7 +329,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -341,7 +342,7 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(location.toString().trim().isEmpty()){
                     location.setError("This field cannot be empty");
                     save.setEnabled(false);
-                } else if (cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
+                } else if (pmis.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cname.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
                 }
                 else{
@@ -400,7 +401,7 @@ public class Add_RateRunning extends AppCompatActivity {
                    rat.setDetails(detail.getText().toString().trim());
                }
                try{
-                Ref.document(pmis.getText().toString().trim()).set(rat).addOnSuccessListener(new OnSuccessListener<Void>() {
+                Ref.document(pmis.getText().toString().trim()).set(rat, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d("TAG", "DocumentSnapshot successfully updated!");
