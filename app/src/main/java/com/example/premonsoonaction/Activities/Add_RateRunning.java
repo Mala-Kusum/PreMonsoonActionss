@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.premonsoonaction.AdapterClasses.RateAdapter;
 import com.example.premonsoonaction.DatePick2;
@@ -194,12 +195,15 @@ public class Add_RateRunning extends AppCompatActivity {
             public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
                 if(t.toString().trim().isEmpty()){
                     pmis.setError("This field cannot be empty");
+                    delete.setEnabled(false);
                     save.setEnabled(false);
                 } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
+                    delete.setEnabled(true);
                 }
                 else{
                     save.setEnabled(true);
+                    delete.setEnabled(true);
                 }
             }
 
@@ -208,11 +212,14 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(t.toString().trim().isEmpty()){
                     pmis.setError("This field cannot be empty");
                     save.setEnabled(false);
+                    delete.setEnabled(false);
                 } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
+                    delete.setEnabled(true);
                 }
                 else{
                     save.setEnabled(true);
+                    delete.setEnabled(true);
                 }
             }
 
@@ -221,11 +228,14 @@ public class Add_RateRunning extends AppCompatActivity {
                 if(pmis.getText().toString().trim().isEmpty()){
                     cname.setError("This field cannot be empty");
                     save.setEnabled(false);
+                    delete.setEnabled(false);
                 } else if (cname.getText().toString().trim().isEmpty()||location.toString().trim().isEmpty()||started.getText().toString().trim().isEmpty()||ended.getText().toString().trim().isEmpty()||cnumber.getText().toString().trim().isEmpty()) {
                     save.setEnabled(false);
+                    delete.setEnabled(true);
                 }
                 else{
                     save.setEnabled(true);
+                    delete.setEnabled(true);
                 }
             }
         });
@@ -350,7 +360,25 @@ public class Add_RateRunning extends AppCompatActivity {
                 }
             }
         });
-
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Ref.document(pmis.getText().toString().trim()).delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(Add_RateRunning.this, "DocumentSnapshot deleted", Toast.LENGTH_SHORT).show();
+                                Log.d("DocumentSnapshot delete","Done!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("DocumentSnapshot delete Error", e);
+                            }
+                        });
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
