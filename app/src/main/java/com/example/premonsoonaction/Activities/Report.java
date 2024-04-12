@@ -306,8 +306,6 @@ public class Report extends AppCompatActivity {
     }
     private void saveWorkBook(HSSFWorkbook hssfWorkbook){
         StorageManager storageManager = (StorageManager) getSystemService(STORAGE_SERVICE);
-
-
         StorageVolume storageVolume = storageManager.getStorageVolumes().get(0); // internal storage
 
         File fileOutput = null;

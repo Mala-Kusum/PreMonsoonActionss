@@ -1,14 +1,18 @@
 package com.example.premonsoonaction.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.premonsoonaction.AdapterClasses.AddLocAdapter;
@@ -295,5 +299,29 @@ public class  ShowReport extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // methods to control the operations that will
+    // happen when user clicks on the action buttons
+    @Override
+    public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
+
+        if(item.getItemId()==R.id.edit){
+            Intent i=new Intent(ShowReport.this, addReport.class);
+            startActivity(i);
+        }
+        /*switch (item.getItemId()){
+            case R.id.edit:
+                Intent i=new Intent(ShowReport.this, addReport.class);
+                startActivity(i);
+                break;
+        }*/
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -27,7 +27,7 @@ public class AddLocAdapter extends RecyclerView.Adapter<AddLocAdapter.MyViewHold
     @Override
     public AddLocAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from(context).inflate(R.layout.locationcard,parent,false);
+        v= LayoutInflater.from(context).inflate(R.layout.locationcardwithoutinsuf,parent,false);
         AddLocAdapter.MyViewHolder viewHolder = new AddLocAdapter.MyViewHolder(v);
         return viewHolder;
     }
