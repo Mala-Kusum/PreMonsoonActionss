@@ -17,7 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.example.premonsoonaction.AdapterClasses.AddLocAdapter;
+import com.example.premonsoonaction.AdapterClasses.LocationCancellableAdapter;
 import com.example.premonsoonaction.Models.Location;
 import com.example.premonsoonaction.Models.ModelReportCheckList;
 import com.example.premonsoonaction.R;
@@ -51,7 +51,7 @@ public class addReport extends AppCompatActivity {
     Dialog customDialog;
     List<Vulnerable> l1,l2;
     List<Vulnerable> l3,l4;
-    AddLocAdapter a1,a2,a3;
+    LocationCancellableAdapter a1,a2,a3;
     RecyclerView r1,r2,r3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +70,9 @@ public class addReport extends AppCompatActivity {
         r1 = findViewById(R.id.vulnerableconstructionloc);
         r2 = findViewById(R.id.vulnerabletonaturaldestructionloc);
         r3 = findViewById(R.id.locationinspectedbefore);
-        a1 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l1);
-        a2 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l2);
-        a3 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l3);
+        a1 = new LocationCancellableAdapter(addReport.this, (ArrayList<Vulnerable>) l1);
+        a2 = new LocationCancellableAdapter(addReport.this, (ArrayList<Vulnerable>) l2);
+        a3 = new LocationCancellableAdapter(addReport.this, (ArrayList<Vulnerable>) l3);
         r1.setLayoutManager(new LinearLayoutManager(this));
         r2.setLayoutManager(new LinearLayoutManager(this));
         r3.setLayoutManager(new LinearLayoutManager(this));
