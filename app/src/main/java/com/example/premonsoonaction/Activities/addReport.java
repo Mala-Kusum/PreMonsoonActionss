@@ -47,7 +47,7 @@ public class addReport extends AppCompatActivity {
     WriteBatch batch;
     Dialog customDialog;
     List<Vulnerable> l1,l2;
-    List<Location> l3,l4;
+    List<Vulnerable> l3,l4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class addReport extends AppCompatActivity {
         addvuner=findViewById(R.id.addvuner);
         addcritical=findViewById(R.id.addcritical);
         inspected=findViewById(R.id.addinsp);
-        warning=findViewById(R.id.addwarn);
+        //warning=findViewById(R.id.addwarn);
         submit=findViewById(R.id.submit);
         INST1=findViewById(R.id.inst1);
         INST2=findViewById(R.id.inst2);
@@ -75,8 +75,8 @@ public class addReport extends AppCompatActivity {
         Ref = db.collection("checklist");
         l1=new ArrayList<Vulnerable>();
         l2=new ArrayList<Vulnerable>();
-        l3=new ArrayList<Location>();
-        l4=new ArrayList<Location>();
+        l3=new ArrayList<Vulnerable>();
+        //l4=new ArrayList<Location>();
         c=new Date();
         date=c.toString();
         addvuner.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +210,6 @@ public class addReport extends AppCompatActivity {
                             sb.setEnabled(true);
                         }
                     }
-
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
                         if (t.toString().trim().length() == 0) {
@@ -281,7 +280,7 @@ public class addReport extends AppCompatActivity {
                         v1.setTYPE(e1.getText().toString());
                         //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
-                        l1.add(v1);
+                        l2.add(v1);
                         customDialog.cancel();
                     }
                 });
@@ -291,43 +290,85 @@ public class addReport extends AppCompatActivity {
         inspected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customDialog=new Dialog(addReport.this);
-                customDialog.setContentView(R.layout.dialog2);
-                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                Button sb=customDialog.findViewById(R.id.save);
+                customDialog = new Dialog(addReport.this);
+                customDialog.setContentView(R.layout.dialog);
+                Objects.requireNonNull(customDialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                Button sb = customDialog.findViewById(R.id.save);
                 sb.setEnabled(false);
-                EditText e1;
-                e1=customDialog.findViewById(R.id.loc);
+                EditText e1, e2, e3;
+                e1 = customDialog.findViewById(R.id.typeinput);
+                e2 = customDialog.findViewById(R.id.Location);
+                //e3=customDialog.findViewById(R.id.no);
                 e1.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(e1.getText().toString().trim().length()==0){
+                        if (t.toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        }
-                        else{
+                        } else if (e2.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
-
                     @Override
                     public void onTextChanged(CharSequence t, int i, int i1, int i2) {
-                        if(t.toString().trim().length()==0){
+                        if (t.toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
-                        }
-                        else{
+                        } else if (e2.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if(e1.getText().toString().trim().length()==0){
+                        if (e1.getText().toString().trim().length() == 0) {
                             e1.setError("the field cannot be empty");
                             sb.setEnabled(false);
+                        } else if (e2.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
+                            sb.setEnabled(true);
                         }
-                        else{
+                    }
+                });
+
+                e2.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if (t.toString().trim().length() == 0) {
+                            e2.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        } else if (e1.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence t, int i, int i1, int i2) {
+                        if (t.toString().trim().length() == 0) {
+                            e2.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        } else if (e2.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
+                            sb.setEnabled(true);
+                        }
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        if (e2.getText().toString().trim().length() == 0) {
+                            e2.setError("the field cannot be empty");
+                            sb.setEnabled(false);
+                        } else if (e1.getText().toString().isEmpty()) {
+                            sb.setEnabled(false);
+                        } else {
                             sb.setEnabled(true);
                         }
                     }
@@ -336,15 +377,17 @@ public class addReport extends AppCompatActivity {
                 sb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Location lo=new Location();
-                        lo.setLOCATION(e1.getText().toString());
-                        l3.add(lo);
+                        Vulnerable v1=new Vulnerable();
+                        v1.setTYPE(e1.getText().toString());
+                        //v1.setNO(Integer.parseInt(e3.getText().toString()));
+                        v1.setLOCATION(e2.getText().toString());
+                        l3.add(v1);
                         customDialog.cancel();
                     }
                 });
             }
         });
-        warning.setOnClickListener(new View.OnClickListener() {
+        /*warning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 customDialog=new Dialog(addReport.this);
@@ -399,7 +442,7 @@ public class addReport extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -430,9 +473,9 @@ public class addReport extends AppCompatActivity {
                 for(int i=0;i<l3.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Inspected").document(), l3.get(i),SetOptions.merge());
                 }
-                for(int i=0;i<l4.size();i++){
+                /*for(int i=0;i<l4.size();i++){
                     batch.set(Ref.document(MainActivity.RO+date).collection("Warning").document(), l4.get(i),SetOptions.merge());
-                }
+                }*/
                 batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
