@@ -2,6 +2,8 @@ package com.example.premonsoonaction.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.premonsoonaction.AdapterClasses.AddLocAdapter;
 import com.example.premonsoonaction.Models.Location;
 import com.example.premonsoonaction.Models.ModelReportCheckList;
 import com.example.premonsoonaction.R;
@@ -48,6 +51,8 @@ public class addReport extends AppCompatActivity {
     Dialog customDialog;
     List<Vulnerable> l1,l2;
     List<Vulnerable> l3,l4;
+    AddLocAdapter a1,a2,a3;
+    RecyclerView r1,r2,r3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,22 @@ public class addReport extends AppCompatActivity {
         addvuner=findViewById(R.id.addvuner);
         addcritical=findViewById(R.id.addcritical);
         inspected=findViewById(R.id.addinsp);
+        l1=new ArrayList<Vulnerable>();
+        l2=new ArrayList<Vulnerable>();
+        l3=new ArrayList<Vulnerable>();
+        //l4=new ArrayList<Location>();
+        r1 = findViewById(R.id.vulnerableconstructionloc);
+        r2 = findViewById(R.id.vulnerabletonaturaldestructionloc);
+        r3 = findViewById(R.id.locationinspectedbefore);
+        a1 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l1);
+        a2 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l2);
+        a3 = new AddLocAdapter(addReport.this, (ArrayList<Vulnerable>) l3);
+        r1.setLayoutManager(new LinearLayoutManager(this));
+        r2.setLayoutManager(new LinearLayoutManager(this));
+        r3.setLayoutManager(new LinearLayoutManager(this));
+        r1.setAdapter(a1);
+        r2.setAdapter(a2);
+        r3.setAdapter(a3);
         //warning=findViewById(R.id.addwarn);
         submit=findViewById(R.id.submit);
         INST1=findViewById(R.id.inst1);
@@ -73,10 +94,7 @@ public class addReport extends AppCompatActivity {
         INST11=findViewById(R.id.inst11);
         db = FirebaseFirestore.getInstance();
         Ref = db.collection("checklist");
-        l1=new ArrayList<Vulnerable>();
-        l2=new ArrayList<Vulnerable>();
-        l3=new ArrayList<Vulnerable>();
-        //l4=new ArrayList<Location>();
+
         c=new Date();
         date=c.toString();
         addvuner.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +199,7 @@ public class addReport extends AppCompatActivity {
                          //v1.setNO(Integer.parseInt(e3.getText().toString()));
                          v1.setLOCATION(e2.getText().toString());
                          l1.add(v1);
+                         a1.notifyDataSetChanged();
                          customDialog.cancel();
                     }
                 });
@@ -281,6 +300,7 @@ public class addReport extends AppCompatActivity {
                         //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
                         l2.add(v1);
+                        a1.notifyDataSetChanged();
                         customDialog.cancel();
                     }
                 });
@@ -382,6 +402,7 @@ public class addReport extends AppCompatActivity {
                         //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
                         l3.add(v1);
+                        a1.notifyDataSetChanged();
                         customDialog.cancel();
                     }
                 });
