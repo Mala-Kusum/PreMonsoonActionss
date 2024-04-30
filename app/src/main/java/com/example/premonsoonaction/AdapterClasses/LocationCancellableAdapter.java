@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ public LocationCancellableAdapter(Context context, ArrayList<Vulnerable> list) {
 @Override
 public LocationCancellableAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v= LayoutInflater.from(context).inflate(R.layout.locationcardwithoutinsuf,parent,false);
+        v= LayoutInflater.from(context).inflate(R.layout.locationcancellable,parent,false);
         LocationCancellableAdapter.MyViewHolder viewHolder = new LocationCancellableAdapter.MyViewHolder(v);
         return viewHolder;
         }
@@ -36,17 +37,24 @@ public LocationCancellableAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewG
 public void onBindViewHolder(@NonNull LocationCancellableAdapter.MyViewHolder holder, int position) {
         Vulnerable ob = list.get(position);
         if(ob!=null){
-        if(ob.getTYPE()!=null){
-        Log.e("inside getType()", ob.getTYPE());
-        holder.type.setText(ob.getTYPE().trim());
-        }
-        if(ob.getLOCATION()!=null){
-        Log.e("inside getLocation()", ob.getLOCATION());
-        holder.loc.setText(ob.getLOCATION().trim());
-        }
+            if(ob.getTYPE()!=null){
+                Log.e("inside getType()", ob.getTYPE());
+                holder.type.setText(ob.getTYPE().trim());
+            }
+            if(ob.getLOCATION()!=null){
+                Log.e("inside getLocation()", ob.getLOCATION());
+                holder.loc.setText(ob.getLOCATION().trim());
+            }
+            holder.cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    list.remove(holder.getAbsoluteAdapterPosition());
+                    notifyDataSetChanged();
+                }
+            });
         }
         Log.e("object ","000000000000  "+ob+" "+ob.getTYPE()+" "+ob.getLOCATION()+" 000000000000000000\n");
-        }
+}
 
 @Override
 public int getItemCount() {
@@ -54,8 +62,10 @@ public int getItemCount() {
         }
 public class MyViewHolder extends RecyclerView.ViewHolder{
     TextView type,loc;
+    ImageView cancel;
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
+        cancel = itemView.findViewById(R.id.cancel);
         type = itemView.findViewById(R.id.type);
         loc = itemView.findViewById(R.id.location);
     }
