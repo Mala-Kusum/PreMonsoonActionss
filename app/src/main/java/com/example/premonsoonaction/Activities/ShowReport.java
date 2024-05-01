@@ -35,8 +35,8 @@ public class  ShowReport extends AppCompatActivity {
 
     public static String docid;
     CollectionReference c1,c2,c3,c4;
-    ArrayList<Vulnerable> l1,l2;
-    ArrayList<Vulnerable> s3;
+    public static ArrayList<Vulnerable> l1,l2;
+    public static ArrayList<Vulnerable> s3;
     ArrayList<String> s4;
     public static reportGetModel ob;
     // batch2;
@@ -48,6 +48,7 @@ public class  ShowReport extends AppCompatActivity {
     RecyclerView r1,r2,r3,r4;
     Query q1,q2,q3,q4;
     int i,j;
+    public static Boolean editrate = false;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -313,6 +314,7 @@ public class  ShowReport extends AppCompatActivity {
     public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
 
         if(item.getItemId()==R.id.edit){
+            editrate=true;
             Intent i=new Intent(ShowReport.this, addReport.class);
             startActivity(i);
         }

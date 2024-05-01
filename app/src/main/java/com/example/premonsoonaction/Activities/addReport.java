@@ -97,6 +97,26 @@ public class addReport extends AppCompatActivity {
 
         c=new Date();
         date=c.toString();
+        if(ShowReport.editrate){
+            INST1.setChecked(ShowReport.INST1);
+            INST2.setChecked(ShowReport.INST2);
+            INST3.setChecked(ShowReport.INST3);
+            INST4.setChecked(ShowReport.INST4);
+            INST5.setChecked(ShowReport.INST5);
+            INST6.setChecked(ShowReport.INST6);
+            INST7.setChecked(ShowReport.INST7);
+            INST8.setChecked(ShowReport.INST8);
+            INST9.setChecked(ShowReport.INST9);
+            INST10.setChecked(ShowReport.INST10);
+            INST11.setChecked(ShowReport.INST11);
+            l1.addAll(ShowReport.l1);
+            a1.notifyDataSetChanged();
+            l2.addAll(ShowReport.l2);
+            a2.notifyDataSetChanged();
+            l3.addAll(ShowReport.s3);
+            a3.notifyDataSetChanged();
+            //ShowReport.editrate=false;
+        }
         addvuner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -467,6 +487,20 @@ public class addReport extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ShowReport.editrate){
+                    Ref.document(ShowReport.docid).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.d("onSuccess delete: ",ShowReport.docid+" is deleted");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("onFailure delete of "+ShowReport.docid+": ",e.toString());
+                        }
+                    });
+                    ShowReport.editrate = false;
+                }
                 Map<String, Timestamp> p=new HashMap<>();
                 p.put("submitted", Timestamp.now());
                 batch= db.batch();

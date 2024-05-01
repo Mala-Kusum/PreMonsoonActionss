@@ -127,6 +127,7 @@ public class Add_RateRunning extends AppCompatActivity {
             started.setText(RateAdapter.ViewHolder.startTextView.getText());
             ended.setText(RateAdapter.ViewHolder.endTextView.getText());
             detail.setText(RateAdapter.ViewHolder.detailsTextView.getText());
+
         }
 
         rate.setOnClickListener(new View.OnClickListener() {
