@@ -37,7 +37,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-
 public class addReport extends AppCompatActivity {
     private FirebaseFirestore db;
     CollectionReference Ref;
@@ -53,6 +52,28 @@ public class addReport extends AppCompatActivity {
     List<Vulnerable> l3,l4;
     LocationCancellableAdapter a1,a2,a3;
     RecyclerView r1,r2,r3;
+    public void deleteAtPath(String path) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("path", path);
+
+        HttpsCallableReference deleteFn =
+                FirebaseFunctions.getInstance().getHttpsCallable("recursiveDelete");
+        deleteFn.call(data)
+                .addOnSuccessListener(new OnSuccessListener<HttpsCallableResult>() {
+                    @Override
+                    public void onSuccess(HttpsCallableResult httpsCallableResult) {
+                        // Delete Success
+                        // ...
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Delete failed
+                        // ...
+                    }
+                });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
