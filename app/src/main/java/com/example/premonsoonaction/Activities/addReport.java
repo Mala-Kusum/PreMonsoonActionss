@@ -52,7 +52,7 @@ public class addReport extends AppCompatActivity {
     List<Vulnerable> l3,l4;
     LocationCancellableAdapter a1,a2,a3;
     RecyclerView r1,r2,r3;
-    public void deleteAtPath(String path) {
+    /*public void deleteAtPath(String path) {
         Map<String, Object> data = new HashMap<>();
         data.put("path", path);
 
@@ -73,7 +73,7 @@ public class addReport extends AppCompatActivity {
                         // ...
                     }
                 });
-    }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

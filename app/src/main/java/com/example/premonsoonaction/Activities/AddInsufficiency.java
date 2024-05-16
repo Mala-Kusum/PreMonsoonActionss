@@ -278,17 +278,22 @@ public class AddInsufficiency extends AppCompatActivity {
                 ob.setUni(Unit.valueOf(unit.getText().toString().trim()));
                 ob.setRequired(Integer.parseInt(quant.getText().toString().trim()));
                 ob.setType(InsufType.valueOf(Equipments.eqt));
-                Ref.document(String.valueOf(System.currentTimeMillis())).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.d("TAG", "DocumentSnapshot successfully updated!");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("Error updating insufficiency", e.toString());
-                    }
-                });
+                try{
+                    Ref.document(String.valueOf(System.currentTimeMillis())).set(ob).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.d("TAG success", "DocumentSnapshot successfully updated!");
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("Error updating insufficiency", e.toString());
+                        }
+                    });
+                }
+                catch(Exception e){
+                    Log.e("onfirebasequeryexecution: ", e.toString());
+                }
                 MainActivity.pmu="";
                 pmu.setText("");
                 MainActivity.location="";
