@@ -341,7 +341,7 @@ public class addReport extends AppCompatActivity {
                         //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
                         l2.add(v1);
-                        a1.notifyDataSetChanged();
+                        a2.notifyDataSetChanged();
                         customDialog.cancel();
                     }
                 });
@@ -443,7 +443,7 @@ public class addReport extends AppCompatActivity {
                         //v1.setNO(Integer.parseInt(e3.getText().toString()));
                         v1.setLOCATION(e2.getText().toString());
                         l3.add(v1);
-                        a1.notifyDataSetChanged();
+                        a3.notifyDataSetChanged();
                         customDialog.cancel();
                     }
                 });
