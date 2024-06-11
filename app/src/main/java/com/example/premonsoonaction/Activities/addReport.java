@@ -18,12 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.premonsoonaction.AdapterClasses.LocationCancellableAdapter;
-import com.example.premonsoonaction.Models.Location;
 import com.example.premonsoonaction.Models.ModelReportCheckList;
 import com.example.premonsoonaction.R;
 import com.example.premonsoonaction.Models.Vulnerable;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -568,5 +568,31 @@ public class addReport extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public static class FrameLayout extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_frame_layout);
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs); // get the reference of TabLayout
+            TabLayout.Tab eqTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+            eqTab.setText(" "); // set the Text for the first Tab
+            eqTab.setIcon(R.drawable.baseline_construction_24); // set an icon for the first tab
+            tabLayout.addTab(eqTab,1,true);
+            TabLayout.Tab matTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+            matTab.setText(" "); // set the Text for the first Tab
+            matTab.setIcon(R.drawable.baseline_oil_barrel_24); // set an icon for the first tab
+            tabLayout.addTab(matTab,2,true);
+            TabLayout.Tab contractTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+            contractTab.setText(" "); // set the Text for the first Tab
+            contractTab.setIcon(R.drawable.baseline_document_scanner_24); // set an icon for the first tab
+            tabLayout.addTab(contractTab,3,true);
+            TabLayout.Tab reportTab = tabLayout.newTab(); // Create a new Tab names "First Tab"
+            reportTab.setText(" "); // set the Text for the first Tab
+            reportTab.setIcon(R.drawable.baseline_assessment_24); // set an icon for the first tab
+            tabLayout.addTab(contractTab,4,true);
+        }
     }
 }

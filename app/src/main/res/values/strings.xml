@@ -246,6 +246,7 @@
     </string-array>
     <string-array name="PortBlair">
         <item>"PMU-Mayabunder"</item>
+        <item>"PMU-Baratang"</item>
     </string-array>
     <string-array name="LehSrinagar">
         <item>"PMU-Leh"</item>

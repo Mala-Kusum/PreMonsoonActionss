@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PreMonsoonAction"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activities.addReport$FrameLayout"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -34,15 +36,15 @@
             android:label="@string/title_activity_geo_map" />
         <activity
             android:name=".Activities.AddInsufficiency"
-            android:parentActivityName=".Activities.Equipments"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Activities.Equipments" />
         <activity
             android:name=".Activities.Add_Material"
             android:exported="false" />
         <activity
             android:name=".Activities.Add_RateRunning"
-            android:parentActivityName=".Activities.Equipments"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Activities.Equipments" />
         <activity
             android:name=".Activities.PMUWise"
             android:exported="false" />
@@ -74,8 +76,8 @@
             android:parentActivityName=".Activities.Action" />
         <activity
             android:name=".Activities.Action"
-            android:parentActivityName=".Activities.ROs"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Activities.ROs" />
         <activity
             android:name=".Activities.ROs"
             android:exported="false"
