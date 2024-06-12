@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
         id=findViewById(R.id.id);
         password=findViewById(R.id.pswd);
         login=findViewById(R.id.login);
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });*/
 
-                Intent i=new Intent(MainActivity.this, ROs.class);
+                Intent i=new Intent(MainActivity.this, FrameLayout.class);
                 startActivity(i);
             }
         });

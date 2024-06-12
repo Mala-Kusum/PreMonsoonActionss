@@ -3,11 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.addReport$FrameLayout">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_gravity="bottom"
+        app:tabGravity="fill"
+        >
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/eq"
+            android:layout_gravity="center"
+            android:icon="@drawable/baseline_construction_24"
+            />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/mat"
+            android:icon="@drawable/baseline_oil_barrel_24"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/contract"
+            android:icon="@drawable/baseline_document_scanner_24"/>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/reports"
+            android:icon="@drawable/baseline_assessment_24"/>
+    </com.google.android.material.tabs.TabLayout>
 
 </LinearLayout>
