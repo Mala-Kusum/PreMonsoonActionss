@@ -3,29 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.addReport$FrameLayout">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.viewpager2.widget.ViewPager2>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="#B4D4FF"
         app:tabGravity="fill"
         >
         <com.google.android.material.tabs.TabItem
             android:id="@+id/eq"
             android:layout_gravity="center"
             android:icon="@drawable/baseline_construction_24"
-            />
+             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:id="@+id/mat"
-            android:icon="@drawable/baseline_oil_barrel_24"/>
+            android:icon="@drawable/baseline_oil_barrel_24"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:id="@+id/contract"
-            android:icon="@drawable/baseline_document_scanner_24"/>
+            android:icon="@drawable/baseline_document_scanner_24"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
         <com.google.android.material.tabs.TabItem
             android:id="@+id/reports"
-            android:icon="@drawable/baseline_assessment_24"/>
+            android:icon="@drawable/baseline_assessment_24"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
     </com.google.android.material.tabs.TabLayout>
 
 </LinearLayout>
