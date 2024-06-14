@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/iconmon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PreMonsoonAction"
-        tools:targetApi="31">
+        tools:targetApi="34">
+        <!-- Added because automatic initialisation were causing application startup error -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
