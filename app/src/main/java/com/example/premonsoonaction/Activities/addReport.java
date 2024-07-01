@@ -557,7 +557,6 @@ public class addReport extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         Log.d( "onSuccess: ","batch uploaded");
                         finish();
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -570,7 +569,7 @@ public class addReport extends AppCompatActivity {
         });
     }
 
-    public static class FrameLayout extends AppCompatActivity {
+   /* public static class FrameLayout extends AppCompatActivity {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -594,5 +593,5 @@ public class addReport extends AppCompatActivity {
             reportTab.setIcon(R.drawable.baseline_assessment_24); // set an icon for the first tab
             tabLayout.addTab(contractTab,4,true);
         }
-    }
+    }*/
 }
